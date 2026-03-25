@@ -65,7 +65,20 @@ CREATE TABLE IF NOT EXISTS monthly_points (
 conn.commit()
 
 # =============================
-# HTML LEADERBOARD
+# GITHUB AUTO UPLOAD
+# =============================
+
+def upload_to_github():
+    try:
+        os.system("git add .")
+        os.system('git commit -m "auto update leaderboard"')
+        os.system("git push")
+        print("✅ GitHub Upload erfolgreich")
+    except Exception as e:
+        print("❌ Git Fehler:", e)
+
+# =============================
+# HTML GENERATION
 # =============================
 
 def generate_leaderboard_html():
@@ -79,7 +92,7 @@ def generate_leaderboard_html():
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Leaderboard</title>
+<title>World Ranking</title>
 <meta http-equiv="refresh" content="30">
 <style>
 body { background:#0d0d0d; color:white; font-family:Arial; text-align:center; }
@@ -90,9 +103,7 @@ th { background:#00ffe1; color:black; }
 </style>
 </head>
 <body>
-
 <h1>🏆 World Ranking</h1>
-
 <table>
 <tr><th>#</th><th>Spieler</th><th>ELO</th></tr>
 """
@@ -116,6 +127,7 @@ th { background:#00ffe1; color:black; }
 
     with open("leaderboard.html", "w", encoding="utf-8") as f:
         f.write(html)
+
 
 def generate_monthly_leaderboard_html():
     current_month = datetime.now().strftime("%Y-%m")
@@ -147,9 +159,7 @@ th {{ background:#ff00ff; color:black; }}
 </style>
 </head>
 <body>
-
 <h1>🏆 Monatsranking ({current_month})</h1>
-
 <table>
 <tr><th>#</th><th>Spieler</th><th>Punkte</th></tr>
 """
@@ -175,16 +185,10 @@ th {{ background:#ff00ff; color:black; }}
         f.write(html)
 
 # =============================
-# GLOBALS
-# =============================
-
-queue_dartcounter = []
-queue_scolia = []
-K_FACTOR = 32
-
-# =============================
 # RATING SYSTEM
 # =============================
+
+K_FACTOR = 32
 
 def get_rating(user_id):
     c.execute("SELECT rating FROM players WHERE user_id=?", (user_id,))
@@ -205,39 +209,6 @@ def calculate_elo(r1, r2, score1):
     return round(r1 + K_FACTOR * (score1 - expected))
 
 # =============================
-# QUEUE LOGIC
-# =============================
-
-async def handle_queue(interaction, platform):
-    user = interaction.user
-    queue = queue_dartcounter if platform == "dartcounter" else queue_scolia
-
-    if user in queue:
-        await interaction.response.send_message("Du bist bereits in der Queue.", ephemeral=True)
-        return
-
-    queue.append(user)
-
-    if len(queue) >= 2:
-        p1 = queue.pop(0)
-        p2 = queue.pop(0)
-
-        get_rating(p1.id)
-        get_rating(p2.id)
-
-        c.execute("INSERT INTO matches (player1_id, player2_id, platform) VALUES (?, ?, ?)",
-                  (p1.id, p2.id, platform))
-        conn.commit()
-
-        match_id = c.lastrowid
-
-        await interaction.response.send_message(
-            f"🎯 MATCH #{match_id}\n{p1.mention} vs {p2.mention}\n\n/result match_id:{match_id}"
-        )
-    else:
-        await interaction.response.send_message("Du bist der Queue beigetreten.", ephemeral=True)
-
-# =============================
 # CONFIRM VIEW
 # =============================
 
@@ -253,9 +224,6 @@ class ConfirmView(discord.ui.View):
 
     @discord.ui.button(label="✅ Bestätigen", style=discord.ButtonStyle.green)
     async def confirm(self, interaction: discord.Interaction, button: discord.ui.Button):
-
-        get_rating(self.winner.id)
-        get_rating(self.loser.id)
 
         new_r1 = calculate_elo(self.r1, self.r2, 1)
         new_r2 = calculate_elo(self.r2, self.r1, 0)
@@ -290,8 +258,9 @@ class ConfirmView(discord.ui.View):
 
         generate_leaderboard_html()
         generate_monthly_leaderboard_html()
+        upload_to_github()
 
-        await interaction.response.edit_message(content="Match bestätigt!", view=None)
+        await interaction.response.edit_message(content="🏆 Match bestätigt!", view=None)
 
 # =============================
 # COMMANDS
@@ -320,7 +289,7 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
 
 @bot.tree.command(name="monthly")
 async def monthly(interaction: discord.Interaction):
-    await interaction.response.send_message("📊 Monatsranking: Öffne monthly.html")
+    await interaction.response.send_message("📊 Monatsranking: monthly.html")
 
 # =============================
 # READY
@@ -339,6 +308,7 @@ async def on_ready():
 
     generate_leaderboard_html()
     generate_monthly_leaderboard_html()
+    upload_to_github()
 
     print(f"{bot.user} ist online!")
 
