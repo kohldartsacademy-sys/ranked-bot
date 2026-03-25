@@ -210,19 +210,39 @@ def calculate_elo(r1, r2, score1):
 # QUEUE SYSTEM
 # =============================
 
+# =============================
+# QUEUE SYSTEM (FINAL FIXED)
+# =============================
+
+queue_dartcounter = []
+queue_scolia = []
+
+
 class QueueView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(label="🎯 DartCounter", style=discord.ButtonStyle.green)
+    @discord.ui.button(
+        label="🎯 DartCounter",
+        style=discord.ButtonStyle.green,
+        custom_id="dartcounter_btn"
+    )
     async def dartcounter(self, interaction: discord.Interaction, button: discord.ui.Button):
         await handle_queue(interaction, "dartcounter")
 
-    @discord.ui.button(label="🔵 Scolia", style=discord.ButtonStyle.blurple)
+    @discord.ui.button(
+        label="🔵 Scolia",
+        style=discord.ButtonStyle.blurple,
+        custom_id="scolia_btn"
+    )
     async def scolia(self, interaction: discord.Interaction, button: discord.ui.Button):
         await handle_queue(interaction, "scolia")
 
-    @discord.ui.button(label="❌ Queue verlassen", style=discord.ButtonStyle.red)
+    @discord.ui.button(
+        label="❌ Queue verlassen",
+        style=discord.ButtonStyle.red,
+        custom_id="leave_btn"
+    )
     async def leave(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         user = interaction.user
@@ -236,11 +256,66 @@ class QueueView(discord.ui.View):
             queue_scolia.remove(user)
             removed = True
 
-        if removed:
-            await interaction.response.send_message("❌ Du hast die Queue verlassen.", ephemeral=True)
+        # ✅ Antwort korrekt senden
+        if interaction.response.is_done():
+            send = interaction.followup.send
         else:
-            await interaction.response.send_message("⚠️ Du bist in keiner Queue.", ephemeral=True)
-            await update_queue_panel(interaction.guild)
+            send = interaction.response.send_message
+
+        if removed:
+            await send("❌ Du hast die Queue verlassen.", ephemeral=True)
+        else:
+            await send("⚠️ Du bist in keiner Queue.", ephemeral=True)
+
+
+# =============================
+# QUEUE LOGIC
+# =============================
+
+async def handle_queue(interaction, platform):
+
+    user = interaction.user
+    queue = queue_dartcounter if platform == "dartcounter" else queue_scolia
+
+    # 🔥 FIX: richtige Antwort Methode wählen
+    if interaction.response.is_done():
+        send = interaction.followup.send
+    else:
+        send = interaction.response.send_message
+
+    # 🔒 Bereits in Queue
+    if user in queue:
+        await send("⚠️ Du bist bereits in der Queue.", ephemeral=True)
+        return
+
+    # ➕ Hinzufügen
+    queue.append(user)
+
+    # 🎯 Match erstellen
+    if len(queue) >= 2:
+        p1 = queue.pop(0)
+        p2 = queue.pop(0)
+
+        # Spieler sicher registrieren
+        get_rating(p1.id)
+        get_rating(p2.id)
+
+        c.execute(
+            "INSERT INTO matches (player1_id, player2_id, platform) VALUES (?, ?, ?)",
+            (p1.id, p2.id, platform)
+        )
+        conn.commit()
+
+        match_id = c.lastrowid
+
+        await send(
+            f"🎯 MATCH #{match_id}\n"
+            f"{p1.mention} vs {p2.mention}\n\n"
+            f"/result match_id:{match_id}"
+        )
+
+    else:
+        await send("✅ Du bist der Queue beigetreten.", ephemeral=True)
 
 # =============================
 # CONFIRM VIEW
