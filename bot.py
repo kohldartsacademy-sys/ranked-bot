@@ -240,6 +240,7 @@ class QueueView(discord.ui.View):
             await interaction.response.send_message("❌ Du hast die Queue verlassen.", ephemeral=True)
         else:
             await interaction.response.send_message("⚠️ Du bist in keiner Queue.", ephemeral=True)
+            await update_queue_panel(interaction.guild)
 
 # =============================
 # CONFIRM VIEW
