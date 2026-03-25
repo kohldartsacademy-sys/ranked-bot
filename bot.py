@@ -73,9 +73,9 @@ def upload_to_github():
         os.system("git add .")
         os.system('git commit -m "auto update leaderboard"')
         os.system("git push")
-        print("✅ GitHub Upload erfolgreich")
-    except Exception as e:
-        print("❌ Git Fehler:", e)
+        print("✅ GitHub Upload")
+    except:
+        pass
 
 # =============================
 # HTML GENERATION
@@ -92,12 +92,11 @@ def generate_leaderboard_html():
 <html>
 <head>
 <meta charset="UTF-8">
-<title>World Ranking</title>
 <meta http-equiv="refresh" content="30">
 <style>
 body { background:#0d0d0d; color:white; font-family:Arial; text-align:center; }
 h1 { color:#00ffe1; }
-table { margin:auto; border-collapse:collapse; width:80%; }
+table { margin:auto; width:80%; border-collapse:collapse; }
 th, td { padding:10px; border-bottom:1px solid #333; }
 th { background:#00ffe1; color:black; }
 </style>
@@ -148,12 +147,11 @@ def generate_monthly_leaderboard_html():
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Monatsranking</title>
 <meta http-equiv="refresh" content="30">
 <style>
 body {{ background:#0d0d0d; color:white; font-family:Arial; text-align:center; }}
 h1 {{ color:#ff00ff; }}
-table {{ margin:auto; border-collapse:collapse; width:80%; }}
+table {{ margin:auto; width:80%; border-collapse:collapse; }}
 th, td {{ padding:10px; border-bottom:1px solid #333; }}
 th {{ background:#ff00ff; color:black; }}
 </style>
@@ -207,6 +205,54 @@ def update_rating(user_id, new_rating):
 def calculate_elo(r1, r2, score1):
     expected = 1 / (1 + 10 ** ((r2 - r1) / 400))
     return round(r1 + K_FACTOR * (score1 - expected))
+
+# =============================
+# QUEUE SYSTEM
+# =============================
+
+queue_dartcounter = []
+queue_scolia = []
+
+class QueueView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+
+    @discord.ui.button(label="🎯 DartCounter", style=discord.ButtonStyle.green)
+    async def dartcounter(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await handle_queue(interaction, "dartcounter")
+
+    @discord.ui.button(label="🔵 Scolia", style=discord.ButtonStyle.blurple)
+    async def scolia(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await handle_queue(interaction, "scolia")
+
+async def handle_queue(interaction, platform):
+    user = interaction.user
+    queue = queue_dartcounter if platform == "dartcounter" else queue_scolia
+
+    if user in queue:
+        await interaction.response.send_message("Du bist bereits in der Queue.", ephemeral=True)
+        return
+
+    queue.append(user)
+
+    if len(queue) >= 2:
+        p1 = queue.pop(0)
+        p2 = queue.pop(0)
+
+        get_rating(p1.id)
+        get_rating(p2.id)
+
+        c.execute("INSERT INTO matches (player1_id, player2_id, platform) VALUES (?, ?, ?)",
+                  (p1.id, p2.id, platform))
+        conn.commit()
+
+        match_id = c.lastrowid
+
+        await interaction.response.send_message(
+            f"🎯 MATCH #{match_id}\n{p1.mention} vs {p2.mention}\n\n/result match_id:{match_id}"
+        )
+    else:
+        await interaction.response.send_message("Du bist der Queue beigetreten.", ephemeral=True)
 
 # =============================
 # CONFIRM VIEW
@@ -266,6 +312,36 @@ class ConfirmView(discord.ui.View):
 # COMMANDS
 # =============================
 
+@bot.tree.command(name="queue_panel")
+async def queue_panel(interaction: discord.Interaction):
+    embed = discord.Embed(title="🎯 Dart Liga Matchmaking")
+    await interaction.response.send_message(embed=embed, view=QueueView())
+
+@bot.tree.command(name="stats")
+@app_commands.describe(player="Spieler auswählen")
+async def stats(interaction: discord.Interaction, player: discord.Member):
+
+    rating = get_rating(player.id)
+
+    c.execute("SELECT COUNT(*) FROM matches WHERE winner_id=? AND status='confirmed'", (player.id,))
+    wins = c.fetchone()[0]
+
+    c.execute("SELECT COUNT(*) FROM matches WHERE loser_id=? AND status='confirmed'", (player.id,))
+    losses = c.fetchone()[0]
+
+    total = wins + losses
+    winrate = round((wins / total) * 100, 1) if total > 0 else 0
+
+    embed = discord.Embed(title=f"📊 Stats von {player.display_name}", color=discord.Color.green())
+
+    embed.add_field(name="🏆 Rating", value=rating, inline=False)
+    embed.add_field(name="🎯 Spiele", value=total, inline=True)
+    embed.add_field(name="✅ Siege", value=wins, inline=True)
+    embed.add_field(name="❌ Niederlagen", value=losses, inline=True)
+    embed.add_field(name="📈 Winrate", value=f"{winrate}%", inline=False)
+
+    await interaction.response.send_message(embed=embed)
+
 @bot.tree.command(name="result")
 async def result(interaction: discord.Interaction, match_id: int, winner: discord.Member, score: str):
 
@@ -286,10 +362,6 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
     view = ConfirmView(winner, loser, r1, r2, match_id, score)
 
     await interaction.response.send_message("Bestätigen:", view=view)
-
-@bot.tree.command(name="monthly")
-async def monthly(interaction: discord.Interaction):
-    await interaction.response.send_message("📊 Monatsranking: monthly.html")
 
 # =============================
 # READY
