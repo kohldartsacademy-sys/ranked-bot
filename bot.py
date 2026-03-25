@@ -210,9 +210,6 @@ def calculate_elo(r1, r2, score1):
 # QUEUE SYSTEM
 # =============================
 
-queue_dartcounter = []
-queue_scolia = []
-
 class QueueView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
