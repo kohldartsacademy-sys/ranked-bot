@@ -117,10 +117,36 @@ def generate_html():
         f.write(html)
 
 # =============================
-# QUEUE SYSTEM
+# QUEUE SYSTEM (LIVE)
 # =============================
 
 queue = []
+QUEUE_MESSAGE_ID = None
+QUEUE_CHANNEL_ID = None
+
+async def update_queue(guild):
+    global QUEUE_MESSAGE_ID, QUEUE_CHANNEL_ID
+
+    if not QUEUE_MESSAGE_ID:
+        return
+
+    channel = guild.get_channel(QUEUE_CHANNEL_ID)
+    if not channel:
+        return
+
+    msg = await channel.fetch_message(QUEUE_MESSAGE_ID)
+
+    embed = discord.Embed(title="🎯 Dart Queue", color=discord.Color.blue())
+
+    if queue:
+        players = "\n".join([u.display_name for u in queue])
+    else:
+        players = "Keine Spieler"
+
+    embed.add_field(name="👥 Spieler", value=players, inline=False)
+    embed.add_field(name="📊 Anzahl", value=len(queue), inline=False)
+
+    await msg.edit(embed=embed, view=QueueView())
 
 class QueueView(discord.ui.View):
     def __init__(self):
@@ -151,6 +177,8 @@ class QueueView(discord.ui.View):
         else:
             await interaction.response.send_message("Beigetreten", ephemeral=True)
 
+        await update_queue(interaction.guild)
+
     @discord.ui.button(label="Leave Queue", style=discord.ButtonStyle.red, custom_id="leave")
     async def leave(self, interaction: discord.Interaction, button: discord.ui.Button):
 
@@ -160,15 +188,27 @@ class QueueView(discord.ui.View):
         else:
             await interaction.response.send_message("Nicht in Queue", ephemeral=True)
 
+        await update_queue(interaction.guild)
+
 # =============================
 # COMMANDS
 # =============================
 
 @bot.tree.command(name="queue_panel")
 async def queue_panel(interaction: discord.Interaction):
-    await interaction.response.send_message("Queue:", view=QueueView())
 
-# 🔥 ADVANCED STATS
+    global QUEUE_MESSAGE_ID, QUEUE_CHANNEL_ID
+
+    embed = discord.Embed(title="🎯 Dart Queue")
+
+    await interaction.response.send_message(embed=embed, view=QueueView())
+
+    msg = await interaction.original_response()
+    QUEUE_MESSAGE_ID = msg.id
+    QUEUE_CHANNEL_ID = interaction.channel.id
+
+    await update_queue(interaction.guild)
+
 @bot.tree.command(name="stats")
 async def stats(interaction: discord.Interaction, player: discord.Member):
 
@@ -183,7 +223,6 @@ async def stats(interaction: discord.Interaction, player: discord.Member):
     total = wins + losses
     winrate = round((wins / total) * 100, 1) if total > 0 else 0
 
-    # 🔥 Averages sammeln
     c.execute("""
         SELECT winner_id, winner_avg, loser_id, loser_avg
         FROM matches
@@ -196,29 +235,20 @@ async def stats(interaction: discord.Interaction, player: discord.Member):
 
     averages = []
 
-    for winner_id, winner_avg, loser_id, loser_avg in matches:
-        if winner_id == player.id and winner_avg is not None:
-            averages.append(winner_avg)
-        elif loser_id == player.id and loser_avg is not None:
-            averages.append(loser_avg)
+    for w_id, w_avg, l_id, l_avg in matches:
+        if w_id == player.id and w_avg:
+            averages.append(w_avg)
+        elif l_id == player.id and l_avg:
+            averages.append(l_avg)
 
-    if averages:
-        avg_overall = round(sum(averages) / len(averages), 2)
-        last5 = averages[:5]
-        last5_text = "\n".join([f"{i+1}. {avg}" for i, avg in enumerate(last5)])
-    else:
-        avg_overall = 0
-        last5_text = "Keine Daten"
+    avg = round(sum(averages) / len(averages), 2) if averages else 0
 
-    embed = discord.Embed(title=f"📊 Stats von {player.display_name}", color=discord.Color.green())
+    embed = discord.Embed(title=f"📊 Stats von {player.display_name}")
 
-    embed.add_field(name="🏆 Rating", value=rating, inline=False)
-    embed.add_field(name="🎯 Spiele", value=total, inline=True)
-    embed.add_field(name="✅ Siege", value=wins, inline=True)
-    embed.add_field(name="❌ Niederlagen", value=losses, inline=True)
-    embed.add_field(name="📈 Winrate", value=f"{winrate}%", inline=False)
-    embed.add_field(name="🎯 Ø Average", value=avg_overall, inline=False)
-    embed.add_field(name="📊 Letzte 5 Averages", value=last5_text, inline=False)
+    embed.add_field(name="Rating", value=rating)
+    embed.add_field(name="Spiele", value=total)
+    embed.add_field(name="Winrate", value=f"{winrate}%")
+    embed.add_field(name="Ø Average", value=avg)
 
     await interaction.response.send_message(embed=embed)
 
