@@ -81,17 +81,13 @@ def calculate_elo(r1, r2, score):
     return round(r1 + K_FACTOR * (score - expected))
 
 # =============================
-# GITHUB UPLOAD
+# HTML + GITHUB
 # =============================
 
 def upload():
     os.system("git add .")
     os.system('git commit -m "update leaderboard"')
     os.system("git push")
-
-# =============================
-# HTML GENERATION
-# =============================
 
 def generate_html():
     c.execute("SELECT user_id, rating FROM players ORDER BY rating DESC")
@@ -137,18 +133,18 @@ async def update_queue(guild):
     try:
         msg = await channel.fetch_message(QUEUE_MESSAGE_ID)
 
-        embed = discord.Embed(title="🎯 Dart Matchmaking")
+        embed = discord.Embed(title="🎯 Dart Matchmaking", color=discord.Color.blue())
 
-        dart_list = "\n".join([u.display_name for u in queue_dart]) if queue_dart else "Keine Spieler"
-        scolia_list = "\n".join([u.display_name for u in queue_scolia]) if queue_scolia else "Keine Spieler"
+        dart_players = "\n".join([u.display_name for u in queue_dart]) if queue_dart else "Keine Spieler"
+        scolia_players = "\n".join([u.display_name for u in queue_scolia]) if queue_scolia else "Keine Spieler"
 
-        embed.add_field(name=f"🎯 DartCounter ({len(queue_dart)})", value=dart_list, inline=False)
-        embed.add_field(name=f"🔵 Scolia ({len(queue_scolia)})", value=scolia_list, inline=False)
+        embed.add_field(name=f"🎯 DartCounter ({len(queue_dart)})", value=dart_players, inline=False)
+        embed.add_field(name=f"🔵 Scolia ({len(queue_scolia)})", value=scolia_players, inline=False)
 
         await msg.edit(embed=embed, view=QueueView())
 
-    except:
-        pass
+    except Exception as e:
+        print("Queue Fehler:", e)
 
 class QueueView(discord.ui.View):
     def __init__(self):
@@ -224,7 +220,73 @@ async def queue_panel(interaction: discord.Interaction):
 
     await update_queue(interaction.guild)
 
-# 🔥 RESULT (FIXED WEBSITE UPDATE)
+# 🔥 STATS FINAL
+@bot.tree.command(name="stats")
+async def stats(interaction: discord.Interaction, player: discord.Member):
+
+    rating = get_rating(player.id)
+
+    c.execute("SELECT user_id FROM players ORDER BY rating DESC")
+    ranking = [r[0] for r in c.fetchall()]
+    world_rank = ranking.index(player.id) + 1 if player.id in ranking else "N/A"
+
+    month = datetime.now().strftime("%Y-%m")
+    c.execute("SELECT user_id FROM monthly_points WHERE month=? ORDER BY points DESC", (month,))
+    monthly = [r[0] for r in c.fetchall()]
+    monthly_rank = monthly.index(player.id) + 1 if player.id in monthly else "N/A"
+
+    c.execute("SELECT COUNT(*) FROM matches WHERE winner_id=? AND status='confirmed'", (player.id,))
+    wins = c.fetchone()[0]
+
+    c.execute("SELECT COUNT(*) FROM matches WHERE loser_id=? AND status='confirmed'", (player.id,))
+    losses = c.fetchone()[0]
+
+    total = wins + losses
+    winrate = round((wins / total) * 100, 1) if total > 0 else 0
+
+    c.execute("""
+        SELECT winner_id, winner_avg, loser_id, loser_avg
+        FROM matches
+        WHERE status='confirmed'
+        AND (winner_id=? OR loser_id=?)
+        ORDER BY id DESC
+    """, (player.id, player.id))
+
+    matches = c.fetchall()
+    averages = []
+
+    for w_id, w_avg, l_id, l_avg in matches:
+        if w_id == player.id and w_avg:
+            averages.append(w_avg)
+        elif l_id == player.id and l_avg:
+            averages.append(l_avg)
+
+    if averages:
+        avg = round(sum(averages) / len(averages), 2)
+        best = max(averages)
+        worst = min(averages)
+        last5 = "\n".join([f"{i+1}. {v}" for i, v in enumerate(averages[:5])])
+    else:
+        avg = best = worst = 0
+        last5 = "Keine Daten"
+
+    embed = discord.Embed(title=f"📊 Stats von {player.display_name}", color=discord.Color.green())
+
+    embed.add_field(name="🌍 Global Rank", value=world_rank)
+    embed.add_field(name="🗓️ Monthly Rank", value=monthly_rank)
+    embed.add_field(name="🏆 Rating", value=rating)
+    embed.add_field(name="🎯 Spiele", value=total)
+    embed.add_field(name="✅ Siege", value=wins)
+    embed.add_field(name="❌ Niederlagen", value=losses)
+    embed.add_field(name="📈 Winrate", value=f"{winrate}%")
+    embed.add_field(name="🎯 Ø Average", value=avg)
+    embed.add_field(name="🔥 Letzte 5", value=last5)
+    embed.add_field(name="💎 Best", value=best)
+    embed.add_field(name="📉 Worst", value=worst)
+
+    await interaction.response.send_message(embed=embed)
+
+# 🔥 RESULT
 @bot.tree.command(name="result")
 async def result(interaction: discord.Interaction, match_id: int, winner: discord.Member, score: str, winner_avg: float, loser_avg: float):
 
@@ -265,7 +327,6 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
 
     conn.commit()
 
-    # 🔥 WEBSITE UPDATE FIX
     generate_html()
     upload()
 
@@ -278,11 +339,8 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
 @bot.event
 async def on_ready():
     await bot.tree.sync()
-
-    # 🔥 beim Start auch aktualisieren
     generate_html()
     upload()
-
     print("Bot online")
 
 bot.run(TOKEN)
