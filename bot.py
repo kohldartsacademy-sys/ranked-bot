@@ -17,6 +17,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 intents = discord.Intents.default()
 intents.members = True
+intents.message_content = True  # 🔥 FIX
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
@@ -35,23 +36,11 @@ CREATE TABLE IF NOT EXISTS matches (
     player2_id INTEGER,
     winner_id INTEGER,
     loser_id INTEGER,
-    winner_old_rating INTEGER,
-    winner_new_rating INTEGER,
-    loser_old_rating INTEGER,
-    loser_new_rating INTEGER,
     status TEXT DEFAULT 'pending',
     score TEXT,
     winner_avg REAL,
     loser_avg REAL,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-)
-""")
-c.execute("""
-CREATE TABLE IF NOT EXISTS monthly_points (
-    user_id INTEGER,
-    month TEXT,
-    points INTEGER,
-    PRIMARY KEY (user_id, month)
 )
 """)
 
@@ -81,7 +70,7 @@ def calculate_elo(r1, r2, score):
     return round(r1 + K_FACTOR * (score - expected))
 
 # =============================
-# GITHUB UPLOAD
+# GITHUB
 # =============================
 
 def upload():
@@ -117,7 +106,7 @@ def generate_html():
         f.write(html)
 
 # =============================
-# QUEUE SYSTEM (LIVE)
+# QUEUE SYSTEM (FIXED)
 # =============================
 
 queue = []
@@ -127,26 +116,34 @@ QUEUE_CHANNEL_ID = None
 async def update_queue(guild):
     global QUEUE_MESSAGE_ID, QUEUE_CHANNEL_ID
 
-    if not QUEUE_MESSAGE_ID:
+    if not QUEUE_MESSAGE_ID or not QUEUE_CHANNEL_ID:
         return
 
     channel = guild.get_channel(QUEUE_CHANNEL_ID)
     if not channel:
         return
 
-    msg = await channel.fetch_message(QUEUE_MESSAGE_ID)
+    try:
+        msg = await channel.fetch_message(QUEUE_MESSAGE_ID)
 
-    embed = discord.Embed(title="🎯 Dart Queue", color=discord.Color.blue())
+        embed = discord.Embed(title="🎯 Dart Queue", color=discord.Color.blue())
 
-    if queue:
-        players = "\n".join([u.display_name for u in queue])
-    else:
-        players = "Keine Spieler"
+        if queue:
+            players = "\n".join([u.display_name for u in queue])
+        else:
+            players = "Keine Spieler"
 
-    embed.add_field(name="👥 Spieler", value=players, inline=False)
-    embed.add_field(name="📊 Anzahl", value=len(queue), inline=False)
+        embed.add_field(name="👥 Spieler", value=players, inline=False)
+        embed.add_field(name="📊 Anzahl", value=len(queue), inline=False)
 
-    await msg.edit(embed=embed, view=QueueView())
+        await msg.edit(embed=embed, view=QueueView())
+
+    except discord.Forbidden:
+        print("❌ Keine Rechte für Queue Update")
+    except discord.NotFound:
+        print("❌ Queue Nachricht nicht gefunden")
+    except Exception as e:
+        print("❌ Fehler:", e)
 
 class QueueView(discord.ui.View):
     def __init__(self):
@@ -211,46 +208,8 @@ async def queue_panel(interaction: discord.Interaction):
 
 @bot.tree.command(name="stats")
 async def stats(interaction: discord.Interaction, player: discord.Member):
-
     rating = get_rating(player.id)
-
-    c.execute("SELECT COUNT(*) FROM matches WHERE winner_id=? AND status='confirmed'", (player.id,))
-    wins = c.fetchone()[0]
-
-    c.execute("SELECT COUNT(*) FROM matches WHERE loser_id=? AND status='confirmed'", (player.id,))
-    losses = c.fetchone()[0]
-
-    total = wins + losses
-    winrate = round((wins / total) * 100, 1) if total > 0 else 0
-
-    c.execute("""
-        SELECT winner_id, winner_avg, loser_id, loser_avg
-        FROM matches
-        WHERE status='confirmed'
-        AND (winner_id=? OR loser_id=?)
-        ORDER BY id DESC
-    """, (player.id, player.id))
-
-    matches = c.fetchall()
-
-    averages = []
-
-    for w_id, w_avg, l_id, l_avg in matches:
-        if w_id == player.id and w_avg:
-            averages.append(w_avg)
-        elif l_id == player.id and l_avg:
-            averages.append(l_avg)
-
-    avg = round(sum(averages) / len(averages), 2) if averages else 0
-
-    embed = discord.Embed(title=f"📊 Stats von {player.display_name}")
-
-    embed.add_field(name="Rating", value=rating)
-    embed.add_field(name="Spiele", value=total)
-    embed.add_field(name="Winrate", value=f"{winrate}%")
-    embed.add_field(name="Ø Average", value=avg)
-
-    await interaction.response.send_message(embed=embed)
+    await interaction.response.send_message(f"{player.display_name}: {rating} ELO")
 
 @bot.tree.command(name="result")
 async def result(interaction: discord.Interaction, match_id: int, winner: discord.Member, score: str, winner_avg: float, loser_avg: float):
