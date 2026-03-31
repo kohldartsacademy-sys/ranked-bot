@@ -335,18 +335,44 @@ QUEUE_MESSAGE_ID=None
 QUEUE_CHANNEL_ID=None
 
 async def update_queue(guild):
-    if not QUEUE_MESSAGE_ID:return
-    channel=guild.get_channel(QUEUE_CHANNEL_ID)
-    if not channel:return
+    if not QUEUE_MESSAGE_ID or not QUEUE_CHANNEL_ID:
+        return
+
+    channel = guild.get_channel(QUEUE_CHANNEL_ID)
+    if not channel:
+        return
+
     try:
-        msg=await channel.fetch_message(QUEUE_MESSAGE_ID)
-        embed=discord.Embed(title="🎯 Dart Matchmaking")
-        embed.add_field(name=f"🎯 Dart ({len(queue_dart)})",
-            value="\n".join([u.display_name for u in queue_dart]) or "Keine")
-        embed.add_field(name=f"🔵 Scolia ({len(queue_scolia)})",
-            value="\n".join([u.display_name for u in queue_scolia]) or "Keine")
-        await msg.edit(embed=embed,view=QueueView())
-    except:pass
+        msg = await channel.fetch_message(QUEUE_MESSAGE_ID)
+
+        embed = discord.Embed(
+            title="🎯 Dart Matchmaking",
+            description="Live Queue Status",
+            color=discord.Color.blue()
+        )
+
+        # Dart Queue
+        dart_list = "\n".join([u.display_name for u in queue_dart]) if queue_dart else "Keine Spieler"
+
+        embed.add_field(
+            name=f"🎯 DartCounter ({len(queue_dart)})",
+            value=dart_list,
+            inline=False
+        )
+
+        # Scolia Queue
+        scolia_list = "\n".join([u.display_name for u in queue_scolia]) if queue_scolia else "Keine Spieler"
+
+        embed.add_field(
+            name=f"🔵 Scolia ({len(queue_scolia)})",
+            value=scolia_list,
+            inline=False
+        )
+
+        await msg.edit(embed=embed, view=QueueView())
+
+    except Exception as e:
+        print("Queue Update Fehler:", e)
 
 class QueueView(discord.ui.View):
     def __init__(self):super().__init__(timeout=None)
@@ -362,7 +388,7 @@ class QueueView(discord.ui.View):
         if i.user in queue_dart:queue_dart.remove(i.user)
         if i.user in queue_scolia:queue_scolia.remove(i.user)
         await i.response.send_message("Verlassen",ephemeral=True)
-        await update_queue(i.guild)
+        await update_queue(interaction.guild)
 
 async def handle_queue(i,mode):
     q=queue_dart if mode=="dart" else queue_scolia
@@ -379,20 +405,30 @@ async def handle_queue(i,mode):
     else:
         await i.response.send_message("Beigetreten",ephemeral=True)
 
-    await update_queue(i.guild)
+    await update_queue(interaction.guild)
 
 # =============================
 # COMMANDS
 # =============================
 
 @bot.tree.command(name="queue_panel")
-async def queue_panel(i):
-    global QUEUE_MESSAGE_ID,QUEUE_CHANNEL_ID
-    await i.response.send_message("Queue",view=QueueView())
-    msg=await i.original_response()
-    QUEUE_MESSAGE_ID=msg.id
-    QUEUE_CHANNEL_ID=i.channel.id
-    await update_queue(i.guild)
+async def queue_panel(interaction: discord.Interaction):
+
+    global QUEUE_MESSAGE_ID, QUEUE_CHANNEL_ID
+
+    embed = discord.Embed(
+        title="🎯 Dart Matchmaking",
+        description="Live Queue wird geladen..."
+    )
+
+    await interaction.response.send_message(embed=embed, view=QueueView())
+
+    msg = await interaction.original_response()
+
+    QUEUE_MESSAGE_ID = msg.id
+    QUEUE_CHANNEL_ID = interaction.channel.id
+
+    await update_queue(interaction.guild)
 
 @bot.tree.command(name="stats")
 async def stats(interaction: discord.Interaction, player: discord.Member):
