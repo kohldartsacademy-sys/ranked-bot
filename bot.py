@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import json
 import discord
 from discord.ext import commands
 from discord import app_commands
@@ -334,6 +335,31 @@ queue_scolia=[]
 QUEUE_MESSAGE_ID=None
 QUEUE_CHANNEL_ID=None
 
+# =============================
+# PERSISTENT QUEUE STORAGE
+# =============================
+
+def save_queue_panel():
+    data = {
+        "channel_id": QUEUE_CHANNEL_ID,
+        "message_id": QUEUE_MESSAGE_ID
+    }
+    with open("queue.json", "w") as f:
+        json.dump(data, f)
+
+
+def load_queue_panel():
+    global QUEUE_CHANNEL_ID, QUEUE_MESSAGE_ID
+
+    if not os.path.exists("queue.json"):
+        return
+
+    with open("queue.json", "r") as f:
+        data = json.load(f)
+
+    QUEUE_CHANNEL_ID = data.get("channel_id")
+    QUEUE_MESSAGE_ID = data.get("message_id")
+
 async def update_queue(guild):
     if not QUEUE_MESSAGE_ID or not QUEUE_CHANNEL_ID:
         return
@@ -375,20 +401,40 @@ async def update_queue(guild):
         print("Queue Update Fehler:", e)
 
 class QueueView(discord.ui.View):
-    def __init__(self):super().__init__(timeout=None)
+    def __init__(self):
+        super().__init__(timeout=None)
 
-    @discord.ui.button(label="🎯 DartCounter",style=discord.ButtonStyle.green)
-    async def dart(self,i,b):await handle_queue(i,"dart")
+    @discord.ui.button(
+        label="🎯 DartCounter",
+        style=discord.ButtonStyle.green,
+        custom_id="queue_dart"
+    )
+    async def dart(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await handle_queue(interaction, "dart")
 
-    @discord.ui.button(label="🔵 Scolia",style=discord.ButtonStyle.blurple)
-    async def scolia(self,i,b):await handle_queue(i,"scolia")
+    @discord.ui.button(
+        label="🔵 Scolia",
+        style=discord.ButtonStyle.blurple,
+        custom_id="queue_scolia"
+    )
+    async def scolia(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await handle_queue(interaction, "scolia")
 
-    @discord.ui.button(label="❌ Leave",style=discord.ButtonStyle.red)
-    async def leave(self,i,b):
-        if i.user in queue_dart:queue_dart.remove(i.user)
-        if i.user in queue_scolia:queue_scolia.remove(i.user)
-        await i.response.send_message("Verlassen",ephemeral=True)
-        await update_queue(i.guild)
+    @discord.ui.button(
+        label="❌ Leave",
+        style=discord.ButtonStyle.red,
+        custom_id="queue_leave"
+    )
+    async def leave(self, interaction: discord.Interaction, button: discord.ui.Button):
+
+        if interaction.user in queue_dart:
+            queue_dart.remove(interaction.user)
+
+        if interaction.user in queue_scolia:
+            queue_scolia.remove(interaction.user)
+
+        await interaction.response.send_message("Queue verlassen", ephemeral=True)
+        await update_queue(interaction.guild)
 
 async def handle_queue(i,mode):
     q=queue_dart if mode=="dart" else queue_scolia
@@ -428,6 +474,8 @@ async def queue_panel(interaction: discord.Interaction):
 
     QUEUE_MESSAGE_ID = msg.id
     QUEUE_CHANNEL_ID = interaction.channel.id
+
+    save_queue_panel()
 
     await update_queue(interaction.guild)
 
@@ -558,8 +606,13 @@ async def top10(i):
 @bot.event
 async def on_ready():
     await bot.tree.sync()
+
+    load_queue_panel()
+    bot.add_view(QueueView())
+
     generate_html()
     upload()
-    print("Bot online")
+
+    print("Bot online (Persistent Queue aktiv)")
 
 bot.run(TOKEN)
