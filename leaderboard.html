@@ -4,31 +4,48 @@
     <style>
     body {background:#0b0f14;color:white;font-family:Segoe UI;text-align:center;}
 
-    .container {display:flex;justify-content:center;gap:50px;margin-top:40px;}
+    button {
+        background:#161b22;
+        color:white;
+        border:none;
+        padding:10px 20px;
+        margin:10px;
+        border-radius:10px;
+        cursor:pointer;
+    }
 
-    .podium {display:flex;justify-content:center;gap:30px;margin-top:30px;}
+    button:hover {
+        background:#30363d;
+    }
 
-    .card {background:#161b22;padding:20px;border-radius:20px;width:180px;transition:0.3s;}
-    .card:hover {transform:scale(1.05);}
+    .table {display:none;}
+    .active {display:block;}
 
-    .gold {border:2px solid gold;}
-    .silver {border:2px solid silver;}
-    .bronze {border:2px solid #cd7f32;}
-
-    .avatar {width:70px;height:70px;border-radius:50%;}
-
-    table {width:100%;border-collapse:collapse;margin-top:20px;}
+    table {margin:auto;margin-top:20px;width:60%;}
     td {padding:10px;border-bottom:1px solid #222;}
 
-    tr:hover {background:#161b22;}
-
-    a {color:#58a6ff;text-decoration:none;font-weight:bold;}
     </style>
+
+    <script>
+    function showTab(tab) {
+        document.getElementById("world").classList.remove("active");
+        document.getElementById("monthly").classList.remove("active");
+        document.getElementById(tab).classList.add("active");
+    }
+    </script>
+
     </head>
 
     <body>
 
-    <h1>🏆 Dart Ranking Dashboard</h1>
+    <h1>🏆 Dart Ranking</h1>
+
+    <button onclick="showTab('world')">🌍 World</button>
+    <button onclick="showTab('monthly')">🗓️ Monthly</button>
+
+    <div id="world" class="table active">
+    <h2>🌍 World Ranking</h2>
+    <table>
     <div class='podium'>
         <div class='card gold'>
         <img src="https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024" class="avatar"><br>
