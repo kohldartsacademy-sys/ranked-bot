@@ -190,6 +190,116 @@ async def queue_panel(i):
     QUEUE_CHANNEL_ID=i.channel.id
     await update_queue(i.guild)
 
+@bot.tree.command(name="stats")
+async def stats(interaction: discord.Interaction, player: discord.Member):
+
+    rating = get_rating(player.id)
+
+    c.execute("SELECT user_id FROM players ORDER BY rating DESC")
+    ranking = [r[0] for r in c.fetchall()]
+    world_rank = ranking.index(player.id) + 1 if player.id in ranking else "N/A"
+
+    month = datetime.now().strftime("%Y-%m")
+    c.execute("SELECT user_id FROM monthly_points WHERE month=? ORDER BY points DESC", (month,))
+    monthly = [r[0] for r in c.fetchall()]
+    monthly_rank = monthly.index(player.id) + 1 if player.id in monthly else "N/A"
+
+    c.execute("SELECT COUNT(*) FROM matches WHERE winner_id=? AND status='confirmed'", (player.id,))
+    wins = c.fetchone()[0]
+
+    c.execute("SELECT COUNT(*) FROM matches WHERE loser_id=? AND status='confirmed'", (player.id,))
+    losses = c.fetchone()[0]
+
+    total = wins + losses
+    winrate = round((wins / total) * 100, 1) if total > 0 else 0
+
+    embed = discord.Embed(title=f"📊 Stats von {player.display_name}")
+
+    embed.add_field(name="🌍 Global Rank", value=world_rank)
+    embed.add_field(name="🗓️ Monthly Rank", value=monthly_rank)
+    embed.add_field(name="🏆 Rating", value=rating)
+    embed.add_field(name="🎯 Spiele", value=total)
+    embed.add_field(name="📈 Winrate", value=f"{winrate}%")
+
+    await interaction.response.send_message(embed=embed)
+
+@bot.tree.command(name="result")
+async def result(interaction: discord.Interaction, match_id: int, winner: discord.Member, score: str, winner_avg: float, loser_avg: float):
+
+    c.execute("SELECT player1_id, player2_id FROM matches WHERE id=?", (match_id,))
+    match = c.fetchone()
+
+    if not match:
+        await interaction.response.send_message("Match nicht gefunden")
+        return
+
+    p1, p2 = match
+    loser_id = p1 if winner.id == p2 else p2
+
+    r1 = get_rating(winner.id)
+    r2 = get_rating(loser_id)
+
+    new_r1 = calculate_elo(r1, r2, 1)
+    new_r2 = calculate_elo(r2, r1, 0)
+
+    update_rating(winner.id, new_r1)
+    update_rating(loser_id, new_r2)
+
+    month = datetime.now().strftime("%Y-%m")
+    gain = max(0, new_r1 - r1)
+
+    c.execute("""
+        INSERT INTO monthly_points (user_id, month, points)
+        VALUES (?, ?, ?)
+        ON CONFLICT(user_id, month)
+        DO UPDATE SET points = points + ?
+    """, (winner.id, month, gain, gain))
+
+    c.execute("""
+        UPDATE matches SET
+        winner_id=?, loser_id=?, score=?, winner_avg=?, loser_avg=?, status='confirmed'
+        WHERE id=?
+    """, (winner.id, loser_id, score, winner_avg, loser_avg, match_id))
+
+    conn.commit()
+
+    generate_html()
+    upload()
+
+    await interaction.response.send_message("Match gespeichert & Website aktualisiert")
+
+@bot.tree.command(name="history")
+async def history(interaction: discord.Interaction, player: discord.Member):
+
+    c.execute("""
+        SELECT player1_id, player2_id, winner_id, score, platform
+        FROM matches
+        WHERE status='confirmed'
+        AND (player1_id=? OR player2_id=?)
+        ORDER BY id DESC
+        LIMIT 10
+    """, (player.id, player.id))
+
+    matches = c.fetchall()
+
+    if not matches:
+        await interaction.response.send_message("Keine Matches gefunden.")
+        return
+
+    text = f"📜 Match History von {player.display_name}:\n\n"
+
+    for p1, p2, winner, score, platform in matches:
+
+        opponent_id = p2 if player.id == p1 else p1
+        opponent = await bot.fetch_user(opponent_id)
+
+        result = "🏆 Win" if winner == player.id else "❌ Loss"
+
+        text += f"{result} vs {opponent.name} ({platform})\n"
+        text += f"Score: {score}\n\n"
+
+    await interaction.response.send_message(text)
+
 @bot.tree.command(name="top10")
 async def top10(i):
     c.execute("SELECT user_id,rating FROM players ORDER BY rating DESC LIMIT 10")
