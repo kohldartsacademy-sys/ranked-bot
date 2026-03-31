@@ -88,37 +88,114 @@ def upload():
 def generate_html():
     guild = bot.guilds[0] if bot.guilds else None
 
-    c.execute("SELECT user_id, rating FROM players ORDER BY rating DESC LIMIT 10")
-    world = c.fetchall()
+    # =============================
+    # WORLD DATA
+    # =============================
+
+    c.execute("SELECT user_id, rating FROM players ORDER BY rating DESC")
+    players = c.fetchall()
 
     month = datetime.now().strftime("%Y-%m")
-    c.execute("SELECT user_id, points FROM monthly_points WHERE month=? ORDER BY points DESC LIMIT 10", (month,))
-    monthly = c.fetchall()
 
-    html = "<html><body style='background:#0d1117;color:white;text-align:center'>"
-    html += "<h1>🏆 Dart Ranking</h1><div style='display:flex;justify-content:center;gap:50px;'>"
+    html = """
+    <html>
+    <body style='background:#0d1117;color:white;font-family:sans-serif;text-align:center'>
+    <h1>🏆 Dart Ranking</h1>
+    <table style="margin:auto;">
+    """
 
-    html += "<div><h2>🌍 World</h2><table>"
-    for i,(uid,r) in enumerate(world,1):
+    # =============================
+    # LEADERBOARD + LINKS
+    # =============================
+
+    for i, (uid, rating) in enumerate(players, 1):
+
         name = f"User {uid}"
         if guild:
             m = guild.get_member(uid)
             if m:
                 name = m.display_name
-        html += f"<tr><td>{i}</td><td>{name}</td><td>{r}</td></tr>"
-    html += "</table></div>"
 
-    html += "<div><h2>🗓️ Monthly</h2><table>"
-    for i,(uid,p) in enumerate(monthly,1):
-        name = f"User {uid}"
-        if guild:
-            m = guild.get_member(uid)
-            if m:
-                name = m.display_name
-        html += f"<tr><td>{i}</td><td>{name}</td><td>{p}</td></tr>"
-    html += "</table></div></div></body></html>"
+        html += f"<tr><td>{i}</td><td><a href='player_{uid}.html'>{name}</a></td><td>{rating}</td></tr>"
 
-    with open("leaderboard.html","w",encoding="utf-8") as f:
+        # =============================
+        # PLAYER PROFILE GENERATION
+        # =============================
+
+        # Stats holen
+        c.execute("SELECT COUNT(*) FROM matches WHERE winner_id=? AND status='confirmed'", (uid,))
+        wins = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM matches WHERE loser_id=? AND status='confirmed'", (uid,))
+        losses = c.fetchone()[0]
+
+        total = wins + losses
+        winrate = round((wins / total) * 100, 1) if total > 0 else 0
+
+        # Monthly rank
+        c.execute("SELECT user_id FROM monthly_points WHERE month=? ORDER BY points DESC", (month,))
+        monthly = [r[0] for r in c.fetchall()]
+        monthly_rank = monthly.index(uid) + 1 if uid in monthly else "N/A"
+
+        # Averages
+        c.execute("""
+            SELECT winner_id, winner_avg, loser_id, loser_avg
+            FROM matches
+            WHERE status='confirmed'
+            AND (winner_id=? OR loser_id=?)
+            ORDER BY id DESC
+        """, (uid, uid))
+
+        data = c.fetchall()
+        avgs = []
+
+        for w, wa, l, la in data:
+            if w == uid and wa:
+                avgs.append(wa)
+            elif l == uid and la:
+                avgs.append(la)
+
+        avg = round(sum(avgs) / len(avgs), 2) if avgs else 0
+
+        # letzte Matches
+        history = ""
+        for match in data[:5]:
+            history += f"<li>{match[1] or match[3]}</li>"
+
+        # =============================
+        # PROFILE HTML
+        # =============================
+
+        profile_html = f"""
+        <html>
+        <body style='background:#0d1117;color:white;font-family:sans-serif;text-align:center'>
+        <h1>{name}</h1>
+
+        <p>🏆 Rating: {rating}</p>
+        <p>🌍 Rank: {i}</p>
+        <p>🗓️ Monatsrang: {monthly_rank}</p>
+
+        <p>🎯 Spiele: {total}</p>
+        <p>✅ Siege: {wins}</p>
+        <p>❌ Niederlagen: {losses}</p>
+        <p>📈 Winrate: {winrate}%</p>
+
+        <p>🎯 Ø Average: {avg}</p>
+
+        <h3>🔥 Letzte Matches</h3>
+        <ul>{history}</ul>
+
+        <br><a href="leaderboard.html">⬅ Zurück</a>
+        </body>
+        </html>
+        """
+
+        with open(f"player_{uid}.html", "w", encoding="utf-8") as f:
+            f.write(profile_html)
+
+    html += "</table></body></html>"
+
+    with open("leaderboard.html", "w", encoding="utf-8") as f:
         f.write(html)
 
 # =============================
