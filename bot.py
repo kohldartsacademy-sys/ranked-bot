@@ -282,8 +282,15 @@ def generate_html():
         avg = round(sum(avgs) / len(avgs), 2) if avgs else 0
 
         history = ""
-        for match in data[:5]:
-            history += f"<li>{match[1] or match[3]}</li>"
+
+        for w, wa, l, la in data[:5]:
+
+            if w == uid:
+                avg = wa
+            else:
+                avg = la
+
+            history += f"<li>{avg}</li>"
 
         profile_html = f"""
         <html>
