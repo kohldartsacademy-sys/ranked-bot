@@ -283,14 +283,33 @@ def generate_html():
 
         history = ""
 
-        for w, wa, l, la in data[:5]:
+        for p1, p2, winner, score, platform, wa, la in c.execute("""
+            SELECT player1_id, player2_id, winner_id, score, platform, winner_avg, loser_avg
+            FROM matches
+            WHERE status='confirmed'
+            AND (player1_id=? OR player2_id=?)
+            ORDER BY id DESC
+            LIMIT 5
+        """, (uid, uid)):
 
-            if w == uid:
+            # Gegner bestimmen
+            opponent_id = p2 if uid == p1 else p1
+
+            name_opponent = f"User {opponent_id}"
+            if guild:
+                m2 = guild.get_member(opponent_id)
+                if m2:
+                    name_opponent = m2.display_name
+
+            # Win / Loss
+            if winner == uid:
+                result = "🟢 Win"
                 avg = wa
             else:
+                result = "🔴 Loss"
                 avg = la
 
-            history += f"<li>{avg}</li>"
+            history += f"<li>{result} vs {name_opponent} ({score}) → {avg}</li>"
 
         profile_html = f"""
         <html>
