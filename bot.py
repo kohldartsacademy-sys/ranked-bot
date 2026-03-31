@@ -88,14 +88,27 @@ def upload():
 def generate_html():
     guild = bot.guilds[0] if bot.guilds else None
 
+    # =============================
+    # DATA
+    # =============================
+
     c.execute("SELECT user_id, rating FROM players ORDER BY rating DESC")
     players = c.fetchall()
+
+    month = datetime.now().strftime("%Y-%m")
+
+    c.execute("""
+        SELECT user_id, points FROM monthly_points
+        WHERE month=?
+        ORDER BY points DESC
+    """, (month,))
+    monthly_data = c.fetchall()
 
     top3 = players[:3]
     rest = players[3:]
 
     # =============================
-    # MAIN HTML
+    # HTML START
     # =============================
 
     html = """
@@ -103,22 +116,32 @@ def generate_html():
     <head>
     <style>
     body {background:#0b0f14;color:white;font-family:Segoe UI;text-align:center;}
-    .podium {display:flex;justify-content:center;gap:40px;margin-top:40px;}
+
+    .container {display:flex;justify-content:center;gap:50px;margin-top:40px;}
+
+    .podium {display:flex;justify-content:center;gap:30px;margin-top:30px;}
+
     .card {background:#161b22;padding:20px;border-radius:20px;width:180px;transition:0.3s;}
     .card:hover {transform:scale(1.05);}
+
     .gold {border:2px solid gold;}
     .silver {border:2px solid silver;}
     .bronze {border:2px solid #cd7f32;}
-    .avatar {width:80px;height:80px;border-radius:50%;}
-    table {margin:auto;margin-top:50px;width:70%;border-collapse:collapse;}
-    td {padding:15px;border-bottom:1px solid #222;}
+
+    .avatar {width:70px;height:70px;border-radius:50%;}
+
+    table {width:100%;border-collapse:collapse;margin-top:20px;}
+    td {padding:10px;border-bottom:1px solid #222;}
+
     tr:hover {background:#161b22;}
+
     a {color:#58a6ff;text-decoration:none;font-weight:bold;}
     </style>
     </head>
+
     <body>
 
-    <h1>🏆 Dart Ranking</h1>
+    <h1>🏆 Dart Ranking Dashboard</h1>
     """
 
     # =============================
@@ -151,12 +174,15 @@ def generate_html():
     html += "</div>"
 
     # =============================
-    # TABLE
+    # TABLES
     # =============================
 
-    html += "<table>"
+    html += "<div class='container'>"
 
-    for i, (uid, rating) in enumerate(rest, 4):
+    # 🌍 WORLD
+    html += "<div style='width:40%'><h2>🌍 World Ranking</h2><table>"
+
+    for i, (uid, rating) in enumerate(players, 1):
 
         name = f"User {uid}"
         avatar = "https://cdn.discordapp.com/embed/avatars/0.png"
@@ -176,13 +202,38 @@ def generate_html():
         </tr>
         """
 
-    html += "</table>"
+    html += "</table></div>"
+
+    # 🗓️ MONTHLY
+    html += "<div style='width:40%'><h2>🗓️ Monatsranking</h2><table>"
+
+    for i, (uid, points) in enumerate(monthly_data, 1):
+
+        name = f"User {uid}"
+        avatar = "https://cdn.discordapp.com/embed/avatars/0.png"
+
+        if guild:
+            m = guild.get_member(uid)
+            if m:
+                name = m.display_name
+                avatar = m.display_avatar.url
+
+        html += f"""
+        <tr>
+        <td>{i}</td>
+        <td><img src="{avatar}" class="avatar"></td>
+        <td><a href='player_{uid}.html'>{name}</a></td>
+        <td>{points}</td>
+        </tr>
+        """
+
+    html += "</table></div>"
+
+    html += "</div>"
 
     # =============================
     # PLAYER PROFILES
     # =============================
-
-    month = datetime.now().strftime("%Y-%m")
 
     for i, (uid, rating) in enumerate(players, 1):
 
@@ -205,18 +256,17 @@ def generate_html():
         total = wins + losses
         winrate = round((wins / total) * 100, 1) if total > 0 else 0
 
-        # Monthly Rank
+        # Monthly rank
         c.execute("SELECT user_id FROM monthly_points WHERE month=? ORDER BY points DESC", (month,))
         monthly = [r[0] for r in c.fetchall()]
         monthly_rank = monthly.index(uid) + 1 if uid in monthly else "N/A"
 
-        # Averages
+        # Average
         c.execute("""
             SELECT winner_id, winner_avg, loser_id, loser_avg
             FROM matches
             WHERE status='confirmed'
             AND (winner_id=? OR loser_id=?)
-            ORDER BY id DESC
         """, (uid, uid))
 
         data = c.fetchall()
@@ -265,6 +315,10 @@ def generate_html():
 
         with open(f"player_{uid}.html", "w", encoding="utf-8") as f:
             f.write(profile_html)
+
+    # =============================
+    # SAVE
+    # =============================
 
     html += "</body></html>"
 
