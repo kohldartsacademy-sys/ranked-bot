@@ -77,7 +77,7 @@ def calculate_elo(r1, r2, score):
     return round(r1 + K_FACTOR * (score - expected))
 
 # =============================
-# WEBSITE GENERATION
+# WEBSITE
 # =============================
 
 def upload():
@@ -88,70 +88,117 @@ def upload():
 def generate_html():
     guild = bot.guilds[0] if bot.guilds else None
 
-    # WORLD
     c.execute("SELECT user_id, rating FROM players ORDER BY rating DESC LIMIT 10")
     world = c.fetchall()
 
-    # MONTHLY
     month = datetime.now().strftime("%Y-%m")
-    c.execute("""
-        SELECT user_id, points FROM monthly_points
-        WHERE month=?
-        ORDER BY points DESC LIMIT 10
-    """, (month,))
+    c.execute("SELECT user_id, points FROM monthly_points WHERE month=? ORDER BY points DESC LIMIT 10", (month,))
     monthly = c.fetchall()
 
-    html = """
-    <html>
-    <body style='background:#0d1117;color:white;font-family:sans-serif;text-align:center'>
-    <h1>🏆 Dart Ranking</h1>
-    <div style="display:flex;justify-content:center;gap:50px;">
-    """
+    html = "<html><body style='background:#0d1117;color:white;text-align:center'>"
+    html += "<h1>🏆 Dart Ranking</h1><div style='display:flex;justify-content:center;gap:50px;'>"
 
-    # WORLD TABLE
-    html += "<div><h2>🌍 World Ranking</h2><table>"
-    for i, (uid, rating) in enumerate(world, 1):
+    html += "<div><h2>🌍 World</h2><table>"
+    for i,(uid,r) in enumerate(world,1):
         name = f"User {uid}"
         if guild:
             m = guild.get_member(uid)
             if m:
                 name = m.display_name
-        html += f"<tr><td>{i}</td><td>{name}</td><td>{rating}</td></tr>"
+        html += f"<tr><td>{i}</td><td>{name}</td><td>{r}</td></tr>"
     html += "</table></div>"
 
-    # MONTHLY TABLE
-    html += "<div><h2>🗓️ Monthly Ranking</h2><table>"
-    for i, (uid, points) in enumerate(monthly, 1):
+    html += "<div><h2>🗓️ Monthly</h2><table>"
+    for i,(uid,p) in enumerate(monthly,1):
         name = f"User {uid}"
         if guild:
             m = guild.get_member(uid)
             if m:
                 name = m.display_name
-        html += f"<tr><td>{i}</td><td>{name}</td><td>{points}</td></tr>"
-    html += "</table></div>"
+        html += f"<tr><td>{i}</td><td>{name}</td><td>{p}</td></tr>"
+    html += "</table></div></div></body></html>"
 
-    html += "</div></body></html>"
-
-    with open("leaderboard.html", "w", encoding="utf-8") as f:
+    with open("leaderboard.html","w",encoding="utf-8") as f:
         f.write(html)
 
 # =============================
-# TOP 10 COMMAND
+# QUEUE
 # =============================
 
+queue_dart=[]
+queue_scolia=[]
+QUEUE_MESSAGE_ID=None
+QUEUE_CHANNEL_ID=None
+
+async def update_queue(guild):
+    if not QUEUE_MESSAGE_ID:return
+    channel=guild.get_channel(QUEUE_CHANNEL_ID)
+    if not channel:return
+    try:
+        msg=await channel.fetch_message(QUEUE_MESSAGE_ID)
+        embed=discord.Embed(title="🎯 Dart Matchmaking")
+        embed.add_field(name=f"🎯 Dart ({len(queue_dart)})",
+            value="\n".join([u.display_name for u in queue_dart]) or "Keine")
+        embed.add_field(name=f"🔵 Scolia ({len(queue_scolia)})",
+            value="\n".join([u.display_name for u in queue_scolia]) or "Keine")
+        await msg.edit(embed=embed,view=QueueView())
+    except:pass
+
+class QueueView(discord.ui.View):
+    def __init__(self):super().__init__(timeout=None)
+
+    @discord.ui.button(label="🎯 DartCounter",style=discord.ButtonStyle.green)
+    async def dart(self,i,b):await handle_queue(i,"dart")
+
+    @discord.ui.button(label="🔵 Scolia",style=discord.ButtonStyle.blurple)
+    async def scolia(self,i,b):await handle_queue(i,"scolia")
+
+    @discord.ui.button(label="❌ Leave",style=discord.ButtonStyle.red)
+    async def leave(self,i,b):
+        if i.user in queue_dart:queue_dart.remove(i.user)
+        if i.user in queue_scolia:queue_scolia.remove(i.user)
+        await i.response.send_message("Verlassen",ephemeral=True)
+        await update_queue(i.guild)
+
+async def handle_queue(i,mode):
+    q=queue_dart if mode=="dart" else queue_scolia
+    if i.user in q:
+        await i.response.send_message("Schon drin",ephemeral=True);return
+    q.append(i.user)
+
+    if len(q)>=2:
+        p1,p2=q.pop(0),q.pop(0)
+        get_rating(p1.id);get_rating(p2.id)
+        c.execute("INSERT INTO matches (player1_id,player2_id,platform) VALUES (?,?,?)",(p1.id,p2.id,mode))
+        conn.commit()
+        await i.response.send_message(f"🎯 Match {p1.mention} vs {p2.mention}")
+    else:
+        await i.response.send_message("Beigetreten",ephemeral=True)
+
+    await update_queue(i.guild)
+
+# =============================
+# COMMANDS
+# =============================
+
+@bot.tree.command(name="queue_panel")
+async def queue_panel(i):
+    global QUEUE_MESSAGE_ID,QUEUE_CHANNEL_ID
+    await i.response.send_message("Queue",view=QueueView())
+    msg=await i.original_response()
+    QUEUE_MESSAGE_ID=msg.id
+    QUEUE_CHANNEL_ID=i.channel.id
+    await update_queue(i.guild)
+
 @bot.tree.command(name="top10")
-async def top10(interaction: discord.Interaction):
-
-    c.execute("SELECT user_id, rating FROM players ORDER BY rating DESC LIMIT 10")
-    data = c.fetchall()
-
-    text = "🏆 Top 10:\n\n"
-
-    for i, (uid, rating) in enumerate(data, 1):
-        user = await bot.fetch_user(uid)
-        text += f"{i}. {user.name} - {rating}\n"
-
-    await interaction.response.send_message(text)
+async def top10(i):
+    c.execute("SELECT user_id,rating FROM players ORDER BY rating DESC LIMIT 10")
+    data=c.fetchall()
+    text="🏆 Top 10\n\n"
+    for n,(uid,r) in enumerate(data,1):
+        u=await bot.fetch_user(uid)
+        text+=f"{n}. {u.name} - {r}\n"
+    await i.response.send_message(text)
 
 # =============================
 # READY
