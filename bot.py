@@ -147,7 +147,7 @@ class QueueView(discord.ui.View):
 
             match_id = c.lastrowid
 
-            await interaction.response.send_message(f"Match #{match_id}: {p1.mention} vs {p2.mention}")
+            await interaction.response.send_message(f"🎯 Match #{match_id}: {p1.mention} vs {p2.mention}")
         else:
             await interaction.response.send_message("Beigetreten", ephemeral=True)
 
@@ -168,8 +168,61 @@ class QueueView(discord.ui.View):
 async def queue_panel(interaction: discord.Interaction):
     await interaction.response.send_message("Queue:", view=QueueView())
 
+# 🔥 ADVANCED STATS
+@bot.tree.command(name="stats")
+async def stats(interaction: discord.Interaction, player: discord.Member):
+
+    rating = get_rating(player.id)
+
+    c.execute("SELECT COUNT(*) FROM matches WHERE winner_id=? AND status='confirmed'", (player.id,))
+    wins = c.fetchone()[0]
+
+    c.execute("SELECT COUNT(*) FROM matches WHERE loser_id=? AND status='confirmed'", (player.id,))
+    losses = c.fetchone()[0]
+
+    total = wins + losses
+    winrate = round((wins / total) * 100, 1) if total > 0 else 0
+
+    # 🔥 Averages sammeln
+    c.execute("""
+        SELECT winner_id, winner_avg, loser_id, loser_avg
+        FROM matches
+        WHERE status='confirmed'
+        AND (winner_id=? OR loser_id=?)
+        ORDER BY id DESC
+    """, (player.id, player.id))
+
+    matches = c.fetchall()
+
+    averages = []
+
+    for winner_id, winner_avg, loser_id, loser_avg in matches:
+        if winner_id == player.id and winner_avg is not None:
+            averages.append(winner_avg)
+        elif loser_id == player.id and loser_avg is not None:
+            averages.append(loser_avg)
+
+    if averages:
+        avg_overall = round(sum(averages) / len(averages), 2)
+        last5 = averages[:5]
+        last5_text = "\n".join([f"{i+1}. {avg}" for i, avg in enumerate(last5)])
+    else:
+        avg_overall = 0
+        last5_text = "Keine Daten"
+
+    embed = discord.Embed(title=f"📊 Stats von {player.display_name}", color=discord.Color.green())
+
+    embed.add_field(name="🏆 Rating", value=rating, inline=False)
+    embed.add_field(name="🎯 Spiele", value=total, inline=True)
+    embed.add_field(name="✅ Siege", value=wins, inline=True)
+    embed.add_field(name="❌ Niederlagen", value=losses, inline=True)
+    embed.add_field(name="📈 Winrate", value=f"{winrate}%", inline=False)
+    embed.add_field(name="🎯 Ø Average", value=avg_overall, inline=False)
+    embed.add_field(name="📊 Letzte 5 Averages", value=last5_text, inline=False)
+
+    await interaction.response.send_message(embed=embed)
+
 @bot.tree.command(name="result")
-@app_commands.describe(match_id="Match ID", winner="Gewinner", score="Score", winner_avg="Winner Avg", loser_avg="Loser Avg")
 async def result(interaction: discord.Interaction, match_id: int, winner: discord.Member, score: str, winner_avg: float, loser_avg: float):
 
     c.execute("SELECT player1_id, player2_id FROM matches WHERE id=?", (match_id,))
@@ -203,11 +256,6 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
     upload()
 
     await interaction.response.send_message("Match gespeichert")
-
-@bot.tree.command(name="stats")
-async def stats(interaction: discord.Interaction, player: discord.Member):
-    rating = get_rating(player.id)
-    await interaction.response.send_message(f"{player.display_name}: {rating} ELO")
 
 # =============================
 # READY
