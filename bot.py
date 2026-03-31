@@ -515,8 +515,27 @@ async def stats(interaction: discord.Interaction, player: discord.Member):
     await interaction.response.send_message(embed=embed)
 
 @bot.tree.command(name="result")
-async def result(interaction: discord.Interaction, match_id: int, winner: discord.Member, score: str, winner_avg: float, loser_avg: float):
+async def result(
+    interaction: discord.Interaction,
+    match_id: int,
+    winner: discord.Member,
+    score: str,
+    winner_avg: float,
+    loser_avg: float,
+    screenshot: discord.Attachment
+):
 
+    # ❌ Screenshot prüfen
+    if not screenshot:
+        await interaction.response.send_message("❌ Du musst einen Screenshot hochladen!")
+        return
+
+    # Optional: prüfen ob Bild
+    if not screenshot.content_type.startswith("image"):
+        await interaction.response.send_message("❌ Datei muss ein Bild sein!")
+        return
+
+    # Match holen
     c.execute("SELECT player1_id, player2_id FROM matches WHERE id=?", (match_id,))
     match = c.fetchone()
 
@@ -527,6 +546,7 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
     p1, p2 = match
     loser_id = p1 if winner.id == p2 else p2
 
+    # ELO
     r1 = get_rating(winner.id)
     r2 = get_rating(loser_id)
 
@@ -536,6 +556,7 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
     update_rating(winner.id, new_r1)
     update_rating(loser_id, new_r2)
 
+    # Monthly
     month = datetime.now().strftime("%Y-%m")
     gain = max(0, new_r1 - r1)
 
@@ -546,6 +567,7 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
         DO UPDATE SET points = points + ?
     """, (winner.id, month, gain, gain))
 
+    # Match speichern
     c.execute("""
         UPDATE matches SET
         winner_id=?, loser_id=?, score=?, winner_avg=?, loser_avg=?, status='confirmed'
@@ -554,10 +576,17 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
 
     conn.commit()
 
+    # 🔥 Screenshot anzeigen
+    embed = discord.Embed(title="📊 Match Ergebnis")
+    embed.add_field(name="Match ID", value=match_id)
+    embed.add_field(name="Gewinner", value=winner.display_name)
+    embed.add_field(name="Score", value=score)
+    embed.set_image(url=screenshot.url)
+
     generate_html()
     upload()
 
-    await interaction.response.send_message("Match gespeichert & Website aktualisiert")
+    await interaction.response.send_message(embed=embed)
 
 @bot.tree.command(name="history")
 async def history(interaction: discord.Interaction, player: discord.Member):
