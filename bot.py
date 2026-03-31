@@ -17,7 +17,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 intents = discord.Intents.default()
 intents.members = True
-intents.message_content = True  # 🔥 FIX
+intents.message_content = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
@@ -29,6 +29,7 @@ conn = sqlite3.connect("dartliga.db")
 c = conn.cursor()
 
 c.execute("CREATE TABLE IF NOT EXISTS players (user_id INTEGER PRIMARY KEY, rating INTEGER)")
+
 c.execute("""
 CREATE TABLE IF NOT EXISTS matches (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,6 +37,7 @@ CREATE TABLE IF NOT EXISTS matches (
     player2_id INTEGER,
     winner_id INTEGER,
     loser_id INTEGER,
+    platform TEXT,
     status TEXT DEFAULT 'pending',
     score TEXT,
     winner_avg REAL,
@@ -44,10 +46,19 @@ CREATE TABLE IF NOT EXISTS matches (
 )
 """)
 
+c.execute("""
+CREATE TABLE IF NOT EXISTS monthly_points (
+    user_id INTEGER,
+    month TEXT,
+    points INTEGER,
+    PRIMARY KEY (user_id, month)
+)
+""")
+
 conn.commit()
 
 # =============================
-# RATING SYSTEM
+# RATING
 # =============================
 
 K_FACTOR = 32
@@ -70,16 +81,16 @@ def calculate_elo(r1, r2, score):
     return round(r1 + K_FACTOR * (score - expected))
 
 # =============================
-# GITHUB
+# GITHUB UPLOAD
 # =============================
 
 def upload():
     os.system("git add .")
-    os.system('git commit -m "update"')
+    os.system('git commit -m "update leaderboard"')
     os.system("git push")
 
 # =============================
-# HTML
+# HTML GENERATION
 # =============================
 
 def generate_html():
@@ -89,7 +100,7 @@ def generate_html():
     guild = bot.guilds[0] if bot.guilds else None
 
     html = "<html><body style='background:black;color:white;text-align:center;'>"
-    html += "<h1>🏆 Ranking</h1><table style='margin:auto;'>"
+    html += "<h1>🏆 World Ranking</h1><table style='margin:auto;'>"
 
     for i, (uid, rating) in enumerate(data, 1):
         name = f"User {uid}"
@@ -106,16 +117,16 @@ def generate_html():
         f.write(html)
 
 # =============================
-# QUEUE SYSTEM (FIXED)
+# QUEUE SYSTEM
 # =============================
 
-queue = []
+queue_dart = []
+queue_scolia = []
+
 QUEUE_MESSAGE_ID = None
 QUEUE_CHANNEL_ID = None
 
 async def update_queue(guild):
-    global QUEUE_MESSAGE_ID, QUEUE_CHANNEL_ID
-
     if not QUEUE_MESSAGE_ID or not QUEUE_CHANNEL_ID:
         return
 
@@ -126,66 +137,73 @@ async def update_queue(guild):
     try:
         msg = await channel.fetch_message(QUEUE_MESSAGE_ID)
 
-        embed = discord.Embed(title="🎯 Dart Queue", color=discord.Color.blue())
+        embed = discord.Embed(title="🎯 Dart Matchmaking")
 
-        if queue:
-            players = "\n".join([u.display_name for u in queue])
-        else:
-            players = "Keine Spieler"
+        dart_list = "\n".join([u.display_name for u in queue_dart]) if queue_dart else "Keine Spieler"
+        scolia_list = "\n".join([u.display_name for u in queue_scolia]) if queue_scolia else "Keine Spieler"
 
-        embed.add_field(name="👥 Spieler", value=players, inline=False)
-        embed.add_field(name="📊 Anzahl", value=len(queue), inline=False)
+        embed.add_field(name=f"🎯 DartCounter ({len(queue_dart)})", value=dart_list, inline=False)
+        embed.add_field(name=f"🔵 Scolia ({len(queue_scolia)})", value=scolia_list, inline=False)
 
         await msg.edit(embed=embed, view=QueueView())
 
-    except discord.Forbidden:
-        print("❌ Keine Rechte für Queue Update")
-    except discord.NotFound:
-        print("❌ Queue Nachricht nicht gefunden")
-    except Exception as e:
-        print("❌ Fehler:", e)
+    except:
+        pass
 
 class QueueView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(label="Join Queue", style=discord.ButtonStyle.green, custom_id="join")
-    async def join(self, interaction: discord.Interaction, button: discord.ui.Button):
+    @discord.ui.button(label="🎯 DartCounter", style=discord.ButtonStyle.green, custom_id="dart")
+    async def dart(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await handle_queue(interaction, "dart")
 
-        if interaction.user in queue:
-            await interaction.response.send_message("Schon in Queue", ephemeral=True)
-            return
+    @discord.ui.button(label="🔵 Scolia", style=discord.ButtonStyle.blurple, custom_id="scolia")
+    async def scolia(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await handle_queue(interaction, "scolia")
 
-        queue.append(interaction.user)
-
-        if len(queue) >= 2:
-            p1 = queue.pop(0)
-            p2 = queue.pop(0)
-
-            get_rating(p1.id)
-            get_rating(p2.id)
-
-            c.execute("INSERT INTO matches (player1_id, player2_id) VALUES (?,?)", (p1.id, p2.id))
-            conn.commit()
-
-            match_id = c.lastrowid
-
-            await interaction.response.send_message(f"🎯 Match #{match_id}: {p1.mention} vs {p2.mention}")
-        else:
-            await interaction.response.send_message("Beigetreten", ephemeral=True)
-
-        await update_queue(interaction.guild)
-
-    @discord.ui.button(label="Leave Queue", style=discord.ButtonStyle.red, custom_id="leave")
+    @discord.ui.button(label="❌ Leave", style=discord.ButtonStyle.red, custom_id="leave")
     async def leave(self, interaction: discord.Interaction, button: discord.ui.Button):
 
-        if interaction.user in queue:
-            queue.remove(interaction.user)
-            await interaction.response.send_message("Verlassen", ephemeral=True)
-        else:
-            await interaction.response.send_message("Nicht in Queue", ephemeral=True)
+        if interaction.user in queue_dart:
+            queue_dart.remove(interaction.user)
 
+        if interaction.user in queue_scolia:
+            queue_scolia.remove(interaction.user)
+
+        await interaction.response.send_message("Queue verlassen", ephemeral=True)
         await update_queue(interaction.guild)
+
+async def handle_queue(interaction, mode):
+
+    queue = queue_dart if mode == "dart" else queue_scolia
+
+    if interaction.user in queue:
+        await interaction.response.send_message("Schon in Queue", ephemeral=True)
+        return
+
+    queue.append(interaction.user)
+
+    if len(queue) >= 2:
+        p1 = queue.pop(0)
+        p2 = queue.pop(0)
+
+        get_rating(p1.id)
+        get_rating(p2.id)
+
+        c.execute("INSERT INTO matches (player1_id, player2_id, platform) VALUES (?,?,?)",
+                  (p1.id, p2.id, mode))
+        conn.commit()
+
+        match_id = c.lastrowid
+
+        await interaction.response.send_message(
+            f"🎯 Match #{match_id} ({mode})\n{p1.mention} vs {p2.mention}"
+        )
+    else:
+        await interaction.response.send_message("Beigetreten", ephemeral=True)
+
+    await update_queue(interaction.guild)
 
 # =============================
 # COMMANDS
@@ -196,7 +214,7 @@ async def queue_panel(interaction: discord.Interaction):
 
     global QUEUE_MESSAGE_ID, QUEUE_CHANNEL_ID
 
-    embed = discord.Embed(title="🎯 Dart Queue")
+    embed = discord.Embed(title="🎯 Dart Matchmaking")
 
     await interaction.response.send_message(embed=embed, view=QueueView())
 
@@ -206,11 +224,7 @@ async def queue_panel(interaction: discord.Interaction):
 
     await update_queue(interaction.guild)
 
-@bot.tree.command(name="stats")
-async def stats(interaction: discord.Interaction, player: discord.Member):
-    rating = get_rating(player.id)
-    await interaction.response.send_message(f"{player.display_name}: {rating} ELO")
-
+# 🔥 RESULT (FIXED WEBSITE UPDATE)
 @bot.tree.command(name="result")
 async def result(interaction: discord.Interaction, match_id: int, winner: discord.Member, score: str, winner_avg: float, loser_avg: float):
 
@@ -233,6 +247,16 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
     update_rating(winner.id, new_r1)
     update_rating(loser_id, new_r2)
 
+    month = datetime.now().strftime("%Y-%m")
+    gain = max(0, new_r1 - r1)
+
+    c.execute("""
+        INSERT INTO monthly_points (user_id, month, points)
+        VALUES (?, ?, ?)
+        ON CONFLICT(user_id, month)
+        DO UPDATE SET points = points + ?
+    """, (winner.id, month, gain, gain))
+
     c.execute("""
     UPDATE matches SET
     winner_id=?, loser_id=?, score=?, winner_avg=?, loser_avg=?, status='confirmed'
@@ -241,10 +265,11 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
 
     conn.commit()
 
+    # 🔥 WEBSITE UPDATE FIX
     generate_html()
     upload()
 
-    await interaction.response.send_message("Match gespeichert")
+    await interaction.response.send_message("Match gespeichert & Website aktualisiert")
 
 # =============================
 # READY
@@ -253,8 +278,11 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
 @bot.event
 async def on_ready():
     await bot.tree.sync()
+
+    # 🔥 beim Start auch aktualisieren
     generate_html()
     upload()
+
     print("Bot online")
 
 bot.run(TOKEN)
