@@ -185,8 +185,7 @@ def generate_html():
             m = guild.get_member(uid)
             if m:
                 name = m.display_name
-                if m.avatar:
-                    avatar = f"https://cdn.discordapp.com/avatars/{uid}/{m.avatar}.png"
+                avatar = m.display_avatar.url
 
         html += f"""
         <div class='card {classes[i]}'>
@@ -214,8 +213,7 @@ def generate_html():
             m = guild.get_member(uid)
             if m:
                 name = m.display_name
-                if m.avatar:
-                    avatar = f"https://cdn.discordapp.com/avatars/{uid}/{m.avatar}.png"
+                avatar = m.display_avatar.url
 
         html += f"""
         <tr>
