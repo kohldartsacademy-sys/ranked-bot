@@ -405,7 +405,7 @@ async def handle_queue(i,mode):
     else:
         await i.response.send_message("Beigetreten",ephemeral=True)
 
-    await update_queue(interaction.guild)
+    await update_queue(i.guild)
 
 # =============================
 # COMMANDS
@@ -428,7 +428,7 @@ async def queue_panel(interaction: discord.Interaction):
     QUEUE_MESSAGE_ID = msg.id
     QUEUE_CHANNEL_ID = interaction.channel.id
 
-    await update_queue(interaction.guild)
+    await update_queue(i.guild)
 
 @bot.tree.command(name="stats")
 async def stats(interaction: discord.Interaction, player: discord.Member):
