@@ -460,6 +460,26 @@ async def handle_queue(interaction, mode):
 # COMMANDS
 # =============================
 
+@bot.tree.command(name="reset_stats")
+async def reset_stats(interaction: discord.Interaction):
+
+    # Ratings zurücksetzen
+    c.execute("UPDATE players SET rating = 1000")
+
+    # Matches löschen
+    c.execute("DELETE FROM matches")
+
+    # Monatsranking löschen
+    c.execute("DELETE FROM monthly_points")
+
+    conn.commit()
+
+    # Website neu generieren
+    generate_html()
+    upload()
+
+    await interaction.response.send_message("💣 Alle Spieler-Statistiken wurden zurückgesetzt")
+
 @bot.tree.command(name="reset_ranking")
 async def reset_ranking(interaction: discord.Interaction):
 
