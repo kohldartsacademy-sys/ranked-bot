@@ -104,19 +104,83 @@ def generate_html():
     """, (month,))
     monthly_data = c.fetchall()
 
+    top3 = players[:3]
+    rest = players[3:]
+
     # =============================
-    # WORLD PAGE
+    # HTML START
     # =============================
 
-    world_html = """
+    html = """
     <html>
-    <body style='background:#0b0f14;color:white;font-family:Segoe UI;text-align:center'>
+    <head>
+    <style>
+    body {background:#0b0f14;color:white;font-family:Segoe UI;text-align:center;}
 
-    <h1>🌍 World Ranking</h1>
-    <a href="monthly.html">➡ Monatsranking</a>
+    .container {display:flex;justify-content:center;gap:50px;margin-top:40px;}
 
-    <table style="margin:auto;margin-top:30px;">
+    .podium {display:flex;justify-content:center;gap:30px;margin-top:30px;}
+
+    .card {background:#161b22;padding:20px;border-radius:20px;width:180px;transition:0.3s;}
+    .card:hover {transform:scale(1.05);}
+
+    .gold {border:2px solid gold;}
+    .silver {border:2px solid silver;}
+    .bronze {border:2px solid #cd7f32;}
+
+    .avatar {width:70px;height:70px;border-radius:50%;}
+
+    table {width:100%;border-collapse:collapse;margin-top:20px;}
+    td {padding:10px;border-bottom:1px solid #222;}
+
+    tr:hover {background:#161b22;}
+
+    a {color:#58a6ff;text-decoration:none;font-weight:bold;}
+    </style>
+    </head>
+
+    <body>
+
+    <h1>🏆 Dart Ranking Dashboard</h1>
     """
+
+    # =============================
+    # PODIUM
+    # =============================
+
+    html += "<div class='podium'>"
+    classes = ["gold", "silver", "bronze"]
+
+    for i, (uid, rating) in enumerate(top3):
+
+        name = f"User {uid}"
+        avatar = "https://cdn.discordapp.com/embed/avatars/0.png"
+
+        if guild:
+            m = guild.get_member(uid)
+            if m:
+                name = m.display_name
+                avatar = m.display_avatar.url
+
+        html += f"""
+        <div class='card {classes[i]}'>
+        <img src="{avatar}" class="avatar"><br>
+        <h2>#{i+1}</h2>
+        <a href='player_{uid}.html'>{name}</a>
+        <p>{rating} ELO</p>
+        </div>
+        """
+
+    html += "</div>"
+
+    # =============================
+    # TABLES
+    # =============================
+
+    html += "<div class='container'>"
+
+    # 🌍 WORLD
+    html += "<div style='width:40%'><h2>🌍 World Ranking</h2><table>"
 
     for i, (uid, rating) in enumerate(players, 1):
 
@@ -129,33 +193,19 @@ def generate_html():
                 name = m.display_name
                 avatar = m.display_avatar.url
 
-        world_html += f"""
+        html += f"""
         <tr>
         <td>{i}</td>
-        <td><img src="{avatar}" style="width:50px;border-radius:50%"></td>
-        <td><a href="player_{uid}.html">{name}</a></td>
+        <td><img src="{avatar}" class="avatar"></td>
+        <td><a href='player_{uid}.html'>{name}</a></td>
         <td>{rating}</td>
         </tr>
         """
 
-    world_html += "</table></body></html>"
+    html += "</table></div>"
 
-    with open("world.html", "w", encoding="utf-8") as f:
-        f.write(world_html)
-
-    # =============================
-    # MONTHLY PAGE
-    # =============================
-
-    monthly_html = """
-    <html>
-    <body style='background:#0b0f14;color:white;font-family:Segoe UI;text-align:center'>
-
-    <h1>🗓️ Monatsranking</h1>
-    <a href="world.html">⬅ World Ranking</a>
-
-    <table style="margin:auto;margin-top:30px;">
-    """
+    # 🗓️ MONTHLY
+    html += "<div style='width:40%'><h2>🗓️ Monatsranking</h2><table>"
 
     for i, (uid, points) in enumerate(monthly_data, 1):
 
@@ -168,22 +218,21 @@ def generate_html():
                 name = m.display_name
                 avatar = m.display_avatar.url
 
-        monthly_html += f"""
+        html += f"""
         <tr>
         <td>{i}</td>
-        <td><img src="{avatar}" style="width:50px;border-radius:50%"></td>
-        <td><a href="player_{uid}.html">{name}</a></td>
+        <td><img src="{avatar}" class="avatar"></td>
+        <td><a href='player_{uid}.html'>{name}</a></td>
         <td>{points}</td>
         </tr>
         """
 
-    monthly_html += "</table></body></html>"
+    html += "</table></div>"
 
-    with open("monthly.html", "w", encoding="utf-8") as f:
-        f.write(monthly_html)
+    html += "</div>"
 
     # =============================
-    # PLAYER PROFILES (bleibt gleich)
+    # PLAYER PROFILES
     # =============================
 
     for i, (uid, rating) in enumerate(players, 1):
@@ -197,25 +246,84 @@ def generate_html():
                 name = m.display_name
                 avatar = m.display_avatar.url
 
+        # Stats
+        c.execute("SELECT COUNT(*) FROM matches WHERE winner_id=? AND status='confirmed'", (uid,))
+        wins = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM matches WHERE loser_id=? AND status='confirmed'", (uid,))
+        losses = c.fetchone()[0]
+
+        total = wins + losses
+        winrate = round((wins / total) * 100, 1) if total > 0 else 0
+
+        # Monthly rank
+        c.execute("SELECT user_id FROM monthly_points WHERE month=? ORDER BY points DESC", (month,))
+        monthly = [r[0] for r in c.fetchall()]
+        monthly_rank = monthly.index(uid) + 1 if uid in monthly else "N/A"
+
+        # Average
+        c.execute("""
+            SELECT winner_id, winner_avg, loser_id, loser_avg
+            FROM matches
+            WHERE status='confirmed'
+            AND (winner_id=? OR loser_id=?)
+        """, (uid, uid))
+
+        data = c.fetchall()
+        avgs = []
+
+        for w, wa, l, la in data:
+            if w == uid and wa:
+                avgs.append(wa)
+            elif l == uid and la:
+                avgs.append(la)
+
+        avg = round(sum(avgs) / len(avgs), 2) if avgs else 0
+
+        history = ""
+        for match in data[:5]:
+            history += f"<li>{match[1] or match[3]}</li>"
+
         profile_html = f"""
         <html>
         <body style='background:#0b0f14;color:white;font-family:Segoe UI;text-align:center'>
 
+        <div style="background:#161b22;padding:30px;margin:auto;margin-top:50px;width:400px;border-radius:20px;">
+
+        <img src="{avatar}" style="width:120px;height:120px;border-radius:50%;">
+
         <h1>{name}</h1>
-        <img src="{avatar}" style="width:120px;border-radius:50%">
 
         <p>🏆 Rating: {rating}</p>
         <p>🌍 Rank: {i}</p>
+        <p>🗓️ Monatsrang: {monthly_rank}</p>
 
-        <br>
-        <a href="world.html">⬅ Zurück</a>
+        <p>🎯 Spiele: {total}</p>
+        <p>📈 Winrate: {winrate}%</p>
 
+        <p>🎯 Ø Average: {avg}</p>
+
+        <h3>🔥 Letzte Matches</h3>
+        <ul>{history}</ul>
+
+        <br><a href="leaderboard.html">⬅ Zurück</a>
+
+        </div>
         </body>
         </html>
         """
 
         with open(f"player_{uid}.html", "w", encoding="utf-8") as f:
             f.write(profile_html)
+
+    # =============================
+    # SAVE
+    # =============================
+
+    html += "</body></html>"
+
+    with open("leaderboard.html", "w", encoding="utf-8") as f:
+        f.write(html)
 
 # =============================
 # QUEUE
