@@ -88,28 +88,101 @@ def upload():
 def generate_html():
     guild = bot.guilds[0] if bot.guilds else None
 
-    # =============================
-    # WORLD DATA
-    # =============================
-
     c.execute("SELECT user_id, rating FROM players ORDER BY rating DESC")
     players = c.fetchall()
 
-    month = datetime.now().strftime("%Y-%m")
+    top3 = players[:3]
+    rest = players[3:]
 
     html = """
     <html>
-    <body style='background:#0d1117;color:white;font-family:sans-serif;text-align:center'>
+    <head>
+    <style>
+    body {
+        background:#0d1117;
+        color:white;
+        font-family:Arial;
+        text-align:center;
+    }
+
+    .podium {
+        display:flex;
+        justify-content:center;
+        gap:30px;
+        margin-top:40px;
+    }
+
+    .card {
+        background:#161b22;
+        padding:20px;
+        border-radius:15px;
+        width:150px;
+        box-shadow:0 0 15px rgba(0,0,0,0.5);
+    }
+
+    .gold {border:2px solid gold;}
+    .silver {border:2px solid silver;}
+    .bronze {border:2px solid #cd7f32;}
+
+    table {
+        margin:auto;
+        margin-top:40px;
+        border-collapse:collapse;
+        width:60%;
+    }
+
+    td {
+        padding:10px;
+        border-bottom:1px solid #30363d;
+    }
+
+    a {
+        color:#58a6ff;
+        text-decoration:none;
+    }
+
+    a:hover {
+        text-decoration:underline;
+    }
+    </style>
+    </head>
+    <body>
+
     <h1>🏆 Dart Ranking</h1>
-    <table style="margin:auto;">
     """
 
     # =============================
-    # LEADERBOARD + LINKS
+    # PODIUM
     # =============================
 
-    for i, (uid, rating) in enumerate(players, 1):
+    html += "<div class='podium'>"
 
+    classes = ["gold", "silver", "bronze"]
+
+    for i, (uid, rating) in enumerate(top3):
+        name = f"User {uid}"
+        if guild:
+            m = guild.get_member(uid)
+            if m:
+                name = m.display_name
+
+        html += f"""
+        <div class='card {classes[i]}'>
+        <h2>#{i+1}</h2>
+        <p><a href='player_{uid}.html'>{name}</a></p>
+        <p>{rating}</p>
+        </div>
+        """
+
+    html += "</div>"
+
+    # =============================
+    # TABLE
+    # =============================
+
+    html += "<table>"
+
+    for i, (uid, rating) in enumerate(rest, 4):
         name = f"User {uid}"
         if guild:
             m = guild.get_member(uid)
@@ -117,81 +190,6 @@ def generate_html():
                 name = m.display_name
 
         html += f"<tr><td>{i}</td><td><a href='player_{uid}.html'>{name}</a></td><td>{rating}</td></tr>"
-
-        # =============================
-        # PLAYER PROFILE GENERATION
-        # =============================
-
-        # Stats holen
-        c.execute("SELECT COUNT(*) FROM matches WHERE winner_id=? AND status='confirmed'", (uid,))
-        wins = c.fetchone()[0]
-
-        c.execute("SELECT COUNT(*) FROM matches WHERE loser_id=? AND status='confirmed'", (uid,))
-        losses = c.fetchone()[0]
-
-        total = wins + losses
-        winrate = round((wins / total) * 100, 1) if total > 0 else 0
-
-        # Monthly rank
-        c.execute("SELECT user_id FROM monthly_points WHERE month=? ORDER BY points DESC", (month,))
-        monthly = [r[0] for r in c.fetchall()]
-        monthly_rank = monthly.index(uid) + 1 if uid in monthly else "N/A"
-
-        # Averages
-        c.execute("""
-            SELECT winner_id, winner_avg, loser_id, loser_avg
-            FROM matches
-            WHERE status='confirmed'
-            AND (winner_id=? OR loser_id=?)
-            ORDER BY id DESC
-        """, (uid, uid))
-
-        data = c.fetchall()
-        avgs = []
-
-        for w, wa, l, la in data:
-            if w == uid and wa:
-                avgs.append(wa)
-            elif l == uid and la:
-                avgs.append(la)
-
-        avg = round(sum(avgs) / len(avgs), 2) if avgs else 0
-
-        # letzte Matches
-        history = ""
-        for match in data[:5]:
-            history += f"<li>{match[1] or match[3]}</li>"
-
-        # =============================
-        # PROFILE HTML
-        # =============================
-
-        profile_html = f"""
-        <html>
-        <body style='background:#0d1117;color:white;font-family:sans-serif;text-align:center'>
-        <h1>{name}</h1>
-
-        <p>🏆 Rating: {rating}</p>
-        <p>🌍 Rank: {i}</p>
-        <p>🗓️ Monatsrang: {monthly_rank}</p>
-
-        <p>🎯 Spiele: {total}</p>
-        <p>✅ Siege: {wins}</p>
-        <p>❌ Niederlagen: {losses}</p>
-        <p>📈 Winrate: {winrate}%</p>
-
-        <p>🎯 Ø Average: {avg}</p>
-
-        <h3>🔥 Letzte Matches</h3>
-        <ul>{history}</ul>
-
-        <br><a href="leaderboard.html">⬅ Zurück</a>
-        </body>
-        </html>
-        """
-
-        with open(f"player_{uid}.html", "w", encoding="utf-8") as f:
-            f.write(profile_html)
 
     html += "</table></body></html>"
 
