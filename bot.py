@@ -388,7 +388,7 @@ class QueueView(discord.ui.View):
         if i.user in queue_dart:queue_dart.remove(i.user)
         if i.user in queue_scolia:queue_scolia.remove(i.user)
         await i.response.send_message("Verlassen",ephemeral=True)
-        await update_queue(interaction.guild)
+        await update_queue(i.guild)
 
 async def handle_queue(i,mode):
     q=queue_dart if mode=="dart" else queue_scolia
