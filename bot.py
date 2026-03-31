@@ -398,7 +398,8 @@ async def handle_queue(i,mode):
 
     if len(q)>=2:
         p1,p2=q.pop(0),q.pop(0)
-        get_rating(p1.id);get_rating(p2.id)
+        get_rating(p1.id);get_rating(p2.id) 
+       
         c.execute("INSERT INTO matches (player1_id,player2_id,platform) VALUES (?,?,?)",(p1.id,p2.id,mode))
         conn.commit()
         await i.response.send_message(f"🎯 Match {p1.mention} vs {p2.mention}")
@@ -428,7 +429,7 @@ async def queue_panel(interaction: discord.Interaction):
     QUEUE_MESSAGE_ID = msg.id
     QUEUE_CHANNEL_ID = interaction.channel.id
 
-    await update_queue(i.guild)
+    await update_queue(interaction.guild)
 
 @bot.tree.command(name="stats")
 async def stats(interaction: discord.Interaction, player: discord.Member):
