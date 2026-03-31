@@ -133,7 +133,7 @@ async def update_queue(guild):
     try:
         msg = await channel.fetch_message(QUEUE_MESSAGE_ID)
 
-        embed = discord.Embed(title="🎯 Dart Matchmaking", color=discord.Color.blue())
+        embed = discord.Embed(title="🎯 Dart Matchmaking")
 
         dart_players = "\n".join([u.display_name for u in queue_dart]) if queue_dart else "Keine Spieler"
         scolia_players = "\n".join([u.display_name for u in queue_scolia]) if queue_scolia else "Keine Spieler"
@@ -143,22 +143,22 @@ async def update_queue(guild):
 
         await msg.edit(embed=embed, view=QueueView())
 
-    except Exception as e:
-        print("Queue Fehler:", e)
+    except:
+        pass
 
 class QueueView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(label="🎯 DartCounter", style=discord.ButtonStyle.green, custom_id="dart")
+    @discord.ui.button(label="🎯 DartCounter", style=discord.ButtonStyle.green)
     async def dart(self, interaction: discord.Interaction, button: discord.ui.Button):
         await handle_queue(interaction, "dart")
 
-    @discord.ui.button(label="🔵 Scolia", style=discord.ButtonStyle.blurple, custom_id="scolia")
+    @discord.ui.button(label="🔵 Scolia", style=discord.ButtonStyle.blurple)
     async def scolia(self, interaction: discord.Interaction, button: discord.ui.Button):
         await handle_queue(interaction, "scolia")
 
-    @discord.ui.button(label="❌ Leave", style=discord.ButtonStyle.red, custom_id="leave")
+    @discord.ui.button(label="❌ Leave", style=discord.ButtonStyle.red)
     async def leave(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         if interaction.user in queue_dart:
@@ -220,7 +220,7 @@ async def queue_panel(interaction: discord.Interaction):
 
     await update_queue(interaction.guild)
 
-# 🔥 STATS FINAL
+# 🔥 STATS
 @bot.tree.command(name="stats")
 async def stats(interaction: discord.Interaction, player: discord.Member):
 
@@ -244,45 +244,13 @@ async def stats(interaction: discord.Interaction, player: discord.Member):
     total = wins + losses
     winrate = round((wins / total) * 100, 1) if total > 0 else 0
 
-    c.execute("""
-        SELECT winner_id, winner_avg, loser_id, loser_avg
-        FROM matches
-        WHERE status='confirmed'
-        AND (winner_id=? OR loser_id=?)
-        ORDER BY id DESC
-    """, (player.id, player.id))
-
-    matches = c.fetchall()
-    averages = []
-
-    for w_id, w_avg, l_id, l_avg in matches:
-        if w_id == player.id and w_avg:
-            averages.append(w_avg)
-        elif l_id == player.id and l_avg:
-            averages.append(l_avg)
-
-    if averages:
-        avg = round(sum(averages) / len(averages), 2)
-        best = max(averages)
-        worst = min(averages)
-        last5 = "\n".join([f"{i+1}. {v}" for i, v in enumerate(averages[:5])])
-    else:
-        avg = best = worst = 0
-        last5 = "Keine Daten"
-
-    embed = discord.Embed(title=f"📊 Stats von {player.display_name}", color=discord.Color.green())
+    embed = discord.Embed(title=f"📊 Stats von {player.display_name}")
 
     embed.add_field(name="🌍 Global Rank", value=world_rank)
     embed.add_field(name="🗓️ Monthly Rank", value=monthly_rank)
     embed.add_field(name="🏆 Rating", value=rating)
     embed.add_field(name="🎯 Spiele", value=total)
-    embed.add_field(name="✅ Siege", value=wins)
-    embed.add_field(name="❌ Niederlagen", value=losses)
     embed.add_field(name="📈 Winrate", value=f"{winrate}%")
-    embed.add_field(name="🎯 Ø Average", value=avg)
-    embed.add_field(name="🔥 Letzte 5", value=last5)
-    embed.add_field(name="💎 Best", value=best)
-    embed.add_field(name="📉 Worst", value=worst)
 
     await interaction.response.send_message(embed=embed)
 
@@ -331,6 +299,38 @@ async def result(interaction: discord.Interaction, match_id: int, winner: discor
     upload()
 
     await interaction.response.send_message("Match gespeichert & Website aktualisiert")
+
+# 🔥 HISTORY
+@bot.tree.command(name="history")
+async def history(interaction: discord.Interaction, player: discord.Member):
+
+    c.execute("""
+        SELECT player1_id, player2_id, winner_id, score, platform
+        FROM matches
+        WHERE status='confirmed'
+        AND (player1_id=? OR player2_id=?)
+        ORDER BY id DESC
+        LIMIT 10
+    """, (player.id, player.id))
+
+    matches = c.fetchall()
+
+    if not matches:
+        await interaction.response.send_message("Keine Matches gefunden.")
+        return
+
+    text = f"📜 Match History von {player.display_name}:\n\n"
+
+    for p1, p2, winner, score, platform in matches:
+
+        opponent_id = p2 if player.id == p1 else p1
+        opponent = await bot.fetch_user(opponent_id)
+
+        result = "🏆 Win" if winner == player.id else "❌ Loss"
+
+        text += f"{result} vs {opponent.name} ({platform})\nScore: {score}\n\n"
+
+    await interaction.response.send_message(text)
 
 # =============================
 # READY
