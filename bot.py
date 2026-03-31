@@ -330,35 +330,14 @@ def generate_html():
 # QUEUE
 # =============================
 
-queue_dart=[]
-queue_scolia=[]
-QUEUE_MESSAGE_ID=None
-QUEUE_CHANNEL_ID=None
+queue_dart = []
+queue_scolia = []
+QUEUE_MESSAGE_ID = None
+QUEUE_CHANNEL_ID = None
 
-# =============================
-# PERSISTENT QUEUE STORAGE
-# =============================
+# 🔥 AKTUELLES MATCH
+CURRENT_MATCH = None
 
-def save_queue_panel():
-    data = {
-        "channel_id": QUEUE_CHANNEL_ID,
-        "message_id": QUEUE_MESSAGE_ID
-    }
-    with open("queue.json", "w") as f:
-        json.dump(data, f)
-
-
-def load_queue_panel():
-    global QUEUE_CHANNEL_ID, QUEUE_MESSAGE_ID
-
-    if not os.path.exists("queue.json"):
-        return
-
-    with open("queue.json", "r") as f:
-        data = json.load(f)
-
-    QUEUE_CHANNEL_ID = data.get("channel_id")
-    QUEUE_MESSAGE_ID = data.get("message_id")
 
 async def update_queue(guild):
     if not QUEUE_MESSAGE_ID or not QUEUE_CHANNEL_ID:
@@ -376,6 +355,15 @@ async def update_queue(guild):
             description="Live Queue Status",
             color=discord.Color.blue()
         )
+
+        # 🔥 MATCH ANZEIGE
+        global CURRENT_MATCH
+        if CURRENT_MATCH:
+            embed.add_field(
+                name="🔥 Aktuelles Match",
+                value=f"{CURRENT_MATCH['p1'].display_name} vs {CURRENT_MATCH['p2'].display_name}\n({CURRENT_MATCH['mode']})",
+                inline=False
+            )
 
         # Dart Queue
         dart_list = "\n".join([u.display_name for u in queue_dart]) if queue_dart else "Keine Spieler"
@@ -400,31 +388,20 @@ async def update_queue(guild):
     except Exception as e:
         print("Queue Update Fehler:", e)
 
+
 class QueueView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(
-        label="🎯 DartCounter",
-        style=discord.ButtonStyle.green,
-        custom_id="queue_dart"
-    )
+    @discord.ui.button(label="🎯 DartCounter", style=discord.ButtonStyle.green, custom_id="queue_dart")
     async def dart(self, interaction: discord.Interaction, button: discord.ui.Button):
         await handle_queue(interaction, "dart")
 
-    @discord.ui.button(
-        label="🔵 Scolia",
-        style=discord.ButtonStyle.blurple,
-        custom_id="queue_scolia"
-    )
+    @discord.ui.button(label="🔵 Scolia", style=discord.ButtonStyle.blurple, custom_id="queue_scolia")
     async def scolia(self, interaction: discord.Interaction, button: discord.ui.Button):
         await handle_queue(interaction, "scolia")
 
-    @discord.ui.button(
-        label="❌ Leave",
-        style=discord.ButtonStyle.red,
-        custom_id="queue_leave"
-    )
+    @discord.ui.button(label="❌ Leave", style=discord.ButtonStyle.red, custom_id="queue_leave")
     async def leave(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         if interaction.user in queue_dart:
@@ -436,23 +413,48 @@ class QueueView(discord.ui.View):
         await interaction.response.send_message("Queue verlassen", ephemeral=True)
         await update_queue(interaction.guild)
 
-async def handle_queue(i,mode):
-    q=queue_dart if mode=="dart" else queue_scolia
-    if i.user in q:
-        await i.response.send_message("Schon drin",ephemeral=True);return
-    q.append(i.user)
 
-    if len(q)>=2:
-        p1,p2=q.pop(0),q.pop(0)
-        get_rating(p1.id);get_rating(p2.id) 
-       
-        c.execute("INSERT INTO matches (player1_id,player2_id,platform) VALUES (?,?,?)",(p1.id,p2.id,mode))
+async def handle_queue(interaction, mode):
+    global CURRENT_MATCH
+
+    q = queue_dart if mode == "dart" else queue_scolia
+
+    if interaction.user in q:
+        await interaction.response.send_message("Schon in Queue", ephemeral=True)
+        return
+
+    q.append(interaction.user)
+
+    if len(q) >= 2:
+        p1, p2 = q.pop(0), q.pop(0)
+
+        get_rating(p1.id)
+        get_rating(p2.id)
+
+        c.execute(
+            "INSERT INTO matches (player1_id, player2_id, platform) VALUES (?,?,?)",
+            (p1.id, p2.id, mode)
+        )
         conn.commit()
-        await i.response.send_message(f"🎯 Match {p1.mention} vs {p2.mention}")
-    else:
-        await i.response.send_message("Beigetreten",ephemeral=True)
 
-    await update_queue(i.guild)
+        match_id = c.lastrowid
+
+        # 🔥 MATCH SPEICHERN
+        CURRENT_MATCH = {
+            "p1": p1,
+            "p2": p2,
+            "mode": mode,
+            "id": match_id
+        }
+
+        await interaction.response.send_message(
+            f"🎯 Match #{match_id}\n{p1.mention} vs {p2.mention}"
+        )
+
+    else:
+        await interaction.response.send_message("Beigetreten", ephemeral=True)
+
+    await update_queue(interaction.guild)
 
 # =============================
 # COMMANDS
@@ -607,7 +609,6 @@ async def top10(i):
 async def on_ready():
     await bot.tree.sync()
 
-    load_queue_panel()
     bot.add_view(QueueView())
 
     generate_html()
