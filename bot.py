@@ -99,51 +99,69 @@ def generate_html():
     <head>
     <style>
     body {
-        background:#0d1117;
+        background:#0b0f14;
         color:white;
-        font-family:Arial;
+        font-family:Segoe UI;
         text-align:center;
+    }
+
+    h1 {
+        margin-top:30px;
+        font-size:40px;
     }
 
     .podium {
         display:flex;
         justify-content:center;
-        gap:30px;
+        gap:40px;
         margin-top:40px;
     }
 
     .card {
         background:#161b22;
         padding:20px;
-        border-radius:15px;
-        width:150px;
-        box-shadow:0 0 15px rgba(0,0,0,0.5);
+        border-radius:20px;
+        width:180px;
+        transition:0.3s;
+    }
+
+    .card:hover {
+        transform:scale(1.05);
     }
 
     .gold {border:2px solid gold;}
     .silver {border:2px solid silver;}
     .bronze {border:2px solid #cd7f32;}
 
+    .avatar {
+        width:80px;
+        height:80px;
+        border-radius:50%;
+        margin-bottom:10px;
+    }
+
     table {
         margin:auto;
-        margin-top:40px;
+        margin-top:50px;
+        width:70%;
         border-collapse:collapse;
-        width:60%;
     }
 
     td {
-        padding:10px;
-        border-bottom:1px solid #30363d;
+        padding:15px;
+        border-bottom:1px solid #222;
+    }
+
+    tr:hover {
+        background:#161b22;
     }
 
     a {
         color:#58a6ff;
         text-decoration:none;
+        font-weight:bold;
     }
 
-    a:hover {
-        text-decoration:underline;
-    }
     </style>
     </head>
     <body>
@@ -156,21 +174,26 @@ def generate_html():
     # =============================
 
     html += "<div class='podium'>"
-
     classes = ["gold", "silver", "bronze"]
 
     for i, (uid, rating) in enumerate(top3):
+
         name = f"User {uid}"
+        avatar = "https://cdn.discordapp.com/embed/avatars/0.png"
+
         if guild:
             m = guild.get_member(uid)
             if m:
                 name = m.display_name
+                if m.avatar:
+                    avatar = f"https://cdn.discordapp.com/avatars/{uid}/{m.avatar}.png"
 
         html += f"""
         <div class='card {classes[i]}'>
+        <img src="{avatar}" class="avatar">
         <h2>#{i+1}</h2>
-        <p><a href='player_{uid}.html'>{name}</a></p>
-        <p>{rating}</p>
+        <a href='player_{uid}.html'>{name}</a>
+        <p>{rating} ELO</p>
         </div>
         """
 
@@ -183,13 +206,25 @@ def generate_html():
     html += "<table>"
 
     for i, (uid, rating) in enumerate(rest, 4):
+
         name = f"User {uid}"
+        avatar = "https://cdn.discordapp.com/embed/avatars/0.png"
+
         if guild:
             m = guild.get_member(uid)
             if m:
                 name = m.display_name
+                if m.avatar:
+                    avatar = f"https://cdn.discordapp.com/avatars/{uid}/{m.avatar}.png"
 
-        html += f"<tr><td>{i}</td><td><a href='player_{uid}.html'>{name}</a></td><td>{rating}</td></tr>"
+        html += f"""
+        <tr>
+        <td>{i}</td>
+        <td><img src="{avatar}" class="avatar"></td>
+        <td><a href='player_{uid}.html'>{name}</a></td>
+        <td>{rating}</td>
+        </tr>
+        """
 
     html += "</table></body></html>"
 
