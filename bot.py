@@ -492,7 +492,7 @@ async def queue_panel(interaction: discord.Interaction):
     global QUEUE_MESSAGE_ID, QUEUE_CHANNEL_ID
 
     embed = discord.Embed(
-        title="🎯 Dart Matchmaking",
+        title="🎯 RANKED DARTS",
         description="Live Queue wird geladen..."
     )
 
