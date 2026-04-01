@@ -536,21 +536,36 @@ async def edit_result(
 
     p1, p2, old_winner, old_loser = match
 
-    # 🔥 ALTES RATING RÜCKGÄNGIG MACHEN
+    # =============================
+    # 🔥 ALTES RATING + MONTHLY RÜCKGÄNGIG
+    # =============================
+
     r1 = get_rating(old_winner)
     r2 = get_rating(old_loser)
 
-    # Reverse ELO (einfach zurückziehen)
     old_r1 = calculate_elo(r1, r2, 0)
     old_r2 = calculate_elo(r2, r1, 1)
 
     update_rating(old_winner, old_r1)
     update_rating(old_loser, old_r2)
 
-    # 🔥 NEUER LOSER
+    # 🔥 alten Monatsgain entfernen
+    month = datetime.now().strftime("%Y-%m")
+
+    old_gain = max(0, r1 - old_r1)
+
+    c.execute("""
+        UPDATE monthly_points
+        SET points = points - ?
+        WHERE user_id=? AND month=?
+    """, (old_gain, old_winner, month))
+
+    # =============================
+    # 🔥 NEUES ERGEBNIS
+    # =============================
+
     new_loser = p1 if new_winner.id == p2 else p2
 
-    # 🔥 NEUES RATING
     r1 = get_rating(new_winner.id)
     r2 = get_rating(new_loser)
 
@@ -560,7 +575,20 @@ async def edit_result(
     update_rating(new_winner.id, new_r1)
     update_rating(new_loser, new_r2)
 
-    # 🔥 MATCH UPDATEN
+    # 🔥 neuen Monatsgain hinzufügen
+    new_gain = max(0, new_r1 - r1)
+
+    c.execute("""
+        INSERT INTO monthly_points (user_id, month, points)
+        VALUES (?, ?, ?)
+        ON CONFLICT(user_id, month)
+        DO UPDATE SET points = points + ?
+    """, (new_winner.id, month, new_gain, new_gain))
+
+    # =============================
+    # MATCH UPDATE
+    # =============================
+
     c.execute("""
         UPDATE matches SET
         winner_id=?,
@@ -583,7 +611,7 @@ async def edit_result(
     generate_html()
     upload()
 
-    await interaction.response.send_message("✅ Match wurde korrigiert")
+    await interaction.response.send_message("✅ Match + Monatsranking korrigiert")
 
 @bot.tree.command(name="queue_panel")
 async def queue_panel(interaction: discord.Interaction):
