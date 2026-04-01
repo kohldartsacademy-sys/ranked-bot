@@ -521,20 +521,33 @@ async def handle_queue(interaction, mode):
 @app_commands.checks.has_permissions(administrator=True)
 async def rebuild_ratings(interaction: discord.Interaction):
 
-    # Alle Ratings reset
-    c.execute("UPDATE players SET rating = 1000")
+    # =============================
+    # RESET
+    # =============================
 
-    # Alle Matches in richtiger Reihenfolge
+    c.execute("UPDATE players SET rating = 1000")
+    c.execute("DELETE FROM monthly_points")
+
+    conn.commit()
+
+    # =============================
+    # MATCHES LADEN
+    # =============================
+
     c.execute("""
-        SELECT player1_id, player2_id, winner_id, loser_id
+        SELECT player1_id, player2_id, winner_id, loser_id, timestamp
         FROM matches
         WHERE status='confirmed'
-        ORDER BY id ASC
+        ORDER BY timestamp ASC
     """)
 
     matches = c.fetchall()
 
-    for p1, p2, winner, loser in matches:
+    # =============================
+    # REBUILD
+    # =============================
+
+    for p1, p2, winner, loser, timestamp in matches:
 
         r1 = get_rating(winner)
         r2 = get_rating(loser)
@@ -545,12 +558,24 @@ async def rebuild_ratings(interaction: discord.Interaction):
         update_rating(winner, new_r1)
         update_rating(loser, new_r2)
 
+        # 🔥 MONTHLY BERECHNEN
+        gain = max(0, new_r1 - r1)
+
+        month = timestamp[:7]  # YYYY-MM
+
+        c.execute("""
+            INSERT INTO monthly_points (user_id, month, points)
+            VALUES (?, ?, ?)
+            ON CONFLICT(user_id, month)
+            DO UPDATE SET points = points + ?
+        """, (winner, month, gain, gain))
+
     conn.commit()
 
     generate_html()
     upload()
 
-    await interaction.response.send_message("🔄 Alle Ratings neu berechnet")
+    await interaction.response.send_message("🔄 Ratings + Monatsranking komplett neu berechnet")
 
 @bot.tree.command(name="matches")
 async def matches(interaction: discord.Interaction):
