@@ -25,6 +25,8 @@ c = conn.cursor()
 # DATABASE
 # =============================
 
+c.execute("ALTER TABLE matches ADD COLUMN elo_change INTEGER")
+
 c.execute("CREATE TABLE IF NOT EXISTS players (user_id INTEGER PRIMARY KEY, rating INTEGER)")
 
 c.execute("""
@@ -803,6 +805,8 @@ async def result(
 
     new_r1 = calculate_elo(r1, r2, 1)
     new_r2 = calculate_elo(r2, r1, 0)
+
+    elo_gain = new_r1 - r1
 
     update_rating(winner.id, new_r1)
     update_rating(loser_id, new_r2)
