@@ -25,7 +25,11 @@ c = conn.cursor()
 # DATABASE
 # =============================
 
-c.execute("ALTER TABLE matches ADD COLUMN elo_change INTEGER")
+try:
+    c.execute("ALTER TABLE matches ADD COLUMN elo_change INTEGER")
+    conn.commit()
+except:
+    pass
 
 c.execute("CREATE TABLE IF NOT EXISTS players (user_id INTEGER PRIMARY KEY, rating INTEGER)")
 
@@ -291,8 +295,8 @@ def generate_html():
 
         history = ""
 
-        for p1, p2, winner, score, platform, wa, la in c.execute("""
-            SELECT player1_id, player2_id, winner_id, score, platform, winner_avg, loser_avg
+        for p1, p2, winner, score, platform, wa, la, elo_gain, mid in c.execute("""
+            SELECT player1_id, player2_id, winner_id, score, platform, winner_avg, loser_avg, elo_change, id
             FROM matches
             WHERE status='confirmed'
             AND (player1_id=? OR player2_id=?)
@@ -300,7 +304,6 @@ def generate_html():
             LIMIT 5
         """, (uid, uid)):
 
-            # Gegner bestimmen
             opponent_id = p2 if uid == p1 else p1
 
             name_opponent = f"User {opponent_id}"
@@ -309,15 +312,18 @@ def generate_html():
                 if m2:
                     name_opponent = m2.display_name
 
-            # Win / Loss
+            elo_gain = elo_gain if elo_gain else 0
+
             if winner == uid:
                 result = "🟢 Win"
                 avg = wa
+                elo_text = f"+{elo_gain}"
             else:
                 result = "🔴 Loss"
                 avg = la
+                elo_text = f"-{elo_gain}"
 
-            history += f"<li>{result} vs {name_opponent} ({score}) → {avg}</li>"
+            history += f"<li>{result} vs {name_opponent} ({score}) → {avg} ({elo_text} ELO)</li>"
 
         profile_html = f"""
         <html>
@@ -608,7 +614,7 @@ async def matches(interaction: discord.Interaction):
         status_icon = "✅" if status == "confirmed" else "⏳"
 
         text += f"{status_icon} Match #{mid}\n"
-        text += f"{user1.name} vs {user2.name} ({platform})\n\n"
+        text += f"{name1} vs {name2} ({platform})\n\n"
 
     await interaction.response.send_message(text)
 
@@ -825,9 +831,17 @@ async def result(
     # Match speichern
     c.execute("""
         UPDATE matches SET
-        winner_id=?, loser_id=?, score=?, winner_avg=?, loser_avg=?, status='confirmed'
+        winner_id=?, loser_id=?, score=?, winner_avg=?, loser_avg=?, elo_change=?, status='confirmed'
         WHERE id=?
-    """, (winner.id, loser_id, score, winner_avg, loser_avg, match_id))
+    """, (
+        winner.id,
+        loser_id,
+        score,
+        winner_avg,
+        loser_avg,
+        elo_gain,
+        match_id
+    ))
 
     conn.commit()
 
@@ -863,14 +877,30 @@ async def history(interaction: discord.Interaction, player: discord.Member):
 
     text = f"📜 Match History von {player.display_name}:\n\n"
 
-    for p1, p2, winner, score, platform in matches:
+    for p1, p2, winner, score, platform, elo_gain in c.execute("""
+        SELECT player1_id, player2_id, winner_id, score, platform, elo_change
+        FROM matches
+        WHERE status='confirmed'
+        AND (player1_id=? OR player2_id=?)
+        ORDER BY id DESC
+        LIMIT 10
+    """, (player.id, player.id)):
 
         opponent_id = p2 if player.id == p1 else p1
-        opponent = await bot.fetch_user(opponent_id)
+        opponent = interaction.guild.get_member(opponent_id)
 
-        result = "🏆 Win" if winner == player.id else "❌ Loss"
+        name = opponent.display_name if opponent else f"User {opponent_id}"
 
-        text += f"{result} vs {opponent.name} ({platform})\n"
+        elo_gain = elo_gain if elo_gain else 0
+
+        if winner == player.id:
+            result = "🏆 Win"
+            elo_text = f"+{elo_gain}"
+        else:
+            result = "❌ Loss"
+            elo_text = f"-{elo_gain}"
+
+        text += f"{result} vs {name} ({platform}) ({elo_text} ELO)\n"
         text += f"Score: {score}\n\n"
 
     await interaction.response.send_message(text)
