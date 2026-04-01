@@ -363,6 +363,7 @@ QUEUE_CHANNEL_ID = None
 
 # 🔥 AKTUELLES MATCH
 CURRENT_MATCH = None
+MATCH_CONFIRMATIONS = set()
 
 
 async def update_queue(guild):
@@ -439,6 +440,30 @@ class QueueView(discord.ui.View):
         await interaction.response.send_message("Queue verlassen", ephemeral=True)
         await update_queue(interaction.guild)
 
+    # 🔥 NEU: MATCH CONFIRM BUTTON
+    @discord.ui.button(label="✅ Match bestätigen", style=discord.ButtonStyle.success, custom_id="match_confirm")
+    async def confirm(self, interaction: discord.Interaction, button: discord.ui.Button):
+
+        global CURRENT_MATCH, MATCH_CONFIRMATIONS
+
+        if not CURRENT_MATCH:
+            await interaction.response.send_message("Kein aktives Match", ephemeral=True)
+            return
+
+        if interaction.user.id not in [CURRENT_MATCH["p1"].id, CURRENT_MATCH["p2"].id]:
+            await interaction.response.send_message("Du bist nicht Teil dieses Matches", ephemeral=True)
+            return
+
+        MATCH_CONFIRMATIONS.add(interaction.user.id)
+
+        # Beide bestätigt?
+        if len(MATCH_CONFIRMATIONS) >= 2:
+            await interaction.response.send_message("🔥 Match wurde von beiden Spielern bestätigt!")
+
+            MATCH_CONFIRMATIONS.clear()
+
+        else:
+            await interaction.response.send_message("✅ Bestätigung gespeichert, warte auf Gegner...")
 
 async def handle_queue(interaction, mode):
     global CURRENT_MATCH
