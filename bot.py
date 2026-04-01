@@ -270,15 +270,21 @@ def generate_html():
             AND (winner_id=? OR loser_id=?)
         """, (uid, uid))
 
-        data = c.fetchall()
+        rows = c.fetchall()
+
         avgs = []
 
-        for w, wa, l, la in data:
-            if w == uid and wa:
-                avgs.append(wa)
-            elif l == uid and la:
-                avgs.append(la)
+        for winner_id, winner_avg, loser_id, loser_avg in rows:
 
+            # Spieler ist Gewinner
+            if winner_id == uid and winner_avg is not None:
+                avgs.append(float(winner_avg))
+
+            # Spieler ist Verlierer
+            if loser_id == uid and loser_avg is not None:
+                avgs.append(float(loser_avg))
+
+        # FINALER AVERAGE
         avg = round(sum(avgs) / len(avgs), 2) if avgs else 0
 
         history = ""
