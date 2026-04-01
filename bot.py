@@ -536,23 +536,24 @@ async def edit_result(
 
     p1, p2, old_winner, old_loser = match
 
-    # =============================
-    # 🔥 ALTES RATING + MONTHLY RÜCKGÄNGIG
-    # =============================
-
-    r1 = get_rating(old_winner)
-    r2 = get_rating(old_loser)
-
-    old_r1 = calculate_elo(r1, r2, 0)
-    old_r2 = calculate_elo(r2, r1, 1)
-
-    update_rating(old_winner, old_r1)
-    update_rating(old_loser, old_r2)
-
-    # 🔥 alten Monatsgain entfernen
     month = datetime.now().strftime("%Y-%m")
 
-    old_gain = max(0, r1 - old_r1)
+    # =============================
+    # 🔥 1. ALTES MATCH RÜCKGÄNGIG
+    # =============================
+
+    r_win = get_rating(old_winner)
+    r_los = get_rating(old_loser)
+
+    # Rückrechnung
+    prev_win = calculate_elo(r_win, r_los, 0)
+    prev_los = calculate_elo(r_los, r_win, 1)
+
+    update_rating(old_winner, prev_win)
+    update_rating(old_loser, prev_los)
+
+    # Monthly zurückziehen
+    old_gain = max(0, r_win - prev_win)
 
     c.execute("""
         UPDATE monthly_points
@@ -561,22 +562,22 @@ async def edit_result(
     """, (old_gain, old_winner, month))
 
     # =============================
-    # 🔥 NEUES ERGEBNIS
+    # 🔥 2. NEUES MATCH BERECHNEN
     # =============================
 
     new_loser = p1 if new_winner.id == p2 else p2
 
-    r1 = get_rating(new_winner.id)
-    r2 = get_rating(new_loser)
+    r_win = get_rating(new_winner.id)
+    r_los = get_rating(new_loser)
 
-    new_r1 = calculate_elo(r1, r2, 1)
-    new_r2 = calculate_elo(r2, r1, 0)
+    new_win = calculate_elo(r_win, r_los, 1)
+    new_los = calculate_elo(r_los, r_win, 0)
 
-    update_rating(new_winner.id, new_r1)
-    update_rating(new_loser, new_r2)
+    update_rating(new_winner.id, new_win)
+    update_rating(new_loser, new_los)
 
-    # 🔥 neuen Monatsgain hinzufügen
-    new_gain = max(0, new_r1 - r1)
+    # Monthly neu hinzufügen
+    new_gain = max(0, new_win - r_win)
 
     c.execute("""
         INSERT INTO monthly_points (user_id, month, points)
@@ -586,7 +587,7 @@ async def edit_result(
     """, (new_winner.id, month, new_gain, new_gain))
 
     # =============================
-    # MATCH UPDATE
+    # 🔥 MATCH UPDATE
     # =============================
 
     c.execute("""
@@ -611,7 +612,7 @@ async def edit_result(
     generate_html()
     upload()
 
-    await interaction.response.send_message("✅ Match + Monatsranking korrigiert")
+    await interaction.response.send_message("✅ Match komplett korrekt neu berechnet")
 
 @bot.tree.command(name="queue_panel")
 async def queue_panel(interaction: discord.Interaction):
