@@ -517,6 +517,41 @@ async def handle_queue(interaction, mode):
 # COMMANDS
 # =============================
 
+@bot.tree.command(name="rebuild_ratings")
+@app_commands.checks.has_permissions(administrator=True)
+async def rebuild_ratings(interaction: discord.Interaction):
+
+    # Alle Ratings reset
+    c.execute("UPDATE players SET rating = 1000")
+
+    # Alle Matches in richtiger Reihenfolge
+    c.execute("""
+        SELECT player1_id, player2_id, winner_id, loser_id
+        FROM matches
+        WHERE status='confirmed'
+        ORDER BY id ASC
+    """)
+
+    matches = c.fetchall()
+
+    for p1, p2, winner, loser in matches:
+
+        r1 = get_rating(winner)
+        r2 = get_rating(loser)
+
+        new_r1 = calculate_elo(r1, r2, 1)
+        new_r2 = calculate_elo(r2, r1, 0)
+
+        update_rating(winner, new_r1)
+        update_rating(loser, new_r2)
+
+    conn.commit()
+
+    generate_html()
+    upload()
+
+    await interaction.response.send_message("🔄 Alle Ratings neu berechnet")
+
 @bot.tree.command(name="matches")
 async def matches(interaction: discord.Interaction):
 
