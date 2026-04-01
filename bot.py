@@ -511,6 +511,80 @@ async def handle_queue(interaction, mode):
 # COMMANDS
 # =============================
 
+@bot.tree.command(name="edit_result")
+@app_commands.checks.has_permissions(administrator=True)
+async def edit_result(
+    interaction: discord.Interaction,
+    match_id: int,
+    new_winner: discord.Member,
+    new_score: str,
+    new_winner_avg: float,
+    new_loser_avg: float
+):
+
+    # Match holen
+    c.execute("""
+        SELECT player1_id, player2_id, winner_id, loser_id
+        FROM matches
+        WHERE id=?
+    """, (match_id,))
+    match = c.fetchone()
+
+    if not match:
+        await interaction.response.send_message("❌ Match nicht gefunden")
+        return
+
+    p1, p2, old_winner, old_loser = match
+
+    # 🔥 ALTES RATING RÜCKGÄNGIG MACHEN
+    r1 = get_rating(old_winner)
+    r2 = get_rating(old_loser)
+
+    # Reverse ELO (einfach zurückziehen)
+    old_r1 = calculate_elo(r1, r2, 0)
+    old_r2 = calculate_elo(r2, r1, 1)
+
+    update_rating(old_winner, old_r1)
+    update_rating(old_loser, old_r2)
+
+    # 🔥 NEUER LOSER
+    new_loser = p1 if new_winner.id == p2 else p2
+
+    # 🔥 NEUES RATING
+    r1 = get_rating(new_winner.id)
+    r2 = get_rating(new_loser)
+
+    new_r1 = calculate_elo(r1, r2, 1)
+    new_r2 = calculate_elo(r2, r1, 0)
+
+    update_rating(new_winner.id, new_r1)
+    update_rating(new_loser, new_r2)
+
+    # 🔥 MATCH UPDATEN
+    c.execute("""
+        UPDATE matches SET
+        winner_id=?,
+        loser_id=?,
+        score=?,
+        winner_avg=?,
+        loser_avg=?
+        WHERE id=?
+    """, (
+        new_winner.id,
+        new_loser,
+        new_score,
+        new_winner_avg,
+        new_loser_avg,
+        match_id
+    ))
+
+    conn.commit()
+
+    generate_html()
+    upload()
+
+    await interaction.response.send_message("✅ Match wurde korrigiert")
+
 @bot.tree.command(name="queue_panel")
 async def queue_panel(interaction: discord.Interaction):
 
