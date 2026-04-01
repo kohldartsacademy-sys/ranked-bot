@@ -517,6 +517,36 @@ async def handle_queue(interaction, mode):
 # COMMANDS
 # =============================
 
+@bot.tree.command(name="matches")
+async def matches(interaction: discord.Interaction):
+
+    c.execute("""
+        SELECT id, player1_id, player2_id, status, platform
+        FROM matches
+        ORDER BY id DESC
+        LIMIT 20
+    """)
+
+    data = c.fetchall()
+
+    if not data:
+        await interaction.response.send_message("Keine Matches vorhanden")
+        return
+
+    text = "📋 Letzte Matches:\n\n"
+
+    for mid, p1, p2, status, platform in data:
+
+        user1 = await bot.fetch_user(p1)
+        user2 = await bot.fetch_user(p2)
+
+        status_icon = "✅" if status == "confirmed" else "⏳"
+
+        text += f"{status_icon} Match #{mid}\n"
+        text += f"{user1.name} vs {user2.name} ({platform})\n\n"
+
+    await interaction.response.send_message(text)
+
 @bot.tree.command(name="edit_result")
 @app_commands.checks.has_permissions(administrator=True)
 async def edit_result(
