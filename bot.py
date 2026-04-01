@@ -537,8 +537,11 @@ async def matches(interaction: discord.Interaction):
 
     for mid, p1, p2, status, platform in data:
 
-        user1 = await bot.fetch_user(p1)
-        user2 = await bot.fetch_user(p2)
+        user1 = interaction.guild.get_member(p1)
+        user2 = interaction.guild.get_member(p2)
+
+        name1 = user1.display_name if user1 else f"User {p1}"
+        name2 = user2.display_name if user2 else f"User {p2}"
 
         status_icon = "✅" if status == "confirmed" else "⏳"
 
