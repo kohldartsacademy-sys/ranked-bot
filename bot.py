@@ -142,7 +142,7 @@ def generate_html():
 
     <body>
 
-    <h1>🏆 Dart Ranking Dashboard</h1>
+    <h1>🏆 RANKED DARTS Dashboard</h1>
     """
 
     # =============================
