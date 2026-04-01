@@ -503,8 +503,6 @@ async def queue_panel(interaction: discord.Interaction):
     QUEUE_MESSAGE_ID = msg.id
     QUEUE_CHANNEL_ID = interaction.channel.id
 
-    save_queue_panel()
-
     await update_queue(interaction.guild)
 
 @bot.tree.command(name="stats")
