@@ -536,7 +536,7 @@ async def handle_queue(interaction, mode):
     MATCH_EXTRA_MESSAGES.append(msg.id)
 
     # Channel Nachricht
-    msg2 = await interaction.channel.send(
+    msg = await interaction.followup.send(
         f"🎯 Match #{match_id}\n{p1.mention} vs {p2.mention}"
     )
 
