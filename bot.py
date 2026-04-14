@@ -493,22 +493,24 @@ class QueueView(discord.ui.View):
 async def handle_queue(interaction, mode):
     global CURRENT_MATCH, MATCH_MESSAGE_ID, MATCH_CHANNEL_ID, MATCH_EXTRA_MESSAGES
 
-    await interaction.response.defer()  # 🔥 WICHTIG
+    await interaction.response.defer()
 
     q = queue_dart if mode == "dart" else queue_scolia
 
+    # Schon drin?
     if interaction.user in q:
         await interaction.followup.send("Schon in Queue", ephemeral=True)
         return
 
     q.append(interaction.user)
 
+    # Noch kein Match
     if len(q) < 2:
         await interaction.followup.send("Beigetreten", ephemeral=True)
         await update_queue(interaction.guild)
         return
 
-    # MATCH
+    # 🎯 MATCH
     p1, p2 = q.pop(0), q.pop(0)
 
     get_rating(p1.id)
@@ -529,20 +531,14 @@ async def handle_queue(interaction, mode):
         "id": match_id
     }
 
-    # ✅ MATCH MESSAGE
+    # ✅ NUR EINE MATCH-NACHRICHT (wichtig!)
     msg = await interaction.followup.send(
-        f"🎯 Match gefunden!\n{p1.mention} vs {p2.mention}"
-    )
-    MATCH_EXTRA_MESSAGES.append(msg.id)
-
-    # Channel Nachricht
-    msg = await interaction.followup.send(
-        f"🎯 Match #{match_id}\n{p1.mention} vs {p2.mention}"
+        f"🎯 **Match #{match_id}**\n{p1.mention} vs {p2.mention}"
     )
 
-    MATCH_MESSAGE_ID = msg2.id
+    MATCH_MESSAGE_ID = msg.id
     MATCH_CHANNEL_ID = interaction.channel.id
-    MATCH_EXTRA_MESSAGES.append(msg2.id)
+    MATCH_EXTRA_MESSAGES.append(msg.id)
 
     await update_queue(interaction.guild)
 
