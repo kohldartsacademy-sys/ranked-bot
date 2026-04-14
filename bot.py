@@ -957,6 +957,76 @@ async def top10(i):
         text+=f"{n}. {u.name} - {r}\n"
     await i.response.send_message(text)
 
+@bot.tree.command(name="export_matches")
+@app_commands.checks.has_permissions(administrator=True)
+async def export_matches(interaction: discord.Interaction):
+
+    import csv
+
+    c.execute("""
+        SELECT id, player1_id, player2_id, winner_id, loser_id,
+               score, winner_avg, loser_avg, platform, status, timestamp
+        FROM matches
+        ORDER BY id DESC
+    """)
+
+    data = c.fetchall()
+
+    if not data:
+        await interaction.response.send_message("Keine Matches vorhanden")
+        return
+
+    filename = "matches_export.csv"
+
+    with open(filename, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+
+        # Header
+        writer.writerow([
+            "Match ID",
+            "Spieler 1",
+            "Spieler 2",
+            "Gewinner",
+            "Verlierer",
+            "Score",
+            "Winner Avg",
+            "Loser Avg",
+            "Plattform",
+            "Status",
+            "Datum"
+        ])
+
+        for mid, p1, p2, winner, loser, score, wa, la, platform, status, timestamp in data:
+
+            user1 = interaction.guild.get_member(p1)
+            user2 = interaction.guild.get_member(p2)
+            win_user = interaction.guild.get_member(winner)
+            los_user = interaction.guild.get_member(loser)
+
+            name1 = user1.display_name if user1 else f"User {p1}"
+            name2 = user2.display_name if user2 else f"User {p2}"
+            name_win = win_user.display_name if win_user else f"User {winner}"
+            name_los = los_user.display_name if los_user else f"User {loser}"
+
+            writer.writerow([
+                mid,
+                name1,
+                name2,
+                name_win,
+                name_los,
+                score,
+                wa,
+                la,
+                platform,
+                status,
+                timestamp
+            ])
+
+    await interaction.response.send_message(
+        content="📄 Export fertig:",
+        file=discord.File(filename)
+    )
+
 # =============================
 # READY
 # =============================
