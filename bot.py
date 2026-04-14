@@ -383,6 +383,9 @@ MATCH_CONFIRMATIONS = set()
 MATCH_MESSAGE_ID = None
 MATCH_CHANNEL_ID = None
 
+# 🔥 EXTRA MESSAGES
+MATCH_EXTRA_MESSAGES = []
+
 
 async def update_queue(guild):
     if not QUEUE_MESSAGE_ID or not QUEUE_CHANNEL_ID:
@@ -458,11 +461,10 @@ class QueueView(discord.ui.View):
         await interaction.response.send_message("Queue verlassen", ephemeral=True)
         await update_queue(interaction.guild)
 
-    # 🔥 NEU: MATCH CONFIRM BUTTON
     @discord.ui.button(label="✅ Match bestätigen", style=discord.ButtonStyle.success, custom_id="match_confirm")
     async def confirm(self, interaction: discord.Interaction, button: discord.ui.Button):
 
-        global CURRENT_MATCH, MATCH_CONFIRMATIONS
+        global CURRENT_MATCH, MATCH_CONFIRMATIONS, MATCH_EXTRA_MESSAGES
 
         if not CURRENT_MATCH:
             await interaction.response.send_message("Kein aktives Match", ephemeral=True)
@@ -477,14 +479,24 @@ class QueueView(discord.ui.View):
         # Beide bestätigt?
         if len(MATCH_CONFIRMATIONS) >= 2:
             await interaction.response.send_message(
-                "🔥 Match bestätigt! Der Gewinner trägt das Ergebnis nach dem Spiel mit /result ein."
+                "🔥 Match bestätigt! Der Gewinner trägt das Ergebnis nach dem Spiel mit /result ein.",
+                ephemeral=False  # 🔥 WICHTIG!
             )
 
+            msg = await interaction.original_response()
+            MATCH_EXTRA_MESSAGES.append(msg.id)
+
         else:
-            await interaction.response.send_message("✅ Bestätigung gespeichert, warte auf Gegner...")
+            await interaction.response.send_message(
+                "✅ Bestätigung gespeichert, warte auf Gegner...",
+                ephemeral=False  # 🔥 WICHTIG!
+            )
+
+            msg = await interaction.original_response()
+            MATCH_EXTRA_MESSAGES.append(msg.id)
 
 async def handle_queue(interaction, mode):
-    global CURRENT_MATCH, MATCH_MESSAGE_ID, MATCH_CHANNEL_ID
+    global CURRENT_MATCH, MATCH_MESSAGE_ID, MATCH_CHANNEL_ID, MATCH_EXTRA_MESSAGES
 
     q = queue_dart if mode == "dart" else queue_scolia
 
@@ -523,10 +535,12 @@ async def handle_queue(interaction, mode):
         "id": match_id
     }
 
-    # 🔥 WICHTIG: ERST RESPONSE
     await interaction.response.send_message(
         f"🎯 Match gefunden!\n{p1.mention} vs {p2.mention}"
     )
+
+    msg = await interaction.original_response()
+    MATCH_EXTRA_MESSAGES.append(msg.id)
 
     # 📢 EXTRA NACHRICHT (optional)
     msg = await interaction.channel.send(
@@ -535,6 +549,8 @@ async def handle_queue(interaction, mode):
 
     MATCH_MESSAGE_ID = msg.id
     MATCH_CHANNEL_ID = interaction.channel.id
+
+    MATCH_EXTRA_MESSAGES.append(msg.id)    
 
     # ✅ Antwort an User
     await interaction.response.send_message(
@@ -891,29 +907,45 @@ async def result(
     upload()
 
     # =============================
-    # MATCH MESSAGE LÖSCHEN
+    # MATCH MESSAGES LÖSCHEN
     # =============================
 
-    global MATCH_MESSAGE_ID, MATCH_CHANNEL_ID, CURRENT_MATCH, MATCH_CONFIRMATIONS
+    global MATCH_MESSAGE_ID, MATCH_CHANNEL_ID, CURRENT_MATCH, MATCH_CONFIRMATIONS, MATCH_EXTRA_MESSAGES
 
     try:
-        if MATCH_MESSAGE_ID and MATCH_CHANNEL_ID:
-            channel = interaction.guild.get_channel(MATCH_CHANNEL_ID)
-            msg = await channel.fetch_message(MATCH_MESSAGE_ID)
-            await msg.delete()
-    except:
-        pass
+        channel = interaction.guild.get_channel(MATCH_CHANNEL_ID)
 
-    # 🔄 Reset
+        # 🔥 Haupt Match Nachricht löschen
+        if MATCH_MESSAGE_ID:
+            try:
+                msg = await channel.fetch_message(MATCH_MESSAGE_ID)
+                await msg.delete()
+            except:
+                pass
+
+        # 🔥 Alle extra Nachrichten löschen (Match gefunden + Confirm)
+        for msg_id in MATCH_EXTRA_MESSAGES:
+            try:
+                m = await channel.fetch_message(msg_id)
+                await m.delete()
+            except:
+                pass
+
+    except Exception as e:
+        print("Delete Fehler:", e)
+
+    # =============================
+    # RESET
+    # =============================
+
     CURRENT_MATCH = None
     MATCH_CONFIRMATIONS.clear()
     MATCH_MESSAGE_ID = None
     MATCH_CHANNEL_ID = None
+    MATCH_EXTRA_MESSAGES = []
 
     # Panel aktualisieren
     await update_queue(interaction.guild)
-
-    await interaction.response.send_message(embed=embed)
 
 @bot.tree.command(name="history")
 async def history(interaction: discord.Interaction, player: discord.Member):
