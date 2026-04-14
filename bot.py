@@ -811,9 +811,10 @@ async def result(
     screenshot: discord.Attachment
 ):
 
-    # ❌ Screenshot prüfen
+    await interaction.response.defer()
+
     if not screenshot:
-        await interaction.response.send_message("❌ Du musst einen Screenshot hochladen!")
+        await interaction.followup.send("❌ Du musst einen Screenshot hochladen!")
         return
 
     # Optional: prüfen ob Bild
@@ -932,7 +933,7 @@ async def result(
     # Panel aktualisieren
     await update_queue(interaction.guild)
 
-    await interaction.response.send_message(embed=embed)
+    await interaction.followup.send(embed=embed)
 
 @bot.tree.command(name="history")
 async def history(interaction: discord.Interaction, player: discord.Member):
