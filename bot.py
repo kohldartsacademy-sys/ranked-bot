@@ -815,7 +815,7 @@ async def result(
 
     # Optional: prüfen ob Bild
     if not screenshot.content_type.startswith("image"):
-        await interaction.response.send_message("❌ Datei muss ein Bild sein!")
+        await interaction.followup.send("❌ Datei muss ein Bild sein!")
         return
 
     # Match holen
