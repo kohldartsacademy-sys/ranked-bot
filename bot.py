@@ -291,7 +291,7 @@ def generate_html():
                 avgs.append(float(loser_avg))
 
         # FINALER AVERAGE
-        avg = round(sum(avgs) / len(avgs), 2) if avgs else 0
+        overall_avg = round(sum(avgs) / len(avgs), 2) if avgs else 0
 
         history = ""
 
@@ -316,14 +316,14 @@ def generate_html():
 
             if winner == uid:
                 result = "🟢 Win"
-                avg = wa
+                match_avg = wa
                 elo_text = f"+{elo_gain}"
             else:
                 result = "🔴 Loss"
-                avg = la
+                match_avg = la
                 elo_text = f"-{elo_gain}"
 
-            history += f"<li>{result} vs {name_opponent} ({score}) → {avg} ({elo_text} ELO)</li>"
+            history += f"<li>{result} vs {name_opponent} ({score}) → {match_avg} ({elo_text} ELO)</li>"
 
         profile_html = f"""
         <html>
@@ -342,7 +342,7 @@ def generate_html():
         <p>🎯 Spiele: {total}</p>
         <p>📈 Winrate: {winrate}%</p>
 
-        <p>🎯 Ø Average: {avg}</p>
+        <p>🎯 Ø Average: {overall_avg}</p>
 
         <h3>🔥 Letzte Matches</h3>
         <ul>{history}</ul>
