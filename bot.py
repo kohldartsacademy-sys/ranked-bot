@@ -1027,6 +1027,109 @@ async def export_matches(interaction: discord.Interaction):
         file=discord.File(filename)
     )
 
+@bot.tree.command(name="export_bad_matches")
+@app_commands.checks.has_permissions(administrator=True)
+async def export_bad_matches(interaction: discord.Interaction):
+
+    import csv
+
+    c.execute("""
+        SELECT id, player1_id, player2_id, winner_id, loser_id,
+               score, winner_avg, loser_avg, platform, status, timestamp
+        FROM matches
+        WHERE status='confirmed'
+        AND (
+            winner_avg IS NULL OR
+            loser_avg IS NULL OR
+            winner_avg < 10 OR
+            loser_avg < 10 OR
+            winner_avg > 150 OR
+            loser_avg > 150 OR
+            score IS NULL OR
+            score = ''
+        )
+        ORDER BY id DESC
+    """)
+
+    data = c.fetchall()
+
+    if not data:
+        await interaction.response.send_message("✅ Keine fehlerhaften Matches gefunden!")
+        return
+
+    filename = "bad_matches.csv"
+
+    with open(filename, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+
+        writer.writerow([
+            "Match ID",
+            "Spieler 1",
+            "Spieler 2",
+            "Gewinner",
+            "Verlierer",
+            "Score",
+            "Winner Avg",
+            "Loser Avg",
+            "Plattform",
+            "Status",
+            "Datum",
+            "Fehler"
+        ])
+
+        for mid, p1, p2, winner, loser, score, wa, la, platform, status, timestamp in data:
+
+            user1 = interaction.guild.get_member(p1)
+            user2 = interaction.guild.get_member(p2)
+            win_user = interaction.guild.get_member(winner)
+            los_user = interaction.guild.get_member(loser)
+
+            name1 = user1.display_name if user1 else f"User {p1}"
+            name2 = user2.display_name if user2 else f"User {p2}"
+            name_win = win_user.display_name if win_user else f"User {winner}"
+            name_los = los_user.display_name if los_user else f"User {loser}"
+
+            # 🔥 Fehlerbeschreibung
+            errors = []
+
+            if wa is None or la is None:
+                errors.append("Missing Average")
+
+            if wa and wa < 10:
+                errors.append("Winner Avg zu niedrig")
+
+            if la and la < 10:
+                errors.append("Loser Avg zu niedrig")
+
+            if wa and wa > 150:
+                errors.append("Winner Avg zu hoch")
+
+            if la and la > 150:
+                errors.append("Loser Avg zu hoch")
+
+            if not score:
+                errors.append("Score fehlt")
+
+            writer.writerow([
+                mid,
+                name1,
+                name2,
+                name_win,
+                name_los,
+                score,
+                wa,
+                la,
+                platform,
+                status,
+                timestamp,
+                ", ".join(errors)
+            ])
+
+    await interaction.response.send_message(
+        content=f"⚠️ {len(data)} fehlerhafte Matches gefunden:",
+        file=discord.File(filename)
+    )
+
 # =============================
 # READY
 # =============================
