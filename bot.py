@@ -813,6 +813,15 @@ async def result(
         return
 
     p1, p2 = match
+
+    # 🔥 CHECK: Nur Spieler dürfen Ergebnis eintragen
+    if interaction.user.id not in [p1, p2]:
+        await interaction.response.send_message(
+            "❌ Du bist nicht Teil dieses Matches!",
+            ephemeral=True
+        )
+        return
+
     loser_id = p1 if winner.id == p2 else p2
 
     # ELO
