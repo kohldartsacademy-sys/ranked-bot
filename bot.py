@@ -484,62 +484,62 @@ class QueueView(discord.ui.View):
             await interaction.response.send_message("✅ Bestätigung gespeichert, warte auf Gegner...")
 
 async def handle_queue(interaction, mode):
-    global CURRENT_MATCH
-
-    await interaction.response.defer()
+    global CURRENT_MATCH, MATCH_MESSAGE_ID, MATCH_CHANNEL_ID
 
     q = queue_dart if mode == "dart" else queue_scolia
 
+    # ❌ Schon drin?
     if interaction.user in q:
         await interaction.response.send_message("Schon in Queue", ephemeral=True)
         return
 
+    # ➕ hinzufügen
     q.append(interaction.user)
 
-    if len(q) >= 2:
-        p1, p2 = q.pop(0), q.pop(0)
-
-        get_rating(p1.id)
-        get_rating(p2.id)
-
-        c.execute(
-            "INSERT INTO matches (player1_id, player2_id, platform) VALUES (?,?,?)",
-            (p1.id, p2.id, mode)
-        )
-        conn.commit()
-
-        match_id = c.lastrowid
-
-        # 🔥 MATCH SPEICHERN
-        CURRENT_MATCH = {
-            "p1": p1,
-            "p2": p2,
-            "mode": mode,
-            "id": match_id
-        }
-        
-        msg = await interaction.channel.send(
-            f"🎯 Match #{match_id}\n{p1.mention} vs {p2.mention}"
-        )
-
-        await interaction.followup.send(
-            f"🔥 Match gefunden! {p1.display_name} vs {p2.display_name}",
-            ephemeral=True
-        )
-        
-
-        # 🔥 speichern für späteres Löschen
-        global MATCH_MESSAGE_ID, MATCH_CHANNEL_ID
-        MATCH_MESSAGE_ID = msg.id
-        MATCH_CHANNEL_ID = interaction.channel.id
-        
-
-    else:
-        await interaction.followup.send("Beigetreten", ephemeral=True)
-
-    # Nur updaten wenn KEIN Match erstellt wurde
+    # ❌ Noch kein Match
     if len(q) < 2:
+        await interaction.response.send_message("Beigetreten", ephemeral=True)
         await update_queue(interaction.guild)
+        return
+
+    # 🎯 MATCH ERSTELLEN
+    p1, p2 = q.pop(0), q.pop(0)
+
+    get_rating(p1.id)
+    get_rating(p2.id)
+
+    c.execute(
+        "INSERT INTO matches (player1_id, player2_id, platform) VALUES (?,?,?)",
+        (p1.id, p2.id, mode)
+    )
+    conn.commit()
+
+    match_id = c.lastrowid
+
+    # 🔥 MATCH SPEICHERN
+    CURRENT_MATCH = {
+        "p1": p1,
+        "p2": p2,
+        "mode": mode,
+        "id": match_id
+    }
+
+    # 📢 MATCH NACHRICHT
+    msg = await interaction.channel.send(
+        f"🎯 Match #{match_id}\n{p1.mention} vs {p2.mention}"
+    )
+
+    MATCH_MESSAGE_ID = msg.id
+    MATCH_CHANNEL_ID = interaction.channel.id
+
+    # ✅ Antwort an User
+    await interaction.response.send_message(
+        f"🔥 Match gefunden gegen {p2.display_name if interaction.user == p1 else p1.display_name}",
+        ephemeral=True
+    )
+
+    # 🔄 Panel Update (JETZT korrekt)
+    await update_queue(interaction.guild)
 
 # =============================
 # COMMANDS
