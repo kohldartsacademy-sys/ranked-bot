@@ -549,6 +549,8 @@ async def handle_queue(interaction, mode):
 @app_commands.checks.has_permissions(administrator=True)
 async def rebuild_ratings(interaction: discord.Interaction):
 
+    await interaction.response.defer()
+
     # =============================
     # RESET
     # =============================
@@ -603,7 +605,7 @@ async def rebuild_ratings(interaction: discord.Interaction):
     generate_html()
     upload()
 
-    await interaction.response.send_message("🔄 Ratings + Monatsranking komplett neu berechnet")
+    await interaction.followup.send("🔄 Ratings + Monatsranking komplett neu berechnet")
 
 @bot.tree.command(name="matches")
 async def matches(interaction: discord.Interaction):
