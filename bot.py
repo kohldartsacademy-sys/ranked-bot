@@ -428,7 +428,7 @@ async def update_queue(guild):
             inline=False
         )
 
-        await msg.edit(embed=embed, view=QueueView())
+        await msg.edit(embed=embed)
 
     except Exception as e:
         print("Queue Update Fehler:", e)
