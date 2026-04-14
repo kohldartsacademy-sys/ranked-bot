@@ -529,7 +529,7 @@ async def handle_queue(interaction, mode):
         
 
     else:
-        await interaction.response.send_message("Beigetreten", ephemeral=True)
+        await interaction.followup.send("Beigetreten", ephemeral=True)
 
     # Nur updaten wenn KEIN Match erstellt wurde
     if len(q) < 2:
