@@ -451,6 +451,7 @@ class QueueView(discord.ui.View):
 
     @discord.ui.button(label="❌ Leave", style=discord.ButtonStyle.red, custom_id="queue_leave")
     async def leave(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
 
         if interaction.user in queue_dart:
             queue_dart.remove(interaction.user)
@@ -458,7 +459,7 @@ class QueueView(discord.ui.View):
         if interaction.user in queue_scolia:
             queue_scolia.remove(interaction.user)
 
-        await interaction.response.send_message("Queue verlassen", ephemeral=True)
+        await interaction.followup.send("Queue verlassen", ephemeral=True)
         await update_queue(interaction.guild)
 
     @discord.ui.button(label="✅ Match bestätigen", style=discord.ButtonStyle.success, custom_id="match_confirm")
@@ -466,55 +467,48 @@ class QueueView(discord.ui.View):
 
         global CURRENT_MATCH, MATCH_CONFIRMATIONS, MATCH_EXTRA_MESSAGES
 
+        await interaction.response.defer()
+
         if not CURRENT_MATCH:
-            await interaction.response.send_message("Kein aktives Match", ephemeral=True)
+            await interaction.followup.send("Kein aktives Match", ephemeral=True)
             return
 
         if interaction.user.id not in [CURRENT_MATCH["p1"].id, CURRENT_MATCH["p2"].id]:
-            await interaction.response.send_message("Du bist nicht Teil dieses Matches", ephemeral=True)
+            await interaction.followup.send("Du bist nicht Teil dieses Matches", ephemeral=True)
             return
 
         MATCH_CONFIRMATIONS.add(interaction.user.id)
 
-        # Beide bestätigt?
         if len(MATCH_CONFIRMATIONS) >= 2:
-            await interaction.response.send_message(
-                "🔥 Match bestätigt! Der Gewinner trägt das Ergebnis nach dem Spiel mit /result ein.",
-                ephemeral=False  # 🔥 WICHTIG!
+            msg = await interaction.followup.send(
+                "🔥 Match bestätigt! Der Gewinner trägt das Ergebnis mit /result ein."
             )
-
-            msg = await interaction.original_response()
-            MATCH_EXTRA_MESSAGES.append(msg.id)
-
         else:
-            await interaction.response.send_message(
-                "✅ Bestätigung gespeichert, warte auf Gegner...",
-                ephemeral=False  # 🔥 WICHTIG!
+            msg = await interaction.followup.send(
+                "✅ Bestätigung gespeichert, warte auf Gegner..."
             )
 
-            msg = await interaction.original_response()
-            MATCH_EXTRA_MESSAGES.append(msg.id)
+        MATCH_EXTRA_MESSAGES.append(msg.id)
 
 async def handle_queue(interaction, mode):
     global CURRENT_MATCH, MATCH_MESSAGE_ID, MATCH_CHANNEL_ID, MATCH_EXTRA_MESSAGES
 
+    await interaction.response.defer()  # 🔥 WICHTIG
+
     q = queue_dart if mode == "dart" else queue_scolia
 
-    # ❌ Schon drin?
     if interaction.user in q:
-        await interaction.response.send_message("Schon in Queue", ephemeral=True)
+        await interaction.followup.send("Schon in Queue", ephemeral=True)
         return
 
-    # ➕ hinzufügen
     q.append(interaction.user)
 
-    # ❌ Noch kein Match
     if len(q) < 2:
-        await interaction.response.send_message("Beigetreten", ephemeral=True)
+        await interaction.followup.send("Beigetreten", ephemeral=True)
         await update_queue(interaction.guild)
         return
 
-    # 🎯 MATCH ERSTELLEN
+    # MATCH
     p1, p2 = q.pop(0), q.pop(0)
 
     get_rating(p1.id)
@@ -535,30 +529,21 @@ async def handle_queue(interaction, mode):
         "id": match_id
     }
 
-    await interaction.response.send_message(
+    # ✅ MATCH MESSAGE
+    msg = await interaction.followup.send(
         f"🎯 Match gefunden!\n{p1.mention} vs {p2.mention}"
     )
-
-    msg = await interaction.original_response()
     MATCH_EXTRA_MESSAGES.append(msg.id)
 
-    # 📢 EXTRA NACHRICHT (optional)
-    msg = await interaction.channel.send(
+    # Channel Nachricht
+    msg2 = await interaction.channel.send(
         f"🎯 Match #{match_id}\n{p1.mention} vs {p2.mention}"
     )
 
-    MATCH_MESSAGE_ID = msg.id
+    MATCH_MESSAGE_ID = msg2.id
     MATCH_CHANNEL_ID = interaction.channel.id
+    MATCH_EXTRA_MESSAGES.append(msg2.id)
 
-    MATCH_EXTRA_MESSAGES.append(msg.id)    
-
-    # ✅ Antwort an User
-    await interaction.response.send_message(
-        f"🔥 Match gefunden gegen {p2.display_name if interaction.user == p1 else p1.display_name}",
-        ephemeral=True
-    )
-
-    # 🔄 Panel Update (JETZT korrekt)
     await update_queue(interaction.guild)
 
 # =============================
@@ -768,14 +753,14 @@ async def queue_panel(interaction: discord.Interaction):
 
     global QUEUE_MESSAGE_ID, QUEUE_CHANNEL_ID
 
+    await interaction.response.defer()
+
     embed = discord.Embed(
         title="🎯 RANKED DARTS",
         description="Live Queue wird geladen..."
     )
 
-    await interaction.response.send_message(embed=embed, view=QueueView())
-
-    msg = await interaction.original_response()
+    msg = await interaction.followup.send(embed=embed, view=QueueView())
 
     QUEUE_MESSAGE_ID = msg.id
     QUEUE_CHANNEL_ID = interaction.channel.id
@@ -946,6 +931,8 @@ async def result(
 
     # Panel aktualisieren
     await update_queue(interaction.guild)
+
+    await interaction.response.send_message(embed=embed)
 
 @bot.tree.command(name="history")
 async def history(interaction: discord.Interaction, player: discord.Member):
