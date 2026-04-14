@@ -865,6 +865,29 @@ async def result(
     generate_html()
     upload()
 
+    # =============================
+    # MATCH MESSAGE LÖSCHEN
+    # =============================
+
+    global MATCH_MESSAGE_ID, MATCH_CHANNEL_ID, CURRENT_MATCH, MATCH_CONFIRMATIONS
+
+    try:
+        if MATCH_MESSAGE_ID and MATCH_CHANNEL_ID:
+            channel = interaction.guild.get_channel(MATCH_CHANNEL_ID)
+            msg = await channel.fetch_message(MATCH_MESSAGE_ID)
+            await msg.delete()
+    except:
+        pass
+
+    # 🔄 Reset
+    CURRENT_MATCH = None
+    MATCH_CONFIRMATIONS.clear()
+    MATCH_MESSAGE_ID = None
+    MATCH_CHANNEL_ID = None
+
+    # Panel aktualisieren
+    await update_queue(interaction.guild)
+
     await interaction.response.send_message(embed=embed)
 
 @bot.tree.command(name="history")
