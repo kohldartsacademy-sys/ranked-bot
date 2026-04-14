@@ -516,7 +516,6 @@ async def handle_queue(interaction, mode):
 
     match_id = c.lastrowid
 
-    # 🔥 MATCH SPEICHERN
     CURRENT_MATCH = {
         "p1": p1,
         "p2": p2,
@@ -524,7 +523,12 @@ async def handle_queue(interaction, mode):
         "id": match_id
     }
 
-    # 📢 MATCH NACHRICHT
+    # 🔥 WICHTIG: ERST RESPONSE
+    await interaction.response.send_message(
+        f"🎯 Match gefunden!\n{p1.mention} vs {p2.mention}"
+    )
+
+    # 📢 EXTRA NACHRICHT (optional)
     msg = await interaction.channel.send(
         f"🎯 Match #{match_id}\n{p1.mention} vs {p2.mention}"
     )
