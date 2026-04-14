@@ -480,8 +480,6 @@ class QueueView(discord.ui.View):
                 "🔥 Match bestätigt! Der Gewinner trägt das Ergebnis nach dem Spiel mit /result ein."
             )
 
-            MATCH_CONFIRMATIONS.clear()
-
         else:
             await interaction.response.send_message("✅ Bestätigung gespeichert, warte auf Gegner...")
 
