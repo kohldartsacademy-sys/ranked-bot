@@ -1135,7 +1135,6 @@ async def export_bad_matches(interaction: discord.Interaction):
 async def quick_edit(
     interaction: discord.Interaction,
     match_id: int,
-    winner: discord.Member,
     score: str,
     winner_avg: float,
     loser_avg: float
@@ -1143,9 +1142,7 @@ async def quick_edit(
 
     # Match holen
     c.execute("""
-        SELECT player1_id, player2_id, winner_id, loser_id
-        FROM matches
-        WHERE id=?
+        SELECT id FROM matches WHERE id=?
     """, (match_id,))
     match = c.fetchone()
 
@@ -1153,77 +1150,17 @@ async def quick_edit(
         await interaction.response.send_message("❌ Match nicht gefunden")
         return
 
-    p1, p2, old_winner, old_loser = match
-
-    # =============================
-    # 🔥 ALTES MATCH RÜCKGÄNGIG
-    # =============================
-
-    month = datetime.now().strftime("%Y-%m")
-
-    r_win = get_rating(old_winner)
-    r_los = get_rating(old_loser)
-
-    prev_win = calculate_elo(r_win, r_los, 0)
-    prev_los = calculate_elo(r_los, r_win, 1)
-
-    update_rating(old_winner, prev_win)
-    update_rating(old_loser, prev_los)
-
-    old_gain = max(0, r_win - prev_win)
-
-    c.execute("""
-        UPDATE monthly_points
-        SET points = points - ?
-        WHERE user_id=? AND month=?
-    """, (old_gain, old_winner, month))
-
-    # =============================
-    # 🔥 NEUES MATCH
-    # =============================
-
-    new_loser = p1 if winner.id == p2 else p2
-
-    r_win = get_rating(winner.id)
-    r_los = get_rating(new_loser)
-
-    new_win = calculate_elo(r_win, r_los, 1)
-    new_los = calculate_elo(r_los, r_win, 0)
-
-    elo_gain = new_win - r_win
-
-    update_rating(winner.id, new_win)
-    update_rating(new_loser, new_los)
-
-    new_gain = max(0, new_win - r_win)
-
-    c.execute("""
-        INSERT INTO monthly_points (user_id, month, points)
-        VALUES (?, ?, ?)
-        ON CONFLICT(user_id, month)
-        DO UPDATE SET points = points + ?
-    """, (winner.id, month, new_gain, new_gain))
-
-    # =============================
-    # 🔥 MATCH UPDATE
-    # =============================
-
+    # 🔥 NUR DATEN ÄNDERN (KEIN ELO!)
     c.execute("""
         UPDATE matches SET
-        winner_id=?,
-        loser_id=?,
         score=?,
         winner_avg=?,
-        loser_avg=?,
-        elo_change=?
+        loser_avg=?
         WHERE id=?
     """, (
-        winner.id,
-        new_loser,
         score,
         winner_avg,
         loser_avg,
-        elo_gain,
         match_id
     ))
 
@@ -1233,7 +1170,7 @@ async def quick_edit(
     upload()
 
     await interaction.response.send_message(
-        f"⚡ Match #{match_id} schnell korrigiert"
+        f"⚡ Match #{match_id} schnell bearbeitet (ohne ELO Änderung)"
     )
 
 # =============================
