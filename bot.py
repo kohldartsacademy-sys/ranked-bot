@@ -476,7 +476,9 @@ class QueueView(discord.ui.View):
 
         # Beide bestätigt?
         if len(MATCH_CONFIRMATIONS) >= 2:
-            await interaction.response.send_message("🔥 Match wurde von beiden Spielern bestätigt!")
+            await interaction.response.send_message(
+                "🔥 Match bestätigt! Der Gewinner trägt das Ergebnis nach dem Spiel mit /result ein."
+            )
 
             MATCH_CONFIRMATIONS.clear()
 
