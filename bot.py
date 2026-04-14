@@ -379,6 +379,10 @@ QUEUE_CHANNEL_ID = None
 CURRENT_MATCH = None
 MATCH_CONFIRMATIONS = set()
 
+# 🔥 MATCH MESSAGE SPEICHERN
+MATCH_MESSAGE_ID = None
+MATCH_CHANNEL_ID = None
+
 
 async def update_queue(guild):
     if not QUEUE_MESSAGE_ID or not QUEUE_CHANNEL_ID:
@@ -511,10 +515,16 @@ async def handle_queue(interaction, mode):
             "mode": mode,
             "id": match_id
         }
-
-        await interaction.response.send_message(
+        
+        msg = await interaction.channel.send(
             f"🎯 Match #{match_id}\n{p1.mention} vs {p2.mention}"
         )
+
+        # 🔥 speichern für späteres Löschen
+        global MATCH_MESSAGE_ID, MATCH_CHANNEL_ID
+        MATCH_MESSAGE_ID = msg.id
+        MATCH_CHANNEL_ID = interaction.channel.id
+        
 
     else:
         await interaction.response.send_message("Beigetreten", ephemeral=True)
