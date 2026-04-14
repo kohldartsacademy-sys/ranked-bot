@@ -522,6 +522,12 @@ async def handle_queue(interaction, mode):
             f"🎯 Match #{match_id}\n{p1.mention} vs {p2.mention}"
         )
 
+        await interaction.followup.send(
+            f"🔥 Match gefunden! {p1.display_name} vs {p2.display_name}",
+            ephemeral=True
+        )
+        
+
         # 🔥 speichern für späteres Löschen
         global MATCH_MESSAGE_ID, MATCH_CHANNEL_ID
         MATCH_MESSAGE_ID = msg.id
