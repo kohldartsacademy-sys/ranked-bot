@@ -486,6 +486,8 @@ class QueueView(discord.ui.View):
 async def handle_queue(interaction, mode):
     global CURRENT_MATCH
 
+    await interaction.response.defer()
+
     q = queue_dart if mode == "dart" else queue_scolia
 
     if interaction.user in q:
