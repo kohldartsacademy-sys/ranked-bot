@@ -614,11 +614,13 @@ async def matches(interaction: discord.Interaction):
     c.execute("""
         SELECT id, player1_id, player2_id, status, platform
         FROM matches
-        ORDER BY id DESC
+        ORDER BY DESC
         LIMIT 20
     """)
 
     data = c.fetchall()
+
+    data = data.reverse()
 
     if not data:
         await interaction.response.send_message("Keine Matches vorhanden")
@@ -745,6 +747,7 @@ async def edit_result(
     await interaction.response.send_message("✅ Match komplett korrekt neu berechnet")
 
 @bot.tree.command(name="queue_panel")
+@app_commands.checks.has_permissions(administrator=True)
 async def queue_panel(interaction: discord.Interaction):
 
     global QUEUE_MESSAGE_ID, QUEUE_CHANNEL_ID
