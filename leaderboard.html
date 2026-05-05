@@ -1,0 +1,1367 @@
+
+    <html>
+    <head>
+    <style>
+    body {background:#0b0f14;color:white;font-family:Segoe UI;text-align:center;}
+
+    .container {display:flex;justify-content:center;gap:50px;margin-top:40px;}
+
+    .podium {display:flex;justify-content:center;gap:30px;margin-top:30px;}
+
+    .card {background:#161b22;padding:20px;border-radius:20px;width:180px;transition:0.3s;cursor:pointer;}
+    .card:hover {transform:scale(1.05);}
+
+    .gold {border:2px solid gold;}
+    .silver {border:2px solid silver;}
+    .bronze {border:2px solid #cd7f32;}
+
+    .avatar {width:70px;height:70px;border-radius:50%;}
+
+    table {width:100%;border-collapse:collapse;margin-top:20px;}
+    td {padding:10px;border-bottom:1px solid #222;}
+
+    tr[data-player-id] {cursor:pointer;}
+    tr:hover {background:#161b22;}
+
+    a {color:#58a6ff;text-decoration:none;font-weight:bold;}
+    .player-link {color:#58a6ff;background:none;border:0;padding:0;font:inherit;font-weight:bold;cursor:pointer;}
+    .player-link:hover {text-decoration:underline;}
+    .modal-backdrop {align-items:center;background:rgba(0,0,0,.72);display:none;inset:0;justify-content:center;padding:20px;position:fixed;z-index:1000;}
+    .modal-backdrop.open {display:flex;}
+    .player-modal {background:#161b22;border:1px solid #30363d;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.45);max-width:500px;padding:30px;position:relative;text-align:center;width:min(400px, 100%);}
+    .modal-close {background:#21262d;border:1px solid #30363d;border-radius:50%;color:white;cursor:pointer;font-size:22px;height:34px;line-height:28px;position:absolute;right:14px;top:14px;width:34px;}
+    .modal-avatar {border-radius:50%;height:120px;width:120px;}
+    .player-modal h1 {font-size:32px;margin:18px 0;}
+    .player-modal p {font-size:16px;margin:10px 0;}
+    .player-modal h3 {margin:22px 0 10px;}
+    .match-list {display:inline-block;list-style:none;margin:0;padding-left:0;text-align:left;}
+    .match-list li {margin:8px 0;}
+    .modal-back-link {background:none;border:0;color:#58a6ff;cursor:pointer;font:inherit;font-weight:bold;margin-top:18px;padding:0;text-decoration:none;}
+    .modal-back-link:hover {text-decoration:underline;}
+    </style>
+    </head>
+
+    <body>
+
+    <h1>🏆 RANKED DARTS Dashboard</h1>
+    <div class='podium'>
+        <div class='card gold' data-player-id="707989067777835248">
+        <img src="https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024" class="avatar"><br>
+        <h2>#1</h2>
+        <button type="button" class="player-link" data-player-id="707989067777835248">Yokkon</button>
+        <p>1364 ELO</p>
+        <p>98W / 19L</p>
+        </div>
+        
+        <div class='card silver' data-player-id="1142038943961985105">
+        <img src="https://cdn.discordapp.com/embed/avatars/0.png" class="avatar"><br>
+        <h2>#2</h2>
+        <button type="button" class="player-link" data-player-id="1142038943961985105">Rick Dahlke</button>
+        <p>1281 ELO</p>
+        <p>60W / 23L</p>
+        </div>
+        
+        <div class='card bronze' data-player-id="806146120929640498">
+        <img src="https://cdn.discordapp.com/embed/avatars/2.png" class="avatar"><br>
+        <h2>#3</h2>
+        <button type="button" class="player-link" data-player-id="806146120929640498">Luca Pakendorf</button>
+        <p>1260 ELO</p>
+        <p>50W / 9L</p>
+        </div>
+        </div><div class='container'><div style='width:40%'><h2>🌍 World Ranking</h2><table>
+        <tr data-player-id="707989067777835248">
+        <td>1</td>
+        <td><img src="https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="707989067777835248">Yokkon</button></td>
+        <td>1364</td>
+        <td>98W / 19L</td>
+        </tr>
+        
+        <tr data-player-id="1142038943961985105">
+        <td>2</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/0.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1142038943961985105">Rick Dahlke</button></td>
+        <td>1281</td>
+        <td>60W / 23L</td>
+        </tr>
+        
+        <tr data-player-id="806146120929640498">
+        <td>3</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/2.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="806146120929640498">Luca Pakendorf</button></td>
+        <td>1260</td>
+        <td>50W / 9L</td>
+        </tr>
+        
+        <tr data-player-id="1330499669490667653">
+        <td>4</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1330499669490667653">Dennis Wehner</button></td>
+        <td>1216</td>
+        <td>22W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="1309548661117554720">
+        <td>5</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1309548661117554720">Marco Panzenböck</button></td>
+        <td>1196</td>
+        <td>57W / 27L</td>
+        </tr>
+        
+        <tr data-player-id="1007351887114285087">
+        <td>6</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/5.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1007351887114285087">Rico Seifert</button></td>
+        <td>1167</td>
+        <td>32W / 9L</td>
+        </tr>
+        
+        <tr data-player-id="183185835477172226">
+        <td>7</td>
+        <td><img src="https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="183185835477172226">Stefan Kulik</button></td>
+        <td>1154</td>
+        <td>33W / 16L</td>
+        </tr>
+        
+        <tr data-player-id="1092072918915219537">
+        <td>8</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1092072918915219537/a34f97c919ba7630e8ba951a443fb146.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1092072918915219537">Jannick2412</button></td>
+        <td>1150</td>
+        <td>25W / 11L</td>
+        </tr>
+        
+        <tr data-player-id="1302224986051838068">
+        <td>9</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1302224986051838068">Bazzi</button></td>
+        <td>1146</td>
+        <td>46W / 19L</td>
+        </tr>
+        
+        <tr data-player-id="1213219884440489984">
+        <td>10</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1213219884440489984/a12754d46508103e0b1fe02bc4ed5110.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1213219884440489984">van_graadert</button></td>
+        <td>1138</td>
+        <td>32W / 17L</td>
+        </tr>
+        
+        <tr data-player-id="890838749280346132">
+        <td>11</td>
+        <td><img src="https://cdn.discordapp.com/avatars/890838749280346132/9d3b9b6ade8e4f780a30170927aea75f.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="890838749280346132">Klax</button></td>
+        <td>1138</td>
+        <td>11W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="788855711601655819">
+        <td>12</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/0.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="788855711601655819">FlAsH | Jannick</button></td>
+        <td>1135</td>
+        <td>16W / 7L</td>
+        </tr>
+        
+        <tr data-player-id="1458502282219098457">
+        <td>13</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1458502282219098457/f7f2e9361e8a54ce6e72580ac7b967af.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1458502282219098457">Jules H</button></td>
+        <td>1129</td>
+        <td>25W / 14L</td>
+        </tr>
+        
+        <tr data-player-id="1089304921439998003">
+        <td>14</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1089304921439998003/848b2e53a7917bcc6e61a173f2eeb41e.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1089304921439998003">Brickylayer</button></td>
+        <td>1117</td>
+        <td>30W / 19L</td>
+        </tr>
+        
+        <tr data-player-id="1310195023370911807">
+        <td>15</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1310195023370911807/d4b8e7580e3196b41d2101a74b9c5a7c.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1310195023370911807">Marco Primus</button></td>
+        <td>1099</td>
+        <td>9W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="828645958883475459">
+        <td>16</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/5.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="828645958883475459">Justin Oehring</button></td>
+        <td>1095</td>
+        <td>15W / 7L</td>
+        </tr>
+        
+        <tr data-player-id="977270139932258375">
+        <td>17</td>
+        <td><img src="https://cdn.discordapp.com/avatars/977270139932258375/7cd753e1443be95e806ae2ea353d27ee.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="977270139932258375">Eddy Money</button></td>
+        <td>1092</td>
+        <td>55W / 44L</td>
+        </tr>
+        
+        <tr data-player-id="1432632159432216765">
+        <td>18</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1432632159432216765/0bc54142d7c398a968b6722a7c5b6fa8.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1432632159432216765">RangerN</button></td>
+        <td>1091</td>
+        <td>11W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="458662173091299360">
+        <td>19</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/0.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="458662173091299360">Moppi</button></td>
+        <td>1085</td>
+        <td>21W / 11L</td>
+        </tr>
+        
+        <tr data-player-id="134975678327160832">
+        <td>20</td>
+        <td><img src="https://cdn.discordapp.com/avatars/134975678327160832/c011c9d84037f9e530f341c0edf69fc7.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="134975678327160832">Shorbi|Daniel</button></td>
+        <td>1084</td>
+        <td>10W / 4L</td>
+        </tr>
+        
+        <tr data-player-id="1391715482624593932">
+        <td>21</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1391715482624593932/3fe673cc9f318e7fe0e7e420bad6154e.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1391715482624593932">Ronald H</button></td>
+        <td>1071</td>
+        <td>6W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="418513121167147008">
+        <td>22</td>
+        <td><img src="https://cdn.discordapp.com/avatars/418513121167147008/bfd5d41524b006489155d5dc5301f2ea.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="418513121167147008">Vincent Schubert</button></td>
+        <td>1065</td>
+        <td>7W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="1358893570869821534">
+        <td>23</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1358893570869821534/6106ab6ef269621a7f4a57fdd767d667.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1358893570869821534">TommyThomson</button></td>
+        <td>1044</td>
+        <td>4W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="272860472141676546">
+        <td>24</td>
+        <td><img src="https://cdn.discordapp.com/avatars/272860472141676546/3d7d24c4928d38c7a97e292eed2ab3b7.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="272860472141676546">Tacke</button></td>
+        <td>1040</td>
+        <td>5W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="920777207834619915">
+        <td>25</td>
+        <td><img src="https://cdn.discordapp.com/avatars/920777207834619915/407a2a20e6716dc1cc1f0f290b436719.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="920777207834619915">Richard Boden</button></td>
+        <td>1037</td>
+        <td>5W / 4L</td>
+        </tr>
+        
+        <tr data-player-id="695585081397346385">
+        <td>26</td>
+        <td><img src="https://cdn.discordapp.com/avatars/695585081397346385/fbfa37ca8a8d9b8b2c62aaa5d0930cc3.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="695585081397346385">ChrisF95.</button></td>
+        <td>1036</td>
+        <td>2W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1418545035577917542">
+        <td>27</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1418545035577917542/89691eff31c63a0517dae40506c0c603.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1418545035577917542">Campione</button></td>
+        <td>1034</td>
+        <td>11W / 10L</td>
+        </tr>
+        
+        <tr data-player-id="1392447258217283666">
+        <td>28</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1392447258217283666/4a6f7e68f027f185e469d91ea1a38178.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1392447258217283666">Patrick Krch</button></td>
+        <td>1031</td>
+        <td>3W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="801011337274589234">
+        <td>29</td>
+        <td><img src="https://cdn.discordapp.com/avatars/801011337274589234/a_8e210a91d5c690017eddac89dc13bea1.gif?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="801011337274589234">Jonesyyyツ</button></td>
+        <td>1026</td>
+        <td>2W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1338229961848389662">
+        <td>30</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1338229961848389662/127a9880d135d4e59ba1c0f792b169fc.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1338229961848389662">Luca Plocher</button></td>
+        <td>1021</td>
+        <td>2W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1488997913408438503">
+        <td>31</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1488997913408438503/79ee349b6511e2000af8a32fb8a6974e.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1488997913408438503">Robert</button></td>
+        <td>1019</td>
+        <td>5W / 4L</td>
+        </tr>
+        
+        <tr data-player-id="492994027331780609">
+        <td>32</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/4.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="492994027331780609">marci0</button></td>
+        <td>1017</td>
+        <td>9W / 10L</td>
+        </tr>
+        
+        <tr data-player-id="287768867969957889">
+        <td>33</td>
+        <td><img src="https://cdn.discordapp.com/avatars/287768867969957889/a628529f62e04679c3edb54c2ef9ba1a.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="287768867969957889">Marvin Mollen</button></td>
+        <td>1017</td>
+        <td>2W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1067374071421095936">
+        <td>34</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1067374071421095936/86c08ce4d4f8eabc4de1744bed35621c.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1067374071421095936">Robinson</button></td>
+        <td>1016</td>
+        <td>4W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="1331913233518432278">
+        <td>35</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1331913233518432278/77965c8a7646f401c737889aa55483c1.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1331913233518432278">Beischi</button></td>
+        <td>1016</td>
+        <td>4W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="964021055171727370">
+        <td>36</td>
+        <td><img src="https://cdn.discordapp.com/avatars/964021055171727370/ade4ed87441e52bd6a48d265b29a84e6.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="964021055171727370">MartinoHH</button></td>
+        <td>1016</td>
+        <td>1W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1320524093094887438">
+        <td>37</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1320524093094887438/e01c173d6b4379d7716eecbce7dc5f2f.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1320524093094887438">Sascha Osterbrink</button></td>
+        <td>1016</td>
+        <td>1W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1476579894434595010">
+        <td>38</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/1.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1476579894434595010">Ranked</button></td>
+        <td>1015</td>
+        <td>1W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="643858007741956127">
+        <td>39</td>
+        <td><img src="https://cdn.discordapp.com/avatars/643858007741956127/5b9967f5bec9b291d73b36f3fa3d5990.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="643858007741956127">LaUeberwerfos</button></td>
+        <td>1013</td>
+        <td>1W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1233056433344348211">
+        <td>40</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1233056433344348211/cc2d7caeba4bb7e7f07ba4baa16724d6.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1233056433344348211">Lars Zimmermann</button></td>
+        <td>1006</td>
+        <td>9W / 8L</td>
+        </tr>
+        
+        <tr data-player-id="1091029019388039290">
+        <td>41</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1091029019388039290/d7568f9515c0629ebc6f62ab4e5fb14d.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1091029019388039290">König_Silvius</button></td>
+        <td>1002</td>
+        <td>1W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="1299471744414908459">
+        <td>42</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/2.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1299471744414908459">Klausel</button></td>
+        <td>1001</td>
+        <td>1W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="265971229582688257">
+        <td>43</td>
+        <td><img src="https://cdn.discordapp.com/avatars/265971229582688257/1a918d7fc528b86e826910a7fac2aa49.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="265971229582688257">Maxo</button></td>
+        <td>1000</td>
+        <td>2W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="409665277379477505">
+        <td>44</td>
+        <td><img src="https://cdn.discordapp.com/avatars/409665277379477505/a089520c4ebc21cb529b9400c44d5036.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="409665277379477505">Malte M</button></td>
+        <td>1000</td>
+        <td>0W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="590985289720397836">
+        <td>45</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/0.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="590985289720397836">User 590985289720397836</button></td>
+        <td>1000</td>
+        <td>0W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="692457322038952006">
+        <td>46</td>
+        <td><img src="https://cdn.discordapp.com/avatars/692457322038952006/b7a7b6ebf70524b0651c130193fe0c81.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="692457322038952006">Noah Sieger</button></td>
+        <td>1000</td>
+        <td>0W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="938493516395450408">
+        <td>47</td>
+        <td><img src="https://cdn.discordapp.com/avatars/938493516395450408/3887b0a75cc8be0337015c5fb942ff69.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="938493516395450408">Kevinnator</button></td>
+        <td>1000</td>
+        <td>0W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1153038341634273415">
+        <td>48</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1153038341634273415/417cb3d1929698542a85fdcd5918eb06.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1153038341634273415">Reysl</button></td>
+        <td>1000</td>
+        <td>0W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1174670082429947944">
+        <td>49</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1174670082429947944/535c358deed8c74fa76a872c892414b1.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1174670082429947944">Matthis Greef</button></td>
+        <td>1000</td>
+        <td>0W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1248383424293769259">
+        <td>50</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1248383424293769259/c838d0b62407c2e98dc03edaf61b2353.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1248383424293769259">Balou</button></td>
+        <td>1000</td>
+        <td>0W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1319435562662498357">
+        <td>51</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1319435562662498357/5445ffd7ffb201a98393cbdf684ea4b1.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1319435562662498357">Mannixxen</button></td>
+        <td>1000</td>
+        <td>0W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1359230405365993492">
+        <td>52</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1359230405365993492/fa04e74bdf309792b2290f57236256b8.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1359230405365993492">Tyton</button></td>
+        <td>1000</td>
+        <td>0W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1485654307469791343">
+        <td>53</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/0.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1485654307469791343">User 1485654307469791343</button></td>
+        <td>1000</td>
+        <td>0W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1489022984734773331">
+        <td>54</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/0.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1489022984734773331">User 1489022984734773331</button></td>
+        <td>1000</td>
+        <td>0W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1024998339189690448">
+        <td>55</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1024998339189690448/157e517cdbf371a47aaead44675714a3.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1024998339189690448">Niklas Strasser</button></td>
+        <td>991</td>
+        <td>6W / 7L</td>
+        </tr>
+        
+        <tr data-player-id="1418878810006360084">
+        <td>56</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1418878810006360084/ece7e3a96a963c45fd82ddbaf0606626.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1418878810006360084">Timmi1616</button></td>
+        <td>991</td>
+        <td>1W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="912032996331241472">
+        <td>57</td>
+        <td><img src="https://cdn.discordapp.com/avatars/912032996331241472/6c5996770c985bcd6e5b68131ff2ba04.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="912032996331241472">Lukas180</button></td>
+        <td>988</td>
+        <td>0W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="756119769555664908">
+        <td>58</td>
+        <td><img src="https://cdn.discordapp.com/avatars/756119769555664908/90364c1b9b568d651a826cbf13493c37.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="756119769555664908">Krennert</button></td>
+        <td>987</td>
+        <td>1W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="534811376917413942">
+        <td>59</td>
+        <td><img src="https://cdn.discordapp.com/avatars/534811376917413942/225b49aedce431363ea38d9cc6c1c3a3.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="534811376917413942">sproit</button></td>
+        <td>986</td>
+        <td>0W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="962240013767155753">
+        <td>60</td>
+        <td><img src="https://cdn.discordapp.com/avatars/962240013767155753/304d4ffb73ac4dbc109308dfa4eb10f5.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="962240013767155753">Noah</button></td>
+        <td>985</td>
+        <td>1W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="174223543259758594">
+        <td>61</td>
+        <td><img src="https://cdn.discordapp.com/avatars/174223543259758594/8e7e7a494fd4081f14c0efa182a3c5e1.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="174223543259758594">Fl03hchen</button></td>
+        <td>985</td>
+        <td>0W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="525348947812810778">
+        <td>62</td>
+        <td><img src="https://cdn.discordapp.com/avatars/525348947812810778/fb46ab4da5f82339b25e02dc591dfd21.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="525348947812810778">Hauni</button></td>
+        <td>983</td>
+        <td>1W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="698255408090841198">
+        <td>63</td>
+        <td><img src="https://cdn.discordapp.com/avatars/698255408090841198/35e0f8fa161e4363a5cce091f671567c.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="698255408090841198">Alex Blaaaa</button></td>
+        <td>983</td>
+        <td>0W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="530021085522165770">
+        <td>64</td>
+        <td><img src="https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="530021085522165770">Leon Kohl</button></td>
+        <td>982</td>
+        <td>51W / 40L</td>
+        </tr>
+        
+        <tr data-player-id="988424399596167239">
+        <td>65</td>
+        <td><img src="https://cdn.discordapp.com/avatars/988424399596167239/958fd7f0686870b6456d1145ebf68baa.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="988424399596167239">bjarne3008</button></td>
+        <td>982</td>
+        <td>0W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="372454885691490315">
+        <td>66</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/4.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="372454885691490315">Dima L</button></td>
+        <td>981</td>
+        <td>0W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="1361248234583883817">
+        <td>67</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1361248234583883817/5510d49b58267a8f5c67b776e9b35454.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1361248234583883817">Maxi180</button></td>
+        <td>980</td>
+        <td>2W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="1419670705838096444">
+        <td>68</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1419670705838096444/6323113d07c1a47c76211e45a337e374.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1419670705838096444">Christian Berndl</button></td>
+        <td>980</td>
+        <td>0W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="1418551508223397889">
+        <td>69</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/3.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1418551508223397889">Wladimir Bachmann</button></td>
+        <td>978</td>
+        <td>3W / 5L</td>
+        </tr>
+        
+        <tr data-player-id="275040337507123200">
+        <td>70</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/2.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="275040337507123200">Phempel</button></td>
+        <td>978</td>
+        <td>2W / 4L</td>
+        </tr>
+        
+        <tr data-player-id="253860770788540416">
+        <td>71</td>
+        <td><img src="https://cdn.discordapp.com/avatars/253860770788540416/ecdbf52ca7a694dc1e45d24fc1ba2103.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="253860770788540416">Davd Teichrib</button></td>
+        <td>978</td>
+        <td>1W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="550968838511001611">
+        <td>72</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/1.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="550968838511001611">Joni</button></td>
+        <td>976</td>
+        <td>0W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="1072957562569359442">
+        <td>73</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1072957562569359442/2b1c670df6ac691b213aca6959efaef7.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1072957562569359442">scheit94</button></td>
+        <td>975</td>
+        <td>0W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="624003156610777109">
+        <td>74</td>
+        <td><img src="https://cdn.discordapp.com/avatars/624003156610777109/b24aebb448e949bef4e7662709196a1b.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="624003156610777109">Andre Neufert</button></td>
+        <td>973</td>
+        <td>0W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="1387676358527811684">
+        <td>75</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1387676358527811684/4d7d91e0db7c043c3dd25e900a124b2f.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1387676358527811684">Pascal Scherer</button></td>
+        <td>973</td>
+        <td>0W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="1364666221114556537">
+        <td>76</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1364666221114556537/e129073baf460e100929b2eadff4163a.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1364666221114556537">Michael &quot;Hähnchen&quot; Hahn</button></td>
+        <td>970</td>
+        <td>5W / 7L</td>
+        </tr>
+        
+        <tr data-player-id="911368314855514163">
+        <td>77</td>
+        <td><img src="https://cdn.discordapp.com/avatars/911368314855514163/0b43d87123b9b3860da7ec072f70a510.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="911368314855514163">Dome0105</button></td>
+        <td>968</td>
+        <td>3W / 5L</td>
+        </tr>
+        
+        <tr data-player-id="700818115226894396">
+        <td>78</td>
+        <td><img src="https://cdn.discordapp.com/avatars/700818115226894396/b390fa192bdd5e54656c514b07c15984.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="700818115226894396">Sebi180</button></td>
+        <td>967</td>
+        <td>6W / 9L</td>
+        </tr>
+        
+        <tr data-player-id="1474322752432377886">
+        <td>79</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1474322752432377886/c20f8dae1bb7b0d8d4888a08ddcdf3af.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1474322752432377886">Sebe K</button></td>
+        <td>965</td>
+        <td>16W / 17L</td>
+        </tr>
+        
+        <tr data-player-id="770346293846343690">
+        <td>80</td>
+        <td><img src="https://cdn.discordapp.com/avatars/770346293846343690/6f103472f3b613f43dd78e56733dd028.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="770346293846343690">Kilian G</button></td>
+        <td>965</td>
+        <td>0W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="505446955242094596">
+        <td>81</td>
+        <td><img src="https://cdn.discordapp.com/avatars/505446955242094596/2c72bf5d0877aad24fa4db0ab69878d1.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="505446955242094596">Jerome Benzler</button></td>
+        <td>963</td>
+        <td>5W / 10L</td>
+        </tr>
+        
+        <tr data-player-id="1330887794515644456">
+        <td>82</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1330887794515644456/31aba046c44fb7f9a17163d1daad59ab.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1330887794515644456">Josha Kahl</button></td>
+        <td>957</td>
+        <td>0W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="202833515757174784">
+        <td>83</td>
+        <td><img src="https://cdn.discordapp.com/avatars/202833515757174784/c53dcf20c32fcc74bc341cfd6f7f87e6.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="202833515757174784">Auron</button></td>
+        <td>954</td>
+        <td>0W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="1128030585701552169">
+        <td>84</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1128030585701552169/d20f11e1cf94acf9e088276121f8094b.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1128030585701552169">Basti Q</button></td>
+        <td>953</td>
+        <td>2W / 7L</td>
+        </tr>
+        
+        <tr data-player-id="1473034865355001856">
+        <td>85</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1473034865355001856/ade4ed87441e52bd6a48d265b29a84e6.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1473034865355001856">Christian Nahrgang</button></td>
+        <td>952</td>
+        <td>2W / 8L</td>
+        </tr>
+        
+        <tr data-player-id="777632441359400970">
+        <td>86</td>
+        <td><img src="https://cdn.discordapp.com/avatars/777632441359400970/7f17e7acf2cf5d5a0143a7e207f491c7.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="777632441359400970">Schmidti The Bone</button></td>
+        <td>952</td>
+        <td>1W / 4L</td>
+        </tr>
+        
+        <tr data-player-id="1400468029258858666">
+        <td>87</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/1.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1400468029258858666">Philipp Höller</button></td>
+        <td>951</td>
+        <td>0W / 4L</td>
+        </tr>
+        
+        <tr data-player-id="1408769906664538122">
+        <td>88</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1408769906664538122/fae529b08ac10816122ef7061a8e067b.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1408769906664538122">TheDarkTrident</button></td>
+        <td>949</td>
+        <td>9W / 15L</td>
+        </tr>
+        
+        <tr data-player-id="512983240148123648">
+        <td>89</td>
+        <td><img src="https://cdn.discordapp.com/avatars/512983240148123648/eca6fd016833c09c82344fa554e51ec4.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="512983240148123648">Manuel G</button></td>
+        <td>948</td>
+        <td>2W / 9L</td>
+        </tr>
+        
+        <tr data-player-id="1458533805508788439">
+        <td>90</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1458533805508788439/cceebb03d187b1443f34be5a65249e8d.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1458533805508788439">Markus Wolf</button></td>
+        <td>946</td>
+        <td>0W / 4L</td>
+        </tr>
+        
+        <tr data-player-id="321563218226970626">
+        <td>91</td>
+        <td><img src="https://cdn.discordapp.com/avatars/321563218226970626/967178e06842b26150cea78ec9ed8ec4.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="321563218226970626">Daniel Kayn’t Miss</button></td>
+        <td>945</td>
+        <td>1W / 5L</td>
+        </tr>
+        
+        <tr data-player-id="1467938366183178457">
+        <td>92</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1467938366183178457/f7f2e9361e8a54ce6e72580ac7b967af.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1467938366183178457">Passi1704</button></td>
+        <td>941</td>
+        <td>4W / 9L</td>
+        </tr>
+        
+        <tr data-player-id="1468019197656174774">
+        <td>93</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1468019197656174774/64cce093bb1bb13c73a4cc15e229e67f.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1468019197656174774">Christian1980</button></td>
+        <td>938</td>
+        <td>19W / 47L</td>
+        </tr>
+        
+        <tr data-player-id="299164054591635456">
+        <td>94</td>
+        <td><img src="https://cdn.discordapp.com/avatars/299164054591635456/55723527a22d387586bf79435894e098.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="299164054591635456">Nico Dresler</button></td>
+        <td>934</td>
+        <td>13W / 22L</td>
+        </tr>
+        
+        <tr data-player-id="1394121383528628366">
+        <td>95</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/2.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1394121383528628366">Micha24</button></td>
+        <td>932</td>
+        <td>1W / 6L</td>
+        </tr>
+        
+        <tr data-player-id="391694713679380480">
+        <td>96</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/5.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="391694713679380480">bergy1211</button></td>
+        <td>929</td>
+        <td>1W / 6L</td>
+        </tr>
+        
+        <tr data-player-id="283650357262024704">
+        <td>97</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/0.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="283650357262024704">User 283650357262024704</button></td>
+        <td>927</td>
+        <td>0W / 7L</td>
+        </tr>
+        
+        <tr data-player-id="662279330910437392">
+        <td>98</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/0.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="662279330910437392">User 662279330910437392</button></td>
+        <td>917</td>
+        <td>2W / 9L</td>
+        </tr>
+        
+        <tr data-player-id="906968918327967764">
+        <td>99</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/3.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="906968918327967764">Michel Ellrich</button></td>
+        <td>915</td>
+        <td>7W / 18L</td>
+        </tr>
+        
+        <tr data-player-id="1359697518513885234">
+        <td>100</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1359697518513885234/680e47718b692a70f8c870a63cdc116d.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1359697518513885234">Chris</button></td>
+        <td>905</td>
+        <td>0W / 5L</td>
+        </tr>
+        
+        <tr data-player-id="1458906019118841960">
+        <td>101</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1458906019118841960">Rene B</button></td>
+        <td>892</td>
+        <td>13W / 36L</td>
+        </tr>
+        
+        <tr data-player-id="721521931953635349">
+        <td>102</td>
+        <td><img src="https://cdn.discordapp.com/avatars/721521931953635349/e5108741eedccb3fa944702a5359412f.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="721521931953635349">Kasper4E</button></td>
+        <td>891</td>
+        <td>4W / 16L</td>
+        </tr>
+        
+        <tr data-player-id="1170865043227824178">
+        <td>103</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/2.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1170865043227824178">Lmk 1170</button></td>
+        <td>886</td>
+        <td>0W / 10L</td>
+        </tr>
+        
+        <tr data-player-id="761737659579105301">
+        <td>104</td>
+        <td><img src="https://cdn.discordapp.com/avatars/761737659579105301/f4a94165e17a0f43e60d39a5c94cc191.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="761737659579105301">RocketDarts</button></td>
+        <td>872</td>
+        <td>14W / 36L</td>
+        </tr>
+        
+        <tr data-player-id="773315089595891732">
+        <td>105</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/5.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="773315089595891732">AlkaTraz</button></td>
+        <td>869</td>
+        <td>33W / 47L</td>
+        </tr>
+        
+        <tr data-player-id="1327898199058284545">
+        <td>106</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1327898199058284545/84f8183bcac3e3f75e0d1caa5a7f6340.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1327898199058284545">TheShy | Kevin</button></td>
+        <td>865</td>
+        <td>12W / 29L</td>
+        </tr>
+        
+        <tr data-player-id="627469840457662464">
+        <td>107</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/3.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="627469840457662464">Niklas H</button></td>
+        <td>861</td>
+        <td>2W / 15L</td>
+        </tr>
+        
+        <tr data-player-id="1326545695506698375">
+        <td>108</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/4.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1326545695506698375">Mc_Rezzy46</button></td>
+        <td>861</td>
+        <td>0W / 13L</td>
+        </tr>
+        
+        <tr data-player-id="1359231571487494265">
+        <td>109</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1359231571487494265">Bernard (Giftzwerg)</button></td>
+        <td>811</td>
+        <td>9W / 40L</td>
+        </tr>
+        
+        <tr data-player-id="825420293039194123">
+        <td>110</td>
+        <td><img src="https://cdn.discordapp.com/avatars/825420293039194123/d84b958facf424daf8bc8eb98df94cbf.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="825420293039194123">Möffi</button></td>
+        <td>797</td>
+        <td>11W / 50L</td>
+        </tr>
+        
+        <tr data-player-id="811720921782026251">
+        <td>111</td>
+        <td><img src="https://cdn.discordapp.com/avatars/811720921782026251/3021a78f5d3ea569f5f69ad020d47bb5.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="811720921782026251">Raven</button></td>
+        <td>753</td>
+        <td>5W / 33L</td>
+        </tr>
+        
+        <tr data-player-id="1245485490421891165">
+        <td>112</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1245485490421891165/451b17f84483bd4cfc1aaf0f34c58183.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1245485490421891165">Andy Bühner</button></td>
+        <td>688</td>
+        <td>10W / 55L</td>
+        </tr>
+        </table></div><div style='width:40%'><h2>🗓️ Monatsranking</h2><table>
+        <tr data-player-id="1468019197656174774">
+        <td>1</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1468019197656174774/64cce093bb1bb13c73a4cc15e229e67f.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1468019197656174774">Christian1980</button></td>
+        <td>107</td>
+        <td>5W / 7L</td>
+        </tr>
+        
+        <tr data-player-id="707989067777835248">
+        <td>2</td>
+        <td><img src="https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="707989067777835248">Yokkon</button></td>
+        <td>93</td>
+        <td>13W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1024998339189690448">
+        <td>3</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1024998339189690448/157e517cdbf371a47aaead44675714a3.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1024998339189690448">Niklas Strasser</button></td>
+        <td>47</td>
+        <td>4W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="1488997913408438503">
+        <td>4</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1488997913408438503/79ee349b6511e2000af8a32fb8a6974e.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1488997913408438503">Robert</button></td>
+        <td>40</td>
+        <td>3W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="1302224986051838068">
+        <td>5</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1302224986051838068">Bazzi</button></td>
+        <td>39</td>
+        <td>6W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1330499669490667653">
+        <td>6</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1330499669490667653">Dennis Wehner</button></td>
+        <td>39</td>
+        <td>5W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1432632159432216765">
+        <td>7</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1432632159432216765/0bc54142d7c398a968b6722a7c5b6fa8.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1432632159432216765">RangerN</button></td>
+        <td>38</td>
+        <td>5W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="1007351887114285087">
+        <td>8</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/5.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1007351887114285087">Rico Seifert</button></td>
+        <td>34</td>
+        <td>6W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="1142038943961985105">
+        <td>9</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/0.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1142038943961985105">Rick Dahlke</button></td>
+        <td>33</td>
+        <td>5W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="906968918327967764">
+        <td>10</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/3.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="906968918327967764">Michel Ellrich</button></td>
+        <td>33</td>
+        <td>3W / 6L</td>
+        </tr>
+        
+        <tr data-player-id="299164054591635456">
+        <td>11</td>
+        <td><img src="https://cdn.discordapp.com/avatars/299164054591635456/55723527a22d387586bf79435894e098.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="299164054591635456">Nico Dresler</button></td>
+        <td>33</td>
+        <td>2W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="1092072918915219537">
+        <td>12</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1092072918915219537/a34f97c919ba7630e8ba951a443fb146.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1092072918915219537">Jannick2412</button></td>
+        <td>30</td>
+        <td>4W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="977270139932258375">
+        <td>13</td>
+        <td><img src="https://cdn.discordapp.com/avatars/977270139932258375/7cd753e1443be95e806ae2ea353d27ee.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="977270139932258375">Eddy Money</button></td>
+        <td>27</td>
+        <td>2W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="1245485490421891165">
+        <td>14</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1245485490421891165/451b17f84483bd4cfc1aaf0f34c58183.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1245485490421891165">Andy Bühner</button></td>
+        <td>26</td>
+        <td>1W / 7L</td>
+        </tr>
+        
+        <tr data-player-id="1458906019118841960">
+        <td>15</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1458906019118841960">Rene B</button></td>
+        <td>21</td>
+        <td>1W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="1089304921439998003">
+        <td>16</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1089304921439998003/848b2e53a7917bcc6e61a173f2eeb41e.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1089304921439998003">Brickylayer</button></td>
+        <td>17</td>
+        <td>2W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="761737659579105301">
+        <td>17</td>
+        <td><img src="https://cdn.discordapp.com/avatars/761737659579105301/f4a94165e17a0f43e60d39a5c94cc191.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="761737659579105301">RocketDarts</button></td>
+        <td>17</td>
+        <td>1W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="1391715482624593932">
+        <td>18</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1391715482624593932/3fe673cc9f318e7fe0e7e420bad6154e.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1391715482624593932">Ronald H</button></td>
+        <td>17</td>
+        <td>1W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="773315089595891732">
+        <td>19</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/5.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="773315089595891732">AlkaTraz</button></td>
+        <td>16</td>
+        <td>1W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="1327898199058284545">
+        <td>20</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1327898199058284545/84f8183bcac3e3f75e0d1caa5a7f6340.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1327898199058284545">TheShy | Kevin</button></td>
+        <td>16</td>
+        <td>1W / 5L</td>
+        </tr>
+        
+        <tr data-player-id="287768867969957889">
+        <td>21</td>
+        <td><img src="https://cdn.discordapp.com/avatars/287768867969957889/a628529f62e04679c3edb54c2ef9ba1a.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="287768867969957889">Marvin Mollen</button></td>
+        <td>12</td>
+        <td>1W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="530021085522165770">
+        <td>22</td>
+        <td><img src="https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="530021085522165770">Leon Kohl</button></td>
+        <td>12</td>
+        <td>1W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="890838749280346132">
+        <td>23</td>
+        <td><img src="https://cdn.discordapp.com/avatars/890838749280346132/9d3b9b6ade8e4f780a30170927aea75f.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="890838749280346132">Klax</button></td>
+        <td>6</td>
+        <td>1W / 0L</td>
+        </tr>
+        
+        <tr data-player-id="1474322752432377886">
+        <td>24</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1474322752432377886/c20f8dae1bb7b0d8d4888a08ddcdf3af.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1474322752432377886">Sebe K</button></td>
+        <td>5</td>
+        <td>1W / 4L</td>
+        </tr>
+        
+        <tr data-player-id="183185835477172226">
+        <td>25</td>
+        <td><img src="https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="183185835477172226">Stefan Kulik</button></td>
+        <td>0</td>
+        <td>0W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="265971229582688257">
+        <td>26</td>
+        <td><img src="https://cdn.discordapp.com/avatars/265971229582688257/1a918d7fc528b86e826910a7fac2aa49.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="265971229582688257">Maxo</button></td>
+        <td>0</td>
+        <td>0W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="283650357262024704">
+        <td>27</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/0.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="283650357262024704">User 283650357262024704</button></td>
+        <td>0</td>
+        <td>0W / 5L</td>
+        </tr>
+        
+        <tr data-player-id="505446955242094596">
+        <td>28</td>
+        <td><img src="https://cdn.discordapp.com/avatars/505446955242094596/2c72bf5d0877aad24fa4db0ab69878d1.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="505446955242094596">Jerome Benzler</button></td>
+        <td>0</td>
+        <td>0W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="512983240148123648">
+        <td>29</td>
+        <td><img src="https://cdn.discordapp.com/avatars/512983240148123648/eca6fd016833c09c82344fa554e51ec4.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="512983240148123648">Manuel G</button></td>
+        <td>0</td>
+        <td>0W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="825420293039194123">
+        <td>30</td>
+        <td><img src="https://cdn.discordapp.com/avatars/825420293039194123/d84b958facf424daf8bc8eb98df94cbf.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="825420293039194123">Möffi</button></td>
+        <td>0</td>
+        <td>0W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="1128030585701552169">
+        <td>31</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1128030585701552169/d20f11e1cf94acf9e088276121f8094b.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1128030585701552169">Basti Q</button></td>
+        <td>0</td>
+        <td>0W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="1170865043227824178">
+        <td>32</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/2.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1170865043227824178">Lmk 1170</button></td>
+        <td>0</td>
+        <td>0W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="1309548661117554720">
+        <td>33</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1309548661117554720">Marco Panzenböck</button></td>
+        <td>0</td>
+        <td>0W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="1326545695506698375">
+        <td>34</td>
+        <td><img src="https://cdn.discordapp.com/embed/avatars/4.png" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1326545695506698375">Mc_Rezzy46</button></td>
+        <td>0</td>
+        <td>0W / 3L</td>
+        </tr>
+        
+        <tr data-player-id="1359231571487494265">
+        <td>35</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1359231571487494265">Bernard (Giftzwerg)</button></td>
+        <td>0</td>
+        <td>0W / 2L</td>
+        </tr>
+        
+        <tr data-player-id="1458502282219098457">
+        <td>36</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1458502282219098457/f7f2e9361e8a54ce6e72580ac7b967af.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1458502282219098457">Jules H</button></td>
+        <td>0</td>
+        <td>0W / 1L</td>
+        </tr>
+        
+        <tr data-player-id="1467938366183178457">
+        <td>37</td>
+        <td><img src="https://cdn.discordapp.com/avatars/1467938366183178457/f7f2e9361e8a54ce6e72580ac7b967af.png?size=1024" class="avatar"></td>
+        <td><button type="button" class="player-link" data-player-id="1467938366183178457">Passi1704</button></td>
+        <td>0</td>
+        <td>0W / 1L</td>
+        </tr>
+        </table></div></div>
+    <div id="player-modal-backdrop" class="modal-backdrop" aria-hidden="true">
+        <div class="player-modal" role="dialog" aria-modal="true" aria-labelledby="modal-player-name">
+            <button type="button" id="modal-close" class="modal-close" aria-label="Schliessen">&times;</button>
+            <img id="modal-avatar" class="modal-avatar" src="" alt="">
+            <h1 id="modal-player-name"></h1>
+            <p id="modal-rating"></p>
+            <p id="modal-world-rank"></p>
+            <p id="modal-monthly-rank"></p>
+            <p id="modal-games"></p>
+            <p id="modal-winrate"></p>
+            <p id="modal-average"></p>
+            <h3>🔥 Letzte Matches</h3>
+            <ul id="modal-matches" class="match-list"></ul>
+        </div>
+    </div>
+    <script>
+    let playerProfiles = {};
+
+    function text(id, value) {
+        document.getElementById(id).textContent = value;
+    }
+
+    function rankText(value) {
+        return value ? "#" + value : "N/A";
+    }
+
+    function openPlayerModal(userId, fallbackAvatar) {
+        const player = playerProfiles[String(userId)];
+        if (!player) {
+            return;
+        }
+
+        const jsonAvatarIsDefault = player.avatar && player.avatar.includes("/embed/avatars/0.png");
+        document.getElementById("modal-avatar").src = jsonAvatarIsDefault && fallbackAvatar ? fallbackAvatar : player.avatar;
+        text("modal-player-name", player.name);
+        text("modal-rating", "🏆 Rating: " + player.worldRating);
+        text("modal-world-rank", "🌍 Worldrank: " + rankText(player.worldRank));
+        text("modal-monthly-rank", "🗓️ Monatsrang: " + rankText(player.monthlyRank));
+        text("modal-games", "🎯 Spiele: " + player.games);
+        text("modal-winrate", "📈 Winrate: " + player.winrate + "%");
+        text("modal-average", "🎯 Ø Average: " + player.overallAverage);
+
+        const matches = document.getElementById("modal-matches");
+        matches.replaceChildren();
+        if (!player.recentMatches.length) {
+            const item = document.createElement("li");
+            item.textContent = "Keine Matches vorhanden.";
+            matches.appendChild(item);
+        } else {
+            player.recentMatches.forEach(match => {
+                const item = document.createElement("li");
+                const resultIcon = match.result === "Win" ? "🟢" : "🔴";
+                const elo = match.eloChange > 0 ? "+" + match.eloChange : String(match.eloChange);
+                item.textContent = resultIcon + " vs " + match.opponentName + " (" + match.score + ") | Avg: " + match.average + " | " + elo + " ELO";
+                matches.appendChild(item);
+            });
+        }
+
+        const backdrop = document.getElementById("player-modal-backdrop");
+        backdrop.classList.add("open");
+        backdrop.setAttribute("aria-hidden", "false");
+    }
+
+    function closePlayerModal() {
+        const backdrop = document.getElementById("player-modal-backdrop");
+        backdrop.classList.remove("open");
+        backdrop.setAttribute("aria-hidden", "true");
+    }
+
+    fetch("players.json?v=" + Date.now(), { cache: "no-store" })
+        .then(response => response.json())
+        .then(data => {
+            playerProfiles = data.players || {};
+        })
+        .catch(error => console.error("players.json konnte nicht geladen werden", error));
+
+    document.addEventListener("click", event => {
+        const playerTarget = event.target.closest("[data-player-id]");
+        if (playerTarget) {
+            const avatar =
+                playerTarget.querySelector("img")?.src ||
+                playerTarget.closest("tr")?.querySelector("img")?.src ||
+                playerTarget.closest(".card")?.querySelector("img")?.src;
+            openPlayerModal(playerTarget.dataset.playerId, avatar);
+            return;
+        }
+
+        if (
+            event.target.id === "player-modal-backdrop" ||
+            event.target.id === "modal-close" ||
+            event.target.id === "modal-back-link"
+        ) {
+            closePlayerModal();
+        }
+    });
+
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            closePlayerModal();
+        }
+    });
+    </script>
+    </body></html>
+    
