@@ -1,16 +1,15 @@
 from __future__ import annotations
 
-import subprocess
-import json
-from dataclasses import dataclass, field
-from html import escape
-from pathlib import Path
-import re
-
 import discord
+import subprocess
+import re
+import json
+
 from discord import app_commands
 from discord.ext import commands
-
+from html import escape
+from pathlib import Path
+from dataclasses import dataclass, field
 from config.Environment import RESULT_CHANNEL
 from config.SqliteStore import (
     ensure_ranked_storage,
@@ -24,17 +23,6 @@ from config.SqliteStore import (
     persist_active_ranked_match,
     persist_ranked_match_result,
 )
-
-
-#
-# TODO:
-#   X - ranked extrahieren für Leon
-#   X - db struktur anpassen an die von Leon für nahtlosen übergang
-#   X - zurückziehen Button rausnehmen
-#   X - Modal auf webseite verschönern
-#   X - screenshot pflicht
-#   X - backup system für result eintragen -> match speichern mit pending und command /result im thread, thread wird ja nicht gelöscht
-#   X - wenn formular geöffnet aber auf abbrechen geklickt, dann soll der Button wieder aktiv sein
 
 # =============================
 # Konstanten und Parser-Patterns für Queue, Threads und Ergebnisse.
@@ -921,13 +909,13 @@ class ResultConfirmationView(discord.ui.View):
             self.stop()
             self.cog.pending_results.pop(self.match_id, None)
             self.cog.active_matches.pop(self.match_id, None)
+            await self.cog.refresh_panels(refresh_all=True)
             thread = await self.cog.fetch_thread(match.thread_id)
             if thread is not None:
                 try:
                     await thread.delete()
                 except (discord.NotFound, discord.Forbidden, discord.HTTPException):
                     pass
-            await self.cog.refresh_panels(refresh_all=True)
             await interaction.followup.send("Dieses Ergebnis wurde bereits verarbeitet. Match wurde geschlossen.", ephemeral=True)
             return
 
@@ -945,6 +933,7 @@ class ResultConfirmationView(discord.ui.View):
         self.stop()
         self.cog.pending_results.pop(self.match_id, None)
         self.cog.active_matches.pop(self.match_id, None)
+        await self.cog.refresh_panels(refresh_all=True)
 
         thread = await self.cog.fetch_thread(match.thread_id)
         if thread is not None:
@@ -955,7 +944,6 @@ class ResultConfirmationView(discord.ui.View):
 
         await generate_html(self.cog.bot)
         upload()
-        await self.cog.refresh_panels(refresh_all=True)
         await interaction.followup.send("Ergebnis bestätigt und gepostet.", ephemeral=True)
 
 
