@@ -1,11 +1,26 @@
 import logging
 import os
 from pathlib import Path
-from dotenv import load_dotenv
+import dotenv
 
-ENV_PATH = Path(__file__).with_name(".env")
-load_dotenv(ENV_PATH)
 logger = logging.getLogger("bot")
+BASE_DIR = Path(__file__).resolve().parent
+
+
+def _load_dotenv() -> None:
+    candidates = [
+        BASE_DIR / ".env",
+        BASE_DIR / "env",
+        BASE_DIR.parent / ".env",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            dotenv.load_dotenv(candidate)
+            return
+    logger.warning(
+        "No environment file found. Checked: %s",
+        ", ".join(str(path) for path in candidates),
+    )
 
 
 def load_env(key: str, default: str) -> str:
@@ -27,5 +42,11 @@ def load_int_env(key: str, default: int) -> int:
     return default
 
 
+_load_dotenv()
 TOKEN = load_env("DISCORD_TOKEN", "unknown")
 RESULT_CHANNEL = load_env("RESULT_CHANNEL", "unknown")
+
+if TOKEN == "unknown":
+    raise RuntimeError(
+        "DISCORD_TOKEN is missing. Create config/.env (or config/env) and set DISCORD_TOKEN=<your bot token>."
+    )

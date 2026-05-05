@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import discord
 import subprocess
 import re
@@ -7,6 +8,7 @@ import json
 
 from discord import app_commands
 from discord.ext import commands
+from datetime import datetime, timedelta, timezone
 from html import escape
 from pathlib import Path
 from dataclasses import dataclass, field
@@ -14,12 +16,15 @@ from config.Environment import RESULT_CHANNEL
 from config.SqliteStore import (
     ensure_ranked_storage,
     fetch_active_ranked_matches,
+    fetch_pending_ranked_matches,
     fetch_match_history,
     fetch_monthly_ranking,
     fetch_world_ranking,
     get_current_ranked_month_key,
     get_next_ranked_match_id,
+    mark_ranked_match_cancelled,
     mark_ranked_match_result_published,
+    persist_pending_ranked_match,
     persist_active_ranked_match,
     persist_ranked_match_result,
 )
@@ -27,11 +32,12 @@ from config.SqliteStore import (
 
 # TODO:
 #  Problem, wenn Match erstellt und nur Spieler A bestätigt, Spieler B ist AFK
-# - 5minuten timer
-# - pending state für matches, direkt beim erstellen des threads in die db mit pending, wenn beide bestätigen dann active und so weiter
-# - command um pending und active matches auszugeben für admins
-# - command zum cancel für admins
-# - command zum canceln für den spieler der bestätigt hat
+#  5minuten timer
+#  pending state für matches, direkt beim erstellen des threads in die db mit pending, wenn beide bestätigen dann active und so weiter
+#  command um pending und active matches auszugeben für admins
+#  command zum cancel für admins
+#  command zum canceln für den spieler der bestätigt hat
+#  screenshot in result modal per einfügen (strg + v)
 
 # =============================
 # Konstanten und Parser-Patterns für Queue, Threads und Ergebnisse.
@@ -41,12 +47,14 @@ MATCHES_FIELD_NAME = ":fire: Aktuelle Matches"
 RESULTS_CHANNEL_ID = RESULT_CHANNEL
 MENTION_PATTERN = re.compile(r"<@!?(\d+)>")
 THREAD_SAFE_PATTERN = re.compile(r"[^a-z0-9-]")
+MATCH_ID_PATTERN = re.compile(r"#(\d+)")
 SCORE_PATTERN = re.compile(r"^\s*(\d{1,2})\s*[:\-]\s*(\d{1,2})\s*$")
 AVERAGE_PATTERN = re.compile(r"^\s*\d+(?:[.,]\d+)?\s*$")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 LEADERBOARD_FILE = "leaderboard.html"
 PLAYER_DATA_FILE = "players.json"
 RANKED_RESULT_STATUS_SQL = "status IN ('completed', 'confirmed') AND winner_id IS NOT NULL AND loser_id IS NOT NULL"
+WITHDRAW_ENABLE_DELAY = timedelta(minutes=5)
 
 # =============================
 # WEBSITE - generate static html for displaying ranking on web
@@ -539,6 +547,8 @@ class PendingMatchState:
     player_ids: tuple[int, int]
     thread_id: int
     confirmed_user_ids: set[int] = field(default_factory=set)
+    created_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    pending_message_id: int | None = None
 
 
 @dataclass(slots=True)
@@ -643,6 +653,9 @@ def build_result_embed(match: MatchState, result: PendingResultState) -> discord
     )
     embed.add_field(name="Gewinner", value=f"<@{result.winner_id}>", inline=True)
     embed.add_field(name="Spielstand", value=result.score_text, inline=True)
+    player_one_id, player_two_id = match.player_ids
+    embed.add_field(name=f"Average <@{player_one_id}>", value=result.averages[player_one_id], inline=True)
+    embed.add_field(name=f"Average <@{player_two_id}>", value=result.averages[player_two_id], inline=True)
     return embed
 
 
@@ -761,6 +774,17 @@ def parse_best_of_seven_score(value: str) -> tuple[int, int] | None:
     return None
 
 
+def parse_user_id_from_mention(value: str) -> int | None:
+    match = MENTION_PATTERN.search(value)
+    if match is None:
+        return None
+    return int(match.group(1))
+
+
+def parse_user_ids_from_lines(value: str) -> set[int]:
+    return {int(match.group(1)) for match in MENTION_PATTERN.finditer(value)}
+
+
 def shorten_label(value: str, limit: int = 28) -> str:
     if len(value) <= limit:
         return value
@@ -772,16 +796,64 @@ def shorten_label(value: str, limit: int = 28) -> str:
 # =============================
 
 class PendingMatchView(discord.ui.View):
-    def __init__(self, cog: Ranked, match_id: int) -> None:
+    def __init__(
+        self,
+        cog: Ranked,
+        match_id: int | None = None,
+        *,
+        withdraw_enabled: bool = False,
+    ) -> None:
         super().__init__(timeout=None)
         self.cog = cog
         self.match_id = match_id
+        self.set_withdraw_button_disabled(not withdraw_enabled)
+
+    def set_withdraw_button_disabled(self, disabled: bool) -> None:
+        for item in self.children:
+            if isinstance(item, discord.ui.Button) and item.custom_id == "ranked:pending_withdraw":
+                item.disabled = disabled
+                return
+
+    def resolve_match_id(self, interaction: discord.Interaction) -> int | None:
+        if self.match_id is not None:
+            return self.match_id
+        if isinstance(interaction.channel, discord.Thread):
+            pending_match = self.cog.get_pending_match_by_thread_id(interaction.channel.id)
+            if pending_match is not None:
+                return pending_match.match_id
+        message = interaction.message
+        if message is not None and message.embeds:
+            title = message.embeds[0].title or ""
+            match = MATCH_ID_PATTERN.search(title)
+            if match is not None:
+                return int(match.group(1))
+        return None
+
+    def sync_confirmations_from_message(self, pending_match: PendingMatchState, interaction: discord.Interaction) -> None:
+        message = interaction.message
+        if message is None or not message.embeds:
+            return
+
+        for field in message.embeds[0].fields:
+            if "best" in field.name.casefold():
+                pending_match.confirmed_user_ids = parse_user_ids_from_lines(field.value)
+                break
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
-        match = self.cog.pending_matches.get(self.match_id)
+        match_id = self.resolve_match_id(interaction)
+        if match_id is None:
+            await interaction.response.send_message("Dieses Match ist nicht mehr offen.", ephemeral=True)
+            return False
+
+        self.match_id = match_id
+        match = self.cog.pending_matches.get(match_id)
+        if match is None:
+            match = await self.cog.recover_pending_match_from_message(interaction.message, expected_match_id=match_id)
         if match is None:
             await interaction.response.send_message("Dieses Match ist nicht mehr offen.", ephemeral=True)
             return False
+
+        self.sync_confirmations_from_message(match, interaction)
 
         if interaction.user.id in match.player_ids:
             return True
@@ -789,13 +861,23 @@ class PendingMatchView(discord.ui.View):
         await interaction.response.send_message("Nur die beiden Spieler können hier reagieren.", ephemeral=True)
         return False
 
-    @discord.ui.button(label="Bestätigen", style=discord.ButtonStyle.success)
+    @discord.ui.button(label="Bestätigen", style=discord.ButtonStyle.success, custom_id="ranked:pending_confirm")
     async def confirm_callback(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
         del button
+        match_id = self.resolve_match_id(interaction)
+        if match_id is None:
+            await interaction.response.send_message("Dieses Match ist nicht mehr offen.", ephemeral=True)
+            return
+
+        self.match_id = match_id
         pending_match = self.cog.pending_matches.get(self.match_id)
+        if pending_match is None:
+            pending_match = await self.cog.recover_pending_match_from_message(interaction.message, expected_match_id=match_id)
         if pending_match is None:
             await interaction.response.send_message("Dieses Match ist nicht mehr offen.", ephemeral=True)
             return
+
+        self.sync_confirmations_from_message(pending_match, interaction)
 
         if interaction.user.id in pending_match.confirmed_user_ids:
             await interaction.response.send_message("Du hast dieses Match bereits bestätigt.", ephemeral=True)
@@ -821,6 +903,34 @@ class PendingMatchView(discord.ui.View):
                 view=ResultEntryView(self.cog, active_match.match_id),
             )
         await self.cog.refresh_panels(refresh_all=True)
+
+    @discord.ui.button(
+        label="Match zurückziehen",
+        style=discord.ButtonStyle.danger,
+        custom_id="ranked:pending_withdraw",
+    )
+    async def withdraw_callback(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
+        del button
+        match_id = self.resolve_match_id(interaction)
+        if match_id is None:
+            await interaction.response.send_message("Dieses Match ist nicht mehr offen.", ephemeral=True)
+            return
+
+        pending_match = self.cog.pending_matches.get(match_id)
+        if pending_match is None:
+            pending_match = await self.cog.recover_pending_match_from_message(interaction.message, expected_match_id=match_id)
+        if pending_match is None:
+            await interaction.response.send_message("Dieses Match ist nicht mehr offen.", ephemeral=True)
+            return
+
+        if not self.cog.is_pending_match_withdraw_enabled(pending_match):
+            await interaction.response.send_message(
+                "Der Match-Rückzug ist erst 5 Minuten nach Match-Erstellung möglich.",
+                ephemeral=True,
+            )
+            return
+
+        await self.cog.cancel_pending_match(interaction, pending_match)
 
     #
     # in Zukunft, vielleicht mit Admin-Rechten, sodass nur auf Anfrage der Admin das Match zurückziehen kann
@@ -854,27 +964,56 @@ class PendingMatchView(discord.ui.View):
 # =============================
 
 class ResultConfirmationView(discord.ui.View):
-    def __init__(self, cog: Ranked, match_id: int, submission_id: int, confirmer_id: int) -> None:
+    def __init__(
+        self,
+        cog: Ranked,
+        match_id: int | None = None,
+        submission_id: int | None = None,
+        confirmer_id: int | None = None,
+    ) -> None:
         super().__init__(timeout=None)
         self.cog = cog
         self.match_id = match_id
         self.submission_id = submission_id
         self.confirmer_id = confirmer_id
 
+    def resolve_match_id(self, interaction: discord.Interaction) -> int | None:
+        if self.match_id is not None:
+            return self.match_id
+        if isinstance(interaction.channel, discord.Thread):
+            match = self.cog.get_active_match_by_thread_id(interaction.channel.id)
+            if match is not None:
+                return match.match_id
+        return None
+
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
-        result = self.cog.pending_results.get(self.match_id)
-        match = self.cog.active_matches.get(self.match_id)
+        match_id = self.resolve_match_id(interaction)
+        if match_id is None:
+            await interaction.response.send_message("Dieses Ergebnis ist nicht mehr offen.", ephemeral=True)
+            return False
+
+        self.match_id = match_id
+        match = self.cog.active_matches.get(match_id)
+        result = self.cog.get_pending_result_for_confirmation(match_id, interaction.message)
 
         if result is None or match is None:
             await interaction.response.send_message("Dieses Ergebnis ist nicht mehr offen.", ephemeral=True)
             return False
 
-        if result.submission_id != self.submission_id:
+        if self.submission_id is not None and result.submission_id != self.submission_id:
             await interaction.response.send_message("Es gibt bereits einen neueren Ergebnisvorschlag.", ephemeral=True)
             return False
 
+        self.submission_id = result.submission_id
+        if self.confirmer_id is None:
+            self.confirmer_id = self.cog.parse_confirmer_id_from_confirmation_message(interaction.message)
+
         if interaction.user.id not in match.player_ids:
             await interaction.response.send_message("Nur die beiden Spieler können das Ergebnis bestätigen.", ephemeral=True)
+            return False
+
+        if self.confirmer_id is None:
+            await interaction.response.send_message("Der bestätigende Spieler konnte nicht ermittelt werden.", ephemeral=True)
             return False
 
         if interaction.user.id != self.confirmer_id:
@@ -886,15 +1025,30 @@ class ResultConfirmationView(discord.ui.View):
 
         return True
 
-    @discord.ui.button(label="Ergebnis bestätigen", style=discord.ButtonStyle.success)
+    @discord.ui.button(
+        label="Ergebnis bestätigen",
+        style=discord.ButtonStyle.success,
+        custom_id="ranked:result_confirm",
+    )
     async def confirm_callback(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
         del button
-        result = self.cog.pending_results.get(self.match_id)
-        match = self.cog.active_matches.get(self.match_id)
-        if result is None or match is None or result.submission_id != self.submission_id:
+        match_id = self.resolve_match_id(interaction)
+        if match_id is None:
             await interaction.response.send_message("Dieses Ergebnis ist nicht mehr offen.", ephemeral=True)
             return
 
+        self.match_id = match_id
+        match = self.cog.active_matches.get(match_id)
+        result = self.cog.get_pending_result_for_confirmation(match_id, interaction.message)
+        if (
+            result is None
+            or match is None
+            or (self.submission_id is not None and result.submission_id != self.submission_id)
+        ):
+            await interaction.response.send_message("Dieses Ergebnis ist nicht mehr offen.", ephemeral=True)
+            return
+
+        self.submission_id = result.submission_id
         results_channel = await self.cog.fetch_results_channel()
         if results_channel is None:
             await interaction.response.send_message("Der Ergebnis-Channel konnte nicht gefunden werden.", ephemeral=True)
@@ -1000,7 +1154,7 @@ class ResultEntryView(discord.ui.View):
             )
             return
 
-        if self.cog.pending_results.get(self.match_id) is not None:
+        if self.cog.pending_results.get(match.match_id) is not None:
             await interaction.response.send_message(
                 "Für dieses Match wurde bereits ein Ergebnis eingetragen und wartet auf Bestätigung.",
                 ephemeral=True,
@@ -1398,12 +1552,21 @@ class Ranked(commands.Cog):
         self.next_match_id = 1
         self.next_result_submission_id = 1
         self.panel_states: dict[int, PanelState] = {}
+        self.pending_withdraw_tasks: dict[int, asyncio.Task[None]] = {}
 
     async def cog_load(self) -> None:
         await ensure_ranked_storage(self.bot)
+        await self.restore_pending_matches()
         await self.restore_active_matches()
         self.bot.add_view(QueuePanel(self))
         self.bot.add_view(ResultEntryView(self))
+        self.bot.add_view(PendingMatchView(self))
+        self.bot.add_view(ResultConfirmationView(self))
+
+    async def cog_unload(self) -> None:
+        for task in self.pending_withdraw_tasks.values():
+            task.cancel()
+        self.pending_withdraw_tasks.clear()
 
     # In-Memory-Zustand fuer Panels, Queues und laufende Matches.
     def get_or_create_panel_state(self, message: discord.Message) -> PanelState:
@@ -1428,6 +1591,243 @@ class Ranked(commands.Cog):
                 return match
         return None
 
+    @staticmethod
+    def parse_db_timestamp(value: str | None) -> datetime:
+        if not value:
+            return datetime.now(timezone.utc)
+        try:
+            parsed = datetime.fromisoformat(value)
+        except ValueError:
+            return datetime.now(timezone.utc)
+        if parsed.tzinfo is None:
+            return parsed.replace(tzinfo=timezone.utc)
+        return parsed.astimezone(timezone.utc)
+
+    def is_pending_match_withdraw_enabled(self, match: PendingMatchState) -> bool:
+        return datetime.now(timezone.utc) >= match.created_at + WITHDRAW_ENABLE_DELAY
+
+    def build_pending_match_view(self, match: PendingMatchState) -> PendingMatchView:
+        return PendingMatchView(
+            self,
+            match.match_id,
+            withdraw_enabled=self.is_pending_match_withdraw_enabled(match),
+        )
+
+    async def cancel_pending_match(self, interaction: discord.Interaction, pending_match: PendingMatchState) -> None:
+        if len(pending_match.confirmed_user_ids) == 0:
+            await interaction.response.send_message(
+                "Dieses Match kann erst vom bestaetigenden Spieler abgebrochen werden.",
+                ephemeral=True,
+            )
+            return
+
+        if len(pending_match.confirmed_user_ids) > 1:
+            await interaction.response.send_message(
+                "Dieses Match wurde bereits von beiden Spielern bestaetigt und kann hier nicht abgebrochen werden.",
+                ephemeral=True,
+            )
+            return
+
+        if interaction.user.id not in pending_match.confirmed_user_ids:
+            await interaction.response.send_message(
+                "Nur der Spieler, der dieses Match bestaetigt hat, kann es abbrechen.",
+                ephemeral=True,
+            )
+            return
+
+        thread = await self.fetch_thread(pending_match.thread_id)
+        if thread is None:
+            await interaction.response.send_message(
+                "Der Match-Thread konnte nicht gefunden werden. Match bleibt offen.",
+                ephemeral=True,
+            )
+            return
+
+        await interaction.response.send_message("Match wird abgebrochen und nicht gewertet.", ephemeral=True)
+        try:
+            await thread.delete()
+        except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+            await interaction.followup.send(
+                "Der Match-Thread konnte nicht geloescht werden. Match bleibt offen.",
+                ephemeral=True,
+            )
+            return
+
+        results_channel = await self.fetch_results_channel()
+        if results_channel is not None:
+            try:
+                await results_channel.send(embed=build_cancel_match_embed(pending_match.match_id))
+            except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+                pass
+
+        self.pending_matches.pop(pending_match.match_id, None)
+        self.cancel_pending_withdraw_activation(pending_match.match_id)
+        await mark_ranked_match_cancelled(self.bot, pending_match.match_id)
+
+    def cancel_pending_withdraw_activation(self, match_id: int) -> None:
+        task = self.pending_withdraw_tasks.pop(match_id, None)
+        if task is not None:
+            task.cancel()
+
+    def schedule_pending_withdraw_activation(self, match: PendingMatchState) -> None:
+        self.cancel_pending_withdraw_activation(match.match_id)
+        if self.is_pending_match_withdraw_enabled(match):
+            return
+
+        delay_seconds = max(
+            (match.created_at + WITHDRAW_ENABLE_DELAY - datetime.now(timezone.utc)).total_seconds(),
+            0.0,
+        )
+        self.pending_withdraw_tasks[match.match_id] = asyncio.create_task(
+            self.enable_pending_withdraw_button_after_delay(match.match_id, delay_seconds),
+        )
+
+    async def enable_pending_withdraw_button_after_delay(self, match_id: int, delay_seconds: float) -> None:
+        try:
+            await asyncio.sleep(delay_seconds)
+            match = self.pending_matches.get(match_id)
+            if match is None:
+                return
+            await self.repair_pending_match_view(match)
+        except asyncio.CancelledError:
+            pass
+        finally:
+            self.pending_withdraw_tasks.pop(match_id, None)
+
+    async def recover_pending_match_from_message(
+        self,
+        message: discord.Message | None,
+        *,
+        expected_match_id: int | None = None,
+    ) -> PendingMatchState | None:
+        if message is None:
+            return None
+        if not isinstance(message.channel, discord.Thread):
+            return None
+        if not message.embeds:
+            return None
+
+        embed = message.embeds[0]
+        title = embed.title or ""
+        description = embed.description or ""
+
+        match_id_match = MATCH_ID_PATTERN.search(title)
+        if match_id_match is None:
+            return None
+        match_id = int(match_id_match.group(1))
+        if expected_match_id is not None and match_id != expected_match_id:
+            return None
+
+        players = [int(user_id) for user_id in MENTION_PATTERN.findall(description)]
+        unique_players: list[int] = []
+        for player_id in players:
+            if player_id not in unique_players:
+                unique_players.append(player_id)
+        if len(unique_players) != 2:
+            return None
+
+        queue_name = "Ranked"
+        if " Match zwischen " in description:
+            queue_name = description.split(" Match zwischen ", maxsplit=1)[0].strip() or "Ranked"
+
+        confirmed_user_ids: set[int] = set()
+        for field in embed.fields:
+            if "best" in field.name.casefold():
+                confirmed_user_ids = parse_user_ids_from_lines(field.value)
+                break
+
+        recovered_match = PendingMatchState(
+            match_id=match_id,
+            queue_name=queue_name,
+            player_ids=(unique_players[0], unique_players[1]),
+            thread_id=message.channel.id,
+            confirmed_user_ids=confirmed_user_ids,
+            created_at=message.created_at.astimezone(timezone.utc),
+            pending_message_id=message.id,
+        )
+
+        self.pending_matches[match_id] = recovered_match
+        self.next_match_id = max(self.next_match_id, match_id + 1)
+        await persist_pending_ranked_match(self.bot, recovered_match)
+        self.schedule_pending_withdraw_activation(recovered_match)
+        return recovered_match
+
+    @staticmethod
+    def parse_confirmer_id_from_confirmation_message(message: discord.Message | None) -> int | None:
+        if message is None or message.content is None:
+            return None
+        return parse_user_id_from_mention(message.content)
+
+    @staticmethod
+    def parse_pending_result_from_message(
+        message: discord.Message | None,
+        *,
+        match: MatchState,
+    ) -> PendingResultState | None:
+        if message is None or not message.embeds:
+            return None
+
+        embed = message.embeds[0]
+        winner_id: int | None = None
+        score: tuple[int, int] | None = None
+        averages: dict[int, str] = {}
+        player_one_id, player_two_id = match.player_ids
+        expected_average_fields = {
+            f"Average <@{player_one_id}>": player_one_id,
+            f"Average <@{player_two_id}>": player_two_id,
+        }
+
+        for field in embed.fields:
+            if field.name == "Gewinner":
+                winner_id = parse_user_id_from_mention(field.value)
+            elif field.name == "Spielstand":
+                score = parse_best_of_seven_score(field.value)
+            elif field.name in expected_average_fields:
+                normalized_average = normalize_average(field.value)
+                if normalized_average is not None:
+                    averages[expected_average_fields[field.name]] = normalized_average
+
+        if winner_id is None or score is None:
+            return None
+
+        if len(averages) != 2:
+            return None
+
+        submission_id = message.id
+        return PendingResultState(
+            submission_id=submission_id,
+            match_id=match.match_id,
+            winner_id=winner_id,
+            score=score,
+            score_text=f"{score[0]}:{score[1]}",
+            averages=averages,
+            submitted_by=0,
+            thread_id=match.thread_id,
+            screenshot=message.attachments[0] if message.attachments else None,
+            confirmation_message_id=message.id,
+        )
+
+    def get_pending_result_for_confirmation(
+        self,
+        match_id: int,
+        message: discord.Message | None,
+    ) -> PendingResultState | None:
+        result = self.pending_results.get(match_id)
+        if result is not None:
+            return result
+
+        match = self.active_matches.get(match_id)
+        if match is None:
+            return None
+
+        parsed_result = self.parse_pending_result_from_message(message, match=match)
+        if parsed_result is None:
+            return None
+
+        self.pending_results[match_id] = parsed_result
+        self.next_result_submission_id = max(self.next_result_submission_id, parsed_result.submission_id + 1)
+        return parsed_result
+
     async def restore_active_matches(self) -> None:
         restored_matches = await fetch_active_ranked_matches(self.bot)
         for restored_match in restored_matches:
@@ -1441,6 +1841,72 @@ class Ranked(commands.Cog):
                 continue
             self.active_matches[match.match_id] = match
             self.next_match_id = max(self.next_match_id, match.match_id + 1)
+
+    async def restore_pending_matches(self) -> None:
+        restored_matches = await fetch_pending_ranked_matches(self.bot)
+        for restored_match in restored_matches:
+            match = PendingMatchState(
+                match_id=restored_match["match_id"],
+                queue_name=restored_match["queue_name"],
+                player_ids=restored_match["player_ids"],
+                thread_id=restored_match["thread_id"],
+                created_at=self.parse_db_timestamp(restored_match.get("created_at")),
+            )
+            if await self.fetch_thread(match.thread_id) is None:
+                await mark_ranked_match_cancelled(self.bot, match.match_id)
+                continue
+            self.pending_matches[match.match_id] = match
+            self.next_match_id = max(self.next_match_id, match.match_id + 1)
+            await self.repair_pending_match_view(match)
+            self.schedule_pending_withdraw_activation(match)
+
+    async def repair_pending_match_view(self, match: PendingMatchState) -> None:
+        thread = await self.fetch_thread(match.thread_id)
+        if thread is None:
+            return
+
+        target_message: discord.Message | None = None
+        title_token = f"#{match.match_id:03d}"
+        if match.pending_message_id is not None:
+            try:
+                target_message = await thread.fetch_message(match.pending_message_id)
+            except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+                target_message = None
+
+        if target_message is None:
+            try:
+                async for message in thread.history(limit=50):
+                    bot_user = self.bot.user
+                    if bot_user is None or message.author.id != bot_user.id:
+                        continue
+                    if not message.embeds:
+                        continue
+
+                    embed = message.embeds[0]
+                    title = (embed.title or "").casefold()
+                    if title_token in title and "best" in title:
+                        target_message = message
+                        break
+            except (discord.Forbidden, discord.HTTPException):
+                target_message = None
+
+        if target_message is not None:
+            for field in target_message.embeds[0].fields if target_message.embeds else []:
+                if "best" in field.name.casefold():
+                    match.confirmed_user_ids = parse_user_ids_from_lines(field.value)
+                    break
+            match.pending_message_id = target_message.id
+            try:
+                await target_message.edit(embed=build_pending_match_embed(match), view=self.build_pending_match_view(match))
+                return
+            except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+                pass
+
+        try:
+            posted = await thread.send(embed=build_pending_match_embed(match), view=self.build_pending_match_view(match))
+            match.pending_message_id = posted.id
+        except (discord.Forbidden, discord.HTTPException):
+            pass
 
     def is_user_locked(self, user_id: int) -> bool:
         if any(user_id in match.player_ids for match in self.active_matches.values()):
@@ -1508,14 +1974,18 @@ class Ranked(commands.Cog):
             queue_name=queue_name,
             player_ids=player_ids,
             thread_id=thread.id,
+            created_at=datetime.now(timezone.utc),
         )
         self.pending_matches[match_id] = pending_match
+        await persist_pending_ranked_match(self.bot, pending_match)
 
-        view = PendingMatchView(self, match_id)
-        await thread.send(
+        view = self.build_pending_match_view(pending_match)
+        pending_message = await thread.send(
             embed=build_pending_match_embed(pending_match),
             view=view,
         )
+        pending_match.pending_message_id = pending_message.id
+        self.schedule_pending_withdraw_activation(pending_match)
         # await thread.send(
         #     content=(
         #         f"{player_one.mention} {player_two.mention}\n"
@@ -1559,6 +2029,7 @@ class Ranked(commands.Cog):
         pending_match = self.pending_matches.pop(match_id, None)
         if pending_match is None:
             return None
+        self.cancel_pending_withdraw_activation(match_id)
 
         active_match = MatchState(
             match_id=pending_match.match_id,
@@ -1776,45 +2247,7 @@ class Ranked(commands.Cog):
             )
             return
 
-        if len(pending_match.confirmed_user_ids) == 0:
-            await interaction.response.send_message(
-                "Dieses Match kann erst vom bestaetigenden Spieler abgebrochen werden.",
-                ephemeral=True,
-            )
-            return
-
-        if len(pending_match.confirmed_user_ids) > 1:
-            await interaction.response.send_message(
-                "Dieses Match wurde bereits von beiden Spielern bestaetigt und kann hier nicht abgebrochen werden.",
-                ephemeral=True,
-            )
-            return
-
-        if interaction.user.id not in pending_match.confirmed_user_ids:
-            await interaction.response.send_message(
-                "Nur der Spieler, der dieses Match bestaetigt hat, kann es abbrechen.",
-                ephemeral=True,
-            )
-            return
-
-        await interaction.response.send_message("Match wird abgebrochen und nicht gewertet.", ephemeral=True)
-        try:
-            await thread.delete()
-        except (discord.NotFound, discord.Forbidden, discord.HTTPException):
-            await interaction.followup.send(
-                "Der Match-Thread konnte nicht geloescht werden. Match bleibt offen.",
-                ephemeral=True,
-            )
-            return
-
-        results_channel = await self.fetch_results_channel()
-        if results_channel is not None:
-            try:
-                await results_channel.send(embed=build_cancel_match_embed(pending_match.match_id))
-            except (discord.NotFound, discord.Forbidden, discord.HTTPException):
-                pass
-
-        self.pending_matches.pop(pending_match.match_id, None)
+        await self.cancel_pending_match(interaction, pending_match)
 
     @app_commands.command(name="world_ranking", description="Zeigt das aktuelle World Ranking")
     @app_commands.checks.has_permissions(administrator=True)
