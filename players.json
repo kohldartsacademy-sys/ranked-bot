@@ -208,18 +208,28 @@
       "userId": 1330499669490667653,
       "name": "Dennis Wehner",
       "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1216,
+      "worldRating": 1217,
       "worldRank": 4,
-      "worldWins": 22,
+      "worldWins": 23,
       "worldLosses": 3,
-      "monthlyRating": 39,
-      "monthlyRank": 6,
-      "monthlyWins": 5,
+      "monthlyRating": 40,
+      "monthlyRank": 4,
+      "monthlyWins": 6,
       "monthlyLosses": 0,
-      "games": 25,
-      "winrate": 88.0,
+      "games": 26,
+      "winrate": 88.5,
       "overallAverage": 68.47,
       "recentMatches": [
+        {
+          "matchId": 1131,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:0",
+          "average": "68.32",
+          "eloChange": 1,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1116,
           "result": "Win",
@@ -258,16 +268,6 @@
           "score": "4:2",
           "average": "68.06",
           "eloChange": 2,
-          "queue": "dart"
-        },
-        {
-          "matchId": 1099,
-          "result": "Win",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "4:1",
-          "average": "68.15",
-          "eloChange": 16,
           "queue": "dart"
         }
       ]
@@ -553,7 +553,7 @@
       "worldWins": 46,
       "worldLosses": 19,
       "monthlyRating": 39,
-      "monthlyRank": 5,
+      "monthlyRank": 6,
       "monthlyWins": 6,
       "monthlyLosses": 0,
       "games": 65,
@@ -1949,7 +1949,7 @@
       "worldWins": 5,
       "worldLosses": 4,
       "monthlyRating": 40,
-      "monthlyRank": 4,
+      "monthlyRank": 5,
       "monthlyWins": 3,
       "monthlyLosses": 2,
       "games": 9,
@@ -6061,18 +6061,28 @@
       "userId": 1245485490421891165,
       "name": "Andy Bühner",
       "avatar": "https://cdn.discordapp.com/avatars/1245485490421891165/451b17f84483bd4cfc1aaf0f34c58183.png?size=1024",
-      "worldRating": 688,
+      "worldRating": 687,
       "worldRank": 112,
       "worldWins": 10,
-      "worldLosses": 55,
+      "worldLosses": 56,
       "monthlyRating": 26,
       "monthlyRank": 14,
       "monthlyWins": 1,
-      "monthlyLosses": 7,
-      "games": 65,
-      "winrate": 15.4,
-      "overallAverage": 197.89,
+      "monthlyLosses": 8,
+      "games": 66,
+      "winrate": 15.2,
+      "overallAverage": 195.58,
       "recentMatches": [
+        {
+          "matchId": 1131,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "4:0",
+          "average": "45.62",
+          "eloChange": -1,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1120,
           "result": "Loss",
@@ -6111,16 +6121,6 @@
           "score": "4:2",
           "average": "59.74",
           "eloChange": -2,
-          "queue": "dart"
-        },
-        {
-          "matchId": 1100,
-          "result": "Loss",
-          "opponentId": 906968918327967764,
-          "opponentName": "Michel Ellrich",
-          "score": "4:1",
-          "average": "5492.0",
-          "eloChange": -8,
           "queue": "dart"
         }
       ]
