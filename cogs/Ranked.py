@@ -24,6 +24,15 @@ from config.SqliteStore import (
     persist_ranked_match_result,
 )
 
+
+# TODO:
+#  Problem, wenn Match erstellt und nur Spieler A bestätigt, Spieler B ist AFK
+# - 5minuten timer
+# - pending state für matches, direkt beim erstellen des threads in die db mit pending, wenn beide bestätigen dann active und so weiter
+# - command um pending und active matches auszugeben für admins
+# - command zum cancel für admins
+# - command zum canceln für den spieler der bestätigt hat
+
 # =============================
 # Konstanten und Parser-Patterns für Queue, Threads und Ergebnisse.
 # =============================
@@ -643,6 +652,12 @@ def build_withdrawn_match_embed(match_id: int) -> discord.Embed:
         description="Das Match wurde zurückgezogen.",
         colour=discord.Color.red(),
     )
+def build_cancel_match_embed(match_id: int) -> discord.Embed:
+    return discord.Embed(
+        title=f"Match Ergebnis #{match_id:03d}",
+        description="Das Match wurde abgebrochen.",
+        colour=discord.Color.red(),
+    )
 
 
 def build_ranking_embed(
@@ -1029,7 +1044,8 @@ class ResultModal(discord.ui.Modal):
 
         self.winner_select = discord.ui.Select(
             placeholder="Gewinner auswählen",
-            required=True,
+            min_values=1,
+            max_values=1,
             options=[
                 discord.SelectOption(label=player_one_name, value=str(match.player_ids[0])),
                 discord.SelectOption(label=player_two_name, value=str(match.player_ids[1])),
@@ -1406,6 +1422,12 @@ class Ranked(commands.Cog):
     def get_active_match_by_id(self, match_id: int) -> MatchState | None:
         return self.active_matches.get(match_id)
 
+    def get_pending_match_by_thread_id(self, thread_id: int) -> PendingMatchState | None:
+        for match in self.pending_matches.values():
+            if match.thread_id == thread_id:
+                return match
+        return None
+
     async def restore_active_matches(self) -> None:
         restored_matches = await fetch_active_ranked_matches(self.bot)
         for restored_match in restored_matches:
@@ -1696,7 +1718,23 @@ class Ranked(commands.Cog):
             )
             return
 
-        await interaction.response.send_modal(ResultModal(self, match, interaction.guild, entry_message_id))
+        try:
+            await interaction.response.send_modal(ResultModal(self, match, interaction.guild, entry_message_id))
+        except Exception as exc:
+            print(f"Result modal failed: {type(exc).__name__}: {exc}")
+            if entry_message_id is not None:
+                thread = await self.fetch_thread(match.thread_id)
+                if thread is not None:
+                    try:
+                        message = await thread.fetch_message(entry_message_id)
+                        await message.edit(view=ResultEntryView(self, match.match_id))
+                    except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+                        pass
+
+            if interaction.response.is_done():
+                await interaction.followup.send("Das Ergebnisformular konnte nicht geoeffnet werden.", ephemeral=True)
+            else:
+                await interaction.response.send_message("Das Ergebnisformular konnte nicht geoeffnet werden.", ephemeral=True)
 
     # Slash-Commands fuer Admins.
     @app_commands.command(name="queue_panel", description="Sendet das Queue-Panel in den Chat")
@@ -1715,6 +1753,68 @@ class Ranked(commands.Cog):
     @app_commands.guild_only()
     async def result(self, interaction: discord.Interaction) -> None:
         await self.open_result_modal(interaction)
+
+    @app_commands.command(
+        name="cancel_match",
+        description="Bricht ein offenes Match ab, wenn maximal ein Spieler bestaetigt hat",
+    )
+    @app_commands.guild_only()
+    async def cancel_match(self, interaction: discord.Interaction) -> None:
+        if not isinstance(interaction.channel, discord.Thread):
+            await interaction.response.send_message(
+                "Dieser Befehl funktioniert nur in einem offenen Match-Thread.",
+                ephemeral=True,
+            )
+            return
+
+        thread = interaction.channel
+        pending_match = self.get_pending_match_by_thread_id(thread.id)
+        if pending_match is None:
+            await interaction.response.send_message(
+                "In diesem Thread wurde kein offenes Match gefunden.",
+                ephemeral=True,
+            )
+            return
+
+        if len(pending_match.confirmed_user_ids) == 0:
+            await interaction.response.send_message(
+                "Dieses Match kann erst vom bestaetigenden Spieler abgebrochen werden.",
+                ephemeral=True,
+            )
+            return
+
+        if len(pending_match.confirmed_user_ids) > 1:
+            await interaction.response.send_message(
+                "Dieses Match wurde bereits von beiden Spielern bestaetigt und kann hier nicht abgebrochen werden.",
+                ephemeral=True,
+            )
+            return
+
+        if interaction.user.id not in pending_match.confirmed_user_ids:
+            await interaction.response.send_message(
+                "Nur der Spieler, der dieses Match bestaetigt hat, kann es abbrechen.",
+                ephemeral=True,
+            )
+            return
+
+        await interaction.response.send_message("Match wird abgebrochen und nicht gewertet.", ephemeral=True)
+        try:
+            await thread.delete()
+        except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+            await interaction.followup.send(
+                "Der Match-Thread konnte nicht geloescht werden. Match bleibt offen.",
+                ephemeral=True,
+            )
+            return
+
+        results_channel = await self.fetch_results_channel()
+        if results_channel is not None:
+            try:
+                await results_channel.send(embed=build_cancel_match_embed(pending_match.match_id))
+            except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+                pass
+
+        self.pending_matches.pop(pending_match.match_id, None)
 
     @app_commands.command(name="world_ranking", description="Zeigt das aktuelle World Ranking")
     @app_commands.checks.has_permissions(administrator=True)
