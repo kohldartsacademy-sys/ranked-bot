@@ -208,18 +208,28 @@
       "userId": 1330499669490667653,
       "name": "Dennis Wehner",
       "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1209,
+      "worldRating": 1215,
       "worldRank": 4,
-      "worldWins": 24,
+      "worldWins": 25,
       "worldLosses": 4,
-      "monthlyRating": 46,
-      "monthlyRank": 5,
-      "monthlyWins": 7,
+      "monthlyRating": 52,
+      "monthlyRank": 4,
+      "monthlyWins": 8,
       "monthlyLosses": 1,
-      "games": 28,
-      "winrate": 85.7,
-      "overallAverage": 68.24,
+      "games": 29,
+      "winrate": 86.2,
+      "overallAverage": 68.27,
       "recentMatches": [
+        {
+          "matchId": 1139,
+          "result": "Win",
+          "opponentId": 1474322752432377886,
+          "opponentName": "Sebe K",
+          "score": "0:4",
+          "average": "69.1",
+          "eloChange": 6,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1136,
           "result": "Loss",
@@ -257,16 +267,6 @@
           "opponentName": "Sebe K",
           "score": "4:1",
           "average": "57.52",
-          "eloChange": 7,
-          "queue": "dart"
-        },
-        {
-          "matchId": 1114,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "4:3",
-          "average": "61.55",
           "eloChange": 7,
           "queue": "dart"
         }
@@ -2770,7 +2770,7 @@
       "worldWins": 6,
       "worldLosses": 7,
       "monthlyRating": 47,
-      "monthlyRank": 4,
+      "monthlyRank": 5,
       "monthlyWins": 4,
       "monthlyLosses": 1,
       "games": 13,
@@ -4513,80 +4513,12 @@
         }
       ]
     },
-    "1474322752432377886": {
-      "userId": 1474322752432377886,
-      "name": "Sebe K",
-      "avatar": "https://cdn.discordapp.com/avatars/1474322752432377886/c20f8dae1bb7b0d8d4888a08ddcdf3af.png?size=1024",
-      "worldRating": 946,
-      "worldRank": 89,
-      "worldWins": 16,
-      "worldLosses": 18,
-      "monthlyRating": 5,
-      "monthlyRank": 27,
-      "monthlyWins": 1,
-      "monthlyLosses": 5,
-      "games": 34,
-      "winrate": 47.1,
-      "overallAverage": 52.53,
-      "recentMatches": [
-        {
-          "matchId": 1132,
-          "result": "Loss",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "2:4",
-          "average": "54.27",
-          "eloChange": -19,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1125,
-          "result": "Loss",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "4.3",
-          "average": "47.8",
-          "eloChange": -21,
-          "queue": "dart"
-        },
-        {
-          "matchId": 1120,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:3",
-          "average": "42.32",
-          "eloChange": 5,
-          "queue": "dart"
-        },
-        {
-          "matchId": 1116,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "4:1",
-          "average": "55.0",
-          "eloChange": -7,
-          "queue": "dart"
-        },
-        {
-          "matchId": 1064,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:0",
-          "average": "58.26",
-          "eloChange": -5,
-          "queue": "dart"
-        }
-      ]
-    },
     "1458533805508788439": {
       "userId": 1458533805508788439,
       "name": "Markus Wolf",
       "avatar": "https://cdn.discordapp.com/avatars/1458533805508788439/cceebb03d187b1443f34be5a65249e8d.png?size=1024",
       "worldRating": 946,
-      "worldRank": 90,
+      "worldRank": 89,
       "worldWins": 0,
       "worldLosses": 4,
       "monthlyRating": 0,
@@ -4644,7 +4576,7 @@
       "name": "Daniel Kayn’t Miss",
       "avatar": "https://cdn.discordapp.com/avatars/321563218226970626/967178e06842b26150cea78ec9ed8ec4.png?size=1024",
       "worldRating": 945,
-      "worldRank": 91,
+      "worldRank": 90,
       "worldWins": 1,
       "worldLosses": 5,
       "monthlyRating": 0,
@@ -4712,7 +4644,7 @@
       "name": "Passi1704",
       "avatar": "https://cdn.discordapp.com/avatars/1467938366183178457/f7f2e9361e8a54ce6e72580ac7b967af.png?size=1024",
       "worldRating": 941,
-      "worldRank": 92,
+      "worldRank": 91,
       "worldWins": 4,
       "worldLosses": 9,
       "monthlyRating": 0,
@@ -4772,6 +4704,74 @@
           "average": "51.27",
           "eloChange": -15,
           "queue": "scolia"
+        }
+      ]
+    },
+    "1474322752432377886": {
+      "userId": 1474322752432377886,
+      "name": "Sebe K",
+      "avatar": "https://cdn.discordapp.com/avatars/1474322752432377886/c20f8dae1bb7b0d8d4888a08ddcdf3af.png?size=1024",
+      "worldRating": 940,
+      "worldRank": 92,
+      "worldWins": 16,
+      "worldLosses": 19,
+      "monthlyRating": 5,
+      "monthlyRank": 27,
+      "monthlyWins": 1,
+      "monthlyLosses": 6,
+      "games": 35,
+      "winrate": 45.7,
+      "overallAverage": 52.57,
+      "recentMatches": [
+        {
+          "matchId": 1139,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "53.68",
+          "eloChange": -6,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1132,
+          "result": "Loss",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "2:4",
+          "average": "54.27",
+          "eloChange": -19,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1125,
+          "result": "Loss",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "4.3",
+          "average": "47.8",
+          "eloChange": -21,
+          "queue": "dart"
+        },
+        {
+          "matchId": 1120,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:3",
+          "average": "42.32",
+          "eloChange": 5,
+          "queue": "dart"
+        },
+        {
+          "matchId": 1116,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "4:1",
+          "average": "55.0",
+          "eloChange": -7,
+          "queue": "dart"
         }
       ]
     },
