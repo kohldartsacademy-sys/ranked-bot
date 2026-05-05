@@ -1,2 +1,3 @@
-.env
-dartliga.db
+config/.env
+.idea/
+/dartliga.db
