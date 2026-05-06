@@ -59,6 +59,7 @@ LEADERBOARD_FILE = "leaderboard.html"
 PLAYER_DATA_FILE = "players.json"
 RANKED_RESULT_STATUS_SQL = "status IN ('completed', 'confirmed') AND winner_id IS NOT NULL AND loser_id IS NOT NULL"
 WITHDRAW_ENABLE_DELAY = timedelta(minutes=5)
+RESULT_SELF_CONFIRM_DELAY = timedelta(minutes=1)
 
 # =============================
 # WEBSITE - generate static html for displaying ranking on web
@@ -565,6 +566,7 @@ class PendingResultState:
     averages: dict[int, str]
     submitted_by: int
     thread_id: int
+    submitted_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     screenshot: discord.Attachment | None = None
     confirmation_message_id: int | None = None
 
@@ -1065,7 +1067,22 @@ class ResultConfirmationView(discord.ui.View):
             await interaction.response.send_message("Der bestätigende Spieler konnte nicht ermittelt werden.", ephemeral=True)
             return False
 
-        if interaction.user.id != self.confirmer_id:
+        custom_id = ""
+        if isinstance(interaction.data, dict):
+            custom_id = str(interaction.data.get("custom_id") or "")
+        can_confirm_as_submitter = (
+            custom_id == "ranked:result_confirm"
+            and interaction.user.id == result.submitted_by
+            and self.cog.is_result_self_confirm_available(result)
+        )
+
+        if interaction.user.id != self.confirmer_id and not can_confirm_as_submitter:
+            if custom_id == "ranked:result_confirm" and interaction.user.id == result.submitted_by:
+                await interaction.response.send_message(
+                    "Du kannst dein eigenes Ergebnis erst nach 1 Minute selbst bestätigen.",
+                    ephemeral=True,
+                )
+                return False
             await interaction.response.send_message(
                 f"Nur <@{self.confirmer_id}> kann dieses Ergebnis bestätigen.",
                 ephemeral=True,
@@ -1125,7 +1142,7 @@ class ResultConfirmationView(discord.ui.View):
 
         if already_published:
             self.stop()
-            self.cog.pending_results.pop(self.match_id, None)
+            self.cog.remove_pending_result(self.match_id)
             self.cog.active_matches.pop(self.match_id, None)
             await self.cog.refresh_panels(refresh_all=True)
             thread = await self.cog.fetch_thread(match.thread_id)
@@ -1149,7 +1166,7 @@ class ResultConfirmationView(discord.ui.View):
         await mark_ranked_match_result_published(self.cog.bot, match.match_id, results_channel.id, results_message.id)
 
         self.stop()
-        self.cog.pending_results.pop(self.match_id, None)
+        self.cog.remove_pending_result(self.match_id)
         self.cog.active_matches.pop(self.match_id, None)
         await self.cog.refresh_panels(refresh_all=True)
 
@@ -1188,7 +1205,7 @@ class ResultConfirmationView(discord.ui.View):
             return
 
         self.stop()
-        self.cog.pending_results.pop(match_id, None)
+        self.cog.remove_pending_result(match_id)
         await interaction.response.edit_message(content="Dem Ergebnis wurde widersprochen.", view=None)
         if not await self.cog.post_result_entry_button(match):
             await interaction.followup.send(
@@ -1409,7 +1426,7 @@ class ResultModal(discord.ui.Modal):
 
         thread = await self.cog.fetch_thread(self.match.thread_id)
         if thread is None:
-            self.cog.pending_results.pop(self.match.match_id, None)
+            self.cog.remove_pending_result(self.match.match_id)
             await self.restore_result_entry_button()
             await interaction.response.send_message("Der Match-Thread konnte nicht gefunden werden.", ephemeral=True)
             return
@@ -1427,12 +1444,13 @@ class ResultModal(discord.ui.Modal):
                 view=confirmation_view,
             )
         except discord.HTTPException:
-            self.cog.pending_results.pop(self.match.match_id, None)
+            self.cog.remove_pending_result(self.match.match_id)
             await self.restore_result_entry_button()
             await interaction.followup.send("Das Ergebnis konnte nicht im Match-Thread gesendet werden.", ephemeral=True)
             return
 
         pending_result.confirmation_message_id = message.id
+        self.cog.schedule_result_self_confirm_notification(pending_result)
         await interaction.followup.send("Ergebnis zur Bestätigung in den Match-Thread gesendet.", ephemeral=True)
 
 
@@ -1634,6 +1652,7 @@ class Ranked(commands.Cog):
         self.next_result_submission_id = 1
         self.panel_states: dict[int, PanelState] = {}
         self.pending_withdraw_tasks: dict[int, asyncio.Task[None]] = {}
+        self.result_self_confirm_tasks: dict[int, asyncio.Task[None]] = {}
 
     async def cog_load(self) -> None:
         await ensure_ranked_storage(self.bot)
@@ -1648,6 +1667,9 @@ class Ranked(commands.Cog):
         for task in self.pending_withdraw_tasks.values():
             task.cancel()
         self.pending_withdraw_tasks.clear()
+        for task in self.result_self_confirm_tasks.values():
+            task.cancel()
+        self.result_self_confirm_tasks.clear()
 
     # In-Memory-Zustand fuer Panels, Queues und laufende Matches.
     def get_or_create_panel_state(self, message: discord.Message) -> PanelState:
@@ -1698,6 +1720,15 @@ class Ranked(commands.Cog):
 
     def is_pending_match_withdraw_enabled(self, match: PendingMatchState) -> bool:
         return datetime.now(timezone.utc) >= match.created_at + WITHDRAW_ENABLE_DELAY
+
+    @staticmethod
+    def is_result_self_confirm_available(result: PendingResultState) -> bool:
+        return datetime.now(timezone.utc) >= result.submitted_at + RESULT_SELF_CONFIRM_DELAY
+
+    @staticmethod
+    def get_result_confirmer_id(match: MatchState, result: PendingResultState) -> int:
+        player_one_id, player_two_id = match.player_ids
+        return player_two_id if result.submitted_by == player_one_id else player_one_id
 
     def build_pending_match_view(self, match: PendingMatchState) -> PendingMatchView:
         return PendingMatchView(
@@ -1793,13 +1824,18 @@ class Ranked(commands.Cog):
 
         self.pending_matches.pop(match.match_id, None)
         self.active_matches.pop(match.match_id, None)
-        self.pending_results.pop(match.match_id, None)
+        self.remove_pending_result(match.match_id)
         self.cancel_pending_withdraw_activation(match.match_id)
         await mark_ranked_match_cancelled(self.bot, match.match_id)
         await self.refresh_panels(refresh_all=True)
 
     def cancel_pending_withdraw_activation(self, match_id: int) -> None:
         task = self.pending_withdraw_tasks.pop(match_id, None)
+        if task is not None:
+            task.cancel()
+
+    def cancel_result_self_confirm_notification(self, match_id: int) -> None:
+        task = self.result_self_confirm_tasks.pop(match_id, None)
         if task is not None:
             task.cancel()
 
@@ -1827,6 +1863,47 @@ class Ranked(commands.Cog):
             pass
         finally:
             self.pending_withdraw_tasks.pop(match_id, None)
+
+    def schedule_result_self_confirm_notification(self, result: PendingResultState) -> None:
+        self.cancel_result_self_confirm_notification(result.match_id)
+        delay_seconds = max(
+            (result.submitted_at + RESULT_SELF_CONFIRM_DELAY - datetime.now(timezone.utc)).total_seconds(),
+            0.0,
+        )
+        self.result_self_confirm_tasks[result.match_id] = asyncio.create_task(
+            self.notify_result_self_confirm_available(result.match_id, result.submission_id, delay_seconds),
+        )
+
+    async def notify_result_self_confirm_available(
+        self,
+        match_id: int,
+        submission_id: int,
+        delay_seconds: float,
+    ) -> None:
+        try:
+            await asyncio.sleep(delay_seconds)
+            result = self.pending_results.get(match_id)
+            match = self.active_matches.get(match_id)
+            if result is None or match is None or result.submission_id != submission_id:
+                return
+
+            thread = await self.fetch_thread(result.thread_id)
+            if thread is None:
+                return
+
+            try:
+                await thread.send(
+                    f"<@{result.submitted_by}>, <@{self.get_result_confirmer_id(match, result)}> hat noch nicht bestÃ¤tigt. "
+                    "Du kannst dein Ergebnis jetzt selbst bestÃ¤tigen."
+                )
+            except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+                pass
+        except asyncio.CancelledError:
+            pass
+        finally:
+            current_task = asyncio.current_task()
+            if self.result_self_confirm_tasks.get(match_id) is current_task:
+                self.result_self_confirm_tasks.pop(match_id, None)
 
     async def recover_pending_match_from_message(
         self,
@@ -1961,6 +2038,10 @@ class Ranked(commands.Cog):
         self.pending_results[match_id] = parsed_result
         self.next_result_submission_id = max(self.next_result_submission_id, parsed_result.submission_id + 1)
         return parsed_result
+
+    def remove_pending_result(self, match_id: int) -> PendingResultState | None:
+        self.cancel_result_self_confirm_notification(match_id)
+        return self.pending_results.pop(match_id, None)
 
     async def restore_active_matches(self) -> None:
         restored_matches = await fetch_active_ranked_matches(self.bot)
