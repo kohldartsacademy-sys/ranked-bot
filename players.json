@@ -9,7 +9,7 @@
       "worldWins": 103,
       "worldLosses": 20,
       "monthlyRating": 118,
-      "monthlyRank": 1,
+      "monthlyRank": 2,
       "monthlyWins": 18,
       "monthlyLosses": 1,
       "games": 123,
@@ -5183,12 +5183,80 @@
         }
       ]
     },
+    "1468019197656174774": {
+      "userId": 1468019197656174774,
+      "name": "Christian1980",
+      "avatar": "https://cdn.discordapp.com/avatars/1468019197656174774/64cce093bb1bb13c73a4cc15e229e67f.png?size=1024",
+      "worldRating": 909,
+      "worldRank": 99,
+      "worldWins": 20,
+      "worldLosses": 51,
+      "monthlyRating": 122,
+      "monthlyRank": 1,
+      "monthlyWins": 6,
+      "monthlyLosses": 11,
+      "games": 71,
+      "winrate": 28.2,
+      "overallAverage": 144.36,
+      "recentMatches": [
+        {
+          "matchId": 1162,
+          "result": "Win",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "4:3",
+          "average": "49.1",
+          "eloChange": 15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1160,
+          "result": "Loss",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "4:2",
+          "average": "57.44",
+          "eloChange": -18,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1159,
+          "result": "Loss",
+          "opponentId": 1391715482624593932,
+          "opponentName": "Ronald H",
+          "score": "4:1",
+          "average": "60.13",
+          "eloChange": -9,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1157,
+          "result": "Loss",
+          "opponentId": 1391715482624593932,
+          "opponentName": "Ronald H",
+          "score": "1:4",
+          "average": "55.93",
+          "eloChange": -10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1156,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "3:4",
+          "average": "51.91",
+          "eloChange": -7,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "1359697518513885234": {
       "userId": 1359697518513885234,
       "name": "Chris",
       "avatar": "https://cdn.discordapp.com/avatars/1359697518513885234/680e47718b692a70f8c870a63cdc116d.png?size=1024",
       "worldRating": 905,
-      "worldRank": 99,
+      "worldRank": 100,
       "worldWins": 0,
       "worldLosses": 5,
       "monthlyRating": 0,
@@ -5247,74 +5315,6 @@
           "score": "4:1",
           "average": "51.79",
           "eloChange": -21,
-          "queue": "scolia"
-        }
-      ]
-    },
-    "1468019197656174774": {
-      "userId": 1468019197656174774,
-      "name": "Christian1980",
-      "avatar": "https://cdn.discordapp.com/avatars/1468019197656174774/64cce093bb1bb13c73a4cc15e229e67f.png?size=1024",
-      "worldRating": 894,
-      "worldRank": 100,
-      "worldWins": 19,
-      "worldLosses": 51,
-      "monthlyRating": 107,
-      "monthlyRank": 2,
-      "monthlyWins": 5,
-      "monthlyLosses": 11,
-      "games": 70,
-      "winrate": 27.1,
-      "overallAverage": 145.72,
-      "recentMatches": [
-        {
-          "matchId": 1160,
-          "result": "Loss",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "4:2",
-          "average": "57.44",
-          "eloChange": -18,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1159,
-          "result": "Loss",
-          "opponentId": 1391715482624593932,
-          "opponentName": "Ronald H",
-          "score": "4:1",
-          "average": "60.13",
-          "eloChange": -9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1157,
-          "result": "Loss",
-          "opponentId": 1391715482624593932,
-          "opponentName": "Ronald H",
-          "score": "1:4",
-          "average": "55.93",
-          "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1156,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "3:4",
-          "average": "51.91",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1126,
-          "result": "Win",
-          "opponentId": 1170865043227824178,
-          "opponentName": "Lmk 1170",
-          "score": "4:3",
-          "average": "48.07",
-          "eloChange": 15,
           "queue": "scolia"
         }
       ]
@@ -5523,80 +5523,12 @@
         }
       ]
     },
-    "1327898199058284545": {
-      "userId": 1327898199058284545,
-      "name": "TheShy | Kevin",
-      "avatar": "https://cdn.discordapp.com/avatars/1327898199058284545/84f8183bcac3e3f75e0d1caa5a7f6340.png?size=1024",
-      "worldRating": 883,
-      "worldRank": 104,
-      "worldWins": 13,
-      "worldLosses": 29,
-      "monthlyRating": 34,
-      "monthlyRank": 13,
-      "monthlyWins": 2,
-      "monthlyLosses": 5,
-      "games": 42,
-      "winrate": 31.0,
-      "overallAverage": 55.14,
-      "recentMatches": [
-        {
-          "matchId": 1160,
-          "result": "Win",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "4:2",
-          "average": "61.05",
-          "eloChange": 18,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1103,
-          "result": "Loss",
-          "opponentId": 977270139932258375,
-          "opponentName": "Eddy Money",
-          "score": "4:2",
-          "average": "55.03",
-          "eloChange": -8,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1086,
-          "result": "Loss",
-          "opponentId": 1024998339189690448,
-          "opponentName": "Niklas Strasser",
-          "score": "4:0",
-          "average": "48.06",
-          "eloChange": -12,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1084,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:0",
-          "average": "50.57",
-          "eloChange": -7,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1068,
-          "result": "Loss",
-          "opponentId": 1092072918915219537,
-          "opponentName": "Jannick2412",
-          "score": "4:3",
-          "average": "62.09",
-          "eloChange": -5,
-          "queue": "scolia"
-        }
-      ]
-    },
     "761737659579105301": {
       "userId": 761737659579105301,
       "name": "RocketDarts",
       "avatar": "https://cdn.discordapp.com/avatars/761737659579105301/f4a94165e17a0f43e60d39a5c94cc191.png?size=1024",
       "worldRating": 872,
-      "worldRank": 105,
+      "worldRank": 104,
       "worldWins": 14,
       "worldLosses": 36,
       "monthlyRating": 17,
@@ -5664,7 +5596,7 @@
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
       "worldRating": 869,
-      "worldRank": 106,
+      "worldRank": 105,
       "worldWins": 33,
       "worldLosses": 47,
       "monthlyRating": 16,
@@ -5723,6 +5655,74 @@
           "score": "4:3",
           "average": "54.82",
           "eloChange": -19,
+          "queue": "scolia"
+        }
+      ]
+    },
+    "1327898199058284545": {
+      "userId": 1327898199058284545,
+      "name": "TheShy | Kevin",
+      "avatar": "https://cdn.discordapp.com/avatars/1327898199058284545/84f8183bcac3e3f75e0d1caa5a7f6340.png?size=1024",
+      "worldRating": 868,
+      "worldRank": 106,
+      "worldWins": 13,
+      "worldLosses": 30,
+      "monthlyRating": 34,
+      "monthlyRank": 13,
+      "monthlyWins": 2,
+      "monthlyLosses": 6,
+      "games": 43,
+      "winrate": 30.2,
+      "overallAverage": 55.03,
+      "recentMatches": [
+        {
+          "matchId": 1162,
+          "result": "Loss",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "4:3",
+          "average": "50.44",
+          "eloChange": -15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1160,
+          "result": "Win",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "4:2",
+          "average": "61.05",
+          "eloChange": 18,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1103,
+          "result": "Loss",
+          "opponentId": 977270139932258375,
+          "opponentName": "Eddy Money",
+          "score": "4:2",
+          "average": "55.03",
+          "eloChange": -8,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 1086,
+          "result": "Loss",
+          "opponentId": 1024998339189690448,
+          "opponentName": "Niklas Strasser",
+          "score": "4:0",
+          "average": "48.06",
+          "eloChange": -12,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 1084,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:0",
+          "average": "50.57",
+          "eloChange": -7,
           "queue": "scolia"
         }
       ]
