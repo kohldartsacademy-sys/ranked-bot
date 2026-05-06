@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1356,
+      "worldRating": 1362,
       "worldRank": 1,
-      "worldWins": 102,
+      "worldWins": 103,
       "worldLosses": 20,
-      "monthlyRating": 112,
+      "monthlyRating": 118,
       "monthlyRank": 1,
-      "monthlyWins": 17,
+      "monthlyWins": 18,
       "monthlyLosses": 1,
-      "games": 122,
-      "winrate": 83.6,
-      "overallAverage": 69.34,
+      "games": 123,
+      "winrate": 83.7,
+      "overallAverage": 69.36,
       "recentMatches": [
+        {
+          "matchId": 1161,
+          "result": "Win",
+          "opponentId": 1391715482624593932,
+          "opponentName": "Ronald H",
+          "score": "3:4",
+          "average": "71.35",
+          "eloChange": 6,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1153,
           "result": "Loss",
@@ -55,16 +65,6 @@
           "average": "61.61",
           "eloChange": 2,
           "queue": "DartCounter"
-        },
-        {
-          "matchId": 1135,
-          "result": "Win",
-          "opponentId": 1418878810006360084,
-          "opponentName": "Timmi1616",
-          "score": "1:4",
-          "average": "73.86",
-          "eloChange": 3,
-          "queue": "Scolia"
         }
       ]
     },
@@ -1224,80 +1224,12 @@
         }
       ]
     },
-    "1391715482624593932": {
-      "userId": 1391715482624593932,
-      "name": "Ronald H",
-      "avatar": "https://cdn.discordapp.com/avatars/1391715482624593932/3fe673cc9f318e7fe0e7e420bad6154e.png?size=1024",
-      "worldRating": 1090,
-      "worldRank": 19,
-      "worldWins": 8,
-      "worldLosses": 2,
-      "monthlyRating": 36,
-      "monthlyRank": 12,
-      "monthlyWins": 3,
-      "monthlyLosses": 0,
-      "games": 10,
-      "winrate": 80.0,
-      "overallAverage": 648.27,
-      "recentMatches": [
-        {
-          "matchId": 1159,
-          "result": "Win",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "4:1",
-          "average": "62.53",
-          "eloChange": 9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1157,
-          "result": "Win",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "1:4",
-          "average": "57.3",
-          "eloChange": 10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1102,
-          "result": "Win",
-          "opponentId": 977270139932258375,
-          "opponentName": "Eddy Money",
-          "score": "4-2",
-          "average": "5957.0",
-          "eloChange": 17,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 420,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4-2",
-          "average": "64.56",
-          "eloChange": 22,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 334,
-          "result": "Loss",
-          "opponentId": 1213219884440489984,
-          "opponentName": "van_graadert",
-          "score": "4:1",
-          "average": "63.78",
-          "eloChange": -14,
-          "queue": "scolia"
-        }
-      ]
-    },
     "458662173091299360": {
       "userId": 458662173091299360,
       "name": "Moppi",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 1085,
-      "worldRank": 20,
+      "worldRank": 19,
       "worldWins": 21,
       "worldLosses": 11,
       "monthlyRating": 0,
@@ -1365,7 +1297,7 @@
       "name": "Shorbi|Daniel",
       "avatar": "https://cdn.discordapp.com/avatars/134975678327160832/c011c9d84037f9e530f341c0edf69fc7.png?size=1024",
       "worldRating": 1084,
-      "worldRank": 21,
+      "worldRank": 20,
       "worldWins": 10,
       "worldLosses": 4,
       "monthlyRating": 0,
@@ -1425,6 +1357,74 @@
           "average": "45.75",
           "eloChange": -9,
           "queue": "dart"
+        }
+      ]
+    },
+    "1391715482624593932": {
+      "userId": 1391715482624593932,
+      "name": "Ronald H",
+      "avatar": "https://cdn.discordapp.com/avatars/1391715482624593932/3fe673cc9f318e7fe0e7e420bad6154e.png?size=1024",
+      "worldRating": 1084,
+      "worldRank": 21,
+      "worldWins": 8,
+      "worldLosses": 3,
+      "monthlyRating": 36,
+      "monthlyRank": 12,
+      "monthlyWins": 3,
+      "monthlyLosses": 1,
+      "games": 11,
+      "winrate": 72.7,
+      "overallAverage": 595.57,
+      "recentMatches": [
+        {
+          "matchId": 1161,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "3:4",
+          "average": "68.54",
+          "eloChange": -6,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1159,
+          "result": "Win",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "4:1",
+          "average": "62.53",
+          "eloChange": 9,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1157,
+          "result": "Win",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "1:4",
+          "average": "57.3",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1102,
+          "result": "Win",
+          "opponentId": 977270139932258375,
+          "opponentName": "Eddy Money",
+          "score": "4-2",
+          "average": "5957.0",
+          "eloChange": 17,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 420,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4-2",
+          "average": "64.56",
+          "eloChange": 22,
+          "queue": "scolia"
         }
       ]
     },
