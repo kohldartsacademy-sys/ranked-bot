@@ -31,13 +31,17 @@ from config.SqliteStore import (
 
 
 # TODO:
-#  Problem, wenn Match erstellt und nur Spieler A bestätigt, Spieler B ist AFK
-#  X - response auf bestätigen vom bot, wenn gegner in 5min nicht bestätigt dann kannst du den cancel btn drücken
-#  X - 5minuten timer auf cancel button
-#  X - pending state für matches, direkt beim erstellen des threads in die db mit pending, wenn beide bestätigen dann active und so weiter
-#  X - command um pending und active matches auszugeben für admins
-#  X - command zum cancel für admins
+#  timer um ergebnis posten zu erzwingen als der spieler der das Ergebnis formular ausgefüllt hat
 #  screenshot in result modal per einfügen (strg + v)
+#  leave button oder automatisch leaven und frei für q wenn man selber das Ergebnis ausgefüllt hat?
+#  spieler der bestätigen muss, muss dann noch bestätigen bevor er frei ist?
+#  ergebnis widersprechen, falls falsch
+#  .
+#  wieder nur einmal pro tag? oder ab 2. mal abfrage ob man das möchte, ansonsten beide in die q und der 3. bekommt zufällig einen von den beiden
+#  world rating top, monats rating anders? jemand mit 5/7 kann nicht vor jemanden mit 15/0 stehen
+#  .
+#  admin logs einbauen kurze nachrichten in den #admin-log channel (id: 1476672513223299264)
+
 
 # =============================
 # Konstanten und Parser-Patterns für Queue, Threads und Ergebnisse.
