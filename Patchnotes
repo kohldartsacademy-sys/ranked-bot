@@ -1,0 +1,50 @@
+**Patchnotes 06.05.2026**
+**Für Spieler**
+	• Bessere Hinweise beim Match-Start
+	     *
+         *Wenn nur ein Spieler das Match bestätigt hat, bekommt er jetzt den Hinweis, dass er das Match nach 5 Minuten zurückziehen kann, falls der Gegner nicht bestätigt.*
+	• Ergebnis widersprechen 
+         *Wenn ein Ergebnis falsch eingetragen wurde, kann der Spieler, der bestätigen muss, jetzt auf Ergebnis widersprechen klicken. Danach wird der Vorschlag verworfen und der Ergebnis posten Button erneut im Match-Thread gepostet.*
+	• Selbstbestätigung nach 1 Minute 
+         *Wenn Spieler A ein Ergebnis einträgt und Spieler B nicht bestätigt, bekommt Spieler A nach 1 Minute eine Nachricht im Thread. Ab dann kann Spieler A das Ergebnis selbst bestätigen.*
+
+**Für Admins**
+	• Neuer /matches Command 
+          *Admins können sich jetzt aktive und pending Matches getrennt anzeigen lassen. Enthalten sind Match-ID, Queue, Spieler, Thread und bei pending Matches zusätzlich, wer bereits bestätigt hat und wer noch fehlt.*
+	• Überarbeiteter /cancel_match Command 
+           *Der Command ist jetzt nur noch für Admins nutzbar. Im Match-Thread reicht /cancel_match. Außerhalb eines Match-Threads kann per /cancel_match match_id:<id> ein Match abgebrochen werden.*
+	       *Cancel unterstützt pending und aktive Matches *
+           *Admins können jetzt sowohl pending als auch aktive Matches abbrechen. Dabei wird der Thread gelöscht, der Status in der DB auf cancelled gesetzt und die Panels werden aktualisiert.*
+    • Neuer Admin-Log-Channel
+           *Der Bot kann wichtige Ranked-Events jetzt automatisch in einen Admin-Log-Channel posten.*
+    • Match-Logs
+           *Admins sehen jetzt automatisch, wenn ein Match erstellt, von Spielern bestätigt, aktiv geschaltet, zurückgezogen oder durch einen Admin abgebrochen wurde.*
+    • Ergebnis-Logs
+           *Der Bot loggt jetzt, wenn ein Ergebnis eingetragen, bestätigt oder widersprochen wurde. Bei bestätigten Ergebnissen wird zusätzlich angezeigt, ob es eine Selbstbestätigung war.*
+    • Self-Confirm-Logs
+           *Wenn ein Spieler sein eigenes Ergebnis nach Ablauf der 1-Minuten-Frist selbst bestätigen darf, wird das ebenfalls im Admin-Log dokumentiert.*
+    • Fehler-Logs
+           *Technische Probleme im Ergebnisflow werden geloggt, z. B. fehlende Channels, fehlende Threads, fehlgeschlagene DB-Speicherung oder wenn ein Ergebnis nicht in den Ergebnis-Channel gepostet werden konnte.*
+    • Robustes Logging
+           *Admin-Logs blockieren den Bot nicht. Falls der Log-Channel fehlt oder Discord einen Fehler wirft, läuft der eigentliche Match- oder Ergebnisflow weiter.*
+
+**Sonstiges**
+	• Leaderboard- und Player-Daten wurden aktualisiert.
+	• Texte und Fehlermeldungen wurden an mehreren Stellen bereinigt.
+
+------------------------------------------------------------------------------------------------------------------------
+
+**Patchnotes XX.XX.XXXX**
+**Für Spieler**
+    • X
+	     * Y *
+
+**Sonstiges**
+    • X
+	     * Y *
+
+**Für Admins**
+    • X
+	     * Y *
+
+------------------------------------------------------------------------------------------------------------------------
