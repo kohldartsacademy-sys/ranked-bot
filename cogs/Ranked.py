@@ -42,7 +42,6 @@ from config.SqliteStore import (
 # =============================
 QUEUE_EMPTY_TEXT = "kein spieler"
 MATCHES_FIELD_NAME = ":fire: Aktuelle Matches"
-RESULTS_CHANNEL_ID = RESULT_CHANNEL
 MENTION_PATTERN = re.compile(r"<@!?(\d+)>")
 THREAD_SAFE_PATTERN = re.compile(r"[^a-z0-9-]")
 MATCH_ID_PATTERN = re.compile(r"#(\d+)")
@@ -2312,12 +2311,12 @@ class Ranked(commands.Cog):
         return None
 
     async def fetch_results_channel(self) -> discord.TextChannel | None:
-        channel = self.bot.get_channel(RESULTS_CHANNEL_ID)
+        channel = self.bot.get_channel(RESULTS_CHANNEL)
         if isinstance(channel, discord.TextChannel):
             return channel
 
         try:
-            fetched = await self.bot.fetch_channel(RESULTS_CHANNEL_ID)
+            fetched = await self.bot.fetch_channel(RESULTS_CHANNEL)
         except (discord.NotFound, discord.Forbidden, discord.HTTPException):
             return None
 
