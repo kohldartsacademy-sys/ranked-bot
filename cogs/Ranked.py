@@ -640,7 +640,7 @@ def build_admin_matches_embed(*, title: str, description: str, colour: discord.C
 def build_queue_embed(panel_state: PanelState, active_matches: list[MatchState]) -> discord.Embed:
     embed = discord.Embed(
         title=":dart: Dart Matchmaking",
-        description="\u200b",
+        description="Queue Status\u200b",
         colour=discord.Color.blurple(),
     )
     embed.add_field(name=":dart: DartCounter", value=format_queue(panel_state.dartcounter_queue), inline=False)
