@@ -1164,6 +1164,38 @@ class ResultConfirmationView(discord.ui.View):
         upload()
         await interaction.followup.send("Ergebnis bestätigt und gepostet.", ephemeral=True)
 
+    @discord.ui.button(
+        label="Ergebnis widersprechen",
+        style=discord.ButtonStyle.danger,
+        custom_id="ranked:result_dispute",
+    )
+    async def dispute_callback(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
+        del button
+        match_id = self.resolve_match_id(interaction)
+        if match_id is None:
+            await interaction.response.send_message("Dieses Ergebnis ist nicht mehr offen.", ephemeral=True)
+            return
+
+        self.match_id = match_id
+        match = self.cog.active_matches.get(match_id)
+        result = self.cog.get_pending_result_for_confirmation(match_id, interaction.message)
+        if (
+            result is None
+            or match is None
+            or (self.submission_id is not None and result.submission_id != self.submission_id)
+        ):
+            await interaction.response.send_message("Dieses Ergebnis ist nicht mehr offen.", ephemeral=True)
+            return
+
+        self.stop()
+        self.cog.pending_results.pop(match_id, None)
+        await interaction.response.edit_message(content="Dem Ergebnis wurde widersprochen.", view=None)
+        if not await self.cog.post_result_entry_button(match):
+            await interaction.followup.send(
+                "Der Ergebnis-posten-Button konnte nicht erneut gesendet werden. Nutzt bitte /result im Match-Thread.",
+                ephemeral=True,
+            )
+
 
 # =============================
 # Ergebnis-Erfassung: Button im Match-Thread und Modal fuer Score, Average und Screenshot.
@@ -2210,6 +2242,21 @@ class Ranked(commands.Cog):
         embed.set_image(url=f"attachment://{file.filename}")
         return await channel.send(content=content, embed=embed, file=file, view=view)
 
+    async def post_result_entry_button(self, match: MatchState) -> bool:
+        thread = await self.fetch_thread(match.thread_id)
+        if thread is None:
+            return False
+
+        try:
+            await thread.send(
+                "Das Ergebnis wurde widersprochen. Bitte tragt das Ergebnis erneut ein.",
+                view=ResultEntryView(self, match.match_id),
+            )
+        except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+            return False
+
+        return True
+
     # Ergebnisvorschläge und Panel-Aktualisierung nach Interaktionen.
     async def mark_result_submission_obsolete(self, result: PendingResultState) -> None:
         if result.confirmation_message_id is None:
@@ -2342,16 +2389,8 @@ class Ranked(commands.Cog):
         ]
         await interaction.response.send_message(embeds=embeds, ephemeral=True)
 
-    @app_commands.command(name="result", description="Öffnet im Match-Thread das Ergebnisformular")
-    @app_commands.guild_only()
-    async def result(self, interaction: discord.Interaction) -> None:
-        await self.open_result_modal(interaction)
-
-    @app_commands.command(
-        name="cancel_match",
-        description="Bricht ein Match als Admin ab",
-    )
-    @app_commands.describe(match_id="Match-ID, wenn der Command nicht im Match-Thread ausgefuehrt wird")
+    @app_commands.command(name="cancel_match",description="Bricht ein Match als Admin ab",)
+    @app_commands.describe(match_id="Match-ID, wenn der Command nicht im Match-Thread ausgeführt wird")
     @app_commands.checks.has_permissions(administrator=True)
     @app_commands.guild_only()
     async def cancel_match(self, interaction: discord.Interaction, match_id: int | None = None) -> None:
@@ -2420,7 +2459,14 @@ class Ranked(commands.Cog):
             content="Aktualisierung ist fertig. https://stefankulik.github.io/discord-bot/"
         )
 
+    # Slash-Commands fuer User.
+    @app_commands.command(name="result", description="Öffnet im Match-Thread das Ergebnisformular")
+    @app_commands.guild_only()
+    async def result(self, interaction: discord.Interaction) -> None:
+        await self.open_result_modal(interaction)
+
     @app_commands.command(name="stats", description="Zeigt die Ranked-Stats eines Spielers")
+    @app_commands.describe(player="Der Spieler dessen Statistiken angezeigt werden sollen")
     @app_commands.guild_only()
     async def stats(self, interaction: discord.Interaction, player: discord.Member) -> None:
         db = getattr(self.bot, "db", None)
@@ -2459,6 +2505,8 @@ class Ranked(commands.Cog):
         await interaction.response.send_message(embed=embed)
 
     @app_commands.command(name="history", description="Match History des Users")
+    @app_commands.describe(player="Der Spieler dessen Match History angezeigt werden soll")
+    @app_commands.guild_only()
     async def history(self, interaction: discord.Interaction, player: discord.Member):
 
         matches = await fetch_match_history(self.bot, player)
@@ -2490,9 +2538,6 @@ class Ranked(commands.Cog):
 
         await interaction.response.send_message(text)
 
-    # admin commands
-    # - export matches
-    # - edit_match
 
 async def setup(bot: commands.Bot) -> None:
     await bot.add_cog(Ranked(bot))
