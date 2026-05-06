@@ -145,7 +145,7 @@
       "worldWins": 51,
       "worldLosses": 9,
       "monthlyRating": 14,
-      "monthlyRank": 24,
+      "monthlyRank": 25,
       "monthlyWins": 1,
       "monthlyLosses": 0,
       "games": 60,
@@ -476,12 +476,80 @@
         }
       ]
     },
+    "183185835477172226": {
+      "userId": 183185835477172226,
+      "name": "Stefan Kulik",
+      "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
+      "worldRating": 1164,
+      "worldRank": 8,
+      "worldWins": 35,
+      "worldLosses": 18,
+      "monthlyRating": 24,
+      "monthlyRank": 17,
+      "monthlyWins": 2,
+      "monthlyLosses": 3,
+      "games": 53,
+      "winrate": 66.0,
+      "overallAverage": 59.93,
+      "recentMatches": [
+        {
+          "matchId": 1152,
+          "result": "Win",
+          "opponentId": 890838749280346132,
+          "opponentName": "Klax",
+          "score": "4:3",
+          "average": "62.74",
+          "eloChange": 15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1151,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:1",
+          "average": "63.21",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1150,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:0",
+          "average": "54.2",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1129,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "3:4",
+          "average": "62.0",
+          "eloChange": 9,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1109,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:1",
+          "average": "61.05",
+          "eloChange": -8,
+          "queue": "scolia"
+        }
+      ]
+    },
     "1092072918915219537": {
       "userId": 1092072918915219537,
       "name": "Jannick2412",
       "avatar": "https://cdn.discordapp.com/avatars/1092072918915219537/a34f97c919ba7630e8ba951a443fb146.png?size=1024",
       "worldRating": 1150,
-      "worldRank": 8,
+      "worldRank": 9,
       "worldWins": 25,
       "worldLosses": 11,
       "monthlyRating": 30,
@@ -540,74 +608,6 @@
           "score": "4:3",
           "average": "68.98",
           "eloChange": 9,
-          "queue": "scolia"
-        }
-      ]
-    },
-    "183185835477172226": {
-      "userId": 183185835477172226,
-      "name": "Stefan Kulik",
-      "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
-      "worldRating": 1149,
-      "worldRank": 9,
-      "worldWins": 34,
-      "worldLosses": 18,
-      "monthlyRating": 9,
-      "monthlyRank": 26,
-      "monthlyWins": 1,
-      "monthlyLosses": 3,
-      "games": 52,
-      "winrate": 65.4,
-      "overallAverage": 59.87,
-      "recentMatches": [
-        {
-          "matchId": 1151,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:1",
-          "average": "63.21",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1150,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:0",
-          "average": "54.2",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1129,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "3:4",
-          "average": "62.0",
-          "eloChange": 9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1109,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:1",
-          "average": "61.05",
-          "eloChange": -8,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1048,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:2",
-          "average": "64.13",
-          "eloChange": -11,
           "queue": "scolia"
         }
       ]
@@ -680,80 +680,12 @@
         }
       ]
     },
-    "890838749280346132": {
-      "userId": 890838749280346132,
-      "name": "Klax",
-      "avatar": "https://cdn.discordapp.com/avatars/890838749280346132/9d3b9b6ade8e4f780a30170927aea75f.png?size=1024",
-      "worldRating": 1138,
-      "worldRank": 11,
-      "worldWins": 11,
-      "worldLosses": 3,
-      "monthlyRating": 6,
-      "monthlyRank": 28,
-      "monthlyWins": 1,
-      "monthlyLosses": 0,
-      "games": 14,
-      "winrate": 78.6,
-      "overallAverage": 65.99,
-      "recentMatches": [
-        {
-          "matchId": 1104,
-          "result": "Win",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "4:1",
-          "average": "63.0",
-          "eloChange": 6,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1021,
-          "result": "Win",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:2",
-          "average": "80.69",
-          "eloChange": 23,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 944,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "4:1",
-          "average": "69.39",
-          "eloChange": 11,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 719,
-          "result": "Win",
-          "opponentId": 828645958883475459,
-          "opponentName": "Justin Oehring",
-          "score": "4:3",
-          "average": "65.14",
-          "eloChange": 18,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 717,
-          "result": "Win",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:2",
-          "average": "61.84",
-          "eloChange": 21,
-          "queue": "scolia"
-        }
-      ]
-    },
     "788855711601655819": {
       "userId": 788855711601655819,
       "name": "FlAsH | Jannick",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 1135,
-      "worldRank": 12,
+      "worldRank": 11,
       "worldWins": 16,
       "worldLosses": 7,
       "monthlyRating": 0,
@@ -821,7 +753,7 @@
       "name": "Jules H",
       "avatar": "https://cdn.discordapp.com/avatars/1458502282219098457/f7f2e9361e8a54ce6e72580ac7b967af.png?size=1024",
       "worldRating": 1129,
-      "worldRank": 13,
+      "worldRank": 12,
       "worldWins": 25,
       "worldLosses": 14,
       "monthlyRating": 0,
@@ -884,6 +816,74 @@
         }
       ]
     },
+    "890838749280346132": {
+      "userId": 890838749280346132,
+      "name": "Klax",
+      "avatar": "https://cdn.discordapp.com/avatars/890838749280346132/9d3b9b6ade8e4f780a30170927aea75f.png?size=1024",
+      "worldRating": 1123,
+      "worldRank": 13,
+      "worldWins": 11,
+      "worldLosses": 4,
+      "monthlyRating": 6,
+      "monthlyRank": 28,
+      "monthlyWins": 1,
+      "monthlyLosses": 1,
+      "games": 15,
+      "winrate": 73.3,
+      "overallAverage": 66.11,
+      "recentMatches": [
+        {
+          "matchId": 1152,
+          "result": "Loss",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "4:3",
+          "average": "67.78",
+          "eloChange": -15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1104,
+          "result": "Win",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "4:1",
+          "average": "63.0",
+          "eloChange": 6,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 1021,
+          "result": "Win",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:2",
+          "average": "80.69",
+          "eloChange": 23,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 944,
+          "result": "Win",
+          "opponentId": 505446955242094596,
+          "opponentName": "Jerome Benzler",
+          "score": "4:1",
+          "average": "69.39",
+          "eloChange": 11,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 719,
+          "result": "Win",
+          "opponentId": 828645958883475459,
+          "opponentName": "Justin Oehring",
+          "score": "4:3",
+          "average": "65.14",
+          "eloChange": 18,
+          "queue": "scolia"
+        }
+      ]
+    },
     "1089304921439998003": {
       "userId": 1089304921439998003,
       "name": "Brickylayer",
@@ -893,7 +893,7 @@
       "worldWins": 30,
       "worldLosses": 19,
       "monthlyRating": 17,
-      "monthlyRank": 17,
+      "monthlyRank": 18,
       "monthlyWins": 2,
       "monthlyLosses": 0,
       "games": 49,
@@ -1369,7 +1369,7 @@
       "worldWins": 6,
       "worldLosses": 2,
       "monthlyRating": 17,
-      "monthlyRank": 19,
+      "monthlyRank": 20,
       "monthlyWins": 1,
       "monthlyLosses": 0,
       "games": 8,
@@ -1573,7 +1573,7 @@
       "worldWins": 6,
       "worldLosses": 5,
       "monthlyRating": 15,
-      "monthlyRank": 22,
+      "monthlyRank": 23,
       "monthlyWins": 1,
       "monthlyLosses": 1,
       "games": 11,
@@ -2085,7 +2085,7 @@
       "worldWins": 2,
       "worldLosses": 0,
       "monthlyRating": 12,
-      "monthlyRank": 25,
+      "monthlyRank": 26,
       "monthlyWins": 1,
       "monthlyLosses": 0,
       "games": 2,
@@ -3078,7 +3078,7 @@
       "worldWins": 6,
       "worldLosses": 7,
       "monthlyRating": 15,
-      "monthlyRank": 23,
+      "monthlyRank": 24,
       "monthlyWins": 1,
       "monthlyLosses": 0,
       "games": 13,
@@ -5532,7 +5532,7 @@
       "worldWins": 14,
       "worldLosses": 36,
       "monthlyRating": 17,
-      "monthlyRank": 18,
+      "monthlyRank": 19,
       "monthlyWins": 1,
       "monthlyLosses": 3,
       "games": 50,
@@ -5600,7 +5600,7 @@
       "worldWins": 33,
       "worldLosses": 47,
       "monthlyRating": 16,
-      "monthlyRank": 20,
+      "monthlyRank": 21,
       "monthlyWins": 1,
       "monthlyLosses": 1,
       "games": 80,
@@ -5668,7 +5668,7 @@
       "worldWins": 12,
       "worldLosses": 29,
       "monthlyRating": 16,
-      "monthlyRank": 21,
+      "monthlyRank": 22,
       "monthlyWins": 1,
       "monthlyLosses": 5,
       "games": 41,
