@@ -340,12 +340,80 @@
         }
       ]
     },
+    "1302224986051838068": {
+      "userId": 1302224986051838068,
+      "name": "Bazzi",
+      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
+      "worldRating": 1182,
+      "worldRank": 6,
+      "worldWins": 51,
+      "worldLosses": 19,
+      "monthlyRating": 75,
+      "monthlyRank": 3,
+      "monthlyWins": 11,
+      "monthlyLosses": 0,
+      "games": 70,
+      "winrate": 72.9,
+      "overallAverage": 61.73,
+      "recentMatches": [
+        {
+          "matchId": 1158,
+          "result": "Win",
+          "opponentId": 505446955242094596,
+          "opponentName": "Jerome Benzler",
+          "score": "1:4",
+          "average": "63.31",
+          "eloChange": 7,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1156,
+          "result": "Win",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "3:4",
+          "average": "54.11",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1141,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "1:4",
+          "average": "59.68",
+          "eloChange": 3,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1137,
+          "result": "Win",
+          "opponentId": 505446955242094596,
+          "opponentName": "Jerome Benzler",
+          "score": "1:4",
+          "average": "64.03",
+          "eloChange": 8,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1134,
+          "result": "Win",
+          "opponentId": 920777207834619915,
+          "opponentName": "Richard Boden",
+          "score": "1:4",
+          "average": "70.22",
+          "eloChange": 11,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "1007351887114285087": {
       "userId": 1007351887114285087,
       "name": "Rico Seifert",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
       "worldRating": 1180,
-      "worldRank": 6,
+      "worldRank": 7,
       "worldWins": 35,
       "worldLosses": 9,
       "monthlyRating": 47,
@@ -404,74 +472,6 @@
           "score": "4:1",
           "average": "64.64",
           "eloChange": -16,
-          "queue": "dart"
-        }
-      ]
-    },
-    "1302224986051838068": {
-      "userId": 1302224986051838068,
-      "name": "Bazzi",
-      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1175,
-      "worldRank": 7,
-      "worldWins": 50,
-      "worldLosses": 19,
-      "monthlyRating": 68,
-      "monthlyRank": 3,
-      "monthlyWins": 10,
-      "monthlyLosses": 0,
-      "games": 69,
-      "winrate": 72.5,
-      "overallAverage": 61.7,
-      "recentMatches": [
-        {
-          "matchId": 1156,
-          "result": "Win",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "3:4",
-          "average": "54.11",
-          "eloChange": 7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1141,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "1:4",
-          "average": "59.68",
-          "eloChange": 3,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1137,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "1:4",
-          "average": "64.03",
-          "eloChange": 8,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1134,
-          "result": "Win",
-          "opponentId": 920777207834619915,
-          "opponentName": "Richard Boden",
-          "score": "1:4",
-          "average": "70.22",
-          "eloChange": 11,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1123,
-          "result": "Win",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "4:0",
-          "average": "66.8",
-          "eloChange": 6,
           "queue": "dart"
         }
       ]
@@ -4639,80 +4639,12 @@
         }
       ]
     },
-    "505446955242094596": {
-      "userId": 505446955242094596,
-      "name": "Jerome Benzler",
-      "avatar": "https://cdn.discordapp.com/avatars/505446955242094596/2c72bf5d0877aad24fa4db0ab69878d1.png?size=1024",
-      "worldRating": 939,
-      "worldRank": 91,
-      "worldWins": 5,
-      "worldLosses": 12,
-      "monthlyRating": 0,
-      "monthlyRank": 33,
-      "monthlyWins": 0,
-      "monthlyLosses": 5,
-      "games": 17,
-      "winrate": 29.4,
-      "overallAverage": 53.46,
-      "recentMatches": [
-        {
-          "matchId": 1140,
-          "result": "Loss",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "4:3",
-          "average": "58.58",
-          "eloChange": -16,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1137,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "56.63",
-          "eloChange": -8,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1117,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:2",
-          "average": "52.05",
-          "eloChange": -10,
-          "queue": "dart"
-        },
-        {
-          "matchId": 1114,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "4:3",
-          "average": "61.03",
-          "eloChange": -7,
-          "queue": "dart"
-        },
-        {
-          "matchId": 1112,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "4:0",
-          "average": "58.96",
-          "eloChange": -7,
-          "queue": "dart"
-        }
-      ]
-    },
     "299164054591635456": {
       "userId": 299164054591635456,
       "name": "Nico Dresler",
       "avatar": "https://cdn.discordapp.com/avatars/299164054591635456/55723527a22d387586bf79435894e098.png?size=1024",
       "worldRating": 934,
-      "worldRank": 92,
+      "worldRank": 91,
       "worldWins": 13,
       "worldLosses": 22,
       "monthlyRating": 33,
@@ -4771,6 +4703,74 @@
           "score": "4:2",
           "average": "4723.0",
           "eloChange": -17,
+          "queue": "dart"
+        }
+      ]
+    },
+    "505446955242094596": {
+      "userId": 505446955242094596,
+      "name": "Jerome Benzler",
+      "avatar": "https://cdn.discordapp.com/avatars/505446955242094596/2c72bf5d0877aad24fa4db0ab69878d1.png?size=1024",
+      "worldRating": 932,
+      "worldRank": 92,
+      "worldWins": 5,
+      "worldLosses": 13,
+      "monthlyRating": 0,
+      "monthlyRank": 33,
+      "monthlyWins": 0,
+      "monthlyLosses": 6,
+      "games": 18,
+      "winrate": 27.8,
+      "overallAverage": 53.6,
+      "recentMatches": [
+        {
+          "matchId": 1158,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "1:4",
+          "average": "56.12",
+          "eloChange": -7,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1140,
+          "result": "Loss",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "4:3",
+          "average": "58.58",
+          "eloChange": -16,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1137,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "1:4",
+          "average": "56.63",
+          "eloChange": -8,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1117,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:2",
+          "average": "52.05",
+          "eloChange": -10,
+          "queue": "dart"
+        },
+        {
+          "matchId": 1114,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "4:3",
+          "average": "61.03",
+          "eloChange": -7,
           "queue": "dart"
         }
       ]
