@@ -32,11 +32,11 @@ from config.SqliteStore import (
 
 # TODO:
 #  Problem, wenn Match erstellt und nur Spieler A bestätigt, Spieler B ist AFK
-#  5minuten timer
-#  pending state für matches, direkt beim erstellen des threads in die db mit pending, wenn beide bestätigen dann active und so weiter
-#  command um pending und active matches auszugeben für admins
-#  command zum cancel für admins
-#  command zum canceln für den spieler der bestätigt hat
+#  X - response auf bestätigen vom bot, wenn gegner in 5min nicht bestätigt dann kannst du den cancel btn drücken
+#  X - 5minuten timer auf cancel button
+#  X - pending state für matches, direkt beim erstellen des threads in die db mit pending, wenn beide bestätigen dann active und so weiter
+#  X - command um pending und active matches auszugeben für admins
+#  X - command zum cancel für admins
 #  screenshot in result modal per einfügen (strg + v)
 
 # =============================
@@ -594,6 +594,49 @@ def format_active_matches(matches: list[MatchState]) -> str:
     )
 
 
+def format_admin_active_matches(matches: list[MatchState]) -> str:
+    if not matches:
+        return "Keine aktiven Matches."
+
+    return "\n".join(
+        f"#{match.match_id:03d} | {match.queue_name} | <@{match.player_ids[0]}> vs <@{match.player_ids[1]}> | <#{match.thread_id}>"
+        for match in matches
+    )
+
+
+def format_admin_pending_matches(matches: list[PendingMatchState]) -> str:
+    if not matches:
+        return "Keine pending Matches."
+
+    lines: list[str] = []
+    for match in matches:
+        confirmed = [user_id for user_id in match.player_ids if user_id in match.confirmed_user_ids]
+        waiting = [user_id for user_id in match.player_ids if user_id not in match.confirmed_user_ids]
+        confirmed_text = ", ".join(f"<@{user_id}>" for user_id in confirmed) or "niemand"
+        waiting_text = ", ".join(f"<@{user_id}>" for user_id in waiting) or "niemand"
+        created_timestamp = int(match.created_at.timestamp())
+        lines.append(
+            f"#{match.match_id:03d} | {match.queue_name} | <@{match.player_ids[0]}> vs <@{match.player_ids[1]}> | "
+            f"<#{match.thread_id}> | Bestaetigt: {confirmed_text} | Wartet: {waiting_text} | Erstellt: <t:{created_timestamp}:R>"
+        )
+
+    return "\n".join(lines)
+
+
+def fit_embed_description(value: str) -> str:
+    if len(value) <= 4096:
+        return value
+    return value[:4092] + "\n..."
+
+
+def build_admin_matches_embed(*, title: str, description: str, colour: discord.Color) -> discord.Embed:
+    return discord.Embed(
+        title=title,
+        description=fit_embed_description(description),
+        colour=colour,
+    )
+
+
 def build_queue_embed(panel_state: PanelState, active_matches: list[MatchState]) -> discord.Embed:
     embed = discord.Embed(
         title=":dart: Dart Matchmaking",
@@ -653,9 +696,6 @@ def build_result_embed(match: MatchState, result: PendingResultState) -> discord
     )
     embed.add_field(name="Gewinner", value=f"<@{result.winner_id}>", inline=True)
     embed.add_field(name="Spielstand", value=result.score_text, inline=True)
-    player_one_id, player_two_id = match.player_ids
-    embed.add_field(name=f"Average <@{player_one_id}>", value=result.averages[player_one_id], inline=True)
-    embed.add_field(name=f"Average <@{player_two_id}>", value=result.averages[player_two_id], inline=True)
     return embed
 
 
@@ -887,6 +927,11 @@ class PendingMatchView(discord.ui.View):
 
         if len(pending_match.confirmed_user_ids) < 2:
             await interaction.response.edit_message(embed=build_pending_match_embed(pending_match), view=self)
+            await interaction.followup.send(
+                "Du hast das Match bestätigt. Wenn dein Gegner das Match nicht innerhalb von 5 Minuten bestätigt, "
+                "kannst du den Button \"Match zurückziehen\" drücken.",
+                ephemeral=True,
+            )
             return
 
         active_match = await self.cog.confirm_pending_match(self.match_id)
@@ -1591,6 +1636,18 @@ class Ranked(commands.Cog):
                 return match
         return None
 
+    def get_match_by_thread_id(self, thread_id: int) -> PendingMatchState | MatchState | None:
+        pending_match = self.get_pending_match_by_thread_id(thread_id)
+        if pending_match is not None:
+            return pending_match
+        return self.get_active_match_by_thread_id(thread_id)
+
+    def get_match_by_id(self, match_id: int) -> PendingMatchState | MatchState | None:
+        pending_match = self.pending_matches.get(match_id)
+        if pending_match is not None:
+            return pending_match
+        return self.active_matches.get(match_id)
+
     @staticmethod
     def parse_db_timestamp(value: str | None) -> datetime:
         if not value:
@@ -1663,6 +1720,47 @@ class Ranked(commands.Cog):
         self.pending_matches.pop(pending_match.match_id, None)
         self.cancel_pending_withdraw_activation(pending_match.match_id)
         await mark_ranked_match_cancelled(self.bot, pending_match.match_id)
+
+    async def cancel_match_as_admin(
+        self,
+        interaction: discord.Interaction,
+        match: PendingMatchState | MatchState,
+    ) -> None:
+        thread = await self.fetch_thread(match.thread_id)
+        if thread is None:
+            await interaction.response.send_message(
+                "Der Match-Thread konnte nicht gefunden werden. Match bleibt offen.",
+                ephemeral=True,
+            )
+            return
+
+        await interaction.response.send_message(
+            f"Match #{match.match_id:03d} wird abgebrochen und nicht gewertet.",
+            ephemeral=True,
+        )
+
+        try:
+            await thread.delete()
+        except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+            await interaction.followup.send(
+                "Der Match-Thread konnte nicht geloescht werden. Match bleibt offen.",
+                ephemeral=True,
+            )
+            return
+
+        results_channel = await self.fetch_results_channel()
+        if results_channel is not None:
+            try:
+                await results_channel.send(embed=build_cancel_match_embed(match.match_id))
+            except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+                pass
+
+        self.pending_matches.pop(match.match_id, None)
+        self.active_matches.pop(match.match_id, None)
+        self.pending_results.pop(match.match_id, None)
+        self.cancel_pending_withdraw_activation(match.match_id)
+        await mark_ranked_match_cancelled(self.bot, match.match_id)
+        await self.refresh_panels(refresh_all=True)
 
     def cancel_pending_withdraw_activation(self, match_id: int) -> None:
         task = self.pending_withdraw_tasks.pop(match_id, None)
@@ -2220,6 +2318,26 @@ class Ranked(commands.Cog):
         message = await interaction.original_response()
         self.panel_states[message.id] = panel_state
 
+    @app_commands.command(name="matches", description="Zeigt aktive und pending Matches getrennt an")
+    @app_commands.checks.has_permissions(administrator=True)
+    @app_commands.guild_only()
+    async def matches(self, interaction: discord.Interaction) -> None:
+        active_matches = sorted(self.active_matches.values(), key=lambda match: match.match_id)
+        pending_matches = sorted(self.pending_matches.values(), key=lambda match: match.match_id)
+        embeds = [
+            build_admin_matches_embed(
+                title="Aktive Matches",
+                description=format_admin_active_matches(active_matches),
+                colour=discord.Color.green(),
+            ),
+            build_admin_matches_embed(
+                title="Pending Matches",
+                description=format_admin_pending_matches(pending_matches),
+                colour=discord.Color.gold(),
+            ),
+        ]
+        await interaction.response.send_message(embeds=embeds, ephemeral=True)
+
     @app_commands.command(name="result", description="Öffnet im Match-Thread das Ergebnisformular")
     @app_commands.guild_only()
     async def result(self, interaction: discord.Interaction) -> None:
@@ -2227,27 +2345,33 @@ class Ranked(commands.Cog):
 
     @app_commands.command(
         name="cancel_match",
-        description="Bricht ein offenes Match ab, wenn maximal ein Spieler bestaetigt hat",
+        description="Bricht ein Match als Admin ab",
     )
+    @app_commands.describe(match_id="Match-ID, wenn der Command nicht im Match-Thread ausgefuehrt wird")
+    @app_commands.checks.has_permissions(administrator=True)
     @app_commands.guild_only()
-    async def cancel_match(self, interaction: discord.Interaction) -> None:
-        if not isinstance(interaction.channel, discord.Thread):
+    async def cancel_match(self, interaction: discord.Interaction, match_id: int | None = None) -> None:
+        match: PendingMatchState | MatchState | None = None
+
+        if match_id is not None:
+            match = self.get_match_by_id(match_id)
+        elif isinstance(interaction.channel, discord.Thread):
+            match = self.get_match_by_thread_id(interaction.channel.id)
+        else:
             await interaction.response.send_message(
-                "Dieser Befehl funktioniert nur in einem offenen Match-Thread.",
+                "Bitte gib eine Match-ID an oder fuehre den Command direkt im Match-Thread aus.",
                 ephemeral=True,
             )
             return
 
-        thread = interaction.channel
-        pending_match = self.get_pending_match_by_thread_id(thread.id)
-        if pending_match is None:
+        if match is None:
             await interaction.response.send_message(
-                "In diesem Thread wurde kein offenes Match gefunden.",
+                "Es wurde kein aktives oder pending Match gefunden.",
                 ephemeral=True,
             )
             return
 
-        await self.cancel_pending_match(interaction, pending_match)
+        await self.cancel_match_as_admin(interaction, match)
 
     @app_commands.command(name="world_ranking", description="Zeigt das aktuelle World Ranking")
     @app_commands.checks.has_permissions(administrator=True)
