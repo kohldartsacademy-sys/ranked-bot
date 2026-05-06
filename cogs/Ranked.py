@@ -12,7 +12,7 @@ from datetime import datetime, timedelta, timezone
 from html import escape
 from pathlib import Path
 from dataclasses import dataclass, field
-from config.Environment import RESULT_CHANNEL
+from config.Environment import ADMIN_LOG_CHANNEL, RESULT_CHANNEL
 from config.SqliteStore import (
     ensure_ranked_storage,
     fetch_active_ranked_matches,
@@ -31,11 +31,7 @@ from config.SqliteStore import (
 
 
 # TODO:
-#  timer um ergebnis posten zu erzwingen als der spieler der das Ergebnis formular ausgefüllt hat
 #  screenshot in result modal per einfügen (strg + v)
-#  leave button oder automatisch leaven und frei für q wenn man selber das Ergebnis ausgefüllt hat?
-#  spieler der bestätigen muss, muss dann noch bestätigen bevor er frei ist?
-#  ergebnis widersprechen, falls falsch
 #  .
 #  wieder nur einmal pro tag? oder ab 2. mal abfrage ob man das möchte, ansonsten beide in die q und der 3. bekommt zufällig einen von den beiden
 #  world rating top, monats rating anders? jemand mit 5/7 kann nicht vor jemanden mit 15/0 stehen
@@ -930,6 +926,7 @@ class PendingMatchView(discord.ui.View):
             return
 
         pending_match.confirmed_user_ids.add(interaction.user.id)
+        await self.cog.log_match_player_confirmed(pending_match, interaction.user.id)
 
         if len(pending_match.confirmed_user_ids) < 2:
             await interaction.response.edit_message(embed=build_pending_match_embed(pending_match), view=self)
@@ -982,32 +979,6 @@ class PendingMatchView(discord.ui.View):
             return
 
         await self.cog.cancel_pending_match(interaction, pending_match)
-
-    #
-    # in Zukunft, vielleicht mit Admin-Rechten, sodass nur auf Anfrage der Admin das Match zurückziehen kann
-    #
-    # @discord.ui.button(label="Zurueckziehen", style=discord.ButtonStyle.danger)
-    # async def withdraw_callback(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
-    #     del button
-    #     pending_match = self.cog.pending_matches.pop(self.match_id, None)
-    #     if pending_match is None:
-    #         await interaction.response.send_message("Dieses Match ist nicht mehr offen.", ephemeral=True)
-    #         return
-    #
-    #     self.stop()
-    #     await interaction.response.send_message("Match wurde zurueckgezogen.", ephemeral=True)
-    #     results_channel = await self.cog.fetch_results_channel()
-    #     if results_channel is not None:
-    #         try:
-    #             await results_channel.send(embed=build_withdrawn_match_embed(pending_match.match_id))
-    #         except (discord.NotFound, discord.Forbidden, discord.HTTPException):
-    #             pass
-    #     thread = await self.cog.fetch_thread(pending_match.thread_id)
-    #     if thread is not None:
-    #         try:
-    #             await thread.delete()
-    #         except (discord.NotFound, discord.Forbidden, discord.HTTPException):
-    #             pass
 
 
 # =============================
@@ -1083,6 +1054,12 @@ class ResultConfirmationView(discord.ui.View):
                     ephemeral=True,
                 )
                 return False
+            if custom_id == "ranked:result_dispute":
+                await interaction.response.send_message(
+                    f"Nur <@{self.confirmer_id}> kann diesem Ergebnis widersprechen.",
+                    ephemeral=True,
+                )
+                return False
             await interaction.response.send_message(
                 f"Nur <@{self.confirmer_id}> kann dieses Ergebnis bestätigen.",
                 ephemeral=True,
@@ -1117,10 +1094,20 @@ class ResultConfirmationView(discord.ui.View):
         self.submission_id = result.submission_id
         results_channel = await self.cog.fetch_results_channel()
         if results_channel is None:
+            await self.cog.send_admin_log(
+                "Ergebnis-Channel fehlt",
+                f"{self.cog.describe_match(match)}\nDer Ergebnis-Channel konnte beim Bestätigen nicht gefunden werden.",
+                colour=discord.Color.red(),
+            )
             await interaction.response.send_message("Der Ergebnis-Channel konnte nicht gefunden werden.", ephemeral=True)
             return
 
         if interaction.guild_id is None:
+            await self.cog.send_admin_log(
+                "Guild-ID fehlt",
+                f"{self.cog.describe_match(match)}\nDie Guild-ID konnte beim Ergebnis-Bestätigen nicht aufgelöst werden.",
+                colour=discord.Color.red(),
+            )
             await interaction.response.send_message("Guild-ID konnte nicht aufgelöst werden.", ephemeral=True)
             return
 
@@ -1134,6 +1121,7 @@ class ResultConfirmationView(discord.ui.View):
             confirmed_by=interaction.user.id,
         )
         if not persisted:
+            await self.cog.log_result_persist_failed(match, result)
             await interaction.followup.send(
                 "Das Ergebnis konnte nicht in der Datenbank gespeichert werden. Match bleibt offen.",
                 ephemeral=True,
@@ -1157,6 +1145,7 @@ class ResultConfirmationView(discord.ui.View):
         try:
             results_message = await self.cog.send_result_message(results_channel, match, result)
         except discord.HTTPException:
+            await self.cog.log_result_publish_failed(match, result)
             await interaction.followup.send(
                 "Das Ergebnis wurde gespeichert, aber nicht in den Ergebnis-Channel gesendet. Bitte erneut bestätigen.",
                 ephemeral=True,
@@ -1164,6 +1153,7 @@ class ResultConfirmationView(discord.ui.View):
             return
 
         await mark_ranked_match_result_published(self.cog.bot, match.match_id, results_channel.id, results_message.id)
+        await self.cog.log_result_confirmed(match, result, interaction.user.id)
 
         self.stop()
         self.cog.remove_pending_result(self.match_id)
@@ -1205,9 +1195,15 @@ class ResultConfirmationView(discord.ui.View):
             return
 
         self.stop()
+        await self.cog.log_result_disputed(match, result, interaction.user.id)
         self.cog.remove_pending_result(match_id)
         await interaction.response.edit_message(content="Dem Ergebnis wurde widersprochen.", view=None)
         if not await self.cog.post_result_entry_button(match):
+            await self.cog.send_admin_log(
+                "Ergebnis-Button konnte nicht erneut gesendet werden",
+                f"{self.cog.describe_match(match)}\nNach Widerspruch konnte der Ergebnis-posten-Button nicht gepostet werden.",
+                colour=discord.Color.red(),
+            )
             await interaction.followup.send(
                 "Der Ergebnis-posten-Button konnte nicht erneut gesendet werden. Nutzt bitte /result im Match-Thread.",
                 ephemeral=True,
@@ -1426,6 +1422,11 @@ class ResultModal(discord.ui.Modal):
 
         thread = await self.cog.fetch_thread(self.match.thread_id)
         if thread is None:
+            await self.cog.send_admin_log(
+                "Match-Thread fehlt",
+                f"{self.cog.describe_match(self.match)}\nDer Ergebnisvorschlag konnte nicht gesendet werden, weil der Thread nicht gefunden wurde.",
+                colour=discord.Color.red(),
+            )
             self.cog.remove_pending_result(self.match.match_id)
             await self.restore_result_entry_button()
             await interaction.response.send_message("Der Match-Thread konnte nicht gefunden werden.", ephemeral=True)
@@ -1444,6 +1445,11 @@ class ResultModal(discord.ui.Modal):
                 view=confirmation_view,
             )
         except discord.HTTPException:
+            await self.cog.send_admin_log(
+                "Ergebnisvorschlag konnte nicht gesendet werden",
+                f"{self.cog.describe_match(self.match)}\nDer Ergebnisvorschlag konnte nicht im Match-Thread gepostet werden.",
+                colour=discord.Color.red(),
+            )
             self.cog.remove_pending_result(self.match.match_id)
             await self.restore_result_entry_button()
             await interaction.followup.send("Das Ergebnis konnte nicht im Match-Thread gesendet werden.", ephemeral=True)
@@ -1451,6 +1457,7 @@ class ResultModal(discord.ui.Modal):
 
         pending_result.confirmation_message_id = message.id
         self.cog.schedule_result_self_confirm_notification(pending_result)
+        await self.cog.log_result_submitted(self.match, pending_result)
         await interaction.followup.send("Ergebnis zur Bestätigung in den Match-Thread gesendet.", ephemeral=True)
 
 
@@ -1782,11 +1789,16 @@ class Ranked(commands.Cog):
             try:
                 await results_channel.send(embed=build_cancel_match_embed(pending_match.match_id))
             except (discord.NotFound, discord.Forbidden, discord.HTTPException):
-                pass
+                await self.send_admin_log(
+                    "Cancel-Posting fehlgeschlagen",
+                    f"{self.describe_match(pending_match)}\nDas Cancel-Embed konnte nicht in den Ergebnis-Channel gesendet werden.",
+                    colour=discord.Color.red(),
+                )
 
         self.pending_matches.pop(pending_match.match_id, None)
         self.cancel_pending_withdraw_activation(pending_match.match_id)
         await mark_ranked_match_cancelled(self.bot, pending_match.match_id)
+        await self.log_pending_match_withdrawn(pending_match, interaction.user.id)
 
     async def cancel_match_as_admin(
         self,
@@ -1820,7 +1832,11 @@ class Ranked(commands.Cog):
             try:
                 await results_channel.send(embed=build_cancel_match_embed(match.match_id))
             except (discord.NotFound, discord.Forbidden, discord.HTTPException):
-                pass
+                await self.send_admin_log(
+                    "Cancel-Posting fehlgeschlagen",
+                    f"{self.describe_match(match)}\nDas Cancel-Embed konnte nicht in den Ergebnis-Channel gesendet werden.",
+                    colour=discord.Color.red(),
+                )
 
         self.pending_matches.pop(match.match_id, None)
         self.active_matches.pop(match.match_id, None)
@@ -1828,6 +1844,7 @@ class Ranked(commands.Cog):
         self.cancel_pending_withdraw_activation(match.match_id)
         await mark_ranked_match_cancelled(self.bot, match.match_id)
         await self.refresh_panels(refresh_all=True)
+        await self.log_admin_match_cancelled(match, interaction.user.id)
 
     def cancel_pending_withdraw_activation(self, match_id: int) -> None:
         task = self.pending_withdraw_tasks.pop(match_id, None)
@@ -1887,14 +1904,16 @@ class Ranked(commands.Cog):
             if result is None or match is None or result.submission_id != submission_id:
                 return
 
+            await self.log_result_self_confirm_available(match, result)
+
             thread = await self.fetch_thread(result.thread_id)
             if thread is None:
                 return
 
             try:
                 await thread.send(
-                    f"<@{result.submitted_by}>, <@{self.get_result_confirmer_id(match, result)}> hat noch nicht bestÃ¤tigt. "
-                    "Du kannst dein Ergebnis jetzt selbst bestÃ¤tigen."
+                    f"<@{result.submitted_by}>, <@{self.get_result_confirmer_id(match, result)}> hat noch nicht bestätigt."
+                    "Du kannst dein Ergebnis jetzt selbst bestätigen."
                 )
             except (discord.NotFound, discord.Forbidden, discord.HTTPException):
                 pass
@@ -2201,6 +2220,7 @@ class Ranked(commands.Cog):
         )
         pending_match.pending_message_id = pending_message.id
         self.schedule_pending_withdraw_activation(pending_match)
+        await self.log_match_created(pending_match)
         # await thread.send(
         #     content=(
         #         f"{player_one.mention} {player_two.mention}\n"
@@ -2254,6 +2274,7 @@ class Ranked(commands.Cog):
         )
         self.active_matches[match_id] = active_match
         await persist_active_ranked_match(self.bot, active_match)
+        await self.log_match_activated(active_match)
         return active_match
 
     def build_embed_for_panel(self, message_id: int) -> discord.Embed:
@@ -2305,6 +2326,155 @@ class Ranked(commands.Cog):
         if isinstance(fetched, discord.TextChannel):
             return fetched
         return None
+
+    async def fetch_admin_log_channel(self) -> discord.abc.Messageable | None:
+        channel = self.bot.get_channel(ADMIN_LOG_CHANNEL)
+        if isinstance(channel, discord.abc.Messageable):
+            return channel
+
+        try:
+            fetched = await self.bot.fetch_channel(ADMIN_LOG_CHANNEL)
+        except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+            return None
+
+        if isinstance(fetched, discord.abc.Messageable):
+            return fetched
+        return None
+
+    async def send_admin_log(
+        self,
+        title: str,
+        description: str,
+        *,
+        colour: discord.Color = discord.Color.blurple(),
+    ) -> None:
+        channel = await self.fetch_admin_log_channel()
+        if channel is None:
+            return
+
+        embed = discord.Embed(
+            title=title,
+            description=fit_embed_description(description),
+            colour=colour,
+            timestamp=datetime.now(timezone.utc),
+        )
+
+        try:
+            await channel.send(embed=embed)
+        except discord.HTTPException:
+            pass
+
+    @staticmethod
+    def describe_match(match: PendingMatchState | MatchState) -> str:
+        return (
+            f"Match: `#{match.match_id:03d}`\n"
+            f"Queue: `{match.queue_name}`\n"
+            f"Spieler: <@{match.player_ids[0]}> vs <@{match.player_ids[1]}>\n"
+            f"Thread: <#{match.thread_id}>"
+        )
+
+    async def log_match_created(self, match: PendingMatchState) -> None:
+        await self.send_admin_log("Match erstellt", self.describe_match(match), colour=discord.Color.gold())
+
+    async def log_match_player_confirmed(self, match: PendingMatchState, user_id: int) -> None:
+        await self.send_admin_log(
+            "Match bestätigt",
+            f"{self.describe_match(match)}\nBestätigt von: <@{user_id}>",
+            colour=discord.Color.gold(),
+        )
+
+    async def log_match_activated(self, match: MatchState) -> None:
+        await self.send_admin_log("Match aktiv", self.describe_match(match), colour=discord.Color.green())
+
+    async def log_pending_match_withdrawn(self, match: PendingMatchState, user_id: int) -> None:
+        await self.send_admin_log(
+            "Pending Match zurückgezogen",
+            f"{self.describe_match(match)}\nZurückgezogen von: <@{user_id}>",
+            colour=discord.Color.red(),
+        )
+
+    async def log_admin_match_cancelled(self, match: PendingMatchState | MatchState, user_id: int) -> None:
+        await self.send_admin_log(
+            "Match von Admin abgebrochen",
+            f"{self.describe_match(match)}\nAdmin: <@{user_id}>",
+            colour=discord.Color.red(),
+        )
+
+    async def log_result_submitted(self, match: MatchState, result: PendingResultState) -> None:
+        confirmer_id = self.get_result_confirmer_id(match, result)
+        await self.send_admin_log(
+            "Ergebnis eingetragen",
+            (
+                f"{self.describe_match(match)}\n"
+                f"Eingetragen von: <@{result.submitted_by}>\n"
+                f"Wartet auf: <@{confirmer_id}>\n"
+                f"Gewinner: <@{result.winner_id}>\n"
+                f"Spielstand: `{result.score_text}`"
+            ),
+            colour=discord.Color.blurple(),
+        )
+
+    async def log_result_confirmed(self, match: MatchState, result: PendingResultState, user_id: int) -> None:
+        self_confirmed = user_id == result.submitted_by
+        await self.send_admin_log(
+            "Ergebnis bestätigt",
+            (
+                f"{self.describe_match(match)}\n"
+                f"Bestätigt von: <@{user_id}>\n"
+                f"Selbstbestätigung: `{'ja' if self_confirmed else 'nein'}`\n"
+                f"Gewinner: <@{result.winner_id}>\n"
+                f"Spielstand: `{result.score_text}`"
+            ),
+            colour=discord.Color.green(),
+        )
+
+    async def log_result_disputed(self, match: MatchState, result: PendingResultState, user_id: int) -> None:
+        await self.send_admin_log(
+            "Ergebnis widersprochen",
+            (
+                f"{self.describe_match(match)}\n"
+                f"Widersprochen von: <@{user_id}>\n"
+                f"Eingetragen von: <@{result.submitted_by}>\n"
+                f"Gewinner im Vorschlag: <@{result.winner_id}>\n"
+                f"Spielstand im Vorschlag: `{result.score_text}`"
+            ),
+            colour=discord.Color.orange(),
+        )
+
+    async def log_result_self_confirm_available(self, match: MatchState, result: PendingResultState) -> None:
+        await self.send_admin_log(
+            "Selbstbestätigung freigeschaltet",
+            (
+                f"{self.describe_match(match)}\n"
+                f"Einreicher: <@{result.submitted_by}>\n"
+                f"Ursprünglich wartend auf: <@{self.get_result_confirmer_id(match, result)}>"
+            ),
+            colour=discord.Color.orange(),
+        )
+
+    async def log_result_publish_failed(self, match: MatchState, result: PendingResultState) -> None:
+        await self.send_admin_log(
+            "Ergebnis-Posting fehlgeschlagen",
+            (
+                f"{self.describe_match(match)}\n"
+                f"Ergebnis wurde gespeichert, konnte aber nicht in den Ergebnis-Channel gesendet werden.\n"
+                f"Gewinner: <@{result.winner_id}>\n"
+                f"Spielstand: `{result.score_text}`"
+            ),
+            colour=discord.Color.red(),
+        )
+
+    async def log_result_persist_failed(self, match: MatchState, result: PendingResultState) -> None:
+        await self.send_admin_log(
+            "Ergebnis-Speicherung fehlgeschlagen",
+            (
+                f"{self.describe_match(match)}\n"
+                f"Bestätigung konnte nicht in der Datenbank gespeichert werden.\n"
+                f"Gewinner: <@{result.winner_id}>\n"
+                f"Spielstand: `{result.score_text}`"
+            ),
+            colour=discord.Color.red(),
+        )
 
     async def send_result_message(
         self,
