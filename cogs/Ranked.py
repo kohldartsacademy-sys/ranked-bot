@@ -623,7 +623,7 @@ def format_admin_pending_matches(matches: list[PendingMatchState]) -> str:
         created_timestamp = int(match.created_at.timestamp())
         lines.append(
             f"#{match.match_id:03d} | {match.queue_name} | <@{match.player_ids[0]}> vs <@{match.player_ids[1]}> | "
-            f"<#{match.thread_id}> | Bestaetigt: {confirmed_text} | Wartet: {waiting_text} | Erstellt: <t:{created_timestamp}:R>"
+            f"<#{match.thread_id}> | Bestätigt: {confirmed_text} | Wartet: {waiting_text} | Erstellt: <t:{created_timestamp}:R>"
         )
 
     return "\n".join(lines)
@@ -1740,21 +1740,21 @@ class Ranked(commands.Cog):
     async def cancel_pending_match(self, interaction: discord.Interaction, pending_match: PendingMatchState) -> None:
         if len(pending_match.confirmed_user_ids) == 0:
             await interaction.response.send_message(
-                "Dieses Match kann erst vom bestaetigenden Spieler abgebrochen werden.",
+                "Dieses Match kann erst vom bestätigenden Spieler abgebrochen werden.",
                 ephemeral=True,
             )
             return
 
         if len(pending_match.confirmed_user_ids) > 1:
             await interaction.response.send_message(
-                "Dieses Match wurde bereits von beiden Spielern bestaetigt und kann hier nicht abgebrochen werden.",
+                "Dieses Match wurde bereits von beiden Spielern bestätigt und kann hier nicht abgebrochen werden.",
                 ephemeral=True,
             )
             return
 
         if interaction.user.id not in pending_match.confirmed_user_ids:
             await interaction.response.send_message(
-                "Nur der Spieler, der dieses Match bestaetigt hat, kann es abbrechen.",
+                "Nur der Spieler, der dieses Match bestätigt hat, kann es abbrechen.",
                 ephemeral=True,
             )
             return
@@ -1772,7 +1772,7 @@ class Ranked(commands.Cog):
             await thread.delete()
         except (discord.NotFound, discord.Forbidden, discord.HTTPException):
             await interaction.followup.send(
-                "Der Match-Thread konnte nicht geloescht werden. Match bleibt offen.",
+                "Der Match-Thread konnte nicht gelöscht werden. Match bleibt offen.",
                 ephemeral=True,
             )
             return
@@ -1810,7 +1810,7 @@ class Ranked(commands.Cog):
             await thread.delete()
         except (discord.NotFound, discord.Forbidden, discord.HTTPException):
             await interaction.followup.send(
-                "Der Match-Thread konnte nicht geloescht werden. Match bleibt offen.",
+                "Der Match-Thread konnte nicht gelöscht werden. Match bleibt offen.",
                 ephemeral=True,
             )
             return
@@ -2433,9 +2433,9 @@ class Ranked(commands.Cog):
                         pass
 
             if interaction.response.is_done():
-                await interaction.followup.send("Das Ergebnisformular konnte nicht geoeffnet werden.", ephemeral=True)
+                await interaction.followup.send("Das Ergebnisformular konnte nicht geöffnet werden.", ephemeral=True)
             else:
-                await interaction.response.send_message("Das Ergebnisformular konnte nicht geoeffnet werden.", ephemeral=True)
+                await interaction.response.send_message("Das Ergebnisformular konnte nicht geöffnet werden.", ephemeral=True)
 
     # Slash-Commands fuer Admins.
     @app_commands.command(name="queue_panel", description="Sendet das Queue-Panel in den Chat")
@@ -2483,7 +2483,7 @@ class Ranked(commands.Cog):
             match = self.get_match_by_thread_id(interaction.channel.id)
         else:
             await interaction.response.send_message(
-                "Bitte gib eine Match-ID an oder fuehre den Command direkt im Match-Thread aus.",
+                "Bitte gib eine Match-ID an oder führe den Command direkt im Match-Thread aus.",
                 ephemeral=True,
             )
             return
@@ -2552,7 +2552,7 @@ class Ranked(commands.Cog):
     async def stats(self, interaction: discord.Interaction, player: discord.Member) -> None:
         db = getattr(self.bot, "db", None)
         if db is None:
-            await interaction.response.send_message("Die Datenbank ist aktuell nicht verfÃ¼gbar.", ephemeral=True)
+            await interaction.response.send_message("Die Datenbank ist aktuell nicht verfügbar.", ephemeral=True)
             return
 
         world_data = await db.fetch_world_ranking(limit=None)
