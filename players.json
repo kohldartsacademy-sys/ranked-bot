@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1376,
+      "worldRating": 1383,
       "worldRank": 1,
-      "worldWins": 101,
+      "worldWins": 102,
       "worldLosses": 19,
-      "monthlyRating": 105,
-      "monthlyRank": 2,
-      "monthlyWins": 16,
+      "monthlyRating": 112,
+      "monthlyRank": 1,
+      "monthlyWins": 17,
       "monthlyLosses": 0,
-      "games": 120,
-      "winrate": 84.2,
-      "overallAverage": 69.34,
+      "games": 121,
+      "winrate": 84.3,
+      "overallAverage": 69.35,
       "recentMatches": [
+        {
+          "matchId": 1151,
+          "result": "Win",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "4:1",
+          "average": "70.44",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1150,
           "result": "Win",
@@ -53,16 +63,6 @@
           "opponentName": "Jannick2412",
           "score": "4:1",
           "average": "71.13",
-          "eloChange": 8,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1127,
-          "result": "Win",
-          "opponentId": 1092072918915219537,
-          "opponentName": "Jannick2412",
-          "score": "4:3",
-          "average": "68.9",
           "eloChange": 8,
           "queue": "scolia"
         }
@@ -476,80 +476,12 @@
         }
       ]
     },
-    "183185835477172226": {
-      "userId": 183185835477172226,
-      "name": "Stefan Kulik",
-      "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
-      "worldRating": 1156,
-      "worldRank": 8,
-      "worldWins": 34,
-      "worldLosses": 17,
-      "monthlyRating": 9,
-      "monthlyRank": 26,
-      "monthlyWins": 1,
-      "monthlyLosses": 2,
-      "games": 51,
-      "winrate": 66.7,
-      "overallAverage": 59.81,
-      "recentMatches": [
-        {
-          "matchId": 1150,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:0",
-          "average": "54.2",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1129,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "3:4",
-          "average": "62.0",
-          "eloChange": 9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1109,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:1",
-          "average": "61.05",
-          "eloChange": -8,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1048,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:2",
-          "average": "64.13",
-          "eloChange": -11,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1005,
-          "result": "Win",
-          "opponentId": 275040337507123200,
-          "opponentName": "Phempel",
-          "score": "42",
-          "average": "67.15",
-          "eloChange": 9,
-          "queue": "scolia"
-        }
-      ]
-    },
     "1092072918915219537": {
       "userId": 1092072918915219537,
       "name": "Jannick2412",
       "avatar": "https://cdn.discordapp.com/avatars/1092072918915219537/a34f97c919ba7630e8ba951a443fb146.png?size=1024",
       "worldRating": 1150,
-      "worldRank": 9,
+      "worldRank": 8,
       "worldWins": 25,
       "worldLosses": 11,
       "monthlyRating": 30,
@@ -608,6 +540,74 @@
           "score": "4:3",
           "average": "68.98",
           "eloChange": 9,
+          "queue": "scolia"
+        }
+      ]
+    },
+    "183185835477172226": {
+      "userId": 183185835477172226,
+      "name": "Stefan Kulik",
+      "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
+      "worldRating": 1149,
+      "worldRank": 9,
+      "worldWins": 34,
+      "worldLosses": 18,
+      "monthlyRating": 9,
+      "monthlyRank": 26,
+      "monthlyWins": 1,
+      "monthlyLosses": 3,
+      "games": 52,
+      "winrate": 65.4,
+      "overallAverage": 59.87,
+      "recentMatches": [
+        {
+          "matchId": 1151,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:1",
+          "average": "63.21",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1150,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:0",
+          "average": "54.2",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1129,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "3:4",
+          "average": "62.0",
+          "eloChange": 9,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1109,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:1",
+          "average": "61.05",
+          "eloChange": -8,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 1048,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:2",
+          "average": "64.13",
+          "eloChange": -11,
           "queue": "scolia"
         }
       ]
@@ -4716,7 +4716,7 @@
       "worldWins": 19,
       "worldLosses": 47,
       "monthlyRating": 107,
-      "monthlyRank": 1,
+      "monthlyRank": 2,
       "monthlyWins": 5,
       "monthlyLosses": 7,
       "games": 66,
