@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1362,
+      "worldRating": 1364,
       "worldRank": 1,
-      "worldWins": 103,
+      "worldWins": 104,
       "worldLosses": 20,
-      "monthlyRating": 118,
+      "monthlyRating": 120,
       "monthlyRank": 2,
-      "monthlyWins": 18,
+      "monthlyWins": 19,
       "monthlyLosses": 1,
-      "games": 123,
-      "winrate": 83.7,
-      "overallAverage": 69.36,
+      "games": 124,
+      "winrate": 83.9,
+      "overallAverage": 69.37,
       "recentMatches": [
+        {
+          "matchId": 1163,
+          "result": "Win",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "1:4",
+          "average": "70.63",
+          "eloChange": 2,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1161,
           "result": "Win",
@@ -55,16 +65,6 @@
           "average": "78.08",
           "eloChange": 7,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 1138,
-          "result": "Win",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "1:4",
-          "average": "61.61",
-          "eloChange": 2,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -5187,18 +5187,28 @@
       "userId": 1468019197656174774,
       "name": "Christian1980",
       "avatar": "https://cdn.discordapp.com/avatars/1468019197656174774/64cce093bb1bb13c73a4cc15e229e67f.png?size=1024",
-      "worldRating": 909,
+      "worldRating": 907,
       "worldRank": 99,
       "worldWins": 20,
-      "worldLosses": 51,
+      "worldLosses": 52,
       "monthlyRating": 122,
       "monthlyRank": 1,
       "monthlyWins": 6,
-      "monthlyLosses": 11,
-      "games": 71,
-      "winrate": 28.2,
-      "overallAverage": 144.36,
+      "monthlyLosses": 12,
+      "games": 72,
+      "winrate": 27.8,
+      "overallAverage": 143.14,
       "recentMatches": [
+        {
+          "matchId": 1163,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "1:4",
+          "average": "56.09",
+          "eloChange": -2,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1162,
           "result": "Win",
@@ -5237,16 +5247,6 @@
           "score": "1:4",
           "average": "55.93",
           "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1156,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "3:4",
-          "average": "51.91",
-          "eloChange": -7,
           "queue": "Scolia"
         }
       ]
