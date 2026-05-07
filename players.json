@@ -272,12 +272,80 @@
         }
       ]
     },
+    "1302224986051838068": {
+      "userId": 1302224986051838068,
+      "name": "Bazzi",
+      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
+      "worldRating": 1196,
+      "worldRank": 5,
+      "worldWins": 52,
+      "worldLosses": 19,
+      "monthlyRating": 89,
+      "monthlyRank": 3,
+      "monthlyWins": 12,
+      "monthlyLosses": 0,
+      "games": 71,
+      "winrate": 73.2,
+      "overallAverage": 61.68,
+      "recentMatches": [
+        {
+          "matchId": 1166,
+          "result": "Win",
+          "opponentId": 890838749280346132,
+          "opponentName": "Klax",
+          "score": "4:3",
+          "average": "58.07",
+          "eloChange": 14,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1158,
+          "result": "Win",
+          "opponentId": 505446955242094596,
+          "opponentName": "Jerome Benzler",
+          "score": "1:4",
+          "average": "63.31",
+          "eloChange": 7,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1156,
+          "result": "Win",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "3:4",
+          "average": "54.11",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1141,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "1:4",
+          "average": "59.68",
+          "eloChange": 3,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1137,
+          "result": "Win",
+          "opponentId": 505446955242094596,
+          "opponentName": "Jerome Benzler",
+          "score": "1:4",
+          "average": "64.03",
+          "eloChange": 8,
+          "queue": "DartCounter"
+        }
+      ]
+    },
     "1309548661117554720": {
       "userId": 1309548661117554720,
       "name": "Marco Panzenböck",
       "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
       "worldRating": 1191,
-      "worldRank": 5,
+      "worldRank": 6,
       "worldWins": 58,
       "worldLosses": 28,
       "monthlyRating": 7,
@@ -337,74 +405,6 @@
           "average": "63.24",
           "eloChange": -13,
           "queue": "scolia"
-        }
-      ]
-    },
-    "1302224986051838068": {
-      "userId": 1302224986051838068,
-      "name": "Bazzi",
-      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1182,
-      "worldRank": 6,
-      "worldWins": 51,
-      "worldLosses": 19,
-      "monthlyRating": 75,
-      "monthlyRank": 3,
-      "monthlyWins": 11,
-      "monthlyLosses": 0,
-      "games": 70,
-      "winrate": 72.9,
-      "overallAverage": 61.73,
-      "recentMatches": [
-        {
-          "matchId": 1158,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "1:4",
-          "average": "63.31",
-          "eloChange": 7,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1156,
-          "result": "Win",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "3:4",
-          "average": "54.11",
-          "eloChange": 7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1141,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "1:4",
-          "average": "59.68",
-          "eloChange": 3,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1137,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "1:4",
-          "average": "64.03",
-          "eloChange": 8,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1134,
-          "result": "Win",
-          "opponentId": 920777207834619915,
-          "opponentName": "Richard Boden",
-          "score": "1:4",
-          "average": "70.22",
-          "eloChange": 11,
-          "queue": "Scolia"
         }
       ]
     },
@@ -748,80 +748,12 @@
         }
       ]
     },
-    "890838749280346132": {
-      "userId": 890838749280346132,
-      "name": "Klax",
-      "avatar": "https://cdn.discordapp.com/avatars/890838749280346132/9d3b9b6ade8e4f780a30170927aea75f.png?size=1024",
-      "worldRating": 1133,
-      "worldRank": 12,
-      "worldWins": 12,
-      "worldLosses": 4,
-      "monthlyRating": 16,
-      "monthlyRank": 24,
-      "monthlyWins": 2,
-      "monthlyLosses": 1,
-      "games": 16,
-      "winrate": 75.0,
-      "overallAverage": 66.46,
-      "recentMatches": [
-        {
-          "matchId": 1164,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "2:4",
-          "average": "71.68",
-          "eloChange": 10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1152,
-          "result": "Loss",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "4:3",
-          "average": "67.78",
-          "eloChange": -15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1104,
-          "result": "Win",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "4:1",
-          "average": "63.0",
-          "eloChange": 6,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1021,
-          "result": "Win",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:2",
-          "average": "80.69",
-          "eloChange": 23,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 944,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "4:1",
-          "average": "69.39",
-          "eloChange": 11,
-          "queue": "scolia"
-        }
-      ]
-    },
     "1458502282219098457": {
       "userId": 1458502282219098457,
       "name": "Jules H",
       "avatar": "https://cdn.discordapp.com/avatars/1458502282219098457/f7f2e9361e8a54ce6e72580ac7b967af.png?size=1024",
       "worldRating": 1129,
-      "worldRank": 13,
+      "worldRank": 12,
       "worldWins": 25,
       "worldLosses": 14,
       "monthlyRating": 0,
@@ -889,7 +821,7 @@
       "name": "Justin Oehring",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
       "worldRating": 1122,
-      "worldRank": 14,
+      "worldRank": 13,
       "worldWins": 16,
       "worldLosses": 7,
       "monthlyRating": 27,
@@ -948,6 +880,74 @@
           "score": "4:2",
           "average": "62.08",
           "eloChange": -16,
+          "queue": "scolia"
+        }
+      ]
+    },
+    "890838749280346132": {
+      "userId": 890838749280346132,
+      "name": "Klax",
+      "avatar": "https://cdn.discordapp.com/avatars/890838749280346132/9d3b9b6ade8e4f780a30170927aea75f.png?size=1024",
+      "worldRating": 1119,
+      "worldRank": 14,
+      "worldWins": 12,
+      "worldLosses": 5,
+      "monthlyRating": 16,
+      "monthlyRank": 24,
+      "monthlyWins": 2,
+      "monthlyLosses": 2,
+      "games": 17,
+      "winrate": 70.6,
+      "overallAverage": 66.28,
+      "recentMatches": [
+        {
+          "matchId": 1166,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:3",
+          "average": "63.37",
+          "eloChange": -14,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1164,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "2:4",
+          "average": "71.68",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1152,
+          "result": "Loss",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "4:3",
+          "average": "67.78",
+          "eloChange": -15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1104,
+          "result": "Win",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "4:1",
+          "average": "63.0",
+          "eloChange": 6,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 1021,
+          "result": "Win",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:2",
+          "average": "80.69",
+          "eloChange": 23,
           "queue": "scolia"
         }
       ]
