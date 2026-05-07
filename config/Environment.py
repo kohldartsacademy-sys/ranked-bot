@@ -44,8 +44,9 @@ def load_int_env(key: str, default: int) -> int:
 
 _load_dotenv()
 TOKEN = load_env("DISCORD_TOKEN", "unknown")
-RESULT_CHANNEL = load_env("RESULT_CHANNEL", "unknown")
-ADMIN_LOG_CHANNEL = load_int_env("ADMIN_LOG_CHANNEL", "unknown")
+RESULT_CHANNEL = load_int_env("RESULT_CHANNEL", 0)
+ADMIN_LOG_CHANNEL = load_int_env("ADMIN_LOG_CHANNEL", 0)
+GIT_ORIGIN = load_env("GIT_ORIGIN", "origin")
 
 if TOKEN == "unknown":
     raise RuntimeError(

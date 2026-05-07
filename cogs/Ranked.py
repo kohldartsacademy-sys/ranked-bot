@@ -12,7 +12,7 @@ from datetime import datetime, timedelta, timezone
 from html import escape
 from pathlib import Path
 from dataclasses import dataclass, field
-from config.Environment import ADMIN_LOG_CHANNEL, RESULT_CHANNEL
+from config.Environment import ADMIN_LOG_CHANNEL, RESULT_CHANNEL, GIT_ORIGIN
 from config.SqliteStore import (
     ensure_ranked_storage,
     fetch_active_ranked_matches,
@@ -27,18 +27,19 @@ from config.SqliteStore import (
     persist_pending_ranked_match,
     persist_active_ranked_match,
     persist_ranked_match_result,
+    rebuild_current_month_rankings,
 )
 
 
 # TODO:
-#  screenshot in result modal per einfügen (strg + v)
+#  screenshot in result modal per einfÃ¼gen (strg + v)
 #  .
-#  wieder nur einmal pro tag? oder ab 2. mal abfrage ob man das möchte, ansonsten beide in die q und der 3. bekommt zufällig einen von den beiden
+#  wieder nur einmal pro tag? oder ab 2. mal abfrage ob man das mÃ¶chte, ansonsten beide in die q und der 3. bekommt zufÃ¤llig einen von den beiden
 #  world rating top, monats rating anders? jemand mit 5/7 kann nicht vor jemanden mit 15/0 stehen
 
 
 # =============================
-# Konstanten und Parser-Patterns für Queue, Threads und Ergebnisse.
+# Konstanten und Parser-Patterns fÃ¼r Queue, Threads und Ergebnisse.
 # =============================
 QUEUE_EMPTY_TEXT = "kein spieler"
 MATCHES_FIELD_NAME = ":fire: Aktuelle Matches"
@@ -104,7 +105,7 @@ def upload() -> bool:
     if branch_name is None:
         return False
 
-    push_result = run_git_command("push", "--set-upstream", "origin", branch_name)
+    push_result = run_git_command("push", "--set-upstream", GIT_ORIGIN, branch_name)
     if push_result.returncode != 0:
         print(f"git push failed: {push_result.stderr.strip()}")
         return False
@@ -240,8 +241,21 @@ async def build_player_profiles(
 
 
 async def generate_html(bot: commands.Bot):
-    guild = bot.guilds[0] if bot.guilds else None
     display_cache: dict[int, tuple[str, str]] = {}
+
+    async def find_member(user_id: int) -> discord.Member | None:
+        for guild in bot.guilds:
+            member = guild.get_member(user_id)
+            if member is not None:
+                return member
+
+        for guild in bot.guilds:
+            try:
+                return await guild.fetch_member(user_id)
+            except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+                continue
+
+        return None
 
     async def get_player_display(user_id: int) -> tuple[str, str]:
         cached = display_cache.get(user_id)
@@ -251,17 +265,10 @@ async def generate_html(bot: commands.Bot):
         name = f"User {user_id}"
         avatar = "https://cdn.discordapp.com/embed/avatars/0.png"
 
-        if guild:
-            member = guild.get_member(user_id)
-            if member is None:
-                try:
-                    member = await guild.fetch_member(user_id)
-                except (discord.NotFound, discord.Forbidden, discord.HTTPException):
-                    member = None
-
-            if member is not None:
-                name = member.display_name
-                avatar = member.display_avatar.url
+        member = await find_member(user_id)
+        if member is not None:
+            name = member.display_name
+            avatar = member.display_avatar.url
 
         display_cache[user_id] = (name, avatar)
         return name, avatar
@@ -271,13 +278,8 @@ async def generate_html(bot: commands.Bot):
     # =============================
 
     print("fetch data")
-    db = getattr(bot, "db", None)
-    if db is not None:
-        player_data = await db.fetch_world_ranking(limit=None)
-        monthly_data = await db.fetch_monthly_ranking(get_current_ranked_month_key(), limit=None)
-    else:
-        player_data = await fetch_world_ranking(bot)
-        monthly_data = await fetch_monthly_ranking(bot)
+    player_data = await fetch_world_ranking(bot, limit=None)
+    monthly_data = await fetch_monthly_ranking(bot, get_current_ranked_month_key(), limit=None)
 
     top3 = player_data[:3]
 
@@ -330,7 +332,7 @@ async def generate_html(bot: commands.Bot):
 
     <body>
 
-    <h1>🏆 RANKED DARTS Dashboard</h1>
+    <h1>ðŸ† RANKED DARTS Dashboard</h1>
     """
 
     # =============================
@@ -362,8 +364,8 @@ async def generate_html(bot: commands.Bot):
 
     html += "<div class='container'>"
     print("build world ranking")
-    # 🌍 WORLD
-    html += "<div style='width:40%'><h2>🌍 World Ranking</h2><table>"
+    # ðŸŒ WORLD
+    html += "<div style='width:40%'><h2>ðŸŒ World Ranking</h2><table>"
 
     for i, (user_id, world_rating, wins, losses) in enumerate(player_data, 1):
         name, avatar = await get_player_display(user_id)
@@ -381,8 +383,8 @@ async def generate_html(bot: commands.Bot):
     html += "</table></div>"
 
     print("build monthly ranking")
-    # 🗓️ MONTHLY
-    html += "<div style='width:40%'><h2>🗓️ Monatsranking</h2><table>"
+    # ðŸ—“ï¸ MONTHLY
+    html += "<div style='width:40%'><h2>ðŸ—“ï¸ Monatsranking</h2><table>"
 
     for i, (user_id, monthly_rating, wins, losses) in enumerate(monthly_data, 1):
         name, avatar = await get_player_display(user_id)
@@ -427,7 +429,7 @@ async def generate_html(bot: commands.Bot):
             <p id="modal-games"></p>
             <p id="modal-winrate"></p>
             <p id="modal-average"></p>
-            <h3>🔥 Letzte Matches</h3>
+            <h3>ðŸ”¥ Letzte Matches</h3>
             <ul id="modal-matches" class="match-list"></ul>
         </div>
     </div>
@@ -451,12 +453,12 @@ async def generate_html(bot: commands.Bot):
         const jsonAvatarIsDefault = player.avatar && player.avatar.includes("/embed/avatars/0.png");
         document.getElementById("modal-avatar").src = jsonAvatarIsDefault && fallbackAvatar ? fallbackAvatar : player.avatar;
         text("modal-player-name", player.name);
-        text("modal-rating", "🏆 Rating: " + player.worldRating);
-        text("modal-world-rank", "🌍 Worldrank: " + rankText(player.worldRank));
-        text("modal-monthly-rank", "🗓️ Monatsrang: " + rankText(player.monthlyRank));
-        text("modal-games", "🎯 Spiele: " + player.games);
-        text("modal-winrate", "📈 Winrate: " + player.winrate + "%");
-        text("modal-average", "🎯 Ø Average: " + player.overallAverage);
+        text("modal-rating", "ðŸ† Rating: " + player.worldRating);
+        text("modal-world-rank", "ðŸŒ Worldrank: " + rankText(player.worldRank));
+        text("modal-monthly-rank", "ðŸ—“ï¸ Monatsrang: " + rankText(player.monthlyRank));
+        text("modal-games", "ðŸŽ¯ Spiele: " + player.games);
+        text("modal-winrate", "ðŸ“ˆ Winrate: " + player.winrate + "%");
+        text("modal-average", "ðŸŽ¯ Ã˜ Average: " + player.overallAverage);
 
         const matches = document.getElementById("modal-matches");
         matches.replaceChildren();
@@ -467,7 +469,7 @@ async def generate_html(bot: commands.Bot):
         } else {
             player.recentMatches.forEach(match => {
                 const item = document.createElement("li");
-                const resultIcon = match.result === "Win" ? "🟢" : "🔴";
+                const resultIcon = match.result === "Win" ? "ðŸŸ¢" : "ðŸ”´";
                 const elo = match.eloChange > 0 ? "+" + match.eloChange : String(match.eloChange);
                 item.textContent = resultIcon + " vs " + match.opponentName + " (" + match.score + ") | Avg: " + match.average + " | " + elo + " ELO";
                 matches.appendChild(item);
@@ -527,7 +529,7 @@ async def generate_html(bot: commands.Bot):
 
 
 # =============================
-# Datenmodelle für den Laufzeit-Zustand von Panels, Matches und Ergebnissen.
+# Datenmodelle fÃ¼r den Laufzeit-Zustand von Panels, Matches und Ergebnissen.
 # =============================
 
 @dataclass(slots=True)
@@ -617,7 +619,7 @@ def format_admin_pending_matches(matches: list[PendingMatchState]) -> str:
         created_timestamp = int(match.created_at.timestamp())
         lines.append(
             f"#{match.match_id:03d} | {match.queue_name} | <@{match.player_ids[0]}> vs <@{match.player_ids[1]}> | "
-            f"<#{match.thread_id}> | Bestätigt: {confirmed_text} | Wartet: {waiting_text} | Erstellt: <t:{created_timestamp}:R>"
+            f"<#{match.thread_id}> | BestÃ¤tigt: {confirmed_text} | Wartet: {waiting_text} | Erstellt: <t:{created_timestamp}:R>"
         )
 
     return "\n".join(lines)
@@ -665,21 +667,21 @@ def build_pending_match_embed(match: PendingMatchState) -> discord.Embed:
     )
 
     embed = discord.Embed(
-        title=f"Match #{match.match_id:03d} bestätigen",
+        title=f"Match #{match.match_id:03d} bestÃ¤tigen",
         description=(
             f"{match.queue_name} Match zwischen <@{match.player_ids[0]}> und <@{match.player_ids[1]}>.\n"
-            "Beide Spieler müssen bestätigen, bevor das Match aktiv wird."
+            "Beide Spieler mÃ¼ssen bestÃ¤tigen, bevor das Match aktiv wird."
         ),
         colour=discord.Color.gold(),
     )
-    embed.add_field(name="Bestätigt", value=confirmed_mentions, inline=True)
+    embed.add_field(name="BestÃ¤tigt", value=confirmed_mentions, inline=True)
     embed.add_field(name="Wartet auf", value=waiting_mentions, inline=True)
     return embed
 
 
 def build_confirmed_match_embed(match: MatchState) -> discord.Embed:
     return discord.Embed(
-        title=f"Match #{match.match_id:03d} bestätigt",
+        title=f"Match #{match.match_id:03d} bestÃ¤tigt",
         description=(
             f"{match.queue_name} <@{match.player_ids[0]}> vs <@{match.player_ids[1]}>\n"
             "Das Match ist jetzt aktiv."
@@ -716,7 +718,7 @@ def build_result_embed(
 def build_withdrawn_match_embed(match_id: int) -> discord.Embed:
     return discord.Embed(
         title=f"Match Ergebnis #{match_id:03d}",
-        description="Das Match wurde zurückgezogen.",
+        description="Das Match wurde zurÃ¼ckgezogen.",
         colour=discord.Color.red(),
     )
 def build_cancel_match_embed(match_id: int) -> discord.Embed:
@@ -759,18 +761,18 @@ def build_stats_embed(
     total: int,
     winrate: int | float,
 ) -> discord.Embed:
-    embed = discord.Embed(title=f"📊 Stats von {player.display_name}")
+    embed = discord.Embed(title=f"ðŸ“Š Stats von {player.display_name}")
 
-    embed.add_field(name="🏆 Rating", value=str(rating), inline=False)
-    embed.add_field(name="🌍 Global Rank", value=rank_value(world_rank), inline=False)
-    embed.add_field(name="🗓️ Monthly Rank", value=rank_value(monthly_rank), inline=False)
-    embed.add_field(name="🎯 Spiele", value=str(total), inline=False)
-    embed.add_field(name="📈 Winrate", value=f"{winrate}%", inline=False)
+    embed.add_field(name="ðŸ† Rating", value=str(rating), inline=False)
+    embed.add_field(name="ðŸŒ Global Rank", value=rank_value(world_rank), inline=False)
+    embed.add_field(name="ðŸ—“ï¸ Monthly Rank", value=rank_value(monthly_rank), inline=False)
+    embed.add_field(name="ðŸŽ¯ Spiele", value=str(total), inline=False)
+    embed.add_field(name="ðŸ“ˆ Winrate", value=f"{winrate}%", inline=False)
     return embed
 
 
 # =============================
-# Parser und Normalisierung für Queue-Embeds, Thread-Namen und Formularwerte.
+# Parser und Normalisierung fÃ¼r Queue-Embeds, Thread-Namen und Formularwerte.
 # =============================
 
 def parse_queue(value: str) -> list[int]:
@@ -863,7 +865,7 @@ def shorten_label(value: str, limit: int = 28) -> str:
 
 
 # =============================
-# Match-Bestätigung: Buttons für Annahme oder Rückzug eines neuen Matches.
+# Match-BestÃ¤tigung: Buttons fÃ¼r Annahme oder RÃ¼ckzug eines neuen Matches.
 # =============================
 
 class PendingMatchView(discord.ui.View):
@@ -929,10 +931,10 @@ class PendingMatchView(discord.ui.View):
         if interaction.user.id in match.player_ids:
             return True
 
-        await interaction.response.send_message("Nur die beiden Spieler können hier reagieren.", ephemeral=True)
+        await interaction.response.send_message("Nur die beiden Spieler kÃ¶nnen hier reagieren.", ephemeral=True)
         return False
 
-    @discord.ui.button(label="Bestätigen", style=discord.ButtonStyle.success, custom_id="ranked:pending_confirm")
+    @discord.ui.button(label="BestÃ¤tigen", style=discord.ButtonStyle.success, custom_id="ranked:pending_confirm")
     async def confirm_callback(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
         del button
         match_id = self.resolve_match_id(interaction)
@@ -951,7 +953,7 @@ class PendingMatchView(discord.ui.View):
         self.sync_confirmations_from_message(pending_match, interaction)
 
         if interaction.user.id in pending_match.confirmed_user_ids:
-            await interaction.response.send_message("Du hast dieses Match bereits bestätigt.", ephemeral=True)
+            await interaction.response.send_message("Du hast dieses Match bereits bestÃ¤tigt.", ephemeral=True)
             return
 
         pending_match.confirmed_user_ids.add(interaction.user.id)
@@ -960,15 +962,15 @@ class PendingMatchView(discord.ui.View):
         if len(pending_match.confirmed_user_ids) < 2:
             await interaction.response.edit_message(embed=build_pending_match_embed(pending_match), view=self)
             await interaction.followup.send(
-                "Du hast das Match bestätigt. Wenn dein Gegner das Match nicht innerhalb von 5 Minuten bestätigt, "
-                "kannst du den Button \"Match zurückziehen\" drücken.",
+                "Du hast das Match bestÃ¤tigt. Wenn dein Gegner das Match nicht innerhalb von 5 Minuten bestÃ¤tigt, "
+                "kannst du den Button \"Match zurÃ¼ckziehen\" drÃ¼cken.",
                 ephemeral=True,
             )
             return
 
         active_match = await self.cog.confirm_pending_match(self.match_id)
         if active_match is None:
-            await interaction.response.send_message("Das Match konnte nicht bestätigt werden.", ephemeral=True)
+            await interaction.response.send_message("Das Match konnte nicht bestÃ¤tigt werden.", ephemeral=True)
             return
 
         self.stop()
@@ -976,13 +978,13 @@ class PendingMatchView(discord.ui.View):
         thread = await self.cog.fetch_thread(active_match.thread_id)
         if thread is not None:
             await thread.send(
-                "Wenn euer Match beendet ist, könnt ihr hier das Ergebnis eintragen: Alternativ mit /result",
+                "Wenn euer Match beendet ist, kÃ¶nnt ihr hier das Ergebnis eintragen: Alternativ mit /result",
                 view=ResultEntryView(self.cog, active_match.match_id),
             )
         await self.cog.refresh_panels(refresh_all=True)
 
     @discord.ui.button(
-        label="Match zurückziehen",
+        label="Match zurÃ¼ckziehen",
         style=discord.ButtonStyle.danger,
         custom_id="ranked:pending_withdraw",
     )
@@ -1002,7 +1004,7 @@ class PendingMatchView(discord.ui.View):
 
         if not self.cog.is_pending_match_withdraw_enabled(pending_match):
             await interaction.response.send_message(
-                "Der Match-Rückzug ist erst 5 Minuten nach Match-Erstellung möglich.",
+                "Der Match-RÃ¼ckzug ist erst 5 Minuten nach Match-Erstellung mÃ¶glich.",
                 ephemeral=True,
             )
             return
@@ -1011,7 +1013,7 @@ class PendingMatchView(discord.ui.View):
 
 
 # =============================
-# Ergebnis-Bestätigung: Gegenspieler prueft und bestätigt den Vorschlag.
+# Ergebnis-BestÃ¤tigung: Gegenspieler prueft und bestÃ¤tigt den Vorschlag.
 # =============================
 
 class ResultConfirmationView(discord.ui.View):
@@ -1060,10 +1062,10 @@ class ResultConfirmationView(discord.ui.View):
         if custom_id == "ranked:result_confirm" and interaction_user_is_admin(interaction):
             return True
         if interaction.user.id not in match.player_ids:
-            await interaction.response.send_message("Nur die beiden Spieler können das Ergebnis bestätigen.", ephemeral=True)
+            await interaction.response.send_message("Nur die beiden Spieler kÃ¶nnen das Ergebnis bestÃ¤tigen.", ephemeral=True)
             return False
         if self.confirmer_id is None:
-            await interaction.response.send_message("Der bestätigende Spieler konnte nicht ermittelt werden.", ephemeral=True)
+            await interaction.response.send_message("Der bestÃ¤tigende Spieler konnte nicht ermittelt werden.", ephemeral=True)
             return False
         can_confirm_as_submitter = (
             custom_id == "ranked:result_confirm"
@@ -1073,7 +1075,7 @@ class ResultConfirmationView(discord.ui.View):
         if interaction.user.id != self.confirmer_id and not can_confirm_as_submitter:
             if custom_id == "ranked:result_confirm" and interaction.user.id == result.submitted_by:
                 await interaction.response.send_message(
-                    "Du kannst dein eigenes Ergebnis erst nach 1 Minute selbst bestätigen.",
+                    "Du kannst dein eigenes Ergebnis erst nach 1 Minute selbst bestÃ¤tigen.",
                     ephemeral=True,
                 )
                 return False
@@ -1084,7 +1086,7 @@ class ResultConfirmationView(discord.ui.View):
                 )
                 return False
             await interaction.response.send_message(
-                f"Nur <@{self.confirmer_id}> kann dieses Ergebnis bestätigen.",
+                f"Nur <@{self.confirmer_id}> kann dieses Ergebnis bestÃ¤tigen.",
                 ephemeral=True,
             )
             return False
@@ -1092,7 +1094,7 @@ class ResultConfirmationView(discord.ui.View):
         return True
 
     @discord.ui.button(
-        label="Ergebnis bestätigen",
+        label="Ergebnis bestÃ¤tigen",
         style=discord.ButtonStyle.success,
         custom_id="ranked:result_confirm",
     )
@@ -1118,7 +1120,7 @@ class ResultConfirmationView(discord.ui.View):
         if results_channel is None:
             await self.cog.send_admin_log(
                 "Ergebnis-Channel fehlt",
-                f"{self.cog.describe_match(match)}\nDer Ergebnis-Channel konnte beim Bestätigen nicht gefunden werden.",
+                f"{self.cog.describe_match(match)}\nDer Ergebnis-Channel konnte beim BestÃ¤tigen nicht gefunden werden.",
                 colour=discord.Color.red(),
             )
             await interaction.followup.send("Der Ergebnis-Channel konnte nicht gefunden werden.", ephemeral=True)
@@ -1126,10 +1128,10 @@ class ResultConfirmationView(discord.ui.View):
         if interaction.guild_id is None:
             await self.cog.send_admin_log(
                 "Guild-ID fehlt",
-                f"{self.cog.describe_match(match)}\nDie Guild-ID konnte beim Ergebnis-Bestätigen nicht aufgelöst werden.",
+                f"{self.cog.describe_match(match)}\nDie Guild-ID konnte beim Ergebnis-BestÃ¤tigen nicht aufgelÃ¶st werden.",
                 colour=discord.Color.red(),
             )
-            await interaction.followup.send("Guild-ID konnte nicht aufgelöst werden.", ephemeral=True)
+            await interaction.followup.send("Guild-ID konnte nicht aufgelÃ¶st werden.", ephemeral=True)
             return
         persisted, already_published = await persist_ranked_match_result(
             self.cog.bot,
@@ -1164,7 +1166,7 @@ class ResultConfirmationView(discord.ui.View):
         except discord.HTTPException:
             await self.cog.log_result_publish_failed(match, result)
             await interaction.followup.send(
-                "Das Ergebnis wurde gespeichert, aber nicht in den Ergebnis-Channel gesendet. Bitte erneut bestätigen.",
+                "Das Ergebnis wurde gespeichert, aber nicht in den Ergebnis-Channel gesendet. Bitte erneut bestÃ¤tigen.",
                 ephemeral=True,
             )
             return
@@ -1186,7 +1188,7 @@ class ResultConfirmationView(discord.ui.View):
 
         await generate_html(self.cog.bot)
         upload()
-        await interaction.followup.send("Ergebnis bestätigt und gepostet.", ephemeral=True)
+        await interaction.followup.send("Ergebnis bestÃ¤tigt und gepostet.", ephemeral=True)
 
     @discord.ui.button(
         label="Ergebnis widersprechen",
@@ -1260,14 +1262,14 @@ class ResultEntryView(discord.ui.View):
 
         if interaction.user.id not in match.player_ids:
             await interaction.response.send_message(
-                "Nur die beiden Match-Spieler dürfen das Ergebnis eintragen.",
+                "Nur die beiden Match-Spieler dÃ¼rfen das Ergebnis eintragen.",
                 ephemeral=True,
             )
             return
 
         if self.cog.pending_results.get(match.match_id) is not None:
             await interaction.response.send_message(
-                "Für dieses Match wurde bereits ein Ergebnis eingetragen und wartet auf Bestätigung.",
+                "FÃ¼r dieses Match wurde bereits ein Ergebnis eingetragen und wartet auf BestÃ¤tigung.",
                 ephemeral=True,
             )
             return
@@ -1308,7 +1310,7 @@ class ResultModal(discord.ui.Modal):
         score_player_two_name = shorten_label(player_two_name, 14)
 
         self.winner_select = discord.ui.Select(
-            placeholder="Gewinner auswählen",
+            placeholder="Gewinner auswÃ¤hlen",
             min_values=1,
             max_values=1,
             options=[
@@ -1363,14 +1365,14 @@ class ResultModal(discord.ui.Modal):
     async def on_submit(self, interaction: discord.Interaction) -> None:
         if not self.winner_select.values:
             await self.restore_result_entry_button()
-            await interaction.response.send_message("Bitte wähle einen Gewinner aus.", ephemeral=True)
+            await interaction.response.send_message("Bitte wÃ¤hle einen Gewinner aus.", ephemeral=True)
             return
 
         score = parse_best_of_seven_score(self.score_input.value)
         if score is None:
             await self.restore_result_entry_button()
             await interaction.response.send_message(
-                "Bitte gib einen gültigen Best-of-7-Spielstand ein, z. B. 4:0 bis 4:3.",
+                "Bitte gib einen gÃ¼ltigen Best-of-7-Spielstand ein, z. B. 4:0 bis 4:3.",
                 ephemeral=True,
             )
             return
@@ -1380,7 +1382,7 @@ class ResultModal(discord.ui.Modal):
         if average_one is None or average_two is None:
             await self.restore_result_entry_button()
             await interaction.response.send_message(
-                "Die Averages müssen numerisch sein. Punkt und Komma sind erlaubt.",
+                "Die Averages mÃ¼ssen numerisch sein. Punkt und Komma sind erlaubt.",
                 ephemeral=True,
             )
             return
@@ -1392,7 +1394,7 @@ class ResultModal(discord.ui.Modal):
         if winner_id == player_one_id and left_score != 4:
             await self.restore_result_entry_button()
             await interaction.response.send_message(
-                "Der ausgewählte Gewinner passt nicht zum Spielstand.",
+                "Der ausgewÃ¤hlte Gewinner passt nicht zum Spielstand.",
                 ephemeral=True,
             )
             return
@@ -1400,7 +1402,7 @@ class ResultModal(discord.ui.Modal):
         if winner_id == player_two_id and right_score != 4:
             await self.restore_result_entry_button()
             await interaction.response.send_message(
-                "Der ausgewählte Gewinner passt nicht zum Spielstand.",
+                "Der ausgewÃ¤hlte Gewinner passt nicht zum Spielstand.",
                 ephemeral=True,
             )
             return
@@ -1409,7 +1411,7 @@ class ResultModal(discord.ui.Modal):
         # if screenshot is None:
         #     await self.restore_result_entry_button()
         #     await interaction.response.send_message(
-        #         "Bitte hänge einen Screenshot an.",
+        #         "Bitte hÃ¤nge einen Screenshot an.",
         #         ephemeral=True,
         #     )
         #     return
@@ -1459,7 +1461,7 @@ class ResultModal(discord.ui.Modal):
                 thread,
                 self.match,
                 pending_result,
-                content=f"<@{confirmer_id}>, bitte bestätige dieses Ergebnis.",
+                content=f"<@{confirmer_id}>, bitte bestÃ¤tige dieses Ergebnis.",
                 view=confirmation_view,
             )
         except discord.HTTPException:
@@ -1476,7 +1478,7 @@ class ResultModal(discord.ui.Modal):
         pending_result.confirmation_message_id = message.id
         self.cog.schedule_result_self_confirm_notification(pending_result)
         await self.cog.log_result_submitted(self.match, pending_result)
-        await interaction.followup.send("Ergebnis zur Bestätigung in den Match-Thread gesendet.", ephemeral=True)
+        await interaction.followup.send("Ergebnis zur BestÃ¤tigung in den Match-Thread gesendet.", ephemeral=True)
 
 
 # =============================
@@ -1524,7 +1526,7 @@ class QueuePanel(discord.ui.View):
 
         if join:
             if queue_name is None:
-                await interaction.response.send_message("Keine Queue ausgewählt.", ephemeral=True)
+                await interaction.response.send_message("Keine Queue ausgewÃ¤hlt.", ephemeral=True)
                 return
 
             queue = panel_state.get_queue(queue_name)
@@ -1599,7 +1601,7 @@ class QueuePanel(discord.ui.View):
         scolia_has_opponent = self.has_waiting_opponent(panel_state.scolia_queue, user_id)
         if dartcounter_has_opponent and scolia_has_opponent:
             await interaction.response.send_message(
-                "Beides ist gerade nicht möglich, weil in beiden Queues schon jemand wartet.",
+                "Beides ist gerade nicht mÃ¶glich, weil in beiden Queues schon jemand wartet.",
                 ephemeral=True,
                 delete_after=10,
             )
@@ -1751,6 +1753,16 @@ class Ranked(commands.Cog):
     def is_result_self_confirm_available(result: PendingResultState) -> bool:
         return datetime.now(timezone.utc) >= result.submitted_at + RESULT_SELF_CONFIRM_DELAY
 
+    def is_database_available(self) -> bool:
+        return getattr(self.bot, "db", None) is not None
+
+    async def ensure_database_available(self, interaction: discord.Interaction) -> bool:
+        if self.is_database_available():
+            return True
+
+        await interaction.response.send_message("Die Datenbank ist aktuell nicht verfuegbar.", ephemeral=True)
+        return False
+
     @staticmethod
     def get_result_confirmer_id(match: MatchState, result: PendingResultState) -> int:
         player_one_id, player_two_id = match.player_ids
@@ -1777,21 +1789,21 @@ class Ranked(commands.Cog):
     async def cancel_pending_match(self, interaction: discord.Interaction, pending_match: PendingMatchState) -> None:
         if len(pending_match.confirmed_user_ids) == 0:
             await interaction.response.send_message(
-                "Dieses Match kann erst vom bestätigenden Spieler abgebrochen werden.",
+                "Dieses Match kann erst vom bestÃ¤tigenden Spieler abgebrochen werden.",
                 ephemeral=True,
             )
             return
 
         if len(pending_match.confirmed_user_ids) > 1:
             await interaction.response.send_message(
-                "Dieses Match wurde bereits von beiden Spielern bestätigt und kann hier nicht abgebrochen werden.",
+                "Dieses Match wurde bereits von beiden Spielern bestÃ¤tigt und kann hier nicht abgebrochen werden.",
                 ephemeral=True,
             )
             return
 
         if interaction.user.id not in pending_match.confirmed_user_ids:
             await interaction.response.send_message(
-                "Nur der Spieler, der dieses Match bestätigt hat, kann es abbrechen.",
+                "Nur der Spieler, der dieses Match bestÃ¤tigt hat, kann es abbrechen.",
                 ephemeral=True,
             )
             return
@@ -1809,7 +1821,7 @@ class Ranked(commands.Cog):
             await thread.delete()
         except (discord.NotFound, discord.Forbidden, discord.HTTPException):
             await interaction.followup.send(
-                "Der Match-Thread konnte nicht gelöscht werden. Match bleibt offen.",
+                "Der Match-Thread konnte nicht gelÃ¶scht werden. Match bleibt offen.",
                 ephemeral=True,
             )
             return
@@ -1852,7 +1864,7 @@ class Ranked(commands.Cog):
             await thread.delete()
         except (discord.NotFound, discord.Forbidden, discord.HTTPException):
             await interaction.followup.send(
-                "Der Match-Thread konnte nicht gelöscht werden. Match bleibt offen.",
+                "Der Match-Thread konnte nicht gelÃ¶scht werden. Match bleibt offen.",
                 ephemeral=True,
             )
             return
@@ -1939,8 +1951,8 @@ class Ranked(commands.Cog):
 
             try:
                 await thread.send(
-                    f"<@{result.submitted_by}>, <@{self.get_result_confirmer_id(match, result)}> hat noch nicht bestätigt."
-                    "Du kannst dein Ergebnis jetzt selbst bestätigen."
+                    f"<@{result.submitted_by}>, <@{self.get_result_confirmer_id(match, result)}> hat noch nicht bestÃ¤tigt."
+                    "Du kannst dein Ergebnis jetzt selbst bestÃ¤tigen."
                 )
             except (discord.NotFound, discord.Forbidden, discord.HTTPException):
                 pass
@@ -2276,7 +2288,7 @@ class Ranked(commands.Cog):
         # await thread.send(
         #     content=(
         #         f"{player_one.mention} {player_two.mention}\n"
-        #         "Bestätigt dieses Match oder zieht es zurueck."
+        #         "BestÃ¤tigt dieses Match oder zieht es zurueck."
         #     ),
         #     embed=build_pending_match_embed(pending_match),
         #     view=view,
@@ -2444,8 +2456,8 @@ class Ranked(commands.Cog):
 
     async def log_match_player_confirmed(self, match: PendingMatchState, user_id: int) -> None:
         await self.send_admin_log(
-            "Match bestätigt",
-            f"{self.describe_match(match)}\nBestätigt von: <@{user_id}>",
+            "Match bestÃ¤tigt",
+            f"{self.describe_match(match)}\nBestÃ¤tigt von: <@{user_id}>",
             colour=discord.Color.gold(),
         )
 
@@ -2454,8 +2466,8 @@ class Ranked(commands.Cog):
 
     async def log_pending_match_withdrawn(self, match: PendingMatchState, user_id: int) -> None:
         await self.send_admin_log(
-            "Pending Match zurückgezogen",
-            f"{self.describe_match(match)}\nZurückgezogen von: <@{user_id}>",
+            "Pending Match zurÃ¼ckgezogen",
+            f"{self.describe_match(match)}\nZurÃ¼ckgezogen von: <@{user_id}>",
             colour=discord.Color.red(),
         )
 
@@ -2483,11 +2495,11 @@ class Ranked(commands.Cog):
     async def log_result_confirmed(self, match: MatchState, result: PendingResultState, user_id: int) -> None:
         self_confirmed = user_id == result.submitted_by
         await self.send_admin_log(
-            "Ergebnis bestätigt",
+            "Ergebnis bestÃ¤tigt",
             (
                 f"{self.describe_match(match)}\n"
-                f"Bestätigt von: <@{user_id}>\n"
-                f"Selbstbestätigung: `{'ja' if self_confirmed else 'nein'}`\n"
+                f"BestÃ¤tigt von: <@{user_id}>\n"
+                f"SelbstbestÃ¤tigung: `{'ja' if self_confirmed else 'nein'}`\n"
                 f"Gewinner: <@{result.winner_id}>\n"
                 f"Spielstand: `{result.score_text}`"
             ),
@@ -2509,11 +2521,11 @@ class Ranked(commands.Cog):
 
     async def log_result_self_confirm_available(self, match: MatchState, result: PendingResultState) -> None:
         await self.send_admin_log(
-            "Selbstbestätigung freigeschaltet",
+            "SelbstbestÃ¤tigung freigeschaltet",
             (
                 f"{self.describe_match(match)}\n"
                 f"Einreicher: <@{result.submitted_by}>\n"
-                f"Ursprünglich wartend auf: <@{self.get_result_confirmer_id(match, result)}>"
+                f"UrsprÃ¼nglich wartend auf: <@{self.get_result_confirmer_id(match, result)}>"
             ),
             colour=discord.Color.orange(),
         )
@@ -2535,7 +2547,7 @@ class Ranked(commands.Cog):
             "Ergebnis-Speicherung fehlgeschlagen",
             (
                 f"{self.describe_match(match)}\n"
-                f"Bestätigung konnte nicht in der Datenbank gespeichert werden.\n"
+                f"BestÃ¤tigung konnte nicht in der Datenbank gespeichert werden.\n"
                 f"Gewinner: <@{result.winner_id}>\n"
                 f"Spielstand: `{result.score_text}`"
             ),
@@ -2584,7 +2596,7 @@ class Ranked(commands.Cog):
 
         return True
 
-    # Ergebnisvorschläge und Panel-Aktualisierung nach Interaktionen.
+    # ErgebnisvorschlÃ¤ge und Panel-Aktualisierung nach Interaktionen.
     async def mark_result_submission_obsolete(self, result: PendingResultState) -> None:
         if result.confirmation_message_id is None:
             return
@@ -2663,7 +2675,7 @@ class Ranked(commands.Cog):
 
         if interaction.user.id not in match.player_ids:
             await interaction.response.send_message(
-                "Nur die beiden Match-Spieler dürfen das Ergebnis eintragen.",
+                "Nur die beiden Match-Spieler dÃ¼rfen das Ergebnis eintragen.",
                 ephemeral=True,
             )
             return
@@ -2682,9 +2694,9 @@ class Ranked(commands.Cog):
                         pass
 
             if interaction.response.is_done():
-                await interaction.followup.send("Das Ergebnisformular konnte nicht geöffnet werden.", ephemeral=True)
+                await interaction.followup.send("Das Ergebnisformular konnte nicht geÃ¶ffnet werden.", ephemeral=True)
             else:
-                await interaction.response.send_message("Das Ergebnisformular konnte nicht geöffnet werden.", ephemeral=True)
+                await interaction.response.send_message("Das Ergebnisformular konnte nicht geÃ¶ffnet werden.", ephemeral=True)
 
     # Slash-Commands fuer Admins.
     @app_commands.command(name="queue_panel", description="Sendet das Queue-Panel in den Chat")
@@ -2720,7 +2732,7 @@ class Ranked(commands.Cog):
         await interaction.response.send_message(embeds=embeds, ephemeral=True)
 
     @app_commands.command(name="cancel_match",description="Bricht ein Match als Admin ab",)
-    @app_commands.describe(match_id="Match-ID, wenn der Command nicht im Match-Thread ausgeführt wird")
+    @app_commands.describe(match_id="Match-ID, wenn der Command nicht im Match-Thread ausgefÃ¼hrt wird")
     @app_commands.checks.has_permissions(administrator=True)
     @app_commands.guild_only()
     async def cancel_match(self, interaction: discord.Interaction, match_id: int | None = None) -> None:
@@ -2732,7 +2744,7 @@ class Ranked(commands.Cog):
             match = self.get_match_by_thread_id(interaction.channel.id)
         else:
             await interaction.response.send_message(
-                "Bitte gib eine Match-ID an oder führe den Command direkt im Match-Thread aus.",
+                "Bitte gib eine Match-ID an oder fÃ¼hre den Command direkt im Match-Thread aus.",
                 ephemeral=True,
             )
             return
@@ -2750,8 +2762,7 @@ class Ranked(commands.Cog):
     @app_commands.checks.has_permissions(administrator=True)
     @app_commands.guild_only()
     async def world_ranking(self, interaction: discord.Interaction) -> None:
-        if getattr(self.bot, "db", None) is None:
-            await interaction.response.send_message("Die Datenbank ist aktuell nicht verfügbar.", ephemeral=True)
+        if not await self.ensure_database_available(interaction):
             return
 
         rows = await fetch_world_ranking(self.bot)
@@ -2766,17 +2777,32 @@ class Ranked(commands.Cog):
     @app_commands.checks.has_permissions(administrator=True)
     @app_commands.guild_only()
     async def monthly_ranking(self, interaction: discord.Interaction) -> None:
-        if getattr(self.bot, "db", None) is None:
-            await interaction.response.send_message("Die Datenbank ist aktuell nicht verfügbar.", ephemeral=True)
+        if not await self.ensure_database_available(interaction):
             return
 
         rows = await fetch_monthly_ranking(self.bot)
         embed = build_ranking_embed(
             title="Monatsranking",
             rows=rows,
-            empty_text="Für diesen Monat gibt es noch keine Ranked-Ergebnisse.",
+            empty_text="FÃ¼r diesen Monat gibt es noch keine Ranked-Ergebnisse.",
         )
         await interaction.response.send_message(embed=embed)
+
+    @app_commands.command(name="rebuild_monthly_ranking", description="Berechnet das aktuelle Monatsranking neu")
+    @app_commands.checks.has_permissions(administrator=True)
+    @app_commands.guild_only()
+    async def rebuild_monthly_ranking(self, interaction: discord.Interaction) -> None:
+        if not await self.ensure_database_available(interaction):
+            return
+
+        await interaction.response.defer(ephemeral=True, thinking=True)
+        rebuilt_players = await rebuild_current_month_rankings(self.bot)
+        await generate_html(self.bot)
+        upload()
+        await interaction.followup.send(
+            f"Monatsranking wurde neu berechnet. Spieler im aktuellen Monat: {rebuilt_players}",
+            ephemeral=True,
+        )
 
     @app_commands.command(name="update_leaderboard", description="Aktualisiert das HTML-Ranking")
     @app_commands.checks.has_permissions(administrator=True)
@@ -2790,7 +2816,7 @@ class Ranked(commands.Cog):
         )
 
     # Slash-Commands fuer User.
-    @app_commands.command(name="result", description="Öffnet im Match-Thread das Ergebnisformular")
+    @app_commands.command(name="result", description="Ã–ffnet im Match-Thread das Ergebnisformular")
     @app_commands.guild_only()
     async def result(self, interaction: discord.Interaction) -> None:
         await self.open_result_modal(interaction)
@@ -2799,13 +2825,11 @@ class Ranked(commands.Cog):
     @app_commands.describe(player="Der Spieler dessen Statistiken angezeigt werden sollen")
     @app_commands.guild_only()
     async def stats(self, interaction: discord.Interaction, player: discord.Member) -> None:
-        db = getattr(self.bot, "db", None)
-        if db is None:
-            await interaction.response.send_message("Die Datenbank ist aktuell nicht verfügbar.", ephemeral=True)
+        if not await self.ensure_database_available(interaction):
             return
 
-        world_data = await db.fetch_world_ranking(limit=None)
-        monthly_data = await db.fetch_monthly_ranking(get_current_ranked_month_key(), limit=None)
+        world_data = await fetch_world_ranking(self.bot, limit=None)
+        monthly_data = await fetch_monthly_ranking(self.bot, get_current_ranked_month_key(), limit=None)
 
         world_ranks = {
             user_id: rank
@@ -2845,7 +2869,7 @@ class Ranked(commands.Cog):
             await interaction.response.send_message("Keine Matches gefunden.")
             return
 
-        text = f"📜 Match History von {player.display_name}:\n\n"
+        text = f"ðŸ“œ Match History von {player.display_name}:\n\n"
 
         for p1, p2, winner, score, platform, elo_gain in matches:
 
@@ -2857,10 +2881,10 @@ class Ranked(commands.Cog):
             elo_gain = elo_gain if elo_gain else 0
 
             if winner == player.id:
-                result = "🏆 Win"
+                result = "ðŸ† Win"
                 elo_text = f"+{elo_gain}"
             else:
-                result = "❌ Loss"
+                result = "âŒ Loss"
                 elo_text = f"-{elo_gain}"
 
             text += f"{result} vs {name} ({platform}) ({elo_text} ELO)\n"

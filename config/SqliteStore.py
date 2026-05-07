@@ -40,6 +40,11 @@ def calculate_elo_winner_delta(winner_rating: int, loser_rating: int) -> int:
     return max(1, int(round(ELO_K_FACTOR * (1 - expected_winner_score))))
 
 
+def calculate_monthly_win_points(winner_rating: int, opponent_rating: int) -> int:
+    difference_bonus = max(0, min(6, (opponent_rating - winner_rating) // 90))
+    return 10 + difference_bonus
+
+
 def get_current_ranked_month_key() -> date:
     return datetime.now(timezone.utc).date().replace(day=1)
 
@@ -137,12 +142,12 @@ async def mark_ranked_match_cancelled(bot: commands.Bot, match_id: int) -> None:
         print(f"Ranked match cancel update failed: {type(exc).__name__}: {exc}")
 
 
-async def rebuild_current_month_rankings(bot: commands.Bot) -> None:
+async def rebuild_current_month_rankings(bot: commands.Bot) -> int:
     db = getattr(bot, "db", None)
     if db is None:
-        return
+        return 0
 
-    await db.rebuild_current_month_rankings(get_current_ranked_month_key())
+    return await db.rebuild_current_month_rankings(get_current_ranked_month_key())
 
 
 
@@ -202,22 +207,22 @@ async def mark_ranked_match_result_published(
     await db.mark_match_result_published(match_id, channel_id, message_id)
 
 
-async def fetch_world_ranking(bot: commands.Bot) -> list[tuple[int, int, int, int]]:
+async def fetch_world_ranking(bot: commands.Bot, limit: int | None = None) -> list[tuple[int, int, int, int]]:
     db = getattr(bot, "db", None)
     if db is None:
         return []
 
-    return await db.fetch_world_ranking()
+    return await db.fetch_world_ranking(limit)
 
 
-async def fetch_monthly_ranking(bot: commands.Bot, month_key: date | None = None) -> list[tuple[int, int, int, int]]:
+async def fetch_monthly_ranking(bot: commands.Bot, month_key: date | None = None, limit: int | None = None) -> list[tuple[int, int, int, int]]:
     db = getattr(bot, "db", None)
     if db is None:
         return []
 
     if month_key is None:
         month_key = get_current_ranked_month_key()
-    return await db.fetch_monthly_ranking(month_key)
+    return await db.fetch_monthly_ranking(month_key, limit)
 
 async def fetch_match_history(bot: commands.Bot, player: discord.Member):
     db = getattr(bot, "db", None)
@@ -426,40 +431,52 @@ class SqliteDatabase:
                     (utc_now(), match_id),
                 )
 
-    async def rebuild_current_month_rankings(self, month_key: date) -> None:
+    async def rebuild_current_month_rankings(self, month_key: date) -> int:
         month_text = month_key_to_text(month_key)
         async with self._lock:
             rows = self.connection.execute(
                 f"""
-                SELECT user_id, SUM(points) AS points
-                FROM (
-                    SELECT winner_id AS user_id, COALESCE(elo_change, 0) AS points
-                    FROM matches
-                    WHERE {RANKED_RESULT_STATUS_SQL}
-                      AND strftime('%Y-%m', timestamp) = ?
-                    UNION ALL
-                    SELECT loser_id AS user_id, 0 AS points
-                    FROM matches
-                    WHERE {RANKED_RESULT_STATUS_SQL}
-                      AND strftime('%Y-%m', timestamp) = ?
-                )
-                GROUP BY user_id
+                SELECT id, winner_id, loser_id, elo_change, strftime('%Y-%m', timestamp) AS month_key
+                FROM matches
+                WHERE {RANKED_RESULT_STATUS_SQL}
+                ORDER BY timestamp ASC, id ASC
                 """,
-                (month_text, month_text),
             ).fetchall()
 
-            self.connection.execute("DELETE FROM monthly_points WHERE month = ?", (month_text,))
+            ratings: dict[int, int] = {}
+            monthly_points: dict[int, int] = {}
+
             for row in rows:
-                self.connection.execute(
-                    """
-                    INSERT INTO monthly_points(user_id, month, points)
-                    VALUES(?, ?, ?)
-                    ON CONFLICT(user_id, month) DO UPDATE
-                    SET points = excluded.points
-                    """,
-                    (int(row["user_id"]), month_text, int(row["points"] or 0)),
-                )
-            self.connection.commit()
+                winner_id = int(row["winner_id"])
+                loser_id = int(row["loser_id"])
+                winner_rating = ratings.get(winner_id, RANKING_START_RATING)
+                loser_rating = ratings.get(loser_id, RANKING_START_RATING)
+
+                if str(row["month_key"] or "") == month_text:
+                    monthly_points[winner_id] = monthly_points.get(winner_id, 0) + calculate_monthly_win_points(
+                        winner_rating,
+                        loser_rating,
+                    )
+                    monthly_points.setdefault(loser_id, 0)
+
+                elo_change = int(row["elo_change"] or calculate_elo_winner_delta(winner_rating, loser_rating))
+                ratings[winner_id] = winner_rating + elo_change
+                ratings[loser_id] = loser_rating - elo_change
+
+            with self.connection:
+                self.connection.execute("DELETE FROM monthly_points WHERE month = ?", (month_text,))
+                for user_id, points in monthly_points.items():
+                    self.connection.execute(
+                        """
+                        INSERT INTO monthly_points(user_id, month, points)
+                        VALUES(?, ?, ?)
+                        ON CONFLICT(user_id, month) DO UPDATE
+                        SET points = excluded.points
+                        """,
+                        (user_id, month_text, points),
+                    )
+
+            return len(monthly_points)
 
     def _upsert_player(self, user_id: int) -> None:
         self.connection.execute(
@@ -518,6 +535,7 @@ class SqliteDatabase:
                 winner_rating = ratings[winner_id]
                 loser_rating = ratings[loser_id]
                 elo_change = calculate_elo_winner_delta(winner_rating, loser_rating)
+                monthly_points = calculate_monthly_win_points(winner_rating, loser_rating)
                 score_text = f"{score[0]}:{score[1]}"
                 winner_average = player_one_average if winner_id == player_one_id else player_two_average
                 loser_average = player_two_average if winner_id == player_one_id else player_one_average
@@ -587,7 +605,7 @@ class SqliteDatabase:
                 )
                 self.connection.execute(
                     "UPDATE monthly_points SET points = COALESCE(points, 0) + ? WHERE user_id = ? AND month = ?",
-                    (elo_change, winner_id, month_text),
+                    (monthly_points, winner_id, month_text),
                 )
 
             return True, False
@@ -595,7 +613,7 @@ class SqliteDatabase:
     async def mark_match_result_published(self, match_id: int, channel_id: int, message_id: int) -> None:
         del match_id, channel_id, message_id
 
-    async def fetch_world_ranking(self, limit: int | None = 10) -> list[tuple[int, int, int, int]]:
+    async def fetch_world_ranking(self, limit: int | None) -> list[tuple[int, int, int, int]]:
         limit_sql = "" if limit is None else "LIMIT ?"
         params = (RANKING_START_RATING,) if limit is None else (RANKING_START_RATING, limit)
         async with self._lock:
@@ -624,41 +642,62 @@ class SqliteDatabase:
             for row in rows
         ]
 
-    async def fetch_monthly_ranking(self, month_key: date, limit: int | None = 10) -> list[tuple[int, int, int, int]]:
+    async def fetch_monthly_ranking(self, month_key: date, limit: int | None) -> list[tuple[int, int, int, int]]:
         month_text = month_key_to_text(month_key)
         limit_sql = "" if limit is None else "LIMIT ?"
         async with self._lock:
             rows = self.connection.execute(
                 f"""
-                SELECT
-                    user_id,
-                    SUM(points) AS points,
-                    SUM(wins) AS wins,
-                    SUM(losses) AS losses
-                FROM (
+                WITH monthly_stats AS (
                     SELECT
-                        winner_id AS user_id,
-                        COALESCE(elo_change, 0) AS points,
-                        1 AS wins,
-                        0 AS losses
-                    FROM matches
-                    WHERE {RANKED_RESULT_STATUS_SQL}
-                      AND strftime('%Y-%m', timestamp) = ?
-                    UNION ALL
-                    SELECT
-                        loser_id AS user_id,
-                        0 AS points,
-                        0 AS wins,
-                        1 AS losses
-                    FROM matches
-                    WHERE {RANKED_RESULT_STATUS_SQL}
-                      AND strftime('%Y-%m', timestamp) = ?
+                        user_id,
+                        SUM(wins) AS wins,
+                        SUM(losses) AS losses,
+                        SUM(elo_gain) AS elo_gain
+                    FROM (
+                        SELECT
+                            winner_id AS user_id,
+                            1 AS wins,
+                            0 AS losses,
+                            COALESCE(elo_change, 0) AS elo_gain
+                        FROM matches
+                        WHERE {RANKED_RESULT_STATUS_SQL}
+                          AND strftime('%Y-%m', timestamp) = ?
+                        UNION ALL
+                        SELECT
+                            loser_id AS user_id,
+                            0 AS wins,
+                            1 AS losses,
+                            -COALESCE(elo_change, 0) AS elo_gain
+                        FROM matches
+                        WHERE {RANKED_RESULT_STATUS_SQL}
+                          AND strftime('%Y-%m', timestamp) = ?
+                    )
+                    GROUP BY user_id
                 )
-                GROUP BY user_id
-                ORDER BY points DESC, wins DESC, user_id ASC
+                SELECT
+                    mp.user_id AS user_id,
+                    COALESCE(mp.points, 0) AS points,
+                    COALESCE(ms.wins, 0) AS wins,
+                    COALESCE(ms.losses, 0) AS losses,
+                    COALESCE(ms.elo_gain, 0) AS elo_gain
+                FROM monthly_points mp
+                LEFT JOIN monthly_stats ms
+                  ON ms.user_id = mp.user_id
+                WHERE mp.month = ?
+                ORDER BY
+                    points DESC,
+                    wins DESC,
+                    CASE WHEN COALESCE(ms.wins, 0) + COALESCE(ms.losses, 0) = 0
+                        THEN 0.0
+                        ELSE CAST(COALESCE(ms.wins, 0) AS REAL) / (COALESCE(ms.wins, 0) + COALESCE(ms.losses, 0))
+                    END DESC,
+                    COALESCE(ms.wins, 0) + COALESCE(ms.losses, 0) DESC,
+                    elo_gain DESC,
+                    mp.user_id ASC
                 {limit_sql}
                 """,
-                (month_text, month_text) if limit is None else (month_text, month_text, limit),
+                (month_text, month_text, month_text) if limit is None else (month_text, month_text, month_text, limit),
             ).fetchall()
 
         return [
