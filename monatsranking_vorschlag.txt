@@ -1,11 +1,11 @@
-Monatsranking Vorschlag
-=======================
+Monatsranking
+==============
 
 Ziel
 ----
-Das Monatsranking soll nicht mehr direkt nach Elo-Gewinn sortieren.
-Starke Spieler sollen fuer Siege weiterhin fair Punkte bekommen, auch wenn sie wegen ihrer hohen Elo nur wenig Elo gewinnen.
-Underdog-Siege sollen trotzdem extra belohnt werden.
+Das Monatsranking basiert wieder auf dem Elo-Gewinn eines Sieges.
+Damit bleiben Underdog-Siege automatisch wertvoller, weil sie mehr Elo bringen.
+Zusaetzlich wird jeder Sieg mit festen Aktivitaetspunkten belohnt.
 
 
 Punktevergabe
@@ -19,50 +19,25 @@ Wenn der Spieler verliert:
     Monatspunkte = 0
 
 Wenn der Spieler gewinnt:
-    Monatspunkte = 10 + Differenz-Bonus
+    Monatspunkte = gewonnene Elo + 5
 
 
-Differenz-Bonus
----------------
-Der Differenz-Bonus wird anhand der Elo-Differenz zwischen beiden Spielern berechnet.
-Er belohnt Underdog-Siege gegen hoeher geratete Gegner.
-Favoriten-Siege bleiben bei den Basis-Punkten.
+Beispiele
+---------
+1400 gewinnt gegen 800:
+    Elo-Gewinn: 1
+    Siegbonus: 5
+    Gesamt: 6 Punkte
 
-Berechnung:
-    Differenz-Bonus = (Gegner-Elo - Eigene-Elo) // 90
+800 gewinnt gegen 1400:
+    Elo-Gewinn: 31
+    Siegbonus: 5
+    Gesamt: 36 Punkte
 
-Regeln:
-    Nur wenn der Gegner mehr Elo hat als der Gewinner
-    Minimum: 0 Punkte
-    Maximum: 6 Punkte
-
-Beispiele:
-    Gewinner hat 1400 Elo, Gegner hat 700 Elo:
-        Differenz: -700
-        Differenz-Bonus: 0
-
-    Gewinner hat 1000 Elo, Gegner hat 1150 Elo:
-        Differenz: 150
-        Differenz-Bonus: 1
-
-    Gewinner hat 1000 Elo, Gegner hat 1300 Elo:
-        Differenz: 300
-        Differenz-Bonus: 3
-
-    Gewinner hat 700 Elo, Gegner hat 1400 Elo:
-        Differenz: 700
-        Differenz-Bonus: 6
-
-Beispiele:
-    1400 gewinnt gegen 700:
-        Basis: 10
-        Differenz-Bonus: 0
-        Gesamt: 10 Punkte
-
-    700 gewinnt gegen 1400:
-        Basis: 10
-        Differenz-Bonus: 6
-        Gesamt: 16 Punkte
+1400 gewinnt gegen 1400:
+    Elo-Gewinn: 16
+    Siegbonus: 5
+    Gesamt: 21 Punkte
 
 
 Sortierung des Monatsrankings
@@ -79,6 +54,4 @@ Kurzformel
 if not won:
     monthly_points = 0
 else:
-    base_points = 10
-    difference_bonus = max(0, min(6, (opponent_rating - player_rating) // 90))
-    monthly_points = base_points + difference_bonus
+    monthly_points = elo_change + 5

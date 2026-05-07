@@ -40,9 +40,8 @@ def calculate_elo_winner_delta(winner_rating: int, loser_rating: int) -> int:
     return max(1, int(round(ELO_K_FACTOR * (1 - expected_winner_score))))
 
 
-def calculate_monthly_win_points(winner_rating: int, opponent_rating: int) -> int:
-    difference_bonus = max(0, min(6, (opponent_rating - winner_rating) // 90))
-    return 10 + difference_bonus
+def calculate_monthly_win_points(elo_change: int) -> int:
+    return elo_change + 5
 
 
 def get_current_ranked_month_key() -> date:
@@ -452,14 +451,13 @@ class SqliteDatabase:
                 winner_rating = ratings.get(winner_id, RANKING_START_RATING)
                 loser_rating = ratings.get(loser_id, RANKING_START_RATING)
 
+                elo_change = int(row["elo_change"] or calculate_elo_winner_delta(winner_rating, loser_rating))
                 if str(row["month_key"] or "") == month_text:
                     monthly_points[winner_id] = monthly_points.get(winner_id, 0) + calculate_monthly_win_points(
-                        winner_rating,
-                        loser_rating,
+                        elo_change,
                     )
                     monthly_points.setdefault(loser_id, 0)
 
-                elo_change = int(row["elo_change"] or calculate_elo_winner_delta(winner_rating, loser_rating))
                 ratings[winner_id] = winner_rating + elo_change
                 ratings[loser_id] = loser_rating - elo_change
 
@@ -535,7 +533,7 @@ class SqliteDatabase:
                 winner_rating = ratings[winner_id]
                 loser_rating = ratings[loser_id]
                 elo_change = calculate_elo_winner_delta(winner_rating, loser_rating)
-                monthly_points = calculate_monthly_win_points(winner_rating, loser_rating)
+                monthly_points = calculate_monthly_win_points(elo_change)
                 score_text = f"{score[0]}:{score[1]}"
                 winner_average = player_one_average if winner_id == player_one_id else player_two_average
                 loser_average = player_two_average if winner_id == player_one_id else player_one_average
