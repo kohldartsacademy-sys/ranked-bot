@@ -561,6 +561,7 @@ class PendingResultState:
     thread_id: int
     submitted_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     screenshot: discord.Attachment | None = None
+    screenshot_url: str | None = None
     confirmation_message_id: int | None = None
 
 
@@ -687,14 +688,28 @@ def build_confirmed_match_embed(match: MatchState) -> discord.Embed:
     )
 
 
-def build_result_embed(match: MatchState, result: PendingResultState) -> discord.Embed:
+def build_result_embed(
+    match: MatchState,
+    result: PendingResultState,
+    player_display_names: dict[int, str] | None = None,
+) -> discord.Embed:
     embed = discord.Embed(
         title=f":bar_chart: Match Ergebnis #{match.match_id:03d}",
         description=f"{match.queue_name} <@{match.player_ids[0]}> vs <@{match.player_ids[1]}>",
         colour=discord.Color.dark_green(),
     )
+    player_one_id, player_two_id = match.player_ids
+    player_display_names = player_display_names or {}
+    player_one_name = player_display_names.get(player_one_id, f"Spieler {player_one_id}")
+    player_two_name = player_display_names.get(player_two_id, f"Spieler {player_two_id}")
+    embed.add_field(name="Eingetragen von", value=f"<@{result.submitted_by}>", inline=False)
     embed.add_field(name="Gewinner", value=f"<@{result.winner_id}>", inline=True)
     embed.add_field(name="Spielstand", value=result.score_text, inline=True)
+    embed.add_field(name="\u200b", value="\u200b", inline=False)
+    embed.add_field(name=f"Average {player_one_name}", value=result.averages[player_one_id], inline=True)
+    embed.add_field(name=f"Average {player_two_name}", value=result.averages[player_two_id], inline=True)
+    if result.screenshot_url is not None:
+        embed.set_image(url=result.screenshot_url)
     return embed
 
 
@@ -785,6 +800,18 @@ def panel_state_from_embed(message: discord.Message) -> PanelState:
     return state
 
 
+def is_queue_panel_message(message: discord.Message) -> bool:
+    if not message.embeds:
+        return False
+
+    embed = message.embeds[0]
+    if embed.title != ":dart: Dart Matchmaking":
+        return False
+
+    field_names = [field.name for field in embed.fields]
+    return any("DartCounter" in name for name in field_names) and any("Scolia" in name for name in field_names)
+
+
 def normalize_thread_part(value: str) -> str:
     normalized = value.lower().replace(" ", "-")
     normalized = THREAD_SAFE_PATTERN.sub("", normalized)
@@ -822,6 +849,11 @@ def parse_user_id_from_mention(value: str) -> int | None:
 
 def parse_user_ids_from_lines(value: str) -> set[int]:
     return {int(match.group(1)) for match in MENTION_PATTERN.finditer(value)}
+
+
+def interaction_user_is_admin(interaction: discord.Interaction) -> bool:
+    permissions = getattr(interaction.user, "guild_permissions", None)
+    return bool(permissions is not None and permissions.administrator)
 
 
 def shorten_label(value: str, limit: int = 28) -> str:
@@ -1010,40 +1042,34 @@ class ResultConfirmationView(discord.ui.View):
         if match_id is None:
             await interaction.response.send_message("Dieses Ergebnis ist nicht mehr offen.", ephemeral=True)
             return False
-
         self.match_id = match_id
         match = self.cog.active_matches.get(match_id)
         result = self.cog.get_pending_result_for_confirmation(match_id, interaction.message)
-
         if result is None or match is None:
             await interaction.response.send_message("Dieses Ergebnis ist nicht mehr offen.", ephemeral=True)
             return False
-
         if self.submission_id is not None and result.submission_id != self.submission_id:
             await interaction.response.send_message("Es gibt bereits einen neueren Ergebnisvorschlag.", ephemeral=True)
             return False
-
         self.submission_id = result.submission_id
         if self.confirmer_id is None:
             self.confirmer_id = self.cog.parse_confirmer_id_from_confirmation_message(interaction.message)
-
-        if interaction.user.id not in match.player_ids:
-            await interaction.response.send_message("Nur die beiden Spieler können das Ergebnis bestätigen.", ephemeral=True)
-            return False
-
-        if self.confirmer_id is None:
-            await interaction.response.send_message("Der bestätigende Spieler konnte nicht ermittelt werden.", ephemeral=True)
-            return False
-
         custom_id = ""
         if isinstance(interaction.data, dict):
             custom_id = str(interaction.data.get("custom_id") or "")
+        if custom_id == "ranked:result_confirm" and interaction_user_is_admin(interaction):
+            return True
+        if interaction.user.id not in match.player_ids:
+            await interaction.response.send_message("Nur die beiden Spieler können das Ergebnis bestätigen.", ephemeral=True)
+            return False
+        if self.confirmer_id is None:
+            await interaction.response.send_message("Der bestätigende Spieler konnte nicht ermittelt werden.", ephemeral=True)
+            return False
         can_confirm_as_submitter = (
             custom_id == "ranked:result_confirm"
             and interaction.user.id == result.submitted_by
             and self.cog.is_result_self_confirm_available(result)
         )
-
         if interaction.user.id != self.confirmer_id and not can_confirm_as_submitter:
             if custom_id == "ranked:result_confirm" and interaction.user.id == result.submitted_by:
                 await interaction.response.send_message(
@@ -1072,11 +1098,11 @@ class ResultConfirmationView(discord.ui.View):
     )
     async def confirm_callback(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
         del button
+        await interaction.response.defer(ephemeral=True, thinking=True)
         match_id = self.resolve_match_id(interaction)
         if match_id is None:
-            await interaction.response.send_message("Dieses Ergebnis ist nicht mehr offen.", ephemeral=True)
+            await interaction.followup.send("Dieses Ergebnis ist nicht mehr offen.", ephemeral=True)
             return
-
         self.match_id = match_id
         match = self.cog.active_matches.get(match_id)
         result = self.cog.get_pending_result_for_confirmation(match_id, interaction.message)
@@ -1085,9 +1111,8 @@ class ResultConfirmationView(discord.ui.View):
             or match is None
             or (self.submission_id is not None and result.submission_id != self.submission_id)
         ):
-            await interaction.response.send_message("Dieses Ergebnis ist nicht mehr offen.", ephemeral=True)
+            await interaction.followup.send("Dieses Ergebnis ist nicht mehr offen.", ephemeral=True)
             return
-
         self.submission_id = result.submission_id
         results_channel = await self.cog.fetch_results_channel()
         if results_channel is None:
@@ -1096,20 +1121,16 @@ class ResultConfirmationView(discord.ui.View):
                 f"{self.cog.describe_match(match)}\nDer Ergebnis-Channel konnte beim Bestätigen nicht gefunden werden.",
                 colour=discord.Color.red(),
             )
-            await interaction.response.send_message("Der Ergebnis-Channel konnte nicht gefunden werden.", ephemeral=True)
+            await interaction.followup.send("Der Ergebnis-Channel konnte nicht gefunden werden.", ephemeral=True)
             return
-
         if interaction.guild_id is None:
             await self.cog.send_admin_log(
                 "Guild-ID fehlt",
                 f"{self.cog.describe_match(match)}\nDie Guild-ID konnte beim Ergebnis-Bestätigen nicht aufgelöst werden.",
                 colour=discord.Color.red(),
             )
-            await interaction.response.send_message("Guild-ID konnte nicht aufgelöst werden.", ephemeral=True)
+            await interaction.followup.send("Guild-ID konnte nicht aufgelöst werden.", ephemeral=True)
             return
-
-        await interaction.response.defer(ephemeral=True, thinking=True)
-
         persisted, already_published = await persist_ranked_match_result(
             self.cog.bot,
             match,
@@ -1124,7 +1145,6 @@ class ResultConfirmationView(discord.ui.View):
                 ephemeral=True,
             )
             return
-
         if already_published:
             self.stop()
             self.cog.remove_pending_result(self.match_id)
@@ -1315,8 +1335,8 @@ class ResultModal(discord.ui.Modal):
             max_length=20,
         )
         self.screenshot_upload = discord.ui.FileUpload(
-            required=False,
-            min_values=0,
+            required=True,
+            min_values=1,
             max_values=1,
         )
 
@@ -1386,13 +1406,13 @@ class ResultModal(discord.ui.Modal):
             return
 
         screenshot = self.screenshot_upload.values[0] if self.screenshot_upload.values else None
-        if screenshot is None:
-            await self.restore_result_entry_button()
-            await interaction.response.send_message(
-                "Bitte hänge einen Screenshot an.",
-                ephemeral=True,
-            )
-            return
+        # if screenshot is None:
+        #     await self.restore_result_entry_button()
+        #     await interaction.response.send_message(
+        #         "Bitte hänge einen Screenshot an.",
+        #         ephemeral=True,
+        #     )
+        #     return
 
         submission_id = self.cog.next_result_submission_id
         self.cog.next_result_submission_id += 1
@@ -1414,6 +1434,7 @@ class ResultModal(discord.ui.Modal):
             submitted_by=interaction.user.id,
             thread_id=self.match.thread_id,
             screenshot=screenshot,
+            screenshot_url=screenshot.url,
         )
         self.cog.pending_results[self.match.match_id] = pending_result
 
@@ -1655,6 +1676,7 @@ class Ranked(commands.Cog):
         self.next_match_id = 1
         self.next_result_submission_id = 1
         self.panel_states: dict[int, PanelState] = {}
+        self.panel_restore_attempted = False
         self.pending_withdraw_tasks: dict[int, asyncio.Task[None]] = {}
         self.result_self_confirm_tasks: dict[int, asyncio.Task[None]] = {}
 
@@ -1733,6 +1755,17 @@ class Ranked(commands.Cog):
     def get_result_confirmer_id(match: MatchState, result: PendingResultState) -> int:
         player_one_id, player_two_id = match.player_ids
         return player_two_id if result.submitted_by == player_one_id else player_one_id
+
+    def get_match_player_display_names(self, match: MatchState) -> dict[int, str]:
+        display_names: dict[int, str] = {}
+        for guild in self.bot.guilds:
+            for user_id in match.player_ids:
+                if user_id in display_names:
+                    continue
+                member = guild.get_member(user_id)
+                if member is not None:
+                    display_names[user_id] = member.display_name
+        return display_names
 
     def build_pending_match_view(self, match: PendingMatchState) -> PendingMatchView:
         return PendingMatchView(
@@ -1855,9 +1888,6 @@ class Ranked(commands.Cog):
 
     def schedule_pending_withdraw_activation(self, match: PendingMatchState) -> None:
         self.cancel_pending_withdraw_activation(match.match_id)
-        if self.is_pending_match_withdraw_enabled(match):
-            return
-
         delay_seconds = max(
             (match.created_at + WITHDRAW_ENABLE_DELAY - datetime.now(timezone.utc)).total_seconds(),
             0.0,
@@ -1997,28 +2027,50 @@ class Ranked(commands.Cog):
         embed = message.embeds[0]
         winner_id: int | None = None
         score: tuple[int, int] | None = None
+        submitted_by: int | None = None
         averages: dict[int, str] = {}
         player_one_id, player_two_id = match.player_ids
-        expected_average_fields = {
-            f"Average <@{player_one_id}>": player_one_id,
-            f"Average <@{player_two_id}>": player_two_id,
-        }
+        average_player_ids = [player_one_id, player_two_id]
 
         for field in embed.fields:
-            if field.name == "Gewinner":
+            field_name = field.name.casefold()
+            if field_name == "eingetragen von":
+                submitted_by = parse_user_id_from_mention(field.value)
+            elif field.name == "Gewinner":
                 winner_id = parse_user_id_from_mention(field.value)
             elif field.name == "Spielstand":
                 score = parse_best_of_seven_score(field.value)
-            elif field.name in expected_average_fields:
+            elif field_name.startswith("average "):
                 normalized_average = normalize_average(field.value)
-                if normalized_average is not None:
-                    averages[expected_average_fields[field.name]] = normalized_average
+                if normalized_average is None:
+                    continue
+
+                mentioned_user_id = parse_user_id_from_mention(field.name)
+                if mentioned_user_id in match.player_ids:
+                    averages[mentioned_user_id] = normalized_average
+                elif average_player_ids:
+                    averages[average_player_ids.pop(0)] = normalized_average
 
         if winner_id is None or score is None:
             return None
 
         if len(averages) != 2:
             return None
+
+        if submitted_by not in match.player_ids:
+            confirmer_id = Ranked.parse_confirmer_id_from_confirmation_message(message)
+            if confirmer_id == player_one_id:
+                submitted_by = player_two_id
+            elif confirmer_id == player_two_id:
+                submitted_by = player_one_id
+
+        if submitted_by not in match.player_ids:
+            return None
+
+        screenshot = message.attachments[0] if message.attachments else None
+        screenshot_url = screenshot.url if screenshot is not None else None
+        if screenshot_url is None and embed.image is not None:
+            screenshot_url = embed.image.url
 
         submission_id = message.id
         return PendingResultState(
@@ -2028,9 +2080,11 @@ class Ranked(commands.Cog):
             score=score,
             score_text=f"{score[0]}:{score[1]}",
             averages=averages,
-            submitted_by=0,
+            submitted_by=submitted_by,
             thread_id=match.thread_id,
-            screenshot=message.attachments[0] if message.attachments else None,
+            submitted_at=message.created_at.astimezone(timezone.utc),
+            screenshot=screenshot,
+            screenshot_url=screenshot_url,
             confirmation_message_id=message.id,
         )
 
@@ -2053,6 +2107,7 @@ class Ranked(commands.Cog):
 
         self.pending_results[match_id] = parsed_result
         self.next_result_submission_id = max(self.next_result_submission_id, parsed_result.submission_id + 1)
+        self.schedule_result_self_confirm_notification(parsed_result)
         return parsed_result
 
     def remove_pending_result(self, match_id: int) -> PendingResultState | None:
@@ -2296,6 +2351,20 @@ class Ranked(commands.Cog):
         except (discord.NotFound, discord.Forbidden, discord.HTTPException):
             return None
 
+    async def restore_queue_panels_from_messages(self) -> None:
+        if self.panel_restore_attempted:
+            return
+        self.panel_restore_attempted = True
+
+        for guild in self.bot.guilds:
+            for channel in guild.text_channels:
+                try:
+                    async for message in channel.history(limit=200):
+                        if is_queue_panel_message(message):
+                            self.panel_states[message.id] = panel_state_from_embed(message)
+                except (discord.Forbidden, discord.HTTPException):
+                    continue
+
     async def fetch_thread(self, thread_id: int) -> discord.Thread | None:
         thread = self.bot.get_channel(thread_id)
         if isinstance(thread, discord.Thread):
@@ -2311,12 +2380,12 @@ class Ranked(commands.Cog):
         return None
 
     async def fetch_results_channel(self) -> discord.TextChannel | None:
-        channel = self.bot.get_channel(RESULTS_CHANNEL)
+        channel = self.bot.get_channel(RESULT_CHANNEL)
         if isinstance(channel, discord.TextChannel):
             return channel
 
         try:
-            fetched = await self.bot.fetch_channel(RESULTS_CHANNEL)
+            fetched = await self.bot.fetch_channel(RESULT_CHANNEL)
         except (discord.NotFound, discord.Forbidden, discord.HTTPException):
             return None
 
@@ -2482,13 +2551,23 @@ class Ranked(commands.Cog):
         content: str | None = None,
         view: discord.ui.View | None = None,
     ) -> discord.Message:
-        embed = build_result_embed(match, result)
+        embed = build_result_embed(match, result, self.get_match_player_display_names(match))
         if result.screenshot is None:
             return await channel.send(content=content, embed=embed, view=view)
 
-        file = await result.screenshot.to_file()
+        try:
+            file = await result.screenshot.to_file()
+        except discord.HTTPException:
+            if result.screenshot_url is not None:
+                embed.set_image(url=result.screenshot_url)
+                return await channel.send(content=content, embed=embed, view=view)
+            raise
+
         embed.set_image(url=f"attachment://{file.filename}")
-        return await channel.send(content=content, embed=embed, file=file, view=view)
+        message = await channel.send(content=content, embed=embed, file=file, view=view)
+        if message.attachments:
+            result.screenshot_url = message.attachments[0].url
+        return message
 
     async def post_result_entry_button(self, match: MatchState) -> bool:
         thread = await self.fetch_thread(match.thread_id)
@@ -2539,6 +2618,9 @@ class Ranked(commands.Cog):
 
         if not refresh_all:
             return
+
+        if not self.panel_states:
+            await self.restore_queue_panels_from_messages()
 
         for message_id, panel_state in self.panel_states.items():
             if message_id == current_message_id:
