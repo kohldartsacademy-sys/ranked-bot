@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import sqlite3
+import time
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -12,6 +13,7 @@ from discord.ext import commands
 
 RANKING_START_RATING = 1000
 ELO_K_FACTOR = 32
+MONTHLY_WIN_BONUS = 0
 RANKED_RESULT_STATUS_SQL = "status IN ('completed', 'confirmed') AND winner_id IS NOT NULL AND loser_id IS NOT NULL"
 
 
@@ -41,7 +43,7 @@ def calculate_elo_winner_delta(winner_rating: int, loser_rating: int) -> int:
 
 
 def calculate_monthly_win_points(elo_change: int) -> int:
-    return elo_change + 5
+    return elo_change + MONTHLY_WIN_BONUS
 
 
 def get_current_ranked_month_key() -> date:
@@ -222,6 +224,19 @@ async def fetch_monthly_ranking(bot: commands.Bot, month_key: date | None = None
     if month_key is None:
         month_key = get_current_ranked_month_key()
     return await db.fetch_monthly_ranking(month_key, limit)
+
+
+async def generate_monthly_ranking(
+    bot: commands.Bot,
+    month_key: date,
+    limit: int | None = None,
+) -> list[tuple[int, int, int, int]]:
+    db = getattr(bot, "db", None)
+    if db is None:
+        return []
+
+    return await db.generate_monthly_ranking(month_key, limit)
+
 
 async def fetch_match_history(bot: commands.Bot, player: discord.Member):
     db = getattr(bot, "db", None)
@@ -702,6 +717,80 @@ class SqliteDatabase:
             (int(row["user_id"]), int(row["points"]), int(row["wins"] or 0), int(row["losses"] or 0))
             for row in rows
         ]
+
+    async def generate_monthly_ranking(
+        self,
+        month_key: date,
+        limit: int | None,
+    ) -> list[tuple[int, int, int, int]]:
+        month_text = month_key_to_text(month_key)
+        limit_sql = "" if limit is None else "LIMIT ?"
+        params = (month_text, month_text) if limit is None else (month_text, month_text, limit)
+        started_at = time.perf_counter()
+        print(
+            f"[monthly_ranking] DB query start month={month_text} "
+            f"limit={limit or 'none'} bonus={MONTHLY_WIN_BONUS}"
+        )
+        async with self._lock:
+            rows = self.connection.execute(
+                f"""
+                WITH monthly_stats AS (
+                    SELECT
+                        user_id,
+                        SUM(points) AS points,
+                        SUM(wins) AS wins,
+                        SUM(losses) AS losses,
+                        SUM(elo_gain) AS elo_gain
+                    FROM (
+                        SELECT
+                            winner_id AS user_id,
+                            COALESCE(elo_change, 0) + ? AS points,
+                            1 AS wins,
+                            0 AS losses,
+                            COALESCE(elo_change, 0) AS elo_gain
+                        FROM matches
+                        WHERE {RANKED_RESULT_STATUS_SQL}
+                          AND strftime('%Y-%m', timestamp) = ?
+                        UNION ALL
+                        SELECT
+                            loser_id AS user_id,
+                            0 AS points,
+                            0 AS wins,
+                            1 AS losses,
+                            -COALESCE(elo_change, 0) AS elo_gain
+                        FROM matches
+                        WHERE {RANKED_RESULT_STATUS_SQL}
+                          AND strftime('%Y-%m', timestamp) = ?
+                    )
+                    GROUP BY user_id
+                )
+                SELECT user_id, points, wins, losses
+                FROM monthly_stats
+                ORDER BY
+                    points DESC,
+                    wins DESC,
+                    CASE WHEN wins + losses = 0
+                        THEN 0.0
+                        ELSE CAST(wins AS REAL) / (wins + losses)
+                    END DESC,
+                    wins + losses DESC,
+                    elo_gain DESC,
+                    user_id ASC
+                {limit_sql}
+                """,
+                (MONTHLY_WIN_BONUS, *params),
+            ).fetchall()
+
+        result = [
+            (int(row["user_id"]), int(row["points"] or 0), int(row["wins"] or 0), int(row["losses"] or 0))
+            for row in rows
+        ]
+        duration = time.perf_counter() - started_at
+        print(
+            f"[monthly_ranking] DB query done month={month_text} "
+            f"players={len(result)} limit={limit or 'none'} bonus={MONTHLY_WIN_BONUS} duration={duration:.3f}s"
+        )
+        return result
 
     async def fetch_match_history(self, player_id: int):
         async with self._lock:

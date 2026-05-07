@@ -5,6 +5,7 @@ import discord
 import subprocess
 import re
 import json
+import time
 
 from discord import app_commands
 from discord.ext import commands
@@ -20,6 +21,7 @@ from config.SqliteStore import (
     fetch_match_history,
     fetch_monthly_ranking,
     fetch_world_ranking,
+    generate_monthly_ranking,
     get_current_ranked_month_key,
     get_next_ranked_match_id,
     mark_ranked_match_cancelled,
@@ -746,6 +748,45 @@ def build_ranking_embed(
     ]
     embed.description = "\n".join(lines)
     return embed
+
+
+def build_monthly_ranking_embeds(
+    *,
+    title: str,
+    rows: list[tuple[int, int, int, int]],
+    empty_text: str,
+) -> list[discord.Embed]:
+    if not rows:
+        embed = discord.Embed(title=title, description=empty_text, colour=discord.Color.gold())
+        return [embed]
+
+    chunks: list[list[str]] = []
+    current_chunk: list[str] = []
+    current_length = 0
+
+    for index, (user_id, points, wins, losses) in enumerate(rows, start=1):
+        line = f"**{index}.** <@{user_id}> | Punkte: **{points}** | W: {wins} | L: {losses}"
+        line_length = len(line) + 1
+        if current_chunk and current_length + line_length > 3900:
+            chunks.append(current_chunk)
+            current_chunk = []
+            current_length = 0
+
+        current_chunk.append(line)
+        current_length += line_length
+
+    if current_chunk:
+        chunks.append(current_chunk)
+
+    embeds: list[discord.Embed] = []
+    page_count = len(chunks)
+    for page_index, chunk in enumerate(chunks, start=1):
+        page_title = title if page_count == 1 else f"{title} ({page_index}/{page_count})"
+        embed = discord.Embed(title=page_title, colour=discord.Color.gold())
+        embed.description = "\n".join(chunk)
+        embeds.append(embed)
+
+    return embeds
 
 
 def rank_value(rank: int | None) -> str:
@@ -2787,6 +2828,49 @@ class Ranked(commands.Cog):
             empty_text="FÃ¼r diesen Monat gibt es noch keine Ranked-Ergebnisse.",
         )
         await interaction.response.send_message(embed=embed)
+
+    @app_commands.command(
+        name="monthly_ranking_monat",
+        description="Generiert das Monatsranking fuer einen angegebenen Monat",
+    )
+    @app_commands.describe(
+        monat="Monat als Zahl von 1 bis 12",
+        jahr="Jahr, z.B. 2026",
+    )
+    @app_commands.checks.has_permissions(administrator=True)
+    @app_commands.guild_only()
+    async def monthly_ranking_monat(
+        self,
+        interaction: discord.Interaction,
+        monat: app_commands.Range[int, 1, 12],
+        jahr: app_commands.Range[int, 2000, 2100],
+    ) -> None:
+        if not await self.ensure_database_available(interaction):
+            return
+
+        month_key = datetime(int(jahr), int(monat), 1, tzinfo=timezone.utc).date()
+        month_label = f"{int(monat):02d}/{int(jahr)}"
+        started_at = time.perf_counter()
+        print(f"[monthly_ranking_command] start month={month_label} user={interaction.user.id}")
+        await interaction.response.defer(thinking=True)
+
+        print(f"[monthly_ranking_command] fetching rows month={month_label} limit=10")
+        rows = await generate_monthly_ranking(self.bot, month_key, limit=10)
+        print(f"[monthly_ranking_command] rows fetched month={month_label} players={len(rows)}")
+
+        print(f"[monthly_ranking_command] building embeds month={month_label}")
+        embeds = build_monthly_ranking_embeds(
+            title=f"Monatsranking {month_label} - Top 10",
+            rows=rows,
+            empty_text="Fuer diesen Monat gibt es keine Ranked-Ergebnisse.",
+        )
+        print(f"[monthly_ranking_command] embeds built month={month_label} embeds={len(embeds)}")
+
+        print(f"[monthly_ranking_command] sending embed month={month_label}")
+        await interaction.followup.send(embed=embeds[0])
+
+        duration = time.perf_counter() - started_at
+        print(f"[monthly_ranking_command] done month={month_label} duration={duration:.3f}s")
 
     @app_commands.command(name="rebuild_monthly_ranking", description="Berechnet das aktuelle Monatsranking neu")
     @app_commands.checks.has_permissions(administrator=True)
