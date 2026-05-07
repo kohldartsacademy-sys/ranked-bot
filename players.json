@@ -145,7 +145,7 @@
       "worldWins": 51,
       "worldLosses": 9,
       "monthlyRating": 14,
-      "monthlyRank": 29,
+      "monthlyRank": 30,
       "monthlyWins": 1,
       "monthlyLosses": 0,
       "games": 60,
@@ -344,18 +344,28 @@
       "userId": 1309548661117554720,
       "name": "Marco Panzenböck",
       "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
-      "worldRating": 1191,
+      "worldRating": 1198,
       "worldRank": 6,
-      "worldWins": 58,
+      "worldWins": 59,
       "worldLosses": 28,
-      "monthlyRating": 7,
-      "monthlyRank": 31,
-      "monthlyWins": 1,
+      "monthlyRating": 14,
+      "monthlyRank": 29,
+      "monthlyWins": 2,
       "monthlyLosses": 3,
-      "games": 86,
-      "winrate": 67.4,
-      "overallAverage": 64.22,
+      "games": 87,
+      "winrate": 67.8,
+      "overallAverage": 64.08,
       "recentMatches": [
+        {
+          "matchId": 1176,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "4:3",
+          "average": "51.82",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1155,
           "result": "Loss",
@@ -393,16 +403,6 @@
           "opponentName": "Rick Dahlke",
           "score": "4:1",
           "average": "71.2",
-          "eloChange": -13,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1029,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:2",
-          "average": "63.24",
           "eloChange": -13,
           "queue": "scolia"
         }
@@ -2123,7 +2123,7 @@
       "worldWins": 2,
       "worldLosses": 0,
       "monthlyRating": 12,
-      "monthlyRank": 30,
+      "monthlyRank": 31,
       "monthlyWins": 1,
       "monthlyLosses": 0,
       "games": 2,
@@ -3893,80 +3893,12 @@
         }
       ]
     },
-    "530021085522165770": {
-      "userId": 530021085522165770,
-      "name": "Leon Kohl",
-      "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
-      "worldRating": 963,
-      "worldRank": 79,
-      "worldWins": 56,
-      "worldLosses": 49,
-      "monthlyRating": 84,
-      "monthlyRank": 4,
-      "monthlyWins": 6,
-      "monthlyLosses": 10,
-      "games": 105,
-      "winrate": 53.3,
-      "overallAverage": 108.79,
-      "recentMatches": [
-        {
-          "matchId": 1175,
-          "result": "Loss",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "1:4",
-          "average": "55.77",
-          "eloChange": -9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1173,
-          "result": "Win",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "3:4",
-          "average": "59.12",
-          "eloChange": 25,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1171,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "55.81",
-          "eloChange": -6,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1170,
-          "result": "Loss",
-          "opponentId": 1364666221114556537,
-          "opponentName": "Michael \"Hähnchen\" Hahn",
-          "score": "2:4",
-          "average": "46.4",
-          "eloChange": -14,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1167,
-          "result": "Loss",
-          "opponentId": 643858007741956127,
-          "opponentName": "LaUeberwerfos",
-          "score": "3:4",
-          "average": "52.43",
-          "eloChange": -15,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1330887794515644456": {
       "userId": 1330887794515644456,
       "name": "Josha Kahl",
       "avatar": "https://cdn.discordapp.com/avatars/1330887794515644456/31aba046c44fb7f9a17163d1daad59ab.png?size=1024",
       "worldRating": 957,
-      "worldRank": 80,
+      "worldRank": 79,
       "worldWins": 0,
       "worldLosses": 3,
       "monthlyRating": 0,
@@ -4006,6 +3938,74 @@
           "average": "44.71",
           "eloChange": -17,
           "queue": "scolia"
+        }
+      ]
+    },
+    "530021085522165770": {
+      "userId": 530021085522165770,
+      "name": "Leon Kohl",
+      "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
+      "worldRating": 956,
+      "worldRank": 80,
+      "worldWins": 56,
+      "worldLosses": 50,
+      "monthlyRating": 84,
+      "monthlyRank": 4,
+      "monthlyWins": 6,
+      "monthlyLosses": 11,
+      "games": 106,
+      "winrate": 52.8,
+      "overallAverage": 108.23,
+      "recentMatches": [
+        {
+          "matchId": 1176,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:3",
+          "average": "49.96",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1175,
+          "result": "Loss",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "1:4",
+          "average": "55.77",
+          "eloChange": -9,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1173,
+          "result": "Win",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "3:4",
+          "average": "59.12",
+          "eloChange": 25,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1171,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "1:4",
+          "average": "55.81",
+          "eloChange": -6,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1170,
+          "result": "Loss",
+          "opponentId": 1364666221114556537,
+          "opponentName": "Michael \"Hähnchen\" Hahn",
+          "score": "2:4",
+          "average": "46.4",
+          "eloChange": -14,
+          "queue": "DartCounter"
         }
       ]
     },
