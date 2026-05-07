@@ -480,18 +480,28 @@
       "userId": 183185835477172226,
       "name": "Stefan Kulik",
       "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
-      "worldRating": 1164,
+      "worldRating": 1171,
       "worldRank": 8,
-      "worldWins": 35,
+      "worldWins": 36,
       "worldLosses": 18,
-      "monthlyRating": 24,
-      "monthlyRank": 21,
-      "monthlyWins": 2,
+      "monthlyRating": 31,
+      "monthlyRank": 17,
+      "monthlyWins": 3,
       "monthlyLosses": 3,
-      "games": 53,
-      "winrate": 66.0,
-      "overallAverage": 59.93,
+      "games": 54,
+      "winrate": 66.7,
+      "overallAverage": 59.8,
       "recentMatches": [
+        {
+          "matchId": 1169,
+          "result": "Win",
+          "opponentId": 505446955242094596,
+          "opponentName": "Jerome Benzler",
+          "score": "3:4",
+          "average": "52.96",
+          "eloChange": 7,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1152,
           "result": "Win",
@@ -531,16 +541,6 @@
           "average": "62.0",
           "eloChange": 9,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 1109,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:1",
-          "average": "61.05",
-          "eloChange": -8,
-          "queue": "scolia"
         }
       ]
     },
@@ -553,7 +553,7 @@
       "worldWins": 25,
       "worldLosses": 11,
       "monthlyRating": 30,
-      "monthlyRank": 18,
+      "monthlyRank": 19,
       "monthlyWins": 4,
       "monthlyLosses": 3,
       "games": 36,
@@ -825,7 +825,7 @@
       "worldWins": 16,
       "worldLosses": 7,
       "monthlyRating": 27,
-      "monthlyRank": 19,
+      "monthlyRank": 20,
       "monthlyWins": 1,
       "monthlyLosses": 0,
       "games": 23,
@@ -2497,7 +2497,7 @@
       "worldWins": 7,
       "worldLosses": 7,
       "monthlyRating": 31,
-      "monthlyRank": 17,
+      "monthlyRank": 18,
       "monthlyWins": 2,
       "monthlyLosses": 0,
       "games": 14,
@@ -4717,80 +4717,12 @@
         }
       ]
     },
-    "505446955242094596": {
-      "userId": 505446955242094596,
-      "name": "Jerome Benzler",
-      "avatar": "https://cdn.discordapp.com/avatars/505446955242094596/2c72bf5d0877aad24fa4db0ab69878d1.png?size=1024",
-      "worldRating": 932,
-      "worldRank": 92,
-      "worldWins": 5,
-      "worldLosses": 13,
-      "monthlyRating": 0,
-      "monthlyRank": 34,
-      "monthlyWins": 0,
-      "monthlyLosses": 6,
-      "games": 18,
-      "winrate": 27.8,
-      "overallAverage": 53.6,
-      "recentMatches": [
-        {
-          "matchId": 1158,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "56.12",
-          "eloChange": -7,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1140,
-          "result": "Loss",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "4:3",
-          "average": "58.58",
-          "eloChange": -16,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1137,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "56.63",
-          "eloChange": -8,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1117,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:2",
-          "average": "52.05",
-          "eloChange": -10,
-          "queue": "dart"
-        },
-        {
-          "matchId": 1114,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "4:3",
-          "average": "61.03",
-          "eloChange": -7,
-          "queue": "dart"
-        }
-      ]
-    },
     "1394121383528628366": {
       "userId": 1394121383528628366,
       "name": "Micha24",
       "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
       "worldRating": 932,
-      "worldRank": 93,
+      "worldRank": 92,
       "worldWins": 1,
       "worldLosses": 6,
       "monthlyRating": 0,
@@ -4858,7 +4790,7 @@
       "name": "bergy1211",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
       "worldRating": 929,
-      "worldRank": 94,
+      "worldRank": 93,
       "worldWins": 1,
       "worldLosses": 6,
       "monthlyRating": 0,
@@ -4926,7 +4858,7 @@
       "name": "User 283650357262024704",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 927,
-      "worldRank": 95,
+      "worldRank": 94,
       "worldWins": 0,
       "worldLosses": 7,
       "monthlyRating": 0,
@@ -4994,7 +4926,7 @@
       "name": "Sebe K",
       "avatar": "https://cdn.discordapp.com/avatars/1474322752432377886/c20f8dae1bb7b0d8d4888a08ddcdf3af.png?size=1024",
       "worldRating": 925,
-      "worldRank": 96,
+      "worldRank": 95,
       "worldWins": 16,
       "worldLosses": 20,
       "monthlyRating": 5,
@@ -5053,6 +4985,74 @@
           "score": "4:3",
           "average": "42.32",
           "eloChange": 5,
+          "queue": "dart"
+        }
+      ]
+    },
+    "505446955242094596": {
+      "userId": 505446955242094596,
+      "name": "Jerome Benzler",
+      "avatar": "https://cdn.discordapp.com/avatars/505446955242094596/2c72bf5d0877aad24fa4db0ab69878d1.png?size=1024",
+      "worldRating": 925,
+      "worldRank": 96,
+      "worldWins": 5,
+      "worldLosses": 14,
+      "monthlyRating": 0,
+      "monthlyRank": 34,
+      "monthlyWins": 0,
+      "monthlyLosses": 7,
+      "games": 19,
+      "winrate": 26.3,
+      "overallAverage": 53.97,
+      "recentMatches": [
+        {
+          "matchId": 1169,
+          "result": "Loss",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "3:4",
+          "average": "60.61",
+          "eloChange": -7,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1158,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "1:4",
+          "average": "56.12",
+          "eloChange": -7,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1140,
+          "result": "Loss",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "4:3",
+          "average": "58.58",
+          "eloChange": -16,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1137,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "1:4",
+          "average": "56.63",
+          "eloChange": -8,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1117,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:2",
+          "average": "52.05",
+          "eloChange": -10,
           "queue": "dart"
         }
       ]
@@ -6086,7 +6086,7 @@
       "worldWins": 10,
       "worldLosses": 57,
       "monthlyRating": 26,
-      "monthlyRank": 20,
+      "monthlyRank": 21,
       "monthlyWins": 1,
       "monthlyLosses": 9,
       "games": 67,
