@@ -476,80 +476,12 @@
         }
       ]
     },
-    "183185835477172226": {
-      "userId": 183185835477172226,
-      "name": "Stefan Kulik",
-      "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
-      "worldRating": 1171,
-      "worldRank": 8,
-      "worldWins": 36,
-      "worldLosses": 18,
-      "monthlyRating": 31,
-      "monthlyRank": 18,
-      "monthlyWins": 3,
-      "monthlyLosses": 3,
-      "games": 54,
-      "winrate": 66.7,
-      "overallAverage": 59.8,
-      "recentMatches": [
-        {
-          "matchId": 1169,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "3:4",
-          "average": "52.96",
-          "eloChange": 7,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1152,
-          "result": "Win",
-          "opponentId": 890838749280346132,
-          "opponentName": "Klax",
-          "score": "4:3",
-          "average": "62.74",
-          "eloChange": 15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1151,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:1",
-          "average": "63.21",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1150,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:0",
-          "average": "54.2",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1129,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "3:4",
-          "average": "62.0",
-          "eloChange": 9,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1092072918915219537": {
       "userId": 1092072918915219537,
       "name": "Jannick2412",
       "avatar": "https://cdn.discordapp.com/avatars/1092072918915219537/a34f97c919ba7630e8ba951a443fb146.png?size=1024",
       "worldRating": 1150,
-      "worldRank": 9,
+      "worldRank": 8,
       "worldWins": 25,
       "worldLosses": 11,
       "monthlyRating": 30,
@@ -609,6 +541,74 @@
           "average": "68.98",
           "eloChange": 9,
           "queue": "scolia"
+        }
+      ]
+    },
+    "183185835477172226": {
+      "userId": 183185835477172226,
+      "name": "Stefan Kulik",
+      "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
+      "worldRating": 1146,
+      "worldRank": 9,
+      "worldWins": 36,
+      "worldLosses": 19,
+      "monthlyRating": 31,
+      "monthlyRank": 18,
+      "monthlyWins": 3,
+      "monthlyLosses": 4,
+      "games": 55,
+      "winrate": 65.5,
+      "overallAverage": 59.85,
+      "recentMatches": [
+        {
+          "matchId": 1173,
+          "result": "Loss",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "3:4",
+          "average": "62.83",
+          "eloChange": -25,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1169,
+          "result": "Win",
+          "opponentId": 505446955242094596,
+          "opponentName": "Jerome Benzler",
+          "score": "3:4",
+          "average": "52.96",
+          "eloChange": 7,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1152,
+          "result": "Win",
+          "opponentId": 890838749280346132,
+          "opponentName": "Klax",
+          "score": "4:3",
+          "average": "62.74",
+          "eloChange": 15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1151,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:1",
+          "average": "63.21",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1150,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:0",
+          "average": "54.2",
+          "eloChange": -7,
+          "queue": "Scolia"
         }
       ]
     },
@@ -3651,12 +3651,80 @@
         }
       ]
     },
+    "530021085522165770": {
+      "userId": 530021085522165770,
+      "name": "Leon Kohl",
+      "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
+      "worldRating": 972,
+      "worldRank": 75,
+      "worldWins": 56,
+      "worldLosses": 48,
+      "monthlyRating": 84,
+      "monthlyRank": 4,
+      "monthlyWins": 6,
+      "monthlyLosses": 9,
+      "games": 104,
+      "winrate": 53.8,
+      "overallAverage": 109.3,
+      "recentMatches": [
+        {
+          "matchId": 1173,
+          "result": "Win",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "3:4",
+          "average": "59.12",
+          "eloChange": 25,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1171,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "1:4",
+          "average": "55.81",
+          "eloChange": -6,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1170,
+          "result": "Loss",
+          "opponentId": 1364666221114556537,
+          "opponentName": "Michael \"Hähnchen\" Hahn",
+          "score": "2:4",
+          "average": "46.4",
+          "eloChange": -14,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1167,
+          "result": "Loss",
+          "opponentId": 643858007741956127,
+          "opponentName": "LaUeberwerfos",
+          "score": "3:4",
+          "average": "52.43",
+          "eloChange": -15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1164,
+          "result": "Loss",
+          "opponentId": 890838749280346132,
+          "opponentName": "Klax",
+          "score": "2:4",
+          "average": "58.0",
+          "eloChange": -10,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "911368314855514163": {
       "userId": 911368314855514163,
       "name": "Dome0105",
       "avatar": "https://cdn.discordapp.com/avatars/911368314855514163/0b43d87123b9b3860da7ec072f70a510.png?size=1024",
       "worldRating": 968,
-      "worldRank": 75,
+      "worldRank": 76,
       "worldWins": 3,
       "worldLosses": 5,
       "monthlyRating": 0,
@@ -3724,7 +3792,7 @@
       "name": "Sebi180",
       "avatar": "https://cdn.discordapp.com/avatars/700818115226894396/b390fa192bdd5e54656c514b07c15984.png?size=1024",
       "worldRating": 967,
-      "worldRank": 76,
+      "worldRank": 77,
       "worldWins": 6,
       "worldLosses": 9,
       "monthlyRating": 0,
@@ -3792,7 +3860,7 @@
       "name": "Kilian G",
       "avatar": "https://cdn.discordapp.com/avatars/770346293846343690/6f103472f3b613f43dd78e56733dd028.png?size=1024",
       "worldRating": 965,
-      "worldRank": 77,
+      "worldRank": 78,
       "worldWins": 0,
       "worldLosses": 2,
       "monthlyRating": 0,
@@ -3830,7 +3898,7 @@
       "name": "Maxi180",
       "avatar": "https://cdn.discordapp.com/avatars/1361248234583883817/5510d49b58267a8f5c67b776e9b35454.png?size=1024",
       "worldRating": 964,
-      "worldRank": 78,
+      "worldRank": 79,
       "worldWins": 2,
       "worldLosses": 4,
       "monthlyRating": 0,
@@ -3898,7 +3966,7 @@
       "name": "Josha Kahl",
       "avatar": "https://cdn.discordapp.com/avatars/1330887794515644456/31aba046c44fb7f9a17163d1daad59ab.png?size=1024",
       "worldRating": 957,
-      "worldRank": 79,
+      "worldRank": 80,
       "worldWins": 0,
       "worldLosses": 3,
       "monthlyRating": 0,
@@ -3946,7 +4014,7 @@
       "name": "Auron",
       "avatar": "https://cdn.discordapp.com/avatars/202833515757174784/c53dcf20c32fcc74bc341cfd6f7f87e6.png?size=1024",
       "worldRating": 954,
-      "worldRank": 80,
+      "worldRank": 81,
       "worldWins": 0,
       "worldLosses": 3,
       "monthlyRating": 0,
@@ -3994,7 +4062,7 @@
       "name": "Basti Q",
       "avatar": "https://cdn.discordapp.com/avatars/1128030585701552169/d20f11e1cf94acf9e088276121f8094b.png?size=1024",
       "worldRating": 953,
-      "worldRank": 81,
+      "worldRank": 82,
       "worldWins": 2,
       "worldLosses": 7,
       "monthlyRating": 0,
@@ -4062,7 +4130,7 @@
       "name": "Christian Nahrgang",
       "avatar": "https://cdn.discordapp.com/avatars/1473034865355001856/ade4ed87441e52bd6a48d265b29a84e6.png?size=1024",
       "worldRating": 952,
-      "worldRank": 82,
+      "worldRank": 83,
       "worldWins": 2,
       "worldLosses": 8,
       "monthlyRating": 0,
@@ -4130,7 +4198,7 @@
       "name": "Schmidti The Bone",
       "avatar": "https://cdn.discordapp.com/avatars/777632441359400970/7f17e7acf2cf5d5a0143a7e207f491c7.png?size=1024",
       "worldRating": 952,
-      "worldRank": 83,
+      "worldRank": 84,
       "worldWins": 1,
       "worldLosses": 4,
       "monthlyRating": 0,
@@ -4198,7 +4266,7 @@
       "name": "Philipp Höller",
       "avatar": "https://cdn.discordapp.com/embed/avatars/1.png",
       "worldRating": 951,
-      "worldRank": 84,
+      "worldRank": 85,
       "worldWins": 0,
       "worldLosses": 4,
       "monthlyRating": 0,
@@ -4256,7 +4324,7 @@
       "name": "TheDarkTrident",
       "avatar": "https://cdn.discordapp.com/avatars/1408769906664538122/fae529b08ac10816122ef7061a8e067b.png?size=1024",
       "worldRating": 949,
-      "worldRank": 85,
+      "worldRank": 86,
       "worldWins": 9,
       "worldLosses": 15,
       "monthlyRating": 0,
@@ -4324,7 +4392,7 @@
       "name": "Manuel G",
       "avatar": "https://cdn.discordapp.com/avatars/512983240148123648/eca6fd016833c09c82344fa554e51ec4.png?size=1024",
       "worldRating": 948,
-      "worldRank": 86,
+      "worldRank": 87,
       "worldWins": 2,
       "worldLosses": 9,
       "monthlyRating": 0,
@@ -4384,74 +4452,6 @@
           "average": "56.39",
           "eloChange": 14,
           "queue": "scolia"
-        }
-      ]
-    },
-    "530021085522165770": {
-      "userId": 530021085522165770,
-      "name": "Leon Kohl",
-      "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
-      "worldRating": 947,
-      "worldRank": 87,
-      "worldWins": 55,
-      "worldLosses": 48,
-      "monthlyRating": 59,
-      "monthlyRank": 4,
-      "monthlyWins": 5,
-      "monthlyLosses": 9,
-      "games": 103,
-      "winrate": 53.4,
-      "overallAverage": 109.78,
-      "recentMatches": [
-        {
-          "matchId": 1171,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "55.81",
-          "eloChange": -6,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1170,
-          "result": "Loss",
-          "opponentId": 1364666221114556537,
-          "opponentName": "Michael \"Hähnchen\" Hahn",
-          "score": "2:4",
-          "average": "46.4",
-          "eloChange": -14,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1167,
-          "result": "Loss",
-          "opponentId": 643858007741956127,
-          "opponentName": "LaUeberwerfos",
-          "score": "3:4",
-          "average": "52.43",
-          "eloChange": -15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1164,
-          "result": "Loss",
-          "opponentId": 890838749280346132,
-          "opponentName": "Klax",
-          "score": "2:4",
-          "average": "58.0",
-          "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1149,
-          "result": "Win",
-          "opponentId": 1326545695506698375,
-          "opponentName": "Mc_Rezzy46",
-          "score": "1:4",
-          "average": "58.75",
-          "eloChange": 11,
-          "queue": "Scolia"
         }
       ]
     },
