@@ -41,10 +41,13 @@ def calculate_elo_winner_delta(winner_rating: int, loser_rating: int) -> int:
     expected_winner_score = 1 / (1 + 10 ** ((loser_rating - winner_rating) / 400))
     return max(1, int(round(ELO_K_FACTOR * (1 - expected_winner_score))))
 
-
+#variante 2
 def calculate_monthly_win_points(elo_change: int) -> int:
     return elo_change + MONTHLY_WIN_BONUS
-
+#variante 1
+def calculate_monthly_win_points_v1(winner_rating: int, opponent_rating: int) -> int:
+    difference_bonus = max(0, min(6, (opponent_rating - winner_rating) // 90))
+    return 10 + difference_bonus
 
 def get_current_ranked_month_key() -> date:
     return datetime.now(timezone.utc).date().replace(day=1)
