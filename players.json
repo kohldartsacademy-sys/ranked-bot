@@ -1165,7 +1165,7 @@
       "worldWins": 11,
       "worldLosses": 2,
       "monthlyRating": 38,
-      "monthlyRank": 18,
+      "monthlyRank": 19,
       "monthlyWins": 5,
       "monthlyLosses": 1,
       "games": 13,
@@ -1369,7 +1369,7 @@
       "worldWins": 8,
       "worldLosses": 3,
       "monthlyRating": 36,
-      "monthlyRank": 19,
+      "monthlyRank": 20,
       "monthlyWins": 3,
       "monthlyLosses": 1,
       "games": 11,
@@ -1428,12 +1428,80 @@
         }
       ]
     },
+    "1418545035577917542": {
+      "userId": 1418545035577917542,
+      "name": "Campione",
+      "avatar": "https://cdn.discordapp.com/avatars/1418545035577917542/89691eff31c63a0517dae40506c0c603.png?size=1024",
+      "worldRating": 1074,
+      "worldRank": 22,
+      "worldWins": 15,
+      "worldLosses": 10,
+      "monthlyRating": 40,
+      "monthlyRank": 15,
+      "monthlyWins": 4,
+      "monthlyLosses": 0,
+      "games": 25,
+      "winrate": 60.0,
+      "overallAverage": 54.43,
+      "recentMatches": [
+        {
+          "matchId": 1210,
+          "result": "Win",
+          "opponentId": 777632441359400970,
+          "opponentName": "Schmidti The Bone",
+          "score": "2:4",
+          "average": "51.45",
+          "eloChange": 11,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1209,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "0:4",
+          "average": "55.16",
+          "eloChange": 4,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1207,
+          "result": "Win",
+          "opponentId": 695649624538611884,
+          "opponentName": "Michael Steindl",
+          "score": "4:1",
+          "average": "47.11",
+          "eloChange": 13,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1154,
+          "result": "Win",
+          "opponentId": 777632441359400970,
+          "opponentName": "Schmidti The Bone",
+          "score": "1:4",
+          "average": "48.22",
+          "eloChange": 12,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1014,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:0",
+          "average": "65.19",
+          "eloChange": -7,
+          "queue": "dart"
+        }
+      ]
+    },
     "418513121167147008": {
       "userId": 418513121167147008,
       "name": "Vincent Schubert",
       "avatar": "https://cdn.discordapp.com/avatars/418513121167147008/bfd5d41524b006489155d5dc5301f2ea.png?size=1024",
       "worldRating": 1065,
-      "worldRank": 22,
+      "worldRank": 23,
       "worldWins": 7,
       "worldLosses": 2,
       "monthlyRating": 0,
@@ -1493,74 +1561,6 @@
           "average": "72.33",
           "eloChange": 20,
           "queue": "scolia"
-        }
-      ]
-    },
-    "1418545035577917542": {
-      "userId": 1418545035577917542,
-      "name": "Campione",
-      "avatar": "https://cdn.discordapp.com/avatars/1418545035577917542/89691eff31c63a0517dae40506c0c603.png?size=1024",
-      "worldRating": 1063,
-      "worldRank": 23,
-      "worldWins": 14,
-      "worldLosses": 10,
-      "monthlyRating": 29,
-      "monthlyRank": 24,
-      "monthlyWins": 3,
-      "monthlyLosses": 0,
-      "games": 24,
-      "winrate": 58.3,
-      "overallAverage": 54.56,
-      "recentMatches": [
-        {
-          "matchId": 1209,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "0:4",
-          "average": "55.16",
-          "eloChange": 4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1207,
-          "result": "Win",
-          "opponentId": 695649624538611884,
-          "opponentName": "Michael Steindl",
-          "score": "4:1",
-          "average": "47.11",
-          "eloChange": 13,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1154,
-          "result": "Win",
-          "opponentId": 777632441359400970,
-          "opponentName": "Schmidti The Bone",
-          "score": "1:4",
-          "average": "48.22",
-          "eloChange": 12,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1014,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:0",
-          "average": "65.19",
-          "eloChange": -7,
-          "queue": "dart"
-        },
-        {
-          "matchId": 914,
-          "result": "Win",
-          "opponentId": 283650357262024704,
-          "opponentName": "𝕾𝖎𝖗𝕯𝖏𝕭𝖆𝖘𝖘/𝕽𝖊𝖓𝖊",
-          "score": "4:3",
-          "average": "52.74",
-          "eloChange": 14,
-          "queue": "dart"
         }
       ]
     },
@@ -2103,7 +2103,7 @@
       "worldWins": 5,
       "worldLosses": 4,
       "monthlyRating": 40,
-      "monthlyRank": 15,
+      "monthlyRank": 16,
       "monthlyWins": 3,
       "monthlyLosses": 2,
       "games": 9,
@@ -3988,7 +3988,7 @@
       "worldWins": 7,
       "worldLosses": 14,
       "monthlyRating": 40,
-      "monthlyRank": 16,
+      "monthlyRank": 17,
       "monthlyWins": 2,
       "monthlyLosses": 7,
       "games": 21,
@@ -4811,80 +4811,12 @@
         }
       ]
     },
-    "777632441359400970": {
-      "userId": 777632441359400970,
-      "name": "Schmidti The Bone",
-      "avatar": "https://cdn.discordapp.com/avatars/777632441359400970/7f17e7acf2cf5d5a0143a7e207f491c7.png?size=1024",
-      "worldRating": 940,
-      "worldRank": 95,
-      "worldWins": 1,
-      "worldLosses": 5,
-      "monthlyRating": 0,
-      "monthlyRank": 45,
-      "monthlyWins": 0,
-      "monthlyLosses": 1,
-      "games": 6,
-      "winrate": 16.7,
-      "overallAverage": 55.5,
-      "recentMatches": [
-        {
-          "matchId": 1154,
-          "result": "Loss",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "1:4",
-          "average": "50.57",
-          "eloChange": -12,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 800,
-          "result": "Loss",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "4:3",
-          "average": "61.53",
-          "eloChange": -9,
-          "queue": "dart"
-        },
-        {
-          "matchId": 683,
-          "result": "Loss",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "4:2",
-          "average": "57.84",
-          "eloChange": -14,
-          "queue": "dart"
-        },
-        {
-          "matchId": 479,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:1",
-          "average": "47.8",
-          "eloChange": 10,
-          "queue": "dart"
-        },
-        {
-          "matchId": 431,
-          "result": "Loss",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "4.2",
-          "average": "53.26",
-          "eloChange": -20,
-          "queue": "dart"
-        }
-      ]
-    },
     "530021085522165770": {
       "userId": 530021085522165770,
       "name": "Leon Kohl",
       "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
       "worldRating": 939,
-      "worldRank": 96,
+      "worldRank": 95,
       "worldWins": 57,
       "worldLosses": 53,
       "monthlyRating": 103,
@@ -4952,11 +4884,11 @@
       "name": "Nico Dresler",
       "avatar": "https://cdn.discordapp.com/avatars/299164054591635456/55723527a22d387586bf79435894e098.png?size=1024",
       "worldRating": 934,
-      "worldRank": 97,
+      "worldRank": 96,
       "worldWins": 13,
       "worldLosses": 22,
       "monthlyRating": 33,
-      "monthlyRank": 23,
+      "monthlyRank": 24,
       "monthlyWins": 2,
       "monthlyLosses": 2,
       "games": 35,
@@ -5020,7 +4952,7 @@
       "name": "Micha24",
       "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
       "worldRating": 932,
-      "worldRank": 98,
+      "worldRank": 97,
       "worldWins": 1,
       "worldLosses": 6,
       "monthlyRating": 0,
@@ -5088,7 +5020,7 @@
       "name": "bergy1211",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
       "worldRating": 929,
-      "worldRank": 99,
+      "worldRank": 98,
       "worldWins": 1,
       "worldLosses": 6,
       "monthlyRating": 0,
@@ -5148,6 +5080,74 @@
           "average": "53.9",
           "eloChange": -15,
           "queue": "scolia"
+        }
+      ]
+    },
+    "777632441359400970": {
+      "userId": 777632441359400970,
+      "name": "Schmidti The Bone",
+      "avatar": "https://cdn.discordapp.com/avatars/777632441359400970/7f17e7acf2cf5d5a0143a7e207f491c7.png?size=1024",
+      "worldRating": 929,
+      "worldRank": 99,
+      "worldWins": 1,
+      "worldLosses": 6,
+      "monthlyRating": 0,
+      "monthlyRank": 45,
+      "monthlyWins": 0,
+      "monthlyLosses": 2,
+      "games": 7,
+      "winrate": 14.3,
+      "overallAverage": 55.36,
+      "recentMatches": [
+        {
+          "matchId": 1210,
+          "result": "Loss",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "2:4",
+          "average": "54.54",
+          "eloChange": -11,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1154,
+          "result": "Loss",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "1:4",
+          "average": "50.57",
+          "eloChange": -12,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 800,
+          "result": "Loss",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "4:3",
+          "average": "61.53",
+          "eloChange": -9,
+          "queue": "dart"
+        },
+        {
+          "matchId": 683,
+          "result": "Loss",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "4:2",
+          "average": "57.84",
+          "eloChange": -14,
+          "queue": "dart"
+        },
+        {
+          "matchId": 479,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:1",
+          "average": "47.8",
+          "eloChange": 10,
+          "queue": "dart"
         }
       ]
     },
@@ -5296,7 +5296,7 @@
       "worldWins": 7,
       "worldLosses": 18,
       "monthlyRating": 33,
-      "monthlyRank": 22,
+      "monthlyRank": 23,
       "monthlyWins": 3,
       "monthlyLosses": 6,
       "games": 25,
@@ -5500,7 +5500,7 @@
       "worldWins": 34,
       "worldLosses": 47,
       "monthlyRating": 34,
-      "monthlyRank": 20,
+      "monthlyRank": 21,
       "monthlyWins": 2,
       "monthlyLosses": 1,
       "games": 81,
@@ -5840,7 +5840,7 @@
       "worldWins": 14,
       "worldLosses": 42,
       "monthlyRating": 40,
-      "monthlyRank": 17,
+      "monthlyRank": 18,
       "monthlyWins": 2,
       "monthlyLosses": 7,
       "games": 56,
@@ -5908,7 +5908,7 @@
       "worldWins": 13,
       "worldLosses": 30,
       "monthlyRating": 34,
-      "monthlyRank": 21,
+      "monthlyRank": 22,
       "monthlyWins": 2,
       "monthlyLosses": 6,
       "games": 43,
