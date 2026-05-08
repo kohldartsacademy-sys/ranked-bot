@@ -893,7 +893,7 @@
       "worldWins": 16,
       "worldLosses": 7,
       "monthlyRating": 27,
-      "monthlyRank": 25,
+      "monthlyRank": 26,
       "monthlyWins": 1,
       "monthlyLosses": 0,
       "games": 23,
@@ -1912,98 +1912,32 @@
         }
       ]
     },
-    "643858007741956127": {
-      "userId": 643858007741956127,
-      "name": "LaUeberwerfos",
-      "avatar": "https://cdn.discordapp.com/avatars/643858007741956127/5b9967f5bec9b291d73b36f3fa3d5990.png?size=1024",
-      "worldRating": 1028,
-      "worldRank": 30,
-      "worldWins": 2,
-      "worldLosses": 0,
-      "monthlyRating": 15,
-      "monthlyRank": 31,
-      "monthlyWins": 1,
-      "monthlyLosses": 0,
-      "games": 2,
-      "winrate": 100.0,
-      "overallAverage": 57.45,
-      "recentMatches": [
-        {
-          "matchId": 1167,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "3:4",
-          "average": "56.71",
-          "eloChange": 15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 574,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:2",
-          "average": "58.18",
-          "eloChange": 12,
-          "queue": "scolia"
-        }
-      ]
-    },
-    "801011337274589234": {
-      "userId": 801011337274589234,
-      "name": "Jonesyyyツ",
-      "avatar": "https://cdn.discordapp.com/avatars/801011337274589234/a_8e210a91d5c690017eddac89dc13bea1.gif?size=1024",
-      "worldRating": 1026,
-      "worldRank": 31,
-      "worldWins": 2,
-      "worldLosses": 0,
-      "monthlyRating": 0,
-      "monthlyRank": null,
-      "monthlyWins": 0,
-      "monthlyLosses": 0,
-      "games": 2,
-      "winrate": 100.0,
-      "overallAverage": 46.2,
-      "recentMatches": [
-        {
-          "matchId": 456,
-          "result": "Win",
-          "opponentId": 811720921782026251,
-          "opponentName": "Raven",
-          "score": "4:0",
-          "average": "43.88",
-          "eloChange": 10,
-          "queue": "dart"
-        },
-        {
-          "matchId": 455,
-          "result": "Win",
-          "opponentId": 1361248234583883817,
-          "opponentName": "Maxi180",
-          "score": "4:2",
-          "average": "48.51",
-          "eloChange": 16,
-          "queue": "dart"
-        }
-      ]
-    },
     "492994027331780609": {
       "userId": 492994027331780609,
       "name": "marci0",
       "avatar": "https://cdn.discordapp.com/embed/avatars/4.png",
-      "worldRating": 1022,
-      "worldRank": 32,
-      "worldWins": 11,
+      "worldRating": 1029,
+      "worldRank": 30,
+      "worldWins": 12,
       "worldLosses": 12,
-      "monthlyRating": 24,
-      "monthlyRank": 26,
-      "monthlyWins": 2,
+      "monthlyRating": 31,
+      "monthlyRank": 25,
+      "monthlyWins": 3,
       "monthlyLosses": 2,
-      "games": 23,
-      "winrate": 47.8,
-      "overallAverage": 60.06,
+      "games": 24,
+      "winrate": 50.0,
+      "overallAverage": 60.6,
       "recentMatches": [
+        {
+          "matchId": 1212,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "4:1",
+          "average": "72.93",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1187,
           "result": "Win",
@@ -2043,16 +1977,82 @@
           "average": "55.46",
           "eloChange": -9,
           "queue": "Scolia"
+        }
+      ]
+    },
+    "643858007741956127": {
+      "userId": 643858007741956127,
+      "name": "LaUeberwerfos",
+      "avatar": "https://cdn.discordapp.com/avatars/643858007741956127/5b9967f5bec9b291d73b36f3fa3d5990.png?size=1024",
+      "worldRating": 1028,
+      "worldRank": 31,
+      "worldWins": 2,
+      "worldLosses": 0,
+      "monthlyRating": 15,
+      "monthlyRank": 31,
+      "monthlyWins": 1,
+      "monthlyLosses": 0,
+      "games": 2,
+      "winrate": 100.0,
+      "overallAverage": 57.45,
+      "recentMatches": [
+        {
+          "matchId": 1167,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "3:4",
+          "average": "56.71",
+          "eloChange": 15,
+          "queue": "Scolia"
         },
         {
-          "matchId": 943,
+          "matchId": 574,
           "result": "Win",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "4:1",
-          "average": "50.71",
-          "eloChange": 10,
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "4:2",
+          "average": "58.18",
+          "eloChange": 12,
           "queue": "scolia"
+        }
+      ]
+    },
+    "801011337274589234": {
+      "userId": 801011337274589234,
+      "name": "Jonesyyyツ",
+      "avatar": "https://cdn.discordapp.com/avatars/801011337274589234/a_8e210a91d5c690017eddac89dc13bea1.gif?size=1024",
+      "worldRating": 1026,
+      "worldRank": 32,
+      "worldWins": 2,
+      "worldLosses": 0,
+      "monthlyRating": 0,
+      "monthlyRank": null,
+      "monthlyWins": 0,
+      "monthlyLosses": 0,
+      "games": 2,
+      "winrate": 100.0,
+      "overallAverage": 46.2,
+      "recentMatches": [
+        {
+          "matchId": 456,
+          "result": "Win",
+          "opponentId": 811720921782026251,
+          "opponentName": "Raven",
+          "score": "4:0",
+          "average": "43.88",
+          "eloChange": 10,
+          "queue": "dart"
+        },
+        {
+          "matchId": 455,
+          "result": "Win",
+          "opponentId": 1361248234583883817,
+          "opponentName": "Maxi180",
+          "score": "4:2",
+          "average": "48.51",
+          "eloChange": 16,
+          "queue": "dart"
         }
       ]
     },
@@ -6107,18 +6107,28 @@
       "userId": 1359231571487494265,
       "name": "Bernard (Giftzwerg)",
       "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
-      "worldRating": 811,
+      "worldRating": 804,
       "worldRank": 114,
       "worldWins": 9,
-      "worldLosses": 40,
+      "worldLosses": 41,
       "monthlyRating": 0,
       "monthlyRank": 51,
       "monthlyWins": 0,
-      "monthlyLosses": 2,
-      "games": 49,
-      "winrate": 18.4,
-      "overallAverage": 284.92,
+      "monthlyLosses": 3,
+      "games": 50,
+      "winrate": 18.0,
+      "overallAverage": 280.53,
       "recentMatches": [
+        {
+          "matchId": 1212,
+          "result": "Loss",
+          "opponentId": 492994027331780609,
+          "opponentName": "marci0",
+          "score": "4:1",
+          "average": "65.19",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1113,
           "result": "Loss",
@@ -6157,16 +6167,6 @@
           "score": "4:0",
           "average": "45.37",
           "eloChange": -2,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 950,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:0",
-          "average": "50.48",
-          "eloChange": -3,
           "queue": "scolia"
         }
       ]
