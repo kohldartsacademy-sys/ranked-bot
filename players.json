@@ -1024,18 +1024,28 @@
       "userId": 977270139932258375,
       "name": "Eddy Money",
       "avatar": "https://cdn.discordapp.com/avatars/977270139932258375/7cd753e1443be95e806ae2ea353d27ee.png?size=1024",
-      "worldRating": 1100,
+      "worldRating": 1104,
       "worldRank": 16,
-      "worldWins": 56,
+      "worldWins": 57,
       "worldLosses": 44,
-      "monthlyRating": 35,
-      "monthlyRank": 18,
-      "monthlyWins": 3,
+      "monthlyRating": 39,
+      "monthlyRank": 16,
+      "monthlyWins": 4,
       "monthlyLosses": 1,
-      "games": 100,
-      "winrate": 56.0,
-      "overallAverage": 62.93,
+      "games": 101,
+      "winrate": 56.4,
+      "overallAverage": 62.98,
       "recentMatches": [
+        {
+          "matchId": 1200,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "1:4",
+          "average": "67.78",
+          "eloChange": 4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1165,
           "result": "Win",
@@ -1074,16 +1084,6 @@
           "score": "4-2",
           "average": "54.32",
           "eloChange": -17,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1049,
-          "result": "Win",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:2",
-          "average": "73.26",
-          "eloChange": 26,
           "queue": "scolia"
         }
       ]
@@ -1165,7 +1165,7 @@
       "worldWins": 11,
       "worldLosses": 2,
       "monthlyRating": 38,
-      "monthlyRank": 16,
+      "monthlyRank": 17,
       "monthlyWins": 5,
       "monthlyLosses": 1,
       "games": 13,
@@ -1369,7 +1369,7 @@
       "worldWins": 8,
       "worldLosses": 3,
       "monthlyRating": 36,
-      "monthlyRank": 17,
+      "monthlyRank": 18,
       "monthlyWins": 3,
       "monthlyLosses": 1,
       "games": 11,
@@ -6117,18 +6117,28 @@
       "userId": 825420293039194123,
       "name": "Möffi",
       "avatar": "https://cdn.discordapp.com/avatars/825420293039194123/d84b958facf424daf8bc8eb98df94cbf.png?size=1024",
-      "worldRating": 784,
+      "worldRating": 780,
       "worldRank": 114,
       "worldWins": 11,
-      "worldLosses": 53,
+      "worldLosses": 54,
       "monthlyRating": 0,
       "monthlyRank": 45,
       "monthlyWins": 0,
-      "monthlyLosses": 5,
-      "games": 64,
-      "winrate": 17.2,
-      "overallAverage": 52.2,
+      "monthlyLosses": 6,
+      "games": 65,
+      "winrate": 16.9,
+      "overallAverage": 52.29,
       "recentMatches": [
+        {
+          "matchId": 1200,
+          "result": "Loss",
+          "opponentId": 977270139932258375,
+          "opponentName": "Eddy Money",
+          "score": "1:4",
+          "average": "58.37",
+          "eloChange": -4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1197,
           "result": "Loss",
@@ -6167,16 +6177,6 @@
           "score": "4:2",
           "average": "54.21",
           "eloChange": -9,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1085,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:0",
-          "average": "49.73",
-          "eloChange": -5,
           "queue": "scolia"
         }
       ]
