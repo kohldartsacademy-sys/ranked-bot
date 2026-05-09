@@ -37,7 +37,6 @@ from config.SqliteStore import (
 #  screenshot in result modal per einfügen (strg + v)
 #  .
 #  wieder nur einmal pro tag? oder ab 2. mal abfrage ob man das möchte, ansonsten beide in die q und der 3. bekommt zufällig einen von den beiden
-#  world rating top, monats rating anders? jemand mit 5/7 kann nicht vor jemanden mit 15/0 stehen?
 
 
 # =============================
