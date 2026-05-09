@@ -34,10 +34,12 @@
 
 ------------------------------------------------------------------------------------------------------------------------
 
-**Patchnotes 07.05.2026**
+**Patchnotes 09.05.2026**
 **Für Spieler**
     • Änderungen des Monatsranking
-	     * Es gibt jetzt Elo + eine feste Punktzahl
+	     * Es gibt jetzt Elo + 5 Punkte
+    • 5min Queue Timer
+         * nach 5min ohne Match wird der Spieler aus der Queue entfernt
 
 ------------------------------------------------------------------------------------------------------------------------
 **Patchnotes XX.XX.XXXX**
