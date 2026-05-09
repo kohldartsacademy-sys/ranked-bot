@@ -13,7 +13,7 @@ from discord.ext import commands
 
 RANKING_START_RATING = 1000
 ELO_K_FACTOR = 32
-MONTHLY_WIN_BONUS = 0
+MONTHLY_WIN_BONUS = 5
 RANKED_RESULT_STATUS_SQL = "status IN ('completed', 'confirmed') AND winner_id IS NOT NULL AND loser_id IS NOT NULL"
 
 
