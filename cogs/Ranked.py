@@ -38,8 +38,6 @@ from config.SqliteStore import (
 #  .
 #  wieder nur einmal pro tag? oder ab 2. mal abfrage ob man das möchte, ansonsten beide in die q und der 3. bekommt zufällig einen von den beiden
 #  world rating top, monats rating anders? jemand mit 5/7 kann nicht vor jemanden mit 15/0 stehen?
-#  5min timer für queue? wenn nach 5min kein match entstanden ist, dann spieler aus queue entfernen?
-#  queue anonym machen, nur noch anzeigen wie viele spieler in der queue sind um spannung zu erzeugen gegen wen man spielt?
 
 
 # =============================
@@ -55,8 +53,10 @@ AVERAGE_PATTERN = re.compile(r"^\s*\d+(?:[.,]\d+)?\s*$")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 LEADERBOARD_FILE = "leaderboard.html"
 PLAYER_DATA_FILE = "players.json"
+QUEUE_STATE_FILE = REPO_ROOT / "queue_state.json"
 RANKED_RESULT_STATUS_SQL = "status IN ('completed', 'confirmed') AND winner_id IS NOT NULL AND loser_id IS NOT NULL"
 WITHDRAW_ENABLE_DELAY = timedelta(minutes=5)
+QUEUE_WAIT_TIMEOUT = timedelta(minutes=5)
 RESULT_SELF_CONFIRM_DELAY = timedelta(minutes=1)
 
 # =============================
@@ -576,6 +576,7 @@ class PanelState:
     channel_id: int
     dartcounter_queue: list[int] = field(default_factory=list)
     scolia_queue: list[int] = field(default_factory=list)
+    queue_joined_at: dict[int, datetime] = field(default_factory=dict)
 
     def get_queue(self, queue_name: str) -> list[int]:
         if queue_name == "DartCounter":
@@ -590,7 +591,9 @@ class PanelState:
 def format_queue(queue: list[int]) -> str:
     if not queue:
         return QUEUE_EMPTY_TEXT
-    return "\n".join(f"<@{user_id}>" for user_id in queue)
+    if len(queue) == 1:
+        return "1 Spieler wartet"
+    return f"{len(queue)} Spieler warten"
 
 
 def format_active_matches(matches: list[MatchState]) -> str:
@@ -828,6 +831,81 @@ def parse_queue(value: str) -> list[int]:
         if user_id not in user_ids:
             user_ids.append(user_id)
     return user_ids
+
+
+def parse_utc_datetime(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    try:
+        parsed = datetime.fromisoformat(value)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def unique_int_list(value: object) -> list[int]:
+    if not isinstance(value, list):
+        return []
+
+    result: list[int] = []
+    for item in value:
+        try:
+            user_id = int(item)
+        except (TypeError, ValueError):
+            continue
+        if user_id not in result:
+            result.append(user_id)
+    return result
+
+
+def panel_state_to_json(panel_state: PanelState) -> dict:
+    queued_user_ids = set(panel_state.dartcounter_queue) | set(panel_state.scolia_queue)
+    joined_at = {
+        str(user_id): panel_state.queue_joined_at[user_id].isoformat()
+        for user_id in queued_user_ids
+        if user_id in panel_state.queue_joined_at
+    }
+    return {
+        "channel_id": panel_state.channel_id,
+        "dartcounter_queue": panel_state.dartcounter_queue,
+        "scolia_queue": panel_state.scolia_queue,
+        "joined_at": joined_at,
+    }
+
+
+def panel_state_from_json(value: object) -> PanelState | None:
+    if not isinstance(value, dict):
+        return None
+
+    try:
+        channel_id = int(value["channel_id"])
+    except (KeyError, TypeError, ValueError):
+        return None
+
+    state = PanelState(
+        channel_id=channel_id,
+        dartcounter_queue=unique_int_list(value.get("dartcounter_queue")),
+        scolia_queue=unique_int_list(value.get("scolia_queue")),
+    )
+
+    joined_at = value.get("joined_at")
+    if isinstance(joined_at, dict):
+        for user_id_text, timestamp in joined_at.items():
+            try:
+                user_id = int(user_id_text)
+            except (TypeError, ValueError):
+                continue
+            parsed = parse_utc_datetime(str(timestamp))
+            if parsed is not None:
+                state.queue_joined_at[user_id] = parsed
+
+    now = datetime.now(timezone.utc)
+    for user_id in set(state.dartcounter_queue) | set(state.scolia_queue):
+        state.queue_joined_at.setdefault(user_id, now)
+
+    return state
 
 
 def panel_state_from_embed(message: discord.Message) -> PanelState:
@@ -1599,6 +1677,7 @@ class QueuePanel(discord.ui.View):
                 return
 
             queue.append(user_id)
+            self.cog.schedule_queue_timeout(message.id, user_id)
             match_started = await self.cog.try_start_matches(message, panel_state, queue_name)
         else:
             if joined_queue is None:
@@ -1615,8 +1694,10 @@ class QueuePanel(discord.ui.View):
             panel_state.scolia_queue[:] = [
                 queued_user_id for queued_user_id in panel_state.scolia_queue if queued_user_id != user_id
             ]
+            self.cog.cancel_queue_timeout(message.id, user_id)
             match_started = False
 
+        self.cog.persist_queue_state()
         await self.cog.refresh_panels(
             interaction=interaction,
             current_message_id=message.id,
@@ -1654,6 +1735,7 @@ class QueuePanel(discord.ui.View):
             panel_state.dartcounter_queue.append(user_id)
         if user_id not in panel_state.scolia_queue:
             panel_state.scolia_queue.append(user_id)
+        self.cog.schedule_queue_timeout(message.id, user_id)
 
         if dartcounter_has_opponent:
             match_started = await self.cog.try_start_matches(message, panel_state, "DartCounter")
@@ -1662,6 +1744,7 @@ class QueuePanel(discord.ui.View):
         else:
             match_started = False
 
+        self.cog.persist_queue_state()
         await self.cog.refresh_panels(
             interaction=interaction,
             current_message_id=message.id,
@@ -1722,6 +1805,7 @@ class Ranked(commands.Cog):
         self.next_result_submission_id = 1
         self.panel_states: dict[int, PanelState] = {}
         self.panel_restore_attempted = False
+        self.queue_timeout_tasks: dict[tuple[int, int], asyncio.Task[None]] = {}
         self.pending_withdraw_tasks: dict[int, asyncio.Task[None]] = {}
         self.result_self_confirm_tasks: dict[int, asyncio.Task[None]] = {}
 
@@ -1729,12 +1813,16 @@ class Ranked(commands.Cog):
         await ensure_ranked_storage(self.bot)
         await self.restore_pending_matches()
         await self.restore_active_matches()
+        await self.restore_queue_state_from_file()
         self.bot.add_view(QueuePanel(self))
         self.bot.add_view(ResultEntryView(self))
         self.bot.add_view(PendingMatchView(self))
         self.bot.add_view(ResultConfirmationView(self))
 
     async def cog_unload(self) -> None:
+        for task in self.queue_timeout_tasks.values():
+            task.cancel()
+        self.queue_timeout_tasks.clear()
         for task in self.pending_withdraw_tasks.values():
             task.cancel()
         self.pending_withdraw_tasks.clear()
@@ -1749,6 +1837,80 @@ class Ranked(commands.Cog):
             panel_state = panel_state_from_embed(message)
             self.panel_states[message.id] = panel_state
         return panel_state
+
+    def persist_queue_state(self) -> None:
+        data = {
+            "panels": {
+                str(message_id): panel_state_to_json(panel_state)
+                for message_id, panel_state in self.panel_states.items()
+                if panel_state.dartcounter_queue or panel_state.scolia_queue
+            }
+        }
+
+        try:
+            QUEUE_STATE_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
+        except OSError as exc:
+            print(f"Queue state persistence failed: {type(exc).__name__}: {exc}")
+
+    async def restore_queue_state_from_file(self) -> None:
+        if not QUEUE_STATE_FILE.exists():
+            return
+
+        try:
+            raw_data = json.loads(QUEUE_STATE_FILE.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            print(f"Queue state restore failed: {type(exc).__name__}: {exc}")
+            return
+
+        panels = raw_data.get("panels") if isinstance(raw_data, dict) else None
+        if not isinstance(panels, dict):
+            return
+
+        now = datetime.now(timezone.utc)
+        stale_message_ids: list[int] = []
+
+        for message_id_text, panel_data in panels.items():
+            try:
+                message_id = int(message_id_text)
+            except (TypeError, ValueError):
+                continue
+
+            panel_state = panel_state_from_json(panel_data)
+            if panel_state is None:
+                continue
+
+            queued_user_ids = set(panel_state.dartcounter_queue) | set(panel_state.scolia_queue)
+            active_user_ids: set[int] = set()
+            for user_id in queued_user_ids:
+                joined_at = panel_state.queue_joined_at.get(user_id, now)
+                if now < joined_at + QUEUE_WAIT_TIMEOUT and not self.is_user_locked(user_id):
+                    active_user_ids.add(user_id)
+
+            panel_state.dartcounter_queue[:] = [
+                user_id for user_id in panel_state.dartcounter_queue if user_id in active_user_ids
+            ]
+            panel_state.scolia_queue[:] = [
+                user_id for user_id in panel_state.scolia_queue if user_id in active_user_ids
+            ]
+            panel_state.queue_joined_at = {
+                user_id: joined_at
+                for user_id, joined_at in panel_state.queue_joined_at.items()
+                if user_id in active_user_ids
+            }
+
+            if not panel_state.dartcounter_queue and not panel_state.scolia_queue:
+                stale_message_ids.append(message_id)
+                continue
+
+            self.panel_states[message_id] = panel_state
+            for user_id in active_user_ids:
+                self.schedule_queue_timeout(message_id, user_id, panel_state.queue_joined_at.get(user_id, now))
+
+        if self.panel_states:
+            await self.refresh_panels(refresh_all=True)
+
+        if stale_message_ids or self.panel_states:
+            self.persist_queue_state()
 
     def get_active_match_by_thread_id(self, thread_id: int) -> MatchState | None:
         for match in self.active_matches.values():
@@ -2254,8 +2416,70 @@ class Ranked(commands.Cog):
             return True
         return any(user_id in match.player_ids for match in self.pending_matches.values())
 
+    def schedule_queue_timeout(
+        self,
+        message_id: int,
+        user_id: int,
+        joined_at: datetime | None = None,
+    ) -> None:
+        panel_state = self.panel_states.get(message_id)
+        if joined_at is None:
+            joined_at = datetime.now(timezone.utc)
+        if panel_state is not None:
+            panel_state.queue_joined_at[user_id] = joined_at
+
+        self.cancel_queue_timeout(message_id, user_id, forget_join_time=False)
+        delay_seconds = max((joined_at + QUEUE_WAIT_TIMEOUT - datetime.now(timezone.utc)).total_seconds(), 0.0)
+        self.queue_timeout_tasks[(message_id, user_id)] = asyncio.create_task(
+            self.remove_from_queue_after_timeout(message_id, user_id, delay_seconds),
+        )
+
+    def cancel_queue_timeout(self, message_id: int, user_id: int, *, forget_join_time: bool = True) -> None:
+        task = self.queue_timeout_tasks.pop((message_id, user_id), None)
+        if task is not None:
+            task.cancel()
+        if forget_join_time:
+            panel_state = self.panel_states.get(message_id)
+            if panel_state is not None:
+                panel_state.queue_joined_at.pop(user_id, None)
+
+    def cancel_queue_timeouts_for_players(self, player_ids: set[int]) -> None:
+        for key in list(self.queue_timeout_tasks):
+            _message_id, user_id = key
+            if user_id in player_ids:
+                task = self.queue_timeout_tasks.pop(key)
+                task.cancel()
+        for panel_state in self.panel_states.values():
+            for user_id in player_ids:
+                panel_state.queue_joined_at.pop(user_id, None)
+
+    async def remove_from_queue_after_timeout(self, message_id: int, user_id: int, delay_seconds: float) -> None:
+        try:
+            await asyncio.sleep(delay_seconds)
+            panel_state = self.panel_states.get(message_id)
+            if panel_state is None:
+                return
+
+            was_removed = False
+            for queue in (panel_state.dartcounter_queue, panel_state.scolia_queue):
+                original_length = len(queue)
+                queue[:] = [queued_user_id for queued_user_id in queue if queued_user_id != user_id]
+                was_removed = was_removed or len(queue) != original_length
+
+            if was_removed:
+                panel_state.queue_joined_at.pop(user_id, None)
+                self.persist_queue_state()
+                await self.refresh_panels(refresh_all=True)
+        except asyncio.CancelledError:
+            pass
+        finally:
+            current_task = asyncio.current_task()
+            if self.queue_timeout_tasks.get((message_id, user_id)) is current_task:
+                self.queue_timeout_tasks.pop((message_id, user_id), None)
+
     def remove_players_from_all_queues(self, player_ids: tuple[int, int]) -> None:
         matched_players = set(player_ids)
+        self.cancel_queue_timeouts_for_players(matched_players)
 
         for panel_state in self.panel_states.values():
             panel_state.dartcounter_queue[:] = [
@@ -2264,6 +2488,7 @@ class Ranked(commands.Cog):
             panel_state.scolia_queue[:] = [
                 user_id for user_id in panel_state.scolia_queue if user_id not in matched_players
             ]
+        self.persist_queue_state()
 
     # Match-Erstellung und Statuswechsel von offen zu aktiv.
     async def create_pending_match(
@@ -2693,6 +2918,8 @@ class Ranked(commands.Cog):
 
         for message_id in stale_message_ids:
             self.panel_states.pop(message_id, None)
+        if stale_message_ids:
+            self.persist_queue_state()
 
     async def open_result_modal(
         self,
