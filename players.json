@@ -820,18 +820,28 @@
       "userId": 977270139932258375,
       "name": "Eddy Money",
       "avatar": "https://cdn.discordapp.com/avatars/977270139932258375/7cd753e1443be95e806ae2ea353d27ee.png?size=1024",
-      "worldRating": 1122,
+      "worldRating": 1126,
       "worldRank": 13,
-      "worldWins": 61,
+      "worldWins": 62,
       "worldLosses": 45,
-      "monthlyRating": 73,
+      "monthlyRating": 77,
       "monthlyRank": 8,
-      "monthlyWins": 8,
+      "monthlyWins": 9,
       "monthlyLosses": 2,
-      "games": 106,
-      "winrate": 57.5,
+      "games": 107,
+      "winrate": 57.9,
       "overallAverage": 62.92,
       "recentMatches": [
+        {
+          "matchId": 1255,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "4:2",
+          "average": "63.5",
+          "eloChange": 4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1250,
           "result": "Loss",
@@ -870,16 +880,6 @@
           "score": "4:2",
           "average": "69.97",
           "eloChange": 11,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1201,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "1:4",
-          "average": "63.82",
-          "eloChange": 4,
           "queue": "Scolia"
         }
       ]
@@ -6213,18 +6213,28 @@
       "userId": 1359231571487494265,
       "name": "Bernard (Giftzwerg)",
       "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
-      "worldRating": 800,
+      "worldRating": 796,
       "worldRank": 116,
       "worldWins": 9,
-      "worldLosses": 42,
+      "worldLosses": 43,
       "monthlyRating": 0,
       "monthlyRank": 55,
       "monthlyWins": 0,
-      "monthlyLosses": 4,
-      "games": 51,
-      "winrate": 17.6,
-      "overallAverage": 275.94,
+      "monthlyLosses": 5,
+      "games": 52,
+      "winrate": 17.3,
+      "overallAverage": 271.79,
       "recentMatches": [
+        {
+          "matchId": 1255,
+          "result": "Loss",
+          "opponentId": 977270139932258375,
+          "opponentName": "Eddy Money",
+          "score": "4:2",
+          "average": "60.43",
+          "eloChange": -4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1248,
           "result": "Loss",
@@ -6263,16 +6273,6 @@
           "score": "4:1",
           "average": "52.33",
           "eloChange": -2,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1047,
-          "result": "Loss",
-          "opponentId": 1092072918915219537,
-          "opponentName": "Jannick2412",
-          "score": "4:0",
-          "average": "58.07",
-          "eloChange": -4,
           "queue": "scolia"
         }
       ]
