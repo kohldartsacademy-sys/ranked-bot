@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1364,
+      "worldRating": 1344,
       "worldRank": 1,
       "worldWins": 104,
-      "worldLosses": 20,
+      "worldLosses": 21,
       "monthlyRating": 120,
-      "monthlyRank": 4,
+      "monthlyRank": 5,
       "monthlyWins": 19,
-      "monthlyLosses": 1,
-      "games": 124,
-      "winrate": 83.9,
-      "overallAverage": 69.37,
+      "monthlyLosses": 2,
+      "games": 125,
+      "winrate": 83.2,
+      "overallAverage": 69.31,
       "recentMatches": [
+        {
+          "matchId": 1249,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "2:4",
+          "average": "61.98",
+          "eloChange": -20,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1163,
           "result": "Win",
@@ -53,16 +63,6 @@
           "opponentName": "Stefan Kulik",
           "score": "4:1",
           "average": "70.44",
-          "eloChange": 7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1150,
-          "result": "Win",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "4:0",
-          "average": "78.08",
           "eloChange": 7,
           "queue": "Scolia"
         }
@@ -136,12 +136,80 @@
         }
       ]
     },
+    "1330499669490667653": {
+      "userId": 1330499669490667653,
+      "name": "Dennis Wehner",
+      "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
+      "worldRating": 1284,
+      "worldRank": 3,
+      "worldWins": 31,
+      "worldLosses": 4,
+      "monthlyRating": 121,
+      "monthlyRank": 4,
+      "monthlyWins": 14,
+      "monthlyLosses": 1,
+      "games": 35,
+      "winrate": 88.6,
+      "overallAverage": 68.88,
+      "recentMatches": [
+        {
+          "matchId": 1249,
+          "result": "Win",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "2:4",
+          "average": "66.67",
+          "eloChange": 20,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1244,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "0:4",
+          "average": "72.43",
+          "eloChange": 11,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1238,
+          "result": "Win",
+          "opponentId": 1364666221114556537,
+          "opponentName": "Michael \"Hähnchen\" Hahn",
+          "score": "0:4",
+          "average": "78.08",
+          "eloChange": 6,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1236,
+          "result": "Win",
+          "opponentId": 1364666221114556537,
+          "opponentName": "Michael \"Hähnchen\" Hahn",
+          "score": "0:4",
+          "average": "69.1",
+          "eloChange": 7,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1233,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "1:4",
+          "average": "76.24",
+          "eloChange": 12,
+          "queue": "DartCounter"
+        }
+      ]
+    },
     "806146120929640498": {
       "userId": 806146120929640498,
       "name": "Luca Pakendorf",
       "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
       "worldRating": 1274,
-      "worldRank": 3,
+      "worldRank": 4,
       "worldWins": 51,
       "worldLosses": 9,
       "monthlyRating": 14,
@@ -201,74 +269,6 @@
           "average": "71.68",
           "eloChange": 12,
           "queue": "dart"
-        }
-      ]
-    },
-    "1330499669490667653": {
-      "userId": 1330499669490667653,
-      "name": "Dennis Wehner",
-      "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1264,
-      "worldRank": 4,
-      "worldWins": 30,
-      "worldLosses": 4,
-      "monthlyRating": 101,
-      "monthlyRank": 6,
-      "monthlyWins": 13,
-      "monthlyLosses": 1,
-      "games": 34,
-      "winrate": 88.2,
-      "overallAverage": 68.94,
-      "recentMatches": [
-        {
-          "matchId": 1244,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "0:4",
-          "average": "72.43",
-          "eloChange": 11,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1238,
-          "result": "Win",
-          "opponentId": 1364666221114556537,
-          "opponentName": "Michael \"Hähnchen\" Hahn",
-          "score": "0:4",
-          "average": "78.08",
-          "eloChange": 6,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1236,
-          "result": "Win",
-          "opponentId": 1364666221114556537,
-          "opponentName": "Michael \"Hähnchen\" Hahn",
-          "score": "0:4",
-          "average": "69.1",
-          "eloChange": 7,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1233,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "76.24",
-          "eloChange": 12,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1230,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "0:4",
-          "average": "68.32",
-          "eloChange": 13,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -4858,7 +4858,7 @@
       "worldWins": 57,
       "worldLosses": 53,
       "monthlyRating": 103,
-      "monthlyRank": 5,
+      "monthlyRank": 6,
       "monthlyWins": 7,
       "monthlyLosses": 14,
       "games": 110,
