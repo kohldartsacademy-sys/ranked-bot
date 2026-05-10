@@ -208,18 +208,28 @@
       "userId": 806146120929640498,
       "name": "Luca Pakendorf",
       "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
-      "worldRating": 1246,
+      "worldRating": 1225,
       "worldRank": 4,
       "worldWins": 51,
-      "worldLosses": 11,
+      "worldLosses": 12,
       "monthlyRating": 14,
       "monthlyRank": 38,
       "monthlyWins": 1,
-      "monthlyLosses": 2,
-      "games": 62,
-      "winrate": 82.3,
-      "overallAverage": 67.02,
+      "monthlyLosses": 3,
+      "games": 63,
+      "winrate": 81.0,
+      "overallAverage": 66.98,
       "recentMatches": [
+        {
+          "matchId": 1259,
+          "result": "Loss",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "2:4",
+          "average": "64.65",
+          "eloChange": -21,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1256,
           "result": "Loss",
@@ -258,16 +268,6 @@
           "score": "4:0",
           "average": "72.43",
           "eloChange": 8,
-          "queue": "dart"
-        },
-        {
-          "matchId": 976,
-          "result": "Win",
-          "opponentId": 906968918327967764,
-          "opponentName": "Michel Ellrich",
-          "score": "4:0",
-          "average": "75.15",
-          "eloChange": 5,
           "queue": "dart"
         }
       ]
@@ -476,12 +476,80 @@
         }
       ]
     },
+    "183185835477172226": {
+      "userId": 183185835477172226,
+      "name": "Stefan Kulik",
+      "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
+      "worldRating": 1157,
+      "worldRank": 8,
+      "worldWins": 40,
+      "worldLosses": 21,
+      "monthlyRating": 71,
+      "monthlyRank": 9,
+      "monthlyWins": 7,
+      "monthlyLosses": 6,
+      "games": 61,
+      "winrate": 65.6,
+      "overallAverage": 59.47,
+      "recentMatches": [
+        {
+          "matchId": 1259,
+          "result": "Win",
+          "opponentId": 806146120929640498,
+          "opponentName": "Luca Pakendorf",
+          "score": "2:4",
+          "average": "68.77",
+          "eloChange": 21,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1253,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:0",
+          "average": "52.57",
+          "eloChange": -8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1219,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "4:1",
+          "average": "50.81",
+          "eloChange": 3,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1192,
+          "result": "Loss",
+          "opponentId": 1133493289006420090,
+          "opponentName": "El-Daddyy",
+          "score": "4:0",
+          "average": "41.45",
+          "eloChange": -21,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1190,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "3:4",
+          "average": "60.81",
+          "eloChange": 7,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "1302224986051838068": {
       "userId": 1302224986051838068,
       "name": "Bazzi",
       "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
       "worldRating": 1141,
-      "worldRank": 8,
+      "worldRank": 9,
       "worldWins": 60,
       "worldLosses": 26,
       "monthlyRating": 149,
@@ -549,7 +617,7 @@
       "name": "van_graadert",
       "avatar": "https://cdn.discordapp.com/avatars/1213219884440489984/a12754d46508103e0b1fe02bc4ed5110.png?size=1024",
       "worldRating": 1138,
-      "worldRank": 9,
+      "worldRank": 10,
       "worldWins": 32,
       "worldLosses": 17,
       "monthlyRating": 0,
@@ -609,74 +677,6 @@
           "average": "74.43",
           "eloChange": 13,
           "queue": "scolia"
-        }
-      ]
-    },
-    "183185835477172226": {
-      "userId": 183185835477172226,
-      "name": "Stefan Kulik",
-      "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
-      "worldRating": 1136,
-      "worldRank": 10,
-      "worldWins": 39,
-      "worldLosses": 21,
-      "monthlyRating": 50,
-      "monthlyRank": 13,
-      "monthlyWins": 6,
-      "monthlyLosses": 6,
-      "games": 60,
-      "winrate": 65.0,
-      "overallAverage": 59.32,
-      "recentMatches": [
-        {
-          "matchId": 1253,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:0",
-          "average": "52.57",
-          "eloChange": -8,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1219,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:1",
-          "average": "50.81",
-          "eloChange": 3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1192,
-          "result": "Loss",
-          "opponentId": 1133493289006420090,
-          "opponentName": "El-Daddyy",
-          "score": "4:0",
-          "average": "41.45",
-          "eloChange": -21,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1190,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "3:4",
-          "average": "60.81",
-          "eloChange": 7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1175,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "1:4",
-          "average": "61.5",
-          "eloChange": 9,
-          "queue": "Scolia"
         }
       ]
     },
@@ -1641,7 +1641,7 @@
       "worldWins": 3,
       "worldLosses": 0,
       "monthlyRating": 62,
-      "monthlyRank": 9,
+      "monthlyRank": 10,
       "monthlyWins": 3,
       "monthlyLosses": 0,
       "games": 3,
@@ -5402,7 +5402,7 @@
       "worldWins": 35,
       "worldLosses": 47,
       "monthlyRating": 55,
-      "monthlyRank": 11,
+      "monthlyRank": 12,
       "monthlyWins": 3,
       "monthlyLosses": 1,
       "games": 82,
@@ -5810,7 +5810,7 @@
       "worldWins": 15,
       "worldLosses": 43,
       "monthlyRating": 59,
-      "monthlyRank": 10,
+      "monthlyRank": 11,
       "monthlyWins": 3,
       "monthlyLosses": 8,
       "games": 58,
@@ -6422,7 +6422,7 @@
       "worldWins": 11,
       "worldLosses": 59,
       "monthlyRating": 54,
-      "monthlyRank": 12,
+      "monthlyRank": 13,
       "monthlyWins": 2,
       "monthlyLosses": 11,
       "games": 70,
