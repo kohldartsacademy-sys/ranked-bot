@@ -77,7 +77,7 @@
       "worldWins": 71,
       "worldLosses": 25,
       "monthlyRating": 96,
-      "monthlyRank": 6,
+      "monthlyRank": 7,
       "monthlyWins": 16,
       "monthlyLosses": 5,
       "games": 96,
@@ -208,18 +208,28 @@
       "userId": 1330499669490667653,
       "name": "Dennis Wehner",
       "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1253,
+      "worldRating": 1264,
       "worldRank": 4,
-      "worldWins": 29,
+      "worldWins": 30,
       "worldLosses": 4,
-      "monthlyRating": 90,
-      "monthlyRank": 7,
-      "monthlyWins": 12,
+      "monthlyRating": 101,
+      "monthlyRank": 6,
+      "monthlyWins": 13,
       "monthlyLosses": 1,
-      "games": 33,
-      "winrate": 87.9,
-      "overallAverage": 68.84,
+      "games": 34,
+      "winrate": 88.2,
+      "overallAverage": 68.94,
       "recentMatches": [
+        {
+          "matchId": 1244,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "0:4",
+          "average": "72.43",
+          "eloChange": 11,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1238,
           "result": "Win",
@@ -258,16 +268,6 @@
           "score": "0:4",
           "average": "68.32",
           "eloChange": 13,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1139,
-          "result": "Win",
-          "opponentId": 1474322752432377886,
-          "opponentName": "Sebe K",
-          "score": "0:4",
-          "average": "69.1",
-          "eloChange": 6,
           "queue": "DartCounter"
         }
       ]
@@ -544,80 +544,12 @@
         }
       ]
     },
-    "1302224986051838068": {
-      "userId": 1302224986051838068,
-      "name": "Bazzi",
-      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1141,
-      "worldRank": 9,
-      "worldWins": 58,
-      "worldLosses": 24,
-      "monthlyRating": 129,
-      "monthlyRank": 2,
-      "monthlyWins": 18,
-      "monthlyLosses": 5,
-      "games": 82,
-      "winrate": 70.7,
-      "overallAverage": 61.24,
-      "recentMatches": [
-        {
-          "matchId": 1243,
-          "result": "Win",
-          "opponentId": 1300479861508280333,
-          "opponentName": "nyxc.",
-          "score": "2:4",
-          "average": "56.75",
-          "eloChange": 8,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1233,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "1:4",
-          "average": "64.4",
-          "eloChange": -12,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1230,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "0:4",
-          "average": "57.17",
-          "eloChange": -13,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1225,
-          "result": "Loss",
-          "opponentId": 1092072918915219537,
-          "opponentName": "Jannick2412",
-          "score": "2:4",
-          "average": "62.91",
-          "eloChange": -16,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1202,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "3:4",
-          "average": "58.76",
-          "eloChange": 3,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1213219884440489984": {
       "userId": 1213219884440489984,
       "name": "van_graadert",
       "avatar": "https://cdn.discordapp.com/avatars/1213219884440489984/a12754d46508103e0b1fe02bc4ed5110.png?size=1024",
       "worldRating": 1138,
-      "worldRank": 10,
+      "worldRank": 9,
       "worldWins": 32,
       "worldLosses": 17,
       "monthlyRating": 0,
@@ -685,7 +617,7 @@
       "name": "FlAsH | Jannick",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 1135,
-      "worldRank": 11,
+      "worldRank": 10,
       "worldWins": 16,
       "worldLosses": 7,
       "monthlyRating": 0,
@@ -753,7 +685,7 @@
       "name": "Eddy Money",
       "avatar": "https://cdn.discordapp.com/avatars/977270139932258375/7cd753e1443be95e806ae2ea353d27ee.png?size=1024",
       "worldRating": 1130,
-      "worldRank": 12,
+      "worldRank": 11,
       "worldWins": 60,
       "worldLosses": 44,
       "monthlyRating": 65,
@@ -812,6 +744,74 @@
           "score": "0:4",
           "average": "61.98",
           "eloChange": 8,
+          "queue": "Scolia"
+        }
+      ]
+    },
+    "1302224986051838068": {
+      "userId": 1302224986051838068,
+      "name": "Bazzi",
+      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
+      "worldRating": 1130,
+      "worldRank": 12,
+      "worldWins": 58,
+      "worldLosses": 25,
+      "monthlyRating": 129,
+      "monthlyRank": 2,
+      "monthlyWins": 18,
+      "monthlyLosses": 6,
+      "games": 83,
+      "winrate": 69.9,
+      "overallAverage": 61.18,
+      "recentMatches": [
+        {
+          "matchId": 1244,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "56.0",
+          "eloChange": -11,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1243,
+          "result": "Win",
+          "opponentId": 1300479861508280333,
+          "opponentName": "nyxc.",
+          "score": "2:4",
+          "average": "56.75",
+          "eloChange": 8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1233,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "1:4",
+          "average": "64.4",
+          "eloChange": -12,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1230,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "57.17",
+          "eloChange": -13,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1225,
+          "result": "Loss",
+          "opponentId": 1092072918915219537,
+          "opponentName": "Jannick2412",
+          "score": "2:4",
+          "average": "62.91",
+          "eloChange": -16,
           "queue": "Scolia"
         }
       ]
