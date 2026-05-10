@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1344,
+      "worldRating": 1352,
       "worldRank": 1,
-      "worldWins": 104,
+      "worldWins": 105,
       "worldLosses": 21,
-      "monthlyRating": 120,
-      "monthlyRank": 5,
-      "monthlyWins": 19,
+      "monthlyRating": 128,
+      "monthlyRank": 3,
+      "monthlyWins": 20,
       "monthlyLosses": 2,
-      "games": 125,
-      "winrate": 83.2,
-      "overallAverage": 69.31,
+      "games": 126,
+      "winrate": 83.3,
+      "overallAverage": 69.27,
       "recentMatches": [
+        {
+          "matchId": 1253,
+          "result": "Win",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "4:0",
+          "average": "64.65",
+          "eloChange": 8,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1249,
           "result": "Loss",
@@ -54,16 +64,6 @@
           "score": "3:4",
           "average": "68.06",
           "eloChange": -27,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1151,
-          "result": "Win",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "4:1",
-          "average": "70.44",
-          "eloChange": 7,
           "queue": "Scolia"
         }
       ]
@@ -145,7 +145,7 @@
       "worldWins": 31,
       "worldLosses": 4,
       "monthlyRating": 121,
-      "monthlyRank": 4,
+      "monthlyRank": 5,
       "monthlyWins": 14,
       "monthlyLosses": 1,
       "games": 35,
@@ -281,7 +281,7 @@
       "worldWins": 35,
       "worldLosses": 14,
       "monthlyRating": 124,
-      "monthlyRank": 3,
+      "monthlyRank": 4,
       "monthlyWins": 14,
       "monthlyLosses": 6,
       "games": 49,
@@ -544,80 +544,12 @@
         }
       ]
     },
-    "183185835477172226": {
-      "userId": 183185835477172226,
-      "name": "Stefan Kulik",
-      "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
-      "worldRating": 1144,
-      "worldRank": 9,
-      "worldWins": 39,
-      "worldLosses": 20,
-      "monthlyRating": 50,
-      "monthlyRank": 12,
-      "monthlyWins": 6,
-      "monthlyLosses": 5,
-      "games": 59,
-      "winrate": 66.1,
-      "overallAverage": 59.43,
-      "recentMatches": [
-        {
-          "matchId": 1219,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:1",
-          "average": "50.81",
-          "eloChange": 3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1192,
-          "result": "Loss",
-          "opponentId": 1133493289006420090,
-          "opponentName": "El-Daddyy",
-          "score": "4:0",
-          "average": "41.45",
-          "eloChange": -21,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1190,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "3:4",
-          "average": "60.81",
-          "eloChange": 7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1175,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "1:4",
-          "average": "61.5",
-          "eloChange": 9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1173,
-          "result": "Loss",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "3:4",
-          "average": "62.83",
-          "eloChange": -25,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1213219884440489984": {
       "userId": 1213219884440489984,
       "name": "van_graadert",
       "avatar": "https://cdn.discordapp.com/avatars/1213219884440489984/a12754d46508103e0b1fe02bc4ed5110.png?size=1024",
       "worldRating": 1138,
-      "worldRank": 10,
+      "worldRank": 9,
       "worldWins": 32,
       "worldLosses": 17,
       "monthlyRating": 0,
@@ -677,6 +609,74 @@
           "average": "74.43",
           "eloChange": 13,
           "queue": "scolia"
+        }
+      ]
+    },
+    "183185835477172226": {
+      "userId": 183185835477172226,
+      "name": "Stefan Kulik",
+      "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
+      "worldRating": 1136,
+      "worldRank": 10,
+      "worldWins": 39,
+      "worldLosses": 21,
+      "monthlyRating": 50,
+      "monthlyRank": 12,
+      "monthlyWins": 6,
+      "monthlyLosses": 6,
+      "games": 60,
+      "winrate": 65.0,
+      "overallAverage": 59.32,
+      "recentMatches": [
+        {
+          "matchId": 1253,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:0",
+          "average": "52.57",
+          "eloChange": -8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1219,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "4:1",
+          "average": "50.81",
+          "eloChange": 3,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1192,
+          "result": "Loss",
+          "opponentId": 1133493289006420090,
+          "opponentName": "El-Daddyy",
+          "score": "4:0",
+          "average": "41.45",
+          "eloChange": -21,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1190,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "3:4",
+          "average": "60.81",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1175,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "1:4",
+          "average": "61.5",
+          "eloChange": 9,
+          "queue": "Scolia"
         }
       ]
     },
