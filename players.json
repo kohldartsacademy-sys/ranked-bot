@@ -281,7 +281,7 @@
       "worldWins": 35,
       "worldLosses": 14,
       "monthlyRating": 124,
-      "monthlyRank": 2,
+      "monthlyRank": 3,
       "monthlyWins": 14,
       "monthlyLosses": 6,
       "games": 49,
@@ -544,12 +544,80 @@
         }
       ]
     },
+    "1302224986051838068": {
+      "userId": 1302224986051838068,
+      "name": "Bazzi",
+      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
+      "worldRating": 1141,
+      "worldRank": 9,
+      "worldWins": 58,
+      "worldLosses": 24,
+      "monthlyRating": 129,
+      "monthlyRank": 2,
+      "monthlyWins": 18,
+      "monthlyLosses": 5,
+      "games": 82,
+      "winrate": 70.7,
+      "overallAverage": 61.24,
+      "recentMatches": [
+        {
+          "matchId": 1243,
+          "result": "Win",
+          "opponentId": 1300479861508280333,
+          "opponentName": "nyxc.",
+          "score": "2:4",
+          "average": "56.75",
+          "eloChange": 8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1233,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "1:4",
+          "average": "64.4",
+          "eloChange": -12,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1230,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "57.17",
+          "eloChange": -13,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1225,
+          "result": "Loss",
+          "opponentId": 1092072918915219537,
+          "opponentName": "Jannick2412",
+          "score": "2:4",
+          "average": "62.91",
+          "eloChange": -16,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1202,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "3:4",
+          "average": "58.76",
+          "eloChange": 3,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "1213219884440489984": {
       "userId": 1213219884440489984,
       "name": "van_graadert",
       "avatar": "https://cdn.discordapp.com/avatars/1213219884440489984/a12754d46508103e0b1fe02bc4ed5110.png?size=1024",
       "worldRating": 1138,
-      "worldRank": 9,
+      "worldRank": 10,
       "worldWins": 32,
       "worldLosses": 17,
       "monthlyRating": 0,
@@ -617,7 +685,7 @@
       "name": "FlAsH | Jannick",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 1135,
-      "worldRank": 10,
+      "worldRank": 11,
       "worldWins": 16,
       "worldLosses": 7,
       "monthlyRating": 0,
@@ -677,74 +745,6 @@
           "average": "73.72",
           "eloChange": 18,
           "queue": "scolia"
-        }
-      ]
-    },
-    "1302224986051838068": {
-      "userId": 1302224986051838068,
-      "name": "Bazzi",
-      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1133,
-      "worldRank": 11,
-      "worldWins": 57,
-      "worldLosses": 24,
-      "monthlyRating": 121,
-      "monthlyRank": 3,
-      "monthlyWins": 17,
-      "monthlyLosses": 5,
-      "games": 81,
-      "winrate": 70.4,
-      "overallAverage": 61.3,
-      "recentMatches": [
-        {
-          "matchId": 1233,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "1:4",
-          "average": "64.4",
-          "eloChange": -12,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1230,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "0:4",
-          "average": "57.17",
-          "eloChange": -13,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1225,
-          "result": "Loss",
-          "opponentId": 1092072918915219537,
-          "opponentName": "Jannick2412",
-          "score": "2:4",
-          "average": "62.91",
-          "eloChange": -16,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1202,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "3:4",
-          "average": "58.76",
-          "eloChange": 3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1195,
-          "result": "Win",
-          "opponentId": 694906115464364102,
-          "opponentName": "Samuel Sattler",
-          "score": "4:1",
-          "average": "50.23",
-          "eloChange": 9,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -4985,80 +4985,12 @@
         }
       ]
     },
-    "1300479861508280333": {
-      "userId": 1300479861508280333,
-      "name": "nyxc.",
-      "avatar": "https://cdn.discordapp.com/avatars/1300479861508280333/29f3781779d87a3cfb72e2400c3dd0c2.png?size=1024",
-      "worldRating": 934,
-      "worldRank": 98,
-      "worldWins": 1,
-      "worldLosses": 13,
-      "monthlyRating": 15,
-      "monthlyRank": 37,
-      "monthlyWins": 1,
-      "monthlyLosses": 13,
-      "games": 14,
-      "winrate": 7.1,
-      "overallAverage": 54.3,
-      "recentMatches": [
-        {
-          "matchId": 1242,
-          "result": "Loss",
-          "opponentId": 1233056433344348211,
-          "opponentName": "Lars Zimmermann",
-          "score": "4:0",
-          "average": "58.38",
-          "eloChange": -12,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1239,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:0",
-          "average": "54.53",
-          "eloChange": -3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1235,
-          "result": "Loss",
-          "opponentId": 1092072918915219537,
-          "opponentName": "Jannick2412",
-          "score": "4:0",
-          "average": "53.79",
-          "eloChange": -6,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1234,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "1:4",
-          "average": "52.94",
-          "eloChange": -4,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1232,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "2:4",
-          "average": "52.95",
-          "eloChange": -4,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1394121383528628366": {
       "userId": 1394121383528628366,
       "name": "Micha24",
       "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
       "worldRating": 932,
-      "worldRank": 99,
+      "worldRank": 98,
       "worldWins": 1,
       "worldLosses": 6,
       "monthlyRating": 0,
@@ -5126,7 +5058,7 @@
       "name": "bergy1211",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
       "worldRating": 929,
-      "worldRank": 100,
+      "worldRank": 99,
       "worldWins": 1,
       "worldLosses": 6,
       "monthlyRating": 0,
@@ -5194,7 +5126,7 @@
       "name": "Schmidti The Bone",
       "avatar": "https://cdn.discordapp.com/avatars/777632441359400970/7f17e7acf2cf5d5a0143a7e207f491c7.png?size=1024",
       "worldRating": 929,
-      "worldRank": 101,
+      "worldRank": 100,
       "worldWins": 1,
       "worldLosses": 6,
       "monthlyRating": 0,
@@ -5254,6 +5186,74 @@
           "average": "47.8",
           "eloChange": 10,
           "queue": "dart"
+        }
+      ]
+    },
+    "1300479861508280333": {
+      "userId": 1300479861508280333,
+      "name": "nyxc.",
+      "avatar": "https://cdn.discordapp.com/avatars/1300479861508280333/29f3781779d87a3cfb72e2400c3dd0c2.png?size=1024",
+      "worldRating": 926,
+      "worldRank": 101,
+      "worldWins": 1,
+      "worldLosses": 14,
+      "monthlyRating": 15,
+      "monthlyRank": 37,
+      "monthlyWins": 1,
+      "monthlyLosses": 14,
+      "games": 15,
+      "winrate": 6.7,
+      "overallAverage": 54.6,
+      "recentMatches": [
+        {
+          "matchId": 1243,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "2:4",
+          "average": "58.76",
+          "eloChange": -8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1242,
+          "result": "Loss",
+          "opponentId": 1233056433344348211,
+          "opponentName": "Lars Zimmermann",
+          "score": "4:0",
+          "average": "58.38",
+          "eloChange": -12,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1239,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "4:0",
+          "average": "54.53",
+          "eloChange": -3,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1235,
+          "result": "Loss",
+          "opponentId": 1092072918915219537,
+          "opponentName": "Jannick2412",
+          "score": "4:0",
+          "average": "53.79",
+          "eloChange": -6,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1234,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "1:4",
+          "average": "52.94",
+          "eloChange": -4,
+          "queue": "Scolia"
         }
       ]
     },
