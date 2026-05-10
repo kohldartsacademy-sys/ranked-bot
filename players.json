@@ -208,18 +208,28 @@
       "userId": 806146120929640498,
       "name": "Luca Pakendorf",
       "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
-      "worldRating": 1225,
+      "worldRating": 1229,
       "worldRank": 4,
-      "worldWins": 51,
+      "worldWins": 52,
       "worldLosses": 12,
-      "monthlyRating": 14,
-      "monthlyRank": 38,
-      "monthlyWins": 1,
+      "monthlyRating": 18,
+      "monthlyRank": 33,
+      "monthlyWins": 2,
       "monthlyLosses": 3,
-      "games": 63,
-      "winrate": 81.0,
-      "overallAverage": 66.98,
+      "games": 64,
+      "winrate": 81.2,
+      "overallAverage": 66.87,
       "recentMatches": [
+        {
+          "matchId": 1261,
+          "result": "Win",
+          "opponentId": 1474322752432377886,
+          "opponentName": "Sebe K",
+          "score": "0:4",
+          "average": "60.12",
+          "eloChange": 4,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1259,
           "result": "Loss",
@@ -259,16 +269,6 @@
           "average": "72.29",
           "eloChange": 14,
           "queue": "DartCounter"
-        },
-        {
-          "matchId": 995,
-          "result": "Win",
-          "opponentId": 272860472141676546,
-          "opponentName": "Tacke",
-          "score": "4:0",
-          "average": "72.43",
-          "eloChange": 8,
-          "queue": "dart"
         }
       ]
     },
@@ -961,7 +961,7 @@
       "worldWins": 12,
       "worldLosses": 5,
       "monthlyRating": 16,
-      "monthlyRank": 35,
+      "monthlyRank": 36,
       "monthlyWins": 2,
       "monthlyLosses": 2,
       "games": 17,
@@ -1029,7 +1029,7 @@
       "worldWins": 30,
       "worldLosses": 19,
       "monthlyRating": 17,
-      "monthlyRank": 33,
+      "monthlyRank": 34,
       "monthlyWins": 2,
       "monthlyLosses": 0,
       "games": 49,
@@ -2057,7 +2057,7 @@
       "worldWins": 2,
       "worldLosses": 0,
       "monthlyRating": 15,
-      "monthlyRank": 36,
+      "monthlyRank": 37,
       "monthlyWins": 1,
       "monthlyLosses": 0,
       "games": 2,
@@ -5198,7 +5198,7 @@
       "worldWins": 1,
       "worldLosses": 15,
       "monthlyRating": 15,
-      "monthlyRank": 37,
+      "monthlyRank": 38,
       "monthlyWins": 1,
       "monthlyLosses": 15,
       "games": 16,
@@ -5461,80 +5461,12 @@
         }
       ]
     },
-    "1474322752432377886": {
-      "userId": 1474322752432377886,
-      "name": "Sebe K",
-      "avatar": "https://cdn.discordapp.com/avatars/1474322752432377886/c20f8dae1bb7b0d8d4888a08ddcdf3af.png?size=1024",
-      "worldRating": 906,
-      "worldRank": 105,
-      "worldWins": 16,
-      "worldLosses": 21,
-      "monthlyRating": 5,
-      "monthlyRank": 43,
-      "monthlyWins": 1,
-      "monthlyLosses": 8,
-      "games": 37,
-      "winrate": 43.2,
-      "overallAverage": 52.44,
-      "recentMatches": [
-        {
-          "matchId": 1252,
-          "result": "Loss",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "4:1",
-          "average": "49.73",
-          "eloChange": -19,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1144,
-          "result": "Loss",
-          "opponentId": 1364666221114556537,
-          "opponentName": "Michael \"Hähnchen\" Hahn",
-          "score": "4:1",
-          "average": "50.55",
-          "eloChange": -15,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1139,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "0:4",
-          "average": "53.68",
-          "eloChange": -6,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1132,
-          "result": "Loss",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "2:4",
-          "average": "54.27",
-          "eloChange": -19,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1125,
-          "result": "Loss",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "4.3",
-          "average": "47.8",
-          "eloChange": -21,
-          "queue": "dart"
-        }
-      ]
-    },
     "283650357262024704": {
       "userId": 283650357262024704,
       "name": "𝕾𝖎𝖗𝕯𝖏𝕭𝖆𝖘𝖘/𝕽𝖊𝖓𝖊",
       "avatar": "https://cdn.discordapp.com/avatars/283650357262024704/6f0cdccdef0aca7024386e57fafbd798.png?size=1024",
       "worldRating": 906,
-      "worldRank": 106,
+      "worldRank": 105,
       "worldWins": 0,
       "worldLosses": 9,
       "monthlyRating": 0,
@@ -5594,6 +5526,74 @@
           "average": "47.56",
           "eloChange": -4,
           "queue": "dart"
+        }
+      ]
+    },
+    "1474322752432377886": {
+      "userId": 1474322752432377886,
+      "name": "Sebe K",
+      "avatar": "https://cdn.discordapp.com/avatars/1474322752432377886/c20f8dae1bb7b0d8d4888a08ddcdf3af.png?size=1024",
+      "worldRating": 902,
+      "worldRank": 106,
+      "worldWins": 16,
+      "worldLosses": 22,
+      "monthlyRating": 5,
+      "monthlyRank": 43,
+      "monthlyWins": 1,
+      "monthlyLosses": 9,
+      "games": 38,
+      "winrate": 42.1,
+      "overallAverage": 52.46,
+      "recentMatches": [
+        {
+          "matchId": 1261,
+          "result": "Loss",
+          "opponentId": 806146120929640498,
+          "opponentName": "Luca Pakendorf",
+          "score": "0:4",
+          "average": "53.24",
+          "eloChange": -4,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1252,
+          "result": "Loss",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "4:1",
+          "average": "49.73",
+          "eloChange": -19,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1144,
+          "result": "Loss",
+          "opponentId": 1364666221114556537,
+          "opponentName": "Michael \"Hähnchen\" Hahn",
+          "score": "4:1",
+          "average": "50.55",
+          "eloChange": -15,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1139,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "53.68",
+          "eloChange": -6,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1132,
+          "result": "Loss",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "2:4",
+          "average": "54.27",
+          "eloChange": -19,
+          "queue": "DartCounter"
         }
       ]
     },
@@ -5946,7 +5946,7 @@
       "worldWins": 14,
       "worldLosses": 36,
       "monthlyRating": 17,
-      "monthlyRank": 34,
+      "monthlyRank": 35,
       "monthlyWins": 1,
       "monthlyLosses": 3,
       "games": 50,
