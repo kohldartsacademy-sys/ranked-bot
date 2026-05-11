@@ -276,18 +276,28 @@
       "userId": 1007351887114285087,
       "name": "Rico Seifert",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 1191,
+      "worldRating": 1201,
       "worldRank": 5,
-      "worldWins": 36,
+      "worldWins": 37,
       "worldLosses": 9,
-      "monthlyRating": 58,
-      "monthlyRank": 13,
-      "monthlyWins": 10,
+      "monthlyRating": 68,
+      "monthlyRank": 12,
+      "monthlyWins": 11,
       "monthlyLosses": 1,
-      "games": 45,
-      "winrate": 80.0,
-      "overallAverage": 59.72,
+      "games": 46,
+      "winrate": 80.4,
+      "overallAverage": 59.91,
       "recentMatches": [
+        {
+          "matchId": 1289,
+          "result": "Win",
+          "opponentId": 272860472141676546,
+          "opponentName": "Tacke",
+          "score": "0:4",
+          "average": "68.32",
+          "eloChange": 10,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1287,
           "result": "Win",
@@ -327,16 +337,6 @@
           "average": "62.63",
           "eloChange": 6,
           "queue": "DartCounter"
-        },
-        {
-          "matchId": 1106,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:0",
-          "average": "67.55",
-          "eloChange": 2,
-          "queue": "dart"
         }
       ]
     },
@@ -1632,80 +1632,12 @@
         }
       ]
     },
-    "272860472141676546": {
-      "userId": 272860472141676546,
-      "name": "Tacke",
-      "avatar": "https://cdn.discordapp.com/avatars/272860472141676546/3d7d24c4928d38c7a97e292eed2ab3b7.png?size=1024",
-      "worldRating": 1050,
-      "worldRank": 25,
-      "worldWins": 7,
-      "worldLosses": 3,
-      "monthlyRating": 21,
-      "monthlyRank": 36,
-      "monthlyWins": 2,
-      "monthlyLosses": 1,
-      "games": 10,
-      "winrate": 70.0,
-      "overallAverage": 54.48,
-      "recentMatches": [
-        {
-          "matchId": 1287,
-          "result": "Loss",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "4:0",
-          "average": "58.54",
-          "eloChange": -11,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1174,
-          "result": "Win",
-          "opponentId": 283650357262024704,
-          "opponentName": "𝕾𝖎𝖗𝕯𝖏𝕭𝖆𝖘𝖘/𝕽𝖊𝖓𝖊",
-          "score": "0:4",
-          "average": "43.25",
-          "eloChange": 10,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1172,
-          "result": "Win",
-          "opponentId": 283650357262024704,
-          "opponentName": "𝕾𝖎𝖗𝕯𝖏𝕭𝖆𝖘𝖘/𝕽𝖊𝖓𝖊",
-          "score": "1:4",
-          "average": "56.48",
-          "eloChange": 11,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 995,
-          "result": "Loss",
-          "opponentId": 806146120929640498,
-          "opponentName": "Luca Pakendorf",
-          "score": "4:0",
-          "average": "66.29",
-          "eloChange": -8,
-          "queue": "dart"
-        },
-        {
-          "matchId": 468,
-          "result": "Loss",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "4:1",
-          "average": "53.55",
-          "eloChange": -15,
-          "queue": "dart"
-        }
-      ]
-    },
     "1418545035577917542": {
       "userId": 1418545035577917542,
       "name": "Campione",
       "avatar": "https://cdn.discordapp.com/avatars/1418545035577917542/89691eff31c63a0517dae40506c0c603.png?size=1024",
       "worldRating": 1049,
-      "worldRank": 26,
+      "worldRank": 25,
       "worldWins": 16,
       "worldLosses": 12,
       "monthlyRating": 51,
@@ -1773,7 +1705,7 @@
       "name": "Lars Zimmermann",
       "avatar": "https://cdn.discordapp.com/avatars/1233056433344348211/cc2d7caeba4bb7e7f07ba4baa16724d6.png?size=1024",
       "worldRating": 1045,
-      "worldRank": 27,
+      "worldRank": 26,
       "worldWins": 11,
       "worldLosses": 8,
       "monthlyRating": 39,
@@ -1841,7 +1773,7 @@
       "name": "TommyThomson",
       "avatar": "https://cdn.discordapp.com/avatars/1358893570869821534/6106ab6ef269621a7f4a57fdd767d667.png?size=1024",
       "worldRating": 1044,
-      "worldRank": 28,
+      "worldRank": 27,
       "worldWins": 4,
       "worldLosses": 1,
       "monthlyRating": 0,
@@ -1901,6 +1833,74 @@
           "average": "57.63",
           "eloChange": 17,
           "queue": "scolia"
+        }
+      ]
+    },
+    "272860472141676546": {
+      "userId": 272860472141676546,
+      "name": "Tacke",
+      "avatar": "https://cdn.discordapp.com/avatars/272860472141676546/3d7d24c4928d38c7a97e292eed2ab3b7.png?size=1024",
+      "worldRating": 1040,
+      "worldRank": 28,
+      "worldWins": 7,
+      "worldLosses": 4,
+      "monthlyRating": 21,
+      "monthlyRank": 36,
+      "monthlyWins": 2,
+      "monthlyLosses": 2,
+      "games": 11,
+      "winrate": 63.6,
+      "overallAverage": 54.92,
+      "recentMatches": [
+        {
+          "matchId": 1289,
+          "result": "Loss",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "0:4",
+          "average": "59.31",
+          "eloChange": -10,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1287,
+          "result": "Loss",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "4:0",
+          "average": "58.54",
+          "eloChange": -11,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1174,
+          "result": "Win",
+          "opponentId": 283650357262024704,
+          "opponentName": "𝕾𝖎𝖗𝕯𝖏𝕭𝖆𝖘𝖘/𝕽𝖊𝖓𝖊",
+          "score": "0:4",
+          "average": "43.25",
+          "eloChange": 10,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1172,
+          "result": "Win",
+          "opponentId": 283650357262024704,
+          "opponentName": "𝕾𝖎𝖗𝕯𝖏𝕭𝖆𝖘𝖘/𝕽𝖊𝖓𝖊",
+          "score": "1:4",
+          "average": "56.48",
+          "eloChange": 11,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 995,
+          "result": "Loss",
+          "opponentId": 806146120929640498,
+          "opponentName": "Luca Pakendorf",
+          "score": "4:0",
+          "average": "66.29",
+          "eloChange": -8,
+          "queue": "dart"
         }
       ]
     },
@@ -5996,7 +5996,7 @@
       "worldWins": 15,
       "worldLosses": 43,
       "monthlyRating": 59,
-      "monthlyRank": 12,
+      "monthlyRank": 13,
       "monthlyWins": 3,
       "monthlyLosses": 8,
       "games": 58,
