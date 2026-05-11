@@ -480,18 +480,28 @@
       "userId": 183185835477172226,
       "name": "Stefan Kulik",
       "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
-      "worldRating": 1157,
+      "worldRating": 1163,
       "worldRank": 8,
-      "worldWins": 40,
+      "worldWins": 41,
       "worldLosses": 21,
-      "monthlyRating": 71,
+      "monthlyRating": 77,
       "monthlyRank": 9,
-      "monthlyWins": 7,
+      "monthlyWins": 8,
       "monthlyLosses": 6,
-      "games": 61,
-      "winrate": 65.6,
-      "overallAverage": 59.47,
+      "games": 62,
+      "winrate": 66.1,
+      "overallAverage": 59.38,
       "recentMatches": [
+        {
+          "matchId": 1268,
+          "result": "Win",
+          "opponentId": 721521931953635349,
+          "opponentName": "Kasper4E",
+          "score": "1:4",
+          "average": "53.34",
+          "eloChange": 6,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1259,
           "result": "Win",
@@ -530,16 +540,6 @@
           "score": "4:0",
           "average": "41.45",
           "eloChange": -21,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1190,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "3:4",
-          "average": "60.81",
-          "eloChange": 7,
           "queue": "Scolia"
         }
       ]
@@ -5607,80 +5607,12 @@
         }
       ]
     },
-    "721521931953635349": {
-      "userId": 721521931953635349,
-      "name": "Kasper4E",
-      "avatar": "https://cdn.discordapp.com/avatars/721521931953635349/e5108741eedccb3fa944702a5359412f.png?size=1024",
-      "worldRating": 889,
-      "worldRank": 107,
-      "worldWins": 4,
-      "worldLosses": 17,
-      "monthlyRating": 0,
-      "monthlyRank": 51,
-      "monthlyWins": 0,
-      "monthlyLosses": 1,
-      "games": 21,
-      "winrate": 19.0,
-      "overallAverage": 46.01,
-      "recentMatches": [
-        {
-          "matchId": 1258,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "1:4",
-          "average": "38.29",
-          "eloChange": -2,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 933,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "0:4",
-          "average": "44.87",
-          "eloChange": 10,
-          "queue": "dart"
-        },
-        {
-          "matchId": 675,
-          "result": "Loss",
-          "opponentId": 134975678327160832,
-          "opponentName": "Shorbi|Daniel",
-          "score": "4:2",
-          "average": "48.56",
-          "eloChange": -8,
-          "queue": "dart"
-        },
-        {
-          "matchId": 565,
-          "result": "Win",
-          "opponentId": 1128030585701552169,
-          "opponentName": "Basti Q",
-          "score": "4:3",
-          "average": "46.65",
-          "eloChange": 21,
-          "queue": "dart"
-        },
-        {
-          "matchId": 524,
-          "result": "Loss",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "4:2",
-          "average": "52.55",
-          "eloChange": -7,
-          "queue": "dart"
-        }
-      ]
-    },
     "1359697518513885234": {
       "userId": 1359697518513885234,
       "name": "Chris",
       "avatar": "https://cdn.discordapp.com/avatars/1359697518513885234/680e47718b692a70f8c870a63cdc116d.png?size=1024",
       "worldRating": 887,
-      "worldRank": 108,
+      "worldRank": 107,
       "worldWins": 0,
       "worldLosses": 6,
       "monthlyRating": 0,
@@ -5748,7 +5680,7 @@
       "name": "Lmk 1170",
       "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
       "worldRating": 886,
-      "worldRank": 109,
+      "worldRank": 108,
       "worldWins": 0,
       "worldLosses": 10,
       "monthlyRating": 0,
@@ -5808,6 +5740,74 @@
           "average": "55.23",
           "eloChange": -7,
           "queue": "scolia"
+        }
+      ]
+    },
+    "721521931953635349": {
+      "userId": 721521931953635349,
+      "name": "Kasper4E",
+      "avatar": "https://cdn.discordapp.com/avatars/721521931953635349/e5108741eedccb3fa944702a5359412f.png?size=1024",
+      "worldRating": 883,
+      "worldRank": 109,
+      "worldWins": 4,
+      "worldLosses": 18,
+      "monthlyRating": 0,
+      "monthlyRank": 51,
+      "monthlyWins": 0,
+      "monthlyLosses": 2,
+      "games": 22,
+      "winrate": 18.2,
+      "overallAverage": 45.92,
+      "recentMatches": [
+        {
+          "matchId": 1268,
+          "result": "Loss",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "1:4",
+          "average": "44.1",
+          "eloChange": -6,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1258,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "1:4",
+          "average": "38.29",
+          "eloChange": -2,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 933,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "0:4",
+          "average": "44.87",
+          "eloChange": 10,
+          "queue": "dart"
+        },
+        {
+          "matchId": 675,
+          "result": "Loss",
+          "opponentId": 134975678327160832,
+          "opponentName": "Shorbi|Daniel",
+          "score": "4:2",
+          "average": "48.56",
+          "eloChange": -8,
+          "queue": "dart"
+        },
+        {
+          "matchId": 565,
+          "result": "Win",
+          "opponentId": 1128030585701552169,
+          "opponentName": "Basti Q",
+          "score": "4:3",
+          "average": "46.65",
+          "eloChange": 21,
+          "queue": "dart"
         }
       ]
     },
