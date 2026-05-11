@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1379,
+      "worldRating": 1359,
       "worldRank": 1,
       "worldWins": 108,
-      "worldLosses": 21,
+      "worldLosses": 22,
       "monthlyRating": 155,
       "monthlyRank": 1,
       "monthlyWins": 23,
-      "monthlyLosses": 2,
-      "games": 129,
-      "winrate": 83.7,
-      "overallAverage": 69.15,
+      "monthlyLosses": 3,
+      "games": 130,
+      "winrate": 83.1,
+      "overallAverage": 69.17,
       "recentMatches": [
+        {
+          "matchId": 1267,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "4:3",
+          "average": "72.01",
+          "eloChange": -20,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1266,
           "result": "Win",
@@ -55,16 +65,6 @@
           "average": "64.65",
           "eloChange": 8,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 1249,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "2:4",
-          "average": "61.98",
-          "eloChange": -20,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -140,18 +140,28 @@
       "userId": 1142038943961985105,
       "name": "Rick Dahlke",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1281,
+      "worldRating": 1301,
       "worldRank": 3,
-      "worldWins": 72,
+      "worldWins": 73,
       "worldLosses": 26,
-      "monthlyRating": 100,
-      "monthlyRank": 7,
-      "monthlyWins": 17,
+      "monthlyRating": 120,
+      "monthlyRank": 6,
+      "monthlyWins": 18,
       "monthlyLosses": 6,
-      "games": 98,
-      "winrate": 73.5,
-      "overallAverage": 67.58,
+      "games": 99,
+      "winrate": 73.7,
+      "overallAverage": 67.59,
       "recentMatches": [
+        {
+          "matchId": 1267,
+          "result": "Win",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:3",
+          "average": "69.22",
+          "eloChange": 20,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1266,
           "result": "Loss",
@@ -190,16 +200,6 @@
           "score": "4:0",
           "average": "66.07",
           "eloChange": 3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1237,
-          "result": "Win",
-          "opponentId": 1092072918915219537,
-          "opponentName": "Jannick2412",
-          "score": "4:3",
-          "average": "61.27",
-          "eloChange": 12,
           "queue": "Scolia"
         }
       ]
@@ -4868,7 +4868,7 @@
       "worldWins": 57,
       "worldLosses": 53,
       "monthlyRating": 103,
-      "monthlyRank": 6,
+      "monthlyRank": 7,
       "monthlyWins": 7,
       "monthlyLosses": 14,
       "games": 110,
