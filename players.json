@@ -140,18 +140,28 @@
       "userId": 1142038943961985105,
       "name": "Rick Dahlke",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1309,
+      "worldRating": 1316,
       "worldRank": 3,
-      "worldWins": 76,
+      "worldWins": 77,
       "worldLosses": 26,
-      "monthlyRating": 128,
+      "monthlyRating": 135,
       "monthlyRank": 6,
-      "monthlyWins": 21,
+      "monthlyWins": 22,
       "monthlyLosses": 6,
-      "games": 102,
-      "winrate": 74.5,
-      "overallAverage": 67.39,
+      "games": 103,
+      "winrate": 74.8,
+      "overallAverage": 67.36,
       "recentMatches": [
+        {
+          "matchId": 1295,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:3",
+          "average": "64.77",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1272,
           "result": "Win",
@@ -190,16 +200,6 @@
           "score": "4:3",
           "average": "69.22",
           "eloChange": 20,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1266,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "1:4",
-          "average": "69.14",
-          "eloChange": -13,
           "queue": "Scolia"
         }
       ]
@@ -1088,80 +1088,12 @@
         }
       ]
     },
-    "1302224986051838068": {
-      "userId": 1302224986051838068,
-      "name": "Bazzi",
-      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1091,
-      "worldRank": 17,
-      "worldWins": 60,
-      "worldLosses": 29,
-      "monthlyRating": 149,
-      "monthlyRank": 5,
-      "monthlyWins": 20,
-      "monthlyLosses": 10,
-      "games": 89,
-      "winrate": 67.4,
-      "overallAverage": 61.26,
-      "recentMatches": [
-        {
-          "matchId": 1281,
-          "result": "Loss",
-          "opponentId": 1474322752432377886,
-          "opponentName": "Sebe K",
-          "score": "3:4",
-          "average": "62.19",
-          "eloChange": -25,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1277,
-          "result": "Loss",
-          "opponentId": 1458502282219098457,
-          "opponentName": "Jules H",
-          "score": "4:0",
-          "average": "58.07",
-          "eloChange": -16,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1260,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "1:4",
-          "average": "66.83",
-          "eloChange": -9,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1257,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "0:4",
-          "average": "59.69",
-          "eloChange": -9,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1250,
-          "result": "Win",
-          "opponentId": 977270139932258375,
-          "opponentName": "Eddy Money",
-          "score": "4:0",
-          "average": "69.91",
-          "eloChange": 16,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1432632159432216765": {
       "userId": 1432632159432216765,
       "name": "RangerN",
       "avatar": "https://cdn.discordapp.com/avatars/1432632159432216765/0bc54142d7c398a968b6722a7c5b6fa8.png?size=1024",
       "worldRating": 1088,
-      "worldRank": 18,
+      "worldRank": 17,
       "worldWins": 12,
       "worldLosses": 3,
       "monthlyRating": 53,
@@ -1229,7 +1161,7 @@
       "name": "Moppi",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 1085,
-      "worldRank": 19,
+      "worldRank": 18,
       "worldWins": 21,
       "worldLosses": 11,
       "monthlyRating": 0,
@@ -1289,6 +1221,74 @@
           "average": "61.07",
           "eloChange": -14,
           "queue": "scolia"
+        }
+      ]
+    },
+    "1302224986051838068": {
+      "userId": 1302224986051838068,
+      "name": "Bazzi",
+      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
+      "worldRating": 1084,
+      "worldRank": 19,
+      "worldWins": 60,
+      "worldLosses": 30,
+      "monthlyRating": 149,
+      "monthlyRank": 5,
+      "monthlyWins": 20,
+      "monthlyLosses": 11,
+      "games": 90,
+      "winrate": 66.7,
+      "overallAverage": 61.28,
+      "recentMatches": [
+        {
+          "matchId": 1295,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "4:3",
+          "average": "62.63",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1281,
+          "result": "Loss",
+          "opponentId": 1474322752432377886,
+          "opponentName": "Sebe K",
+          "score": "3:4",
+          "average": "62.19",
+          "eloChange": -25,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1277,
+          "result": "Loss",
+          "opponentId": 1458502282219098457,
+          "opponentName": "Jules H",
+          "score": "4:0",
+          "average": "58.07",
+          "eloChange": -16,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1260,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "1:4",
+          "average": "66.83",
+          "eloChange": -9,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1257,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "59.69",
+          "eloChange": -9,
+          "queue": "DartCounter"
         }
       ]
     },
