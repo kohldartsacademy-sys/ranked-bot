@@ -72,18 +72,28 @@
       "userId": 1142038943961985105,
       "name": "Rick Dahlke",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1326,
+      "worldRating": 1334,
       "worldRank": 2,
-      "worldWins": 79,
+      "worldWins": 80,
       "worldLosses": 26,
-      "monthlyRating": 145,
-      "monthlyRank": 6,
-      "monthlyWins": 24,
+      "monthlyRating": 153,
+      "monthlyRank": 5,
+      "monthlyWins": 25,
       "monthlyLosses": 6,
-      "games": 105,
-      "winrate": 75.2,
-      "overallAverage": 67.34,
+      "games": 106,
+      "winrate": 75.5,
+      "overallAverage": 67.46,
       "recentMatches": [
+        {
+          "matchId": 1300,
+          "result": "Win",
+          "opponentId": 788855711601655819,
+          "opponentName": "FlAsH | Jannick",
+          "score": "1:4",
+          "average": "79.88",
+          "eloChange": 8,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1298,
           "result": "Win",
@@ -122,16 +132,6 @@
           "score": "4:1",
           "average": "61.65",
           "eloChange": 2,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1270,
-          "result": "Win",
-          "opponentId": 1300479861508280333,
-          "opponentName": "nyxc.",
-          "score": "4:2",
-          "average": "60.04",
-          "eloChange": 3,
           "queue": "Scolia"
         }
       ]
@@ -680,80 +680,12 @@
         }
       ]
     },
-    "788855711601655819": {
-      "userId": 788855711601655819,
-      "name": "FlAsH | Jannick",
-      "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1127,
-      "worldRank": 11,
-      "worldWins": 16,
-      "worldLosses": 8,
-      "monthlyRating": 0,
-      "monthlyRank": 57,
-      "monthlyWins": 0,
-      "monthlyLosses": 1,
-      "games": 24,
-      "winrate": 66.7,
-      "overallAverage": 318.89,
-      "recentMatches": [
-        {
-          "matchId": 1298,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:1",
-          "average": "56.84",
-          "eloChange": -8,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 934,
-          "result": "Win",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:3",
-          "average": "60.38",
-          "eloChange": 22,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 814,
-          "result": "Win",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "4:0",
-          "average": "57.26",
-          "eloChange": 9,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 813,
-          "result": "Win",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "4:2",
-          "average": "64.13",
-          "eloChange": 9,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 811,
-          "result": "Loss",
-          "opponentId": 1091029019388039290,
-          "opponentName": "König_Silvius",
-          "score": "4:3",
-          "average": "6233.0",
-          "eloChange": -23,
-          "queue": "scolia"
-        }
-      ]
-    },
     "977270139932258375": {
       "userId": 977270139932258375,
       "name": "Eddy Money",
       "avatar": "https://cdn.discordapp.com/avatars/977270139932258375/7cd753e1443be95e806ae2ea353d27ee.png?size=1024",
       "worldRating": 1126,
-      "worldRank": 12,
+      "worldRank": 11,
       "worldWins": 62,
       "worldLosses": 45,
       "monthlyRating": 77,
@@ -821,7 +753,7 @@
       "name": "Justin Oehring",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
       "worldRating": 1126,
-      "worldRank": 13,
+      "worldRank": 12,
       "worldWins": 17,
       "worldLosses": 8,
       "monthlyRating": 46,
@@ -880,6 +812,74 @@
           "score": "4:3",
           "average": "68.89",
           "eloChange": -10,
+          "queue": "scolia"
+        }
+      ]
+    },
+    "788855711601655819": {
+      "userId": 788855711601655819,
+      "name": "FlAsH | Jannick",
+      "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
+      "worldRating": 1119,
+      "worldRank": 13,
+      "worldWins": 16,
+      "worldLosses": 9,
+      "monthlyRating": 0,
+      "monthlyRank": 57,
+      "monthlyWins": 0,
+      "monthlyLosses": 2,
+      "games": 25,
+      "winrate": 64.0,
+      "overallAverage": 308.7,
+      "recentMatches": [
+        {
+          "matchId": 1300,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "1:4",
+          "average": "64.24",
+          "eloChange": -8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1298,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "4:1",
+          "average": "56.84",
+          "eloChange": -8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 934,
+          "result": "Win",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:3",
+          "average": "60.38",
+          "eloChange": 22,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 814,
+          "result": "Win",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "4:0",
+          "average": "57.26",
+          "eloChange": 9,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 813,
+          "result": "Win",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "4:2",
+          "average": "64.13",
+          "eloChange": 9,
           "queue": "scolia"
         }
       ]
@@ -1233,7 +1233,7 @@
       "worldWins": 60,
       "worldLosses": 30,
       "monthlyRating": 149,
-      "monthlyRank": 5,
+      "monthlyRank": 6,
       "monthlyWins": 20,
       "monthlyLosses": 11,
       "games": 90,
