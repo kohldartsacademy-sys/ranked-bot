@@ -43,7 +43,7 @@
 
     <body>
 
-    <h1>ðŸ† RANKED DARTS Dashboard</h1>
+    <h1>🏆 RANKED DARTS Dashboard</h1>
     <div class='podium'>
         <div class='card gold' data-player-id="707989067777835248">
         <img src="https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024" class="avatar"><br>
@@ -68,7 +68,7 @@
         <p>1337 ELO</p>
         <p>81W / 26L</p>
         </div>
-        </div><div class='container'><div style='width:40%'><h2>ðŸŒ World Ranking</h2><table>
+        </div><div class='container'><div style='width:40%'><h2>🌍 World Ranking</h2><table>
         <tr data-player-id="707989067777835248">
         <td>1</td>
         <td><img src="https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024" class="avatar"></td>
@@ -1020,7 +1020,7 @@
         <td>677</td>
         <td>11W / 63L</td>
         </tr>
-        </table></div><div style='width:40%'><h2>ðŸ—“ï¸ Monatsranking</h2><table>
+        </table></div><div style='width:40%'><h2>🗓️ Monatsranking</h2><table>
         <tr data-player-id="1330499669490667653">
         <td>1</td>
         <td><img src="https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024" class="avatar"></td>
@@ -1576,7 +1576,7 @@
             <p id="modal-games"></p>
             <p id="modal-winrate"></p>
             <p id="modal-average"></p>
-            <h3>ðŸ”¥ Letzte Matches</h3>
+            <h3>🔥 Letzte Matches</h3>
             <ul id="modal-matches" class="match-list"></ul>
         </div>
     </div>
@@ -1600,12 +1600,12 @@
         const jsonAvatarIsDefault = player.avatar && player.avatar.includes("/embed/avatars/0.png");
         document.getElementById("modal-avatar").src = jsonAvatarIsDefault && fallbackAvatar ? fallbackAvatar : player.avatar;
         text("modal-player-name", player.name);
-        text("modal-rating", "ðŸ† Rating: " + player.worldRating);
-        text("modal-world-rank", "ðŸŒ Worldrank: " + rankText(player.worldRank));
-        text("modal-monthly-rank", "ðŸ—“ï¸ Monatsrang: " + rankText(player.monthlyRank));
-        text("modal-games", "ðŸŽ¯ Spiele: " + player.games);
-        text("modal-winrate", "ðŸ“ˆ Winrate: " + player.winrate + "%");
-        text("modal-average", "ðŸŽ¯ Ã˜ Average: " + player.overallAverage);
+        text("modal-rating", "🏆 Rating: " + player.worldRating);
+        text("modal-world-rank", "🌍 Worldrank: " + rankText(player.worldRank));
+        text("modal-monthly-rank", "🗓️ Monatsrang: " + rankText(player.monthlyRank));
+        text("modal-games", "🎯 Spiele: " + player.games);
+        text("modal-winrate", "📈 Winrate: " + player.winrate + "%");
+        text("modal-average", "🎯 Ø Average: " + player.overallAverage);
 
         const matches = document.getElementById("modal-matches");
         matches.replaceChildren();
@@ -1616,7 +1616,7 @@
         } else {
             player.recentMatches.forEach(match => {
                 const item = document.createElement("li");
-                const resultIcon = match.result === "Win" ? "ðŸŸ¢" : "ðŸ”´";
+                const resultIcon = match.result === "Win" ? "🟢" : "🔴";
                 const elo = match.eloChange > 0 ? "+" + match.eloChange : String(match.eloChange);
                 item.textContent = resultIcon + " vs " + match.opponentName + " (" + match.score + ") | Avg: " + match.average + " | " + elo + " ELO";
                 matches.appendChild(item);
