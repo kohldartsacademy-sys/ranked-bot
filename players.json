@@ -9,7 +9,7 @@
       "worldWins": 109,
       "worldLosses": 23,
       "monthlyRating": 283,
-      "monthlyRank": 2,
+      "monthlyRank": 3,
       "monthlyWins": 24,
       "monthlyLosses": 4,
       "games": 132,
@@ -68,16 +68,84 @@
         }
       ]
     },
+    "1330499669490667653": {
+      "userId": 1330499669490667653,
+      "name": "Dennis Wehner",
+      "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
+      "worldRating": 1340,
+      "worldRank": 2,
+      "worldWins": 39,
+      "worldLosses": 4,
+      "monthlyRating": 287,
+      "monthlyRank": 1,
+      "monthlyWins": 22,
+      "monthlyLosses": 1,
+      "games": 43,
+      "winrate": 90.7,
+      "overallAverage": 68.93,
+      "recentMatches": [
+        {
+          "matchId": 1319,
+          "result": "Win",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "0:4",
+          "average": "69.91",
+          "eloChange": 10,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1314,
+          "result": "Win",
+          "opponentId": 505446955242094596,
+          "opponentName": "Jerome Benzler",
+          "score": "2:4",
+          "average": "65.54",
+          "eloChange": 4,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1310,
+          "result": "Win",
+          "opponentId": 505446955242094596,
+          "opponentName": "Jerome Benzler",
+          "score": "0:4",
+          "average": "69.1",
+          "eloChange": 4,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1308,
+          "result": "Win",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "4:3",
+          "average": "65.41",
+          "eloChange": 2,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1305,
+          "result": "Win",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "1:4",
+          "average": "65.29",
+          "eloChange": 2,
+          "queue": "DartCounter"
+        }
+      ]
+    },
     "1142038943961985105": {
       "userId": 1142038943961985105,
       "name": "Rick Dahlke",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 1337,
-      "worldRank": 2,
+      "worldRank": 3,
       "worldWins": 81,
       "worldLosses": 26,
       "monthlyRating": 286,
-      "monthlyRank": 1,
+      "monthlyRank": 2,
       "monthlyWins": 26,
       "monthlyLosses": 6,
       "games": 107,
@@ -133,74 +201,6 @@
           "average": "64.77",
           "eloChange": 7,
           "queue": "Scolia"
-        }
-      ]
-    },
-    "1330499669490667653": {
-      "userId": 1330499669490667653,
-      "name": "Dennis Wehner",
-      "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1330,
-      "worldRank": 3,
-      "worldWins": 38,
-      "worldLosses": 4,
-      "monthlyRating": 272,
-      "monthlyRank": 3,
-      "monthlyWins": 21,
-      "monthlyLosses": 1,
-      "games": 42,
-      "winrate": 90.5,
-      "overallAverage": 68.91,
-      "recentMatches": [
-        {
-          "matchId": 1314,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "2:4",
-          "average": "65.54",
-          "eloChange": 4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1310,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "0:4",
-          "average": "69.1",
-          "eloChange": 4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1308,
-          "result": "Win",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "4:3",
-          "average": "65.41",
-          "eloChange": 2,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1305,
-          "result": "Win",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "1:4",
-          "average": "65.29",
-          "eloChange": 2,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1260,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "82.17",
-          "eloChange": 9,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -344,18 +344,28 @@
       "userId": 1007351887114285087,
       "name": "Rico Seifert",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 1205,
+      "worldRating": 1195,
       "worldRank": 6,
       "worldWins": 38,
-      "worldLosses": 9,
+      "worldLosses": 10,
       "monthlyRating": 132,
       "monthlyRank": 10,
       "monthlyWins": 12,
-      "monthlyLosses": 1,
-      "games": 47,
-      "winrate": 80.9,
-      "overallAverage": 59.83,
+      "monthlyLosses": 2,
+      "games": 48,
+      "winrate": 79.2,
+      "overallAverage": 59.91,
       "recentMatches": [
+        {
+          "matchId": 1319,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "63.89",
+          "eloChange": -10,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1311,
           "result": "Win",
@@ -394,16 +404,6 @@
           "score": "0:4",
           "average": "59.52",
           "eloChange": 5,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1146,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "2:4",
-          "average": "56.51",
-          "eloChange": 2,
           "queue": "DartCounter"
         }
       ]
