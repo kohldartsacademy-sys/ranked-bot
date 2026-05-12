@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1359,
+      "worldRating": 1367,
       "worldRank": 1,
-      "worldWins": 108,
+      "worldWins": 109,
       "worldLosses": 22,
-      "monthlyRating": 155,
+      "monthlyRating": 163,
       "monthlyRank": 2,
-      "monthlyWins": 23,
+      "monthlyWins": 24,
       "monthlyLosses": 3,
-      "games": 130,
-      "winrate": 83.1,
+      "games": 131,
+      "winrate": 83.2,
       "overallAverage": 69.17,
       "recentMatches": [
+        {
+          "matchId": 1290,
+          "result": "Win",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "4:1",
+          "average": "68.19",
+          "eloChange": 8,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1267,
           "result": "Loss",
@@ -55,16 +65,6 @@
           "average": "74.22",
           "eloChange": 12,
           "queue": "DartCounter"
-        },
-        {
-          "matchId": 1253,
-          "result": "Win",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "4:0",
-          "average": "64.65",
-          "eloChange": 8,
-          "queue": "Scolia"
         }
       ]
     },
@@ -412,18 +412,28 @@
       "userId": 183185835477172226,
       "name": "Stefan Kulik",
       "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
-      "worldRating": 1163,
+      "worldRating": 1155,
       "worldRank": 7,
       "worldWins": 41,
-      "worldLosses": 21,
+      "worldLosses": 22,
       "monthlyRating": 77,
       "monthlyRank": 11,
       "monthlyWins": 8,
-      "monthlyLosses": 6,
-      "games": 62,
-      "winrate": 66.1,
-      "overallAverage": 59.38,
+      "monthlyLosses": 7,
+      "games": 63,
+      "winrate": 65.1,
+      "overallAverage": 59.32,
       "recentMatches": [
+        {
+          "matchId": 1290,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:1",
+          "average": "55.81",
+          "eloChange": -8,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1268,
           "result": "Win",
@@ -462,16 +472,6 @@
           "score": "4:1",
           "average": "50.81",
           "eloChange": 3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1192,
-          "result": "Loss",
-          "opponentId": 1133493289006420090,
-          "opponentName": "El-Daddyy",
-          "score": "4:0",
-          "average": "41.45",
-          "eloChange": -21,
           "queue": "Scolia"
         }
       ]
