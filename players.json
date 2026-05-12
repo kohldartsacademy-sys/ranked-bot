@@ -9,7 +9,7 @@
       "worldWins": 109,
       "worldLosses": 23,
       "monthlyRating": 163,
-      "monthlyRank": 2,
+      "monthlyRank": 3,
       "monthlyWins": 24,
       "monthlyLosses": 4,
       "games": 132,
@@ -276,18 +276,28 @@
       "userId": 1092072918915219537,
       "name": "Jannick2412",
       "avatar": "https://cdn.discordapp.com/avatars/1092072918915219537/a34f97c919ba7630e8ba951a443fb146.png?size=1024",
-      "worldRating": 1211,
+      "worldRating": 1215,
       "worldRank": 5,
-      "worldWins": 37,
+      "worldWins": 38,
       "worldLosses": 15,
-      "monthlyRating": 163,
-      "monthlyRank": 3,
-      "monthlyWins": 16,
+      "monthlyRating": 167,
+      "monthlyRank": 2,
+      "monthlyWins": 17,
       "monthlyLosses": 7,
-      "games": 52,
-      "winrate": 71.2,
-      "overallAverage": 64.41,
+      "games": 53,
+      "winrate": 71.7,
+      "overallAverage": 64.29,
       "recentMatches": [
+        {
+          "matchId": 1294,
+          "result": "Win",
+          "opponentId": 1300479861508280333,
+          "opponentName": "nyxc.",
+          "score": "4:0",
+          "average": "57.81",
+          "eloChange": 4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1293,
           "result": "Win",
@@ -326,16 +336,6 @@
           "score": "4:3",
           "average": "63.17",
           "eloChange": -12,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1235,
-          "result": "Win",
-          "opponentId": 1300479861508280333,
-          "opponentName": "nyxc.",
-          "score": "4:0",
-          "average": "59.52",
-          "eloChange": 6,
           "queue": "Scolia"
         }
       ]
@@ -5719,18 +5719,28 @@
       "userId": 1300479861508280333,
       "name": "nyxc.",
       "avatar": "https://cdn.discordapp.com/avatars/1300479861508280333/29f3781779d87a3cfb72e2400c3dd0c2.png?size=1024",
-      "worldRating": 894,
+      "worldRating": 890,
       "worldRank": 108,
       "worldWins": 2,
-      "worldLosses": 20,
+      "worldLosses": 21,
       "monthlyRating": 24,
       "monthlyRank": 35,
       "monthlyWins": 2,
-      "monthlyLosses": 20,
-      "games": 22,
-      "winrate": 9.1,
-      "overallAverage": 53.43,
+      "monthlyLosses": 21,
+      "games": 23,
+      "winrate": 8.7,
+      "overallAverage": 52.91,
       "recentMatches": [
+        {
+          "matchId": 1294,
+          "result": "Loss",
+          "opponentId": 1092072918915219537,
+          "opponentName": "Jannick2412",
+          "score": "4:0",
+          "average": "41.62",
+          "eloChange": -4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1284,
           "result": "Loss",
@@ -5769,16 +5779,6 @@
           "score": "4:2",
           "average": "51.08",
           "eloChange": -3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1265,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:1",
-          "average": "51.91",
-          "eloChange": -4,
           "queue": "Scolia"
         }
       ]
