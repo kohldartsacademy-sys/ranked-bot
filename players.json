@@ -412,18 +412,28 @@
       "userId": 1007351887114285087,
       "name": "Rico Seifert",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 1183,
+      "worldRating": 1185,
       "worldRank": 7,
-      "worldWins": 39,
+      "worldWins": 40,
       "worldLosses": 11,
-      "monthlyRating": 142,
+      "monthlyRating": 149,
       "monthlyRank": 10,
-      "monthlyWins": 13,
+      "monthlyWins": 14,
       "monthlyLosses": 3,
-      "games": 50,
-      "winrate": 78.0,
-      "overallAverage": 59.81,
+      "games": 51,
+      "winrate": 78.4,
+      "overallAverage": 59.95,
       "recentMatches": [
+        {
+          "matchId": 1332,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:1",
+          "average": "66.84",
+          "eloChange": 2,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1329,
           "result": "Loss",
@@ -462,16 +472,6 @@
           "score": "1:4",
           "average": "56.15",
           "eloChange": 4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1289,
-          "result": "Win",
-          "opponentId": 272860472141676546,
-          "opponentName": "Tacke",
-          "score": "0:4",
-          "average": "68.32",
-          "eloChange": 10,
           "queue": "DartCounter"
         }
       ]
@@ -6467,18 +6467,28 @@
       "userId": 1245485490421891165,
       "name": "Andy Bühner",
       "avatar": "https://cdn.discordapp.com/avatars/1245485490421891165/451b17f84483bd4cfc1aaf0f34c58183.png?size=1024",
-      "worldRating": 673,
+      "worldRating": 671,
       "worldRank": 119,
       "worldWins": 11,
-      "worldLosses": 64,
+      "worldLosses": 65,
       "monthlyRating": 64,
       "monthlyRank": 22,
       "monthlyWins": 2,
-      "monthlyLosses": 16,
-      "games": 75,
-      "winrate": 14.7,
-      "overallAverage": 177.73,
+      "monthlyLosses": 17,
+      "games": 76,
+      "winrate": 14.5,
+      "overallAverage": 176.16,
       "recentMatches": [
+        {
+          "matchId": 1332,
+          "result": "Loss",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "4:1",
+          "average": "58.09",
+          "eloChange": -2,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1326,
           "result": "Loss",
@@ -6517,16 +6527,6 @@
           "score": "0:4",
           "average": "45.59",
           "eloChange": -4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1306,
-          "result": "Loss",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "2:4",
-          "average": "50.41",
-          "eloChange": -5,
           "queue": "DartCounter"
         }
       ]
