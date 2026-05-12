@@ -4327,12 +4327,80 @@
         }
       ]
     },
+    "1327898199058284545": {
+      "userId": 1327898199058284545,
+      "name": "TheShy | Kevin",
+      "avatar": "https://cdn.discordapp.com/avatars/1327898199058284545/84f8183bcac3e3f75e0d1caa5a7f6340.png?size=1024",
+      "worldRating": 956,
+      "worldRank": 87,
+      "worldWins": 20,
+      "worldLosses": 36,
+      "monthlyRating": 220,
+      "monthlyRank": 7,
+      "monthlyWins": 9,
+      "monthlyLosses": 12,
+      "games": 56,
+      "winrate": 35.7,
+      "overallAverage": 55.87,
+      "recentMatches": [
+        {
+          "matchId": 1324,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "2:4",
+          "average": "60.43",
+          "eloChange": 17,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1321,
+          "result": "Loss",
+          "opponentId": 418513121167147008,
+          "opponentName": "Vincent Schubert",
+          "score": "2:4",
+          "average": "57.17",
+          "eloChange": -10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1316,
+          "result": "Loss",
+          "opponentId": 492994027331780609,
+          "opponentName": "marci0",
+          "score": "4:0",
+          "average": "62.59",
+          "eloChange": -14,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1312,
+          "result": "Win",
+          "opponentId": 492994027331780609,
+          "opponentName": "marci0",
+          "score": "0:4",
+          "average": "61.98",
+          "eloChange": 20,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1309,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "3:4",
+          "average": "63.88",
+          "eloChange": 23,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "202833515757174784": {
       "userId": 202833515757174784,
       "name": "Auron",
       "avatar": "https://cdn.discordapp.com/avatars/202833515757174784/c53dcf20c32fcc74bc341cfd6f7f87e6.png?size=1024",
       "worldRating": 954,
-      "worldRank": 87,
+      "worldRank": 88,
       "worldWins": 0,
       "worldLosses": 3,
       "monthlyRating": 0,
@@ -4380,7 +4448,7 @@
       "name": "Basti Q",
       "avatar": "https://cdn.discordapp.com/avatars/1128030585701552169/d20f11e1cf94acf9e088276121f8094b.png?size=1024",
       "worldRating": 953,
-      "worldRank": 88,
+      "worldRank": 89,
       "worldWins": 2,
       "worldLosses": 7,
       "monthlyRating": 0,
@@ -4448,7 +4516,7 @@
       "name": "Timmi1616",
       "avatar": "https://cdn.discordapp.com/avatars/1418878810006360084/ece7e3a96a963c45fd82ddbaf0606626.png?size=1024",
       "worldRating": 952,
-      "worldRank": 89,
+      "worldRank": 90,
       "worldWins": 1,
       "worldLosses": 5,
       "monthlyRating": 0,
@@ -4516,7 +4584,7 @@
       "name": "Philipp Höller",
       "avatar": "https://cdn.discordapp.com/embed/avatars/1.png",
       "worldRating": 951,
-      "worldRank": 90,
+      "worldRank": 91,
       "worldWins": 0,
       "worldLosses": 4,
       "monthlyRating": 0,
@@ -4566,74 +4634,6 @@
           "average": "59.29",
           "eloChange": -14,
           "queue": "scolia"
-        }
-      ]
-    },
-    "530021085522165770": {
-      "userId": 530021085522165770,
-      "name": "Leon Kohl",
-      "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
-      "worldRating": 950,
-      "worldRank": 91,
-      "worldWins": 58,
-      "worldLosses": 54,
-      "monthlyRating": 164,
-      "monthlyRank": 8,
-      "monthlyWins": 8,
-      "monthlyLosses": 15,
-      "games": 112,
-      "winrate": 51.8,
-      "overallAverage": 105.44,
-      "recentMatches": [
-        {
-          "matchId": 1320,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:3",
-          "average": "56.12",
-          "eloChange": 21,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1315,
-          "result": "Loss",
-          "opponentId": 418513121167147008,
-          "opponentName": "Vincent Schubert",
-          "score": "1:4",
-          "average": "57.14",
-          "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1198,
-          "result": "Loss",
-          "opponentId": 1300479861508280333,
-          "opponentName": "nyxc.",
-          "score": "4:0",
-          "average": "51.55",
-          "eloChange": -15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1193,
-          "result": "Win",
-          "opponentId": 706642260347060262,
-          "opponentName": "domme",
-          "score": "4:3",
-          "average": "52.66",
-          "eloChange": 19,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1190,
-          "result": "Loss",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "3:4",
-          "average": "53.04",
-          "eloChange": -7,
-          "queue": "Scolia"
         }
       ]
     },
@@ -4967,80 +4967,12 @@
         }
       ]
     },
-    "1327898199058284545": {
-      "userId": 1327898199058284545,
-      "name": "TheShy | Kevin",
-      "avatar": "https://cdn.discordapp.com/avatars/1327898199058284545/84f8183bcac3e3f75e0d1caa5a7f6340.png?size=1024",
-      "worldRating": 939,
-      "worldRank": 97,
-      "worldWins": 19,
-      "worldLosses": 36,
-      "monthlyRating": 198,
-      "monthlyRank": 7,
-      "monthlyWins": 8,
-      "monthlyLosses": 12,
-      "games": 55,
-      "winrate": 34.5,
-      "overallAverage": 55.79,
-      "recentMatches": [
-        {
-          "matchId": 1321,
-          "result": "Loss",
-          "opponentId": 418513121167147008,
-          "opponentName": "Vincent Schubert",
-          "score": "2:4",
-          "average": "57.17",
-          "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1316,
-          "result": "Loss",
-          "opponentId": 492994027331780609,
-          "opponentName": "marci0",
-          "score": "4:0",
-          "average": "62.59",
-          "eloChange": -14,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1312,
-          "result": "Win",
-          "opponentId": 492994027331780609,
-          "opponentName": "marci0",
-          "score": "0:4",
-          "average": "61.98",
-          "eloChange": 20,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1309,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "3:4",
-          "average": "63.88",
-          "eloChange": 23,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1307,
-          "result": "Win",
-          "opponentId": 1133493289006420090,
-          "opponentName": "El-Daddyy",
-          "score": "4:3",
-          "average": "59.91",
-          "eloChange": 24,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "299164054591635456": {
       "userId": 299164054591635456,
       "name": "Nico Dresler",
       "avatar": "https://cdn.discordapp.com/avatars/299164054591635456/55723527a22d387586bf79435894e098.png?size=1024",
       "worldRating": 934,
-      "worldRank": 98,
+      "worldRank": 97,
       "worldWins": 13,
       "worldLosses": 22,
       "monthlyRating": 43,
@@ -5100,6 +5032,74 @@
           "average": "4723.0",
           "eloChange": -17,
           "queue": "dart"
+        }
+      ]
+    },
+    "530021085522165770": {
+      "userId": 530021085522165770,
+      "name": "Leon Kohl",
+      "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
+      "worldRating": 933,
+      "worldRank": 98,
+      "worldWins": 58,
+      "worldLosses": 55,
+      "monthlyRating": 164,
+      "monthlyRank": 8,
+      "monthlyWins": 8,
+      "monthlyLosses": 16,
+      "games": 113,
+      "winrate": 51.3,
+      "overallAverage": 105.02,
+      "recentMatches": [
+        {
+          "matchId": 1324,
+          "result": "Loss",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "2:4",
+          "average": "57.62",
+          "eloChange": -17,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1320,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:3",
+          "average": "56.12",
+          "eloChange": 21,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1315,
+          "result": "Loss",
+          "opponentId": 418513121167147008,
+          "opponentName": "Vincent Schubert",
+          "score": "1:4",
+          "average": "57.14",
+          "eloChange": -10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1198,
+          "result": "Loss",
+          "opponentId": 1300479861508280333,
+          "opponentName": "nyxc.",
+          "score": "4:0",
+          "average": "51.55",
+          "eloChange": -15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1193,
+          "result": "Win",
+          "opponentId": 706642260347060262,
+          "opponentName": "domme",
+          "score": "4:3",
+          "average": "52.66",
+          "eloChange": 19,
+          "queue": "Scolia"
         }
       ]
     },
