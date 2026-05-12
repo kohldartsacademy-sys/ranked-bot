@@ -2490,70 +2490,32 @@
         }
       ]
     },
-    "287768867969957889": {
-      "userId": 287768867969957889,
-      "name": "Marvin Mollen",
-      "avatar": "https://cdn.discordapp.com/avatars/287768867969957889/a628529f62e04679c3edb54c2ef9ba1a.png?size=1024",
-      "worldRating": 1006,
-      "worldRank": 41,
-      "worldWins": 2,
-      "worldLosses": 1,
-      "monthlyRating": 17,
-      "monthlyRank": 48,
-      "monthlyWins": 1,
-      "monthlyLosses": 1,
-      "games": 3,
-      "winrate": 66.7,
-      "overallAverage": 53.84,
-      "recentMatches": [
-        {
-          "matchId": 1206,
-          "result": "Loss",
-          "opponentId": 977270139932258375,
-          "opponentName": "Eddy Money",
-          "score": "0:4",
-          "average": "57.91",
-          "eloChange": -11,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1124,
-          "result": "Win",
-          "opponentId": 1170865043227824178,
-          "opponentName": "Lmk 1170",
-          "score": "4:0",
-          "average": "54.65",
-          "eloChange": 12,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 952,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:1",
-          "average": "48.96",
-          "eloChange": 5,
-          "queue": "dart"
-        }
-      ]
-    },
     "1364666221114556537": {
       "userId": 1364666221114556537,
       "name": "Michael \"Hähnchen\" Hahn",
       "avatar": "https://cdn.discordapp.com/avatars/1364666221114556537/e129073baf460e100929b2eadff4163a.png?size=1024",
-      "worldRating": 1002,
-      "worldRank": 42,
-      "worldWins": 8,
+      "worldRating": 1006,
+      "worldRank": 41,
+      "worldWins": 9,
       "worldLosses": 9,
-      "monthlyRating": 60,
-      "monthlyRank": 22,
-      "monthlyWins": 3,
+      "monthlyRating": 69,
+      "monthlyRank": 20,
+      "monthlyWins": 4,
       "monthlyLosses": 2,
-      "games": 17,
-      "winrate": 47.1,
-      "overallAverage": 50.62,
+      "games": 18,
+      "winrate": 50.0,
+      "overallAverage": 50.43,
       "recentMatches": [
+        {
+          "matchId": 1326,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:2",
+          "average": "47.24",
+          "eloChange": 4,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1238,
           "result": "Loss",
@@ -2593,16 +2555,54 @@
           "average": "49.06",
           "eloChange": 16,
           "queue": "DartCounter"
+        }
+      ]
+    },
+    "287768867969957889": {
+      "userId": 287768867969957889,
+      "name": "Marvin Mollen",
+      "avatar": "https://cdn.discordapp.com/avatars/287768867969957889/a628529f62e04679c3edb54c2ef9ba1a.png?size=1024",
+      "worldRating": 1006,
+      "worldRank": 42,
+      "worldWins": 2,
+      "worldLosses": 1,
+      "monthlyRating": 17,
+      "monthlyRank": 48,
+      "monthlyWins": 1,
+      "monthlyLosses": 1,
+      "games": 3,
+      "winrate": 66.7,
+      "overallAverage": 53.84,
+      "recentMatches": [
+        {
+          "matchId": 1206,
+          "result": "Loss",
+          "opponentId": 977270139932258375,
+          "opponentName": "Eddy Money",
+          "score": "0:4",
+          "average": "57.91",
+          "eloChange": -11,
+          "queue": "Scolia"
         },
         {
-          "matchId": 1144,
+          "matchId": 1124,
           "result": "Win",
-          "opponentId": 1474322752432377886,
-          "opponentName": "Sebe K",
+          "opponentId": 1170865043227824178,
+          "opponentName": "Lmk 1170",
+          "score": "4:0",
+          "average": "54.65",
+          "eloChange": 12,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 952,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
           "score": "4:1",
-          "average": "53.76",
-          "eloChange": 15,
-          "queue": "DartCounter"
+          "average": "48.96",
+          "eloChange": 5,
+          "queue": "dart"
         }
       ]
     },
@@ -3110,7 +3110,7 @@
       "worldWins": 6,
       "worldLosses": 7,
       "monthlyRating": 67,
-      "monthlyRank": 20,
+      "monthlyRank": 21,
       "monthlyWins": 4,
       "monthlyLosses": 1,
       "games": 13,
@@ -6467,18 +6467,28 @@
       "userId": 1245485490421891165,
       "name": "Andy Bühner",
       "avatar": "https://cdn.discordapp.com/avatars/1245485490421891165/451b17f84483bd4cfc1aaf0f34c58183.png?size=1024",
-      "worldRating": 677,
+      "worldRating": 673,
       "worldRank": 119,
       "worldWins": 11,
-      "worldLosses": 63,
+      "worldLosses": 64,
       "monthlyRating": 64,
-      "monthlyRank": 21,
+      "monthlyRank": 22,
       "monthlyWins": 2,
-      "monthlyLosses": 15,
-      "games": 74,
-      "winrate": 14.9,
-      "overallAverage": 179.49,
+      "monthlyLosses": 16,
+      "games": 75,
+      "winrate": 14.7,
+      "overallAverage": 177.73,
       "recentMatches": [
+        {
+          "matchId": 1326,
+          "result": "Loss",
+          "opponentId": 1364666221114556537,
+          "opponentName": "Michael \"Hähnchen\" Hahn",
+          "score": "4:2",
+          "average": "47.57",
+          "eloChange": -4,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1322,
           "result": "Loss",
@@ -6517,16 +6527,6 @@
           "score": "2:4",
           "average": "50.41",
           "eloChange": -5,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1241,
-          "result": "Loss",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "3:4",
-          "average": "44.9",
-          "eloChange": -14,
           "queue": "DartCounter"
         }
       ]
