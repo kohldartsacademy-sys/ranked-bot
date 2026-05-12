@@ -1165,7 +1165,7 @@
       "worldWins": 12,
       "worldLosses": 3,
       "monthlyRating": 83,
-      "monthlyRank": 13,
+      "monthlyRank": 14,
       "monthlyWins": 6,
       "monthlyLosses": 2,
       "games": 15,
@@ -1573,7 +1573,7 @@
       "worldWins": 16,
       "worldLosses": 12,
       "monthlyRating": 76,
-      "monthlyRank": 14,
+      "monthlyRank": 15,
       "monthlyWins": 5,
       "monthlyLosses": 2,
       "games": 28,
@@ -5987,12 +5987,80 @@
         }
       ]
     },
+    "1458906019118841960": {
+      "userId": 1458906019118841960,
+      "name": "Rene B",
+      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
+      "worldRating": 877,
+      "worldRank": 112,
+      "worldWins": 16,
+      "worldLosses": 46,
+      "monthlyRating": 87,
+      "monthlyRank": 13,
+      "monthlyWins": 4,
+      "monthlyLosses": 11,
+      "games": 62,
+      "winrate": 25.8,
+      "overallAverage": 53.93,
+      "recentMatches": [
+        {
+          "matchId": 1318,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:2",
+          "average": "49.58",
+          "eloChange": 8,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1311,
+          "result": "Loss",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "1:4",
+          "average": "55.9",
+          "eloChange": -4,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1308,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "4:3",
+          "average": "51.93",
+          "eloChange": -2,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1305,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "1:4",
+          "average": "57.08",
+          "eloChange": -2,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1252,
+          "result": "Win",
+          "opponentId": 1474322752432377886,
+          "opponentName": "Sebe K",
+          "score": "4:1",
+          "average": "51.71",
+          "eloChange": 19,
+          "queue": "DartCounter"
+        }
+      ]
+    },
     "761737659579105301": {
       "userId": 761737659579105301,
       "name": "RocketDarts",
       "avatar": "https://cdn.discordapp.com/avatars/761737659579105301/f4a94165e17a0f43e60d39a5c94cc191.png?size=1024",
       "worldRating": 872,
-      "worldRank": 112,
+      "worldRank": 113,
       "worldWins": 14,
       "worldLosses": 36,
       "monthlyRating": 22,
@@ -6052,74 +6120,6 @@
           "average": "51.72",
           "eloChange": -12,
           "queue": "scolia"
-        }
-      ]
-    },
-    "1458906019118841960": {
-      "userId": 1458906019118841960,
-      "name": "Rene B",
-      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
-      "worldRating": 869,
-      "worldRank": 113,
-      "worldWins": 15,
-      "worldLosses": 46,
-      "monthlyRating": 74,
-      "monthlyRank": 15,
-      "monthlyWins": 3,
-      "monthlyLosses": 11,
-      "games": 61,
-      "winrate": 24.6,
-      "overallAverage": 54.0,
-      "recentMatches": [
-        {
-          "matchId": 1311,
-          "result": "Loss",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "1:4",
-          "average": "55.9",
-          "eloChange": -4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1308,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "4:3",
-          "average": "51.93",
-          "eloChange": -2,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1305,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "1:4",
-          "average": "57.08",
-          "eloChange": -2,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1252,
-          "result": "Win",
-          "opponentId": 1474322752432377886,
-          "opponentName": "Sebe K",
-          "score": "4:1",
-          "average": "51.71",
-          "eloChange": 19,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1246,
-          "result": "Loss",
-          "opponentId": 1067374071421095936,
-          "opponentName": "Robinson",
-          "score": "1:4",
-          "average": "46.8",
-          "eloChange": -10,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -6467,18 +6467,28 @@
       "userId": 1245485490421891165,
       "name": "Andy Bühner",
       "avatar": "https://cdn.discordapp.com/avatars/1245485490421891165/451b17f84483bd4cfc1aaf0f34c58183.png?size=1024",
-      "worldRating": 686,
+      "worldRating": 678,
       "worldRank": 119,
       "worldWins": 11,
-      "worldLosses": 61,
+      "worldLosses": 62,
       "monthlyRating": 64,
       "monthlyRank": 21,
       "monthlyWins": 2,
-      "monthlyLosses": 13,
-      "games": 72,
-      "winrate": 15.3,
-      "overallAverage": 183.17,
+      "monthlyLosses": 14,
+      "games": 73,
+      "winrate": 15.1,
+      "overallAverage": 181.3,
       "recentMatches": [
+        {
+          "matchId": 1318,
+          "result": "Loss",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "4:2",
+          "average": "46.52",
+          "eloChange": -8,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1313,
           "result": "Loss",
@@ -6517,16 +6527,6 @@
           "score": "0:4",
           "average": "50.0",
           "eloChange": -4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1204,
-          "result": "Win",
-          "opponentId": 695649624538611884,
-          "opponentName": "Michael Steindl",
-          "score": "4:1",
-          "average": "44.86",
-          "eloChange": 28,
           "queue": "DartCounter"
         }
       ]
