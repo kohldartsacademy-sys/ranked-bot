@@ -50,8 +50,8 @@ MATCH_ID_PATTERN = re.compile(r"#(\d+)")
 SCORE_PATTERN = re.compile(r"^\s*(\d{1,2})\s*[:\-]\s*(\d{1,2})\s*$")
 AVERAGE_PATTERN = re.compile(r"^\s*\d+(?:[.,]\d+)?\s*$")
 REPO_ROOT = Path(__file__).resolve().parents[1]
-LEADERBOARD_FILE = "leaderboard.html"
-PLAYER_DATA_FILE = "players.json"
+LEADERBOARD_FILE = "../leaderboard.html"
+PLAYER_DATA_FILE = "../players.json"
 QUEUE_STATE_FILE = REPO_ROOT / "queue_state.json"
 RANKED_RESULT_STATUS_SQL = "status IN ('completed', 'confirmed') AND winner_id IS NOT NULL AND loser_id IS NOT NULL"
 WITHDRAW_ENABLE_DELAY = timedelta(minutes=5)
@@ -335,7 +335,7 @@ async def generate_html(bot: commands.Bot):
 
     <body>
 
-    <h1>ðŸ† RANKED DARTS Dashboard</h1>
+    <h1>🏆 RANKED DARTS Dashboard</h1>
     """
 
     # =============================
@@ -367,8 +367,8 @@ async def generate_html(bot: commands.Bot):
 
     html += "<div class='container'>"
     print("build world ranking")
-    # ðŸŒ WORLD
-    html += "<div style='width:40%'><h2>ðŸŒ World Ranking</h2><table>"
+    # 🌍 WORLD
+    html += "<div style='width:40%'><h2>🌍 World Ranking</h2><table>"
 
     for i, (user_id, world_rating, wins, losses) in enumerate(player_data, 1):
         name, avatar = await get_player_display(user_id)
@@ -386,8 +386,8 @@ async def generate_html(bot: commands.Bot):
     html += "</table></div>"
 
     print("build monthly ranking")
-    # ðŸ—“ï¸ MONTHLY
-    html += "<div style='width:40%'><h2>ðŸ—“ï¸ Monatsranking</h2><table>"
+    # 🗓️ MONTHLY
+    html += "<div style='width:40%'><h2>🗓️ Monatsranking</h2><table>"
 
     for i, (user_id, monthly_rating, wins, losses) in enumerate(monthly_data, 1):
         name, avatar = await get_player_display(user_id)
@@ -432,7 +432,7 @@ async def generate_html(bot: commands.Bot):
             <p id="modal-games"></p>
             <p id="modal-winrate"></p>
             <p id="modal-average"></p>
-            <h3>ðŸ”¥ Letzte Matches</h3>
+            <h3>🔥 Letzte Matches</h3>
             <ul id="modal-matches" class="match-list"></ul>
         </div>
     </div>
@@ -456,12 +456,12 @@ async def generate_html(bot: commands.Bot):
         const jsonAvatarIsDefault = player.avatar && player.avatar.includes("/embed/avatars/0.png");
         document.getElementById("modal-avatar").src = jsonAvatarIsDefault && fallbackAvatar ? fallbackAvatar : player.avatar;
         text("modal-player-name", player.name);
-        text("modal-rating", "ðŸ† Rating: " + player.worldRating);
-        text("modal-world-rank", "ðŸŒ Worldrank: " + rankText(player.worldRank));
-        text("modal-monthly-rank", "ðŸ—“ï¸ Monatsrang: " + rankText(player.monthlyRank));
-        text("modal-games", "ðŸŽ¯ Spiele: " + player.games);
-        text("modal-winrate", "ðŸ“ˆ Winrate: " + player.winrate + "%");
-        text("modal-average", "ðŸŽ¯ Ã˜ Average: " + player.overallAverage);
+        text("modal-rating", "🏆 Rating: " + player.worldRating);
+        text("modal-world-rank", "🌍 Worldrank: " + rankText(player.worldRank));
+        text("modal-monthly-rank", "🗓️ Monatsrang: " + rankText(player.monthlyRank));
+        text("modal-games", "🎯 Spiele: " + player.games);
+        text("modal-winrate", "📈 Winrate: " + player.winrate + "%");
+        text("modal-average", "🎯 Ø Average: " + player.overallAverage);
 
         const matches = document.getElementById("modal-matches");
         matches.replaceChildren();
@@ -472,7 +472,7 @@ async def generate_html(bot: commands.Bot):
         } else {
             player.recentMatches.forEach(match => {
                 const item = document.createElement("li");
-                const resultIcon = match.result === "Win" ? "ðŸŸ¢" : "ðŸ”´";
+                const resultIcon = match.result === "Win" ? "🟢" : "🔴";
                 const elo = match.eloChange > 0 ? "+" + match.eloChange : String(match.eloChange);
                 item.textContent = resultIcon + " vs " + match.opponentName + " (" + match.score + ") | Avg: " + match.average + " | " + elo + " ELO";
                 matches.appendChild(item);
@@ -590,9 +590,7 @@ class PanelState:
 def format_queue(queue: list[int]) -> str:
     if not queue:
         return QUEUE_EMPTY_TEXT
-    if len(queue) == 1:
-        return "1 Spieler wartet"
-    return f"{len(queue)} Spieler warten"
+    return "\n".join(f"<@{user_id}>" for user_id in queue)
 
 
 def format_active_matches(matches: list[MatchState]) -> str:
@@ -1415,12 +1413,14 @@ class ResultModal(discord.ui.Modal):
         match: MatchState,
         guild: discord.Guild,
         entry_message_id: int | None = None,
+        submitted_by_id: int | None = None,
     ) -> None:
         super().__init__(title=f"Ergebnis Match #{match.match_id:03d}")
         self.cog = cog
         self.match = match
         self.guild = guild
         self.entry_message_id = entry_message_id
+        self.submitted_by_id = submitted_by_id
 
         player_one = guild.get_member(match.player_ids[0])
         player_two = guild.get_member(match.player_ids[1])
@@ -1553,7 +1553,7 @@ class ResultModal(discord.ui.Modal):
                 player_one_id: average_one,
                 player_two_id: average_two,
             },
-            submitted_by=interaction.user.id,
+            submitted_by=self.submitted_by_id or interaction.user.id,
             thread_id=self.match.thread_id,
             screenshot=screenshot,
             screenshot_url=screenshot.url,
@@ -1572,7 +1572,8 @@ class ResultModal(discord.ui.Modal):
             await interaction.response.send_message("Der Match-Thread konnte nicht gefunden werden.", ephemeral=True)
             return
 
-        confirmer_id = player_two_id if interaction.user.id == player_one_id else player_one_id
+        submitter_id = pending_result.submitted_by
+        confirmer_id = player_two_id if submitter_id == player_one_id else player_one_id
         confirmation_view = ResultConfirmationView(self.cog, self.match.match_id, submission_id, confirmer_id)
 
         await interaction.response.defer(ephemeral=True, thinking=True)
@@ -1676,7 +1677,7 @@ class QueuePanel(discord.ui.View):
                 return
 
             queue.append(user_id)
-            self.cog.schedule_queue_timeout(message.id, user_id)
+            self.cog.schedule_queue_timeout(message.id, user_id, notify_interaction=interaction)
             match_started = await self.cog.try_start_matches(message, panel_state, queue_name)
         else:
             if joined_queue is None:
@@ -1734,7 +1735,7 @@ class QueuePanel(discord.ui.View):
             panel_state.dartcounter_queue.append(user_id)
         if user_id not in panel_state.scolia_queue:
             panel_state.scolia_queue.append(user_id)
-        self.cog.schedule_queue_timeout(message.id, user_id)
+        self.cog.schedule_queue_timeout(message.id, user_id, notify_interaction=interaction)
 
         if dartcounter_has_opponent:
             match_started = await self.cog.try_start_matches(message, panel_state, "DartCounter")
@@ -2420,6 +2421,7 @@ class Ranked(commands.Cog):
         message_id: int,
         user_id: int,
         joined_at: datetime | None = None,
+        notify_interaction: discord.Interaction | None = None,
     ) -> None:
         panel_state = self.panel_states.get(message_id)
         if joined_at is None:
@@ -2430,7 +2432,7 @@ class Ranked(commands.Cog):
         self.cancel_queue_timeout(message_id, user_id, forget_join_time=False)
         delay_seconds = max((joined_at + QUEUE_WAIT_TIMEOUT - datetime.now(timezone.utc)).total_seconds(), 0.0)
         self.queue_timeout_tasks[(message_id, user_id)] = asyncio.create_task(
-            self.remove_from_queue_after_timeout(message_id, user_id, delay_seconds),
+            self.remove_from_queue_after_timeout(message_id, user_id, delay_seconds, notify_interaction),
         )
 
     def cancel_queue_timeout(self, message_id: int, user_id: int, *, forget_join_time: bool = True) -> None:
@@ -2452,7 +2454,13 @@ class Ranked(commands.Cog):
             for user_id in player_ids:
                 panel_state.queue_joined_at.pop(user_id, None)
 
-    async def remove_from_queue_after_timeout(self, message_id: int, user_id: int, delay_seconds: float) -> None:
+    async def remove_from_queue_after_timeout(
+        self,
+        message_id: int,
+        user_id: int,
+        delay_seconds: float,
+        notify_interaction: discord.Interaction | None = None,
+    ) -> None:
         try:
             await asyncio.sleep(delay_seconds)
             panel_state = self.panel_states.get(message_id)
@@ -2469,6 +2477,15 @@ class Ranked(commands.Cog):
                 panel_state.queue_joined_at.pop(user_id, None)
                 self.persist_queue_state()
                 await self.refresh_panels(refresh_all=True)
+                if notify_interaction is not None:
+                    try:
+                        await notify_interaction.followup.send(
+                            "Du bist aus der Queue, weil seit 5 Minuten kein Match gefunden wurde.",
+                            ephemeral=True,
+                            delete_after=60,
+                        )
+                    except discord.HTTPException:
+                        pass
         except asyncio.CancelledError:
             pass
         finally:
@@ -2542,6 +2559,7 @@ class Ranked(commands.Cog):
             created_at=datetime.now(timezone.utc),
         )
         self.pending_matches[match_id] = pending_match
+        self.remove_players_from_all_queues(player_ids)
         await persist_pending_ranked_match(self.bot, pending_match)
 
         view = self.build_pending_match_view(pending_match)
@@ -2586,7 +2604,6 @@ class Ranked(commands.Cog):
                 queue.insert(0, player_one)
                 break
 
-            self.remove_players_from_all_queues(player_ids)
             match_started = True
 
         return match_started
@@ -2926,6 +2943,7 @@ class Ranked(commands.Cog):
         *,
         match_id: int | None = None,
         entry_message_id: int | None = None,
+        submitted_by_member: discord.Member | None = None,
     ) -> None:
         if interaction.guild is None or not isinstance(interaction.channel, discord.Thread):
             await interaction.response.send_message(
@@ -2942,15 +2960,40 @@ class Ranked(commands.Cog):
             )
             return
 
-        if interaction.user.id not in match.player_ids:
+        is_admin = interaction_user_is_admin(interaction)
+        submitted_by_id = submitted_by_member.id if submitted_by_member is not None else interaction.user.id
+
+        if interaction.user.id not in match.player_ids and not is_admin:
             await interaction.response.send_message(
                 "Nur die beiden Match-Spieler dürfen das Ergebnis eintragen.",
                 ephemeral=True,
             )
             return
 
+        if submitted_by_member is not None and not is_admin:
+            await interaction.response.send_message(
+                "Nur Admins duerfen das Ergebnis fuer einen anderen Spieler eintragen.",
+                ephemeral=True,
+            )
+            return
+
+        if submitted_by_id not in match.player_ids:
+            await interaction.response.send_message(
+                "Bitte gib einen der beiden Match-Spieler an, fuer den das Ergebnis eingetragen wird.",
+                ephemeral=True,
+            )
+            return
+
         try:
-            await interaction.response.send_modal(ResultModal(self, match, interaction.guild, entry_message_id))
+            await interaction.response.send_modal(
+                ResultModal(
+                    self,
+                    match,
+                    interaction.guild,
+                    entry_message_id,
+                    submitted_by_id=submitted_by_id,
+                )
+            )
         except Exception as exc:
             print(f"Result modal failed: {type(exc).__name__}: {exc}")
             if entry_message_id is not None:
@@ -3129,9 +3172,10 @@ class Ranked(commands.Cog):
 
     # Slash-Commands fuer User.
     @app_commands.command(name="result", description="Ã–ffnet im Match-Thread das Ergebnisformular")
+    @app_commands.describe(spieler="Nur fuer Admins: Match-Spieler, fuer den das Ergebnis eingetragen wird")
     @app_commands.guild_only()
-    async def result(self, interaction: discord.Interaction) -> None:
-        await self.open_result_modal(interaction)
+    async def result(self, interaction: discord.Interaction, spieler: discord.Member | None = None) -> None:
+        await self.open_result_modal(interaction, submitted_by_member=spieler)
 
     @app_commands.command(name="stats", description="Zeigt die Ranked-Stats eines Spielers")
     @app_commands.describe(player="Der Spieler dessen Statistiken angezeigt werden sollen")
