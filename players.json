@@ -621,7 +621,7 @@
       "worldWins": 62,
       "worldLosses": 32,
       "monthlyRating": 71,
-      "monthlyRank": 16,
+      "monthlyRank": 17,
       "monthlyWins": 5,
       "monthlyLosses": 7,
       "games": 94,
@@ -3110,7 +3110,7 @@
       "worldWins": 6,
       "worldLosses": 7,
       "monthlyRating": 67,
-      "monthlyRank": 18,
+      "monthlyRank": 19,
       "monthlyWins": 4,
       "monthlyLosses": 1,
       "games": 13,
@@ -3721,12 +3721,80 @@
         }
       ]
     },
+    "505446955242094596": {
+      "userId": 505446955242094596,
+      "name": "Jerome Benzler",
+      "avatar": "https://cdn.discordapp.com/avatars/505446955242094596/2c72bf5d0877aad24fa4db0ab69878d1.png?size=1024",
+      "worldRating": 977,
+      "worldRank": 75,
+      "worldWins": 9,
+      "worldLosses": 14,
+      "monthlyRating": 72,
+      "monthlyRank": 16,
+      "monthlyWins": 4,
+      "monthlyLosses": 7,
+      "games": 23,
+      "winrate": 39.1,
+      "overallAverage": 54.26,
+      "recentMatches": [
+        {
+          "matchId": 1306,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "2:4",
+          "average": "55.3",
+          "eloChange": 5,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1296,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "1:4",
+          "average": "44.4",
+          "eloChange": 7,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1180,
+          "result": "Win",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "4:0",
+          "average": "66.8",
+          "eloChange": 13,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1177,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:1",
+          "average": "55.88",
+          "eloChange": 27,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1169,
+          "result": "Loss",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "3:4",
+          "average": "60.61",
+          "eloChange": -7,
+          "queue": "DartCounter"
+        }
+      ]
+    },
     "550968838511001611": {
       "userId": 550968838511001611,
       "name": "Joni",
       "avatar": "https://cdn.discordapp.com/embed/avatars/1.png",
       "worldRating": 976,
-      "worldRank": 75,
+      "worldRank": 76,
       "worldWins": 0,
       "worldLosses": 2,
       "monthlyRating": 0,
@@ -3764,7 +3832,7 @@
       "name": "Christian Nahrgang",
       "avatar": "https://cdn.discordapp.com/avatars/1473034865355001856/ade4ed87441e52bd6a48d265b29a84e6.png?size=1024",
       "worldRating": 975,
-      "worldRank": 76,
+      "worldRank": 77,
       "worldWins": 4,
       "worldLosses": 9,
       "monthlyRating": 39,
@@ -3832,7 +3900,7 @@
       "name": "scheit94",
       "avatar": "https://cdn.discordapp.com/avatars/1072957562569359442/2b1c670df6ac691b213aca6959efaef7.png?size=1024",
       "worldRating": 975,
-      "worldRank": 77,
+      "worldRank": 78,
       "worldWins": 0,
       "worldLosses": 1,
       "monthlyRating": 0,
@@ -3860,7 +3928,7 @@
       "name": "Andre Neufert",
       "avatar": "https://cdn.discordapp.com/avatars/624003156610777109/b24aebb448e949bef4e7662709196a1b.png?size=1024",
       "worldRating": 973,
-      "worldRank": 78,
+      "worldRank": 79,
       "worldWins": 0,
       "worldLosses": 2,
       "monthlyRating": 0,
@@ -3898,7 +3966,7 @@
       "name": "Pascal Scherer",
       "avatar": "https://cdn.discordapp.com/avatars/1387676358527811684/4d7d91e0db7c043c3dd25e900a124b2f.png?size=1024",
       "worldRating": 973,
-      "worldRank": 79,
+      "worldRank": 80,
       "worldWins": 0,
       "worldLosses": 2,
       "monthlyRating": 0,
@@ -3928,74 +3996,6 @@
           "average": "46.37",
           "eloChange": -13,
           "queue": "scolia"
-        }
-      ]
-    },
-    "505446955242094596": {
-      "userId": 505446955242094596,
-      "name": "Jerome Benzler",
-      "avatar": "https://cdn.discordapp.com/avatars/505446955242094596/2c72bf5d0877aad24fa4db0ab69878d1.png?size=1024",
-      "worldRating": 972,
-      "worldRank": 80,
-      "worldWins": 8,
-      "worldLosses": 14,
-      "monthlyRating": 62,
-      "monthlyRank": 20,
-      "monthlyWins": 3,
-      "monthlyLosses": 7,
-      "games": 22,
-      "winrate": 36.4,
-      "overallAverage": 54.21,
-      "recentMatches": [
-        {
-          "matchId": 1296,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "1:4",
-          "average": "44.4",
-          "eloChange": 7,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1180,
-          "result": "Win",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "4:0",
-          "average": "66.8",
-          "eloChange": 13,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1177,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:1",
-          "average": "55.88",
-          "eloChange": 27,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1169,
-          "result": "Loss",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "3:4",
-          "average": "60.61",
-          "eloChange": -7,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1158,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "56.12",
-          "eloChange": -7,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -5520,7 +5520,7 @@
       "worldWins": 35,
       "worldLosses": 47,
       "monthlyRating": 70,
-      "monthlyRank": 17,
+      "monthlyRank": 18,
       "monthlyWins": 3,
       "monthlyLosses": 1,
       "games": 82,
@@ -6467,18 +6467,28 @@
       "userId": 1245485490421891165,
       "name": "Andy Bühner",
       "avatar": "https://cdn.discordapp.com/avatars/1245485490421891165/451b17f84483bd4cfc1aaf0f34c58183.png?size=1024",
-      "worldRating": 695,
+      "worldRating": 690,
       "worldRank": 119,
       "worldWins": 11,
-      "worldLosses": 59,
+      "worldLosses": 60,
       "monthlyRating": 64,
-      "monthlyRank": 19,
+      "monthlyRank": 20,
       "monthlyWins": 2,
-      "monthlyLosses": 11,
-      "games": 70,
-      "winrate": 15.7,
-      "overallAverage": 187.03,
+      "monthlyLosses": 12,
+      "games": 71,
+      "winrate": 15.5,
+      "overallAverage": 185.11,
       "recentMatches": [
+        {
+          "matchId": 1306,
+          "result": "Loss",
+          "opponentId": 505446955242094596,
+          "opponentName": "Jerome Benzler",
+          "score": "2:4",
+          "average": "50.41",
+          "eloChange": -5,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1241,
           "result": "Loss",
@@ -6517,16 +6527,6 @@
           "score": "2:4",
           "average": "44.3",
           "eloChange": -2,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1131,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "4:0",
-          "average": "45.62",
-          "eloChange": -1,
           "queue": "DartCounter"
         }
       ]
