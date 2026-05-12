@@ -344,18 +344,28 @@
       "userId": 1007351887114285087,
       "name": "Rico Seifert",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 1201,
+      "worldRating": 1205,
       "worldRank": 6,
-      "worldWins": 37,
+      "worldWins": 38,
       "worldLosses": 9,
-      "monthlyRating": 123,
+      "monthlyRating": 132,
       "monthlyRank": 10,
-      "monthlyWins": 11,
+      "monthlyWins": 12,
       "monthlyLosses": 1,
-      "games": 46,
-      "winrate": 80.4,
-      "overallAverage": 59.91,
+      "games": 47,
+      "winrate": 80.9,
+      "overallAverage": 59.83,
       "recentMatches": [
+        {
+          "matchId": 1311,
+          "result": "Win",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "1:4",
+          "average": "56.15",
+          "eloChange": 4,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1289,
           "result": "Win",
@@ -394,16 +404,6 @@
           "score": "2:4",
           "average": "56.51",
           "eloChange": 2,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1142,
-          "result": "Win",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "0:4",
-          "average": "62.63",
-          "eloChange": 6,
           "queue": "DartCounter"
         }
       ]
@@ -5987,80 +5987,12 @@
         }
       ]
     },
-    "1458906019118841960": {
-      "userId": 1458906019118841960,
-      "name": "Rene B",
-      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
-      "worldRating": 873,
-      "worldRank": 112,
-      "worldWins": 15,
-      "worldLosses": 45,
-      "monthlyRating": 74,
-      "monthlyRank": 15,
-      "monthlyWins": 3,
-      "monthlyLosses": 10,
-      "games": 60,
-      "winrate": 25.0,
-      "overallAverage": 53.97,
-      "recentMatches": [
-        {
-          "matchId": 1308,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "4:3",
-          "average": "51.93",
-          "eloChange": -2,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1305,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "1:4",
-          "average": "57.08",
-          "eloChange": -2,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1252,
-          "result": "Win",
-          "opponentId": 1474322752432377886,
-          "opponentName": "Sebe K",
-          "score": "4:1",
-          "average": "51.71",
-          "eloChange": 19,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1246,
-          "result": "Loss",
-          "opponentId": 1067374071421095936,
-          "opponentName": "Robinson",
-          "score": "1:4",
-          "average": "46.8",
-          "eloChange": -10,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1183,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "3:4",
-          "average": "51.12",
-          "eloChange": -5,
-          "queue": "DartCounter"
-        }
-      ]
-    },
     "761737659579105301": {
       "userId": 761737659579105301,
       "name": "RocketDarts",
       "avatar": "https://cdn.discordapp.com/avatars/761737659579105301/f4a94165e17a0f43e60d39a5c94cc191.png?size=1024",
       "worldRating": 872,
-      "worldRank": 113,
+      "worldRank": 112,
       "worldWins": 14,
       "worldLosses": 36,
       "monthlyRating": 22,
@@ -6120,6 +6052,74 @@
           "average": "51.72",
           "eloChange": -12,
           "queue": "scolia"
+        }
+      ]
+    },
+    "1458906019118841960": {
+      "userId": 1458906019118841960,
+      "name": "Rene B",
+      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
+      "worldRating": 869,
+      "worldRank": 113,
+      "worldWins": 15,
+      "worldLosses": 46,
+      "monthlyRating": 74,
+      "monthlyRank": 15,
+      "monthlyWins": 3,
+      "monthlyLosses": 11,
+      "games": 61,
+      "winrate": 24.6,
+      "overallAverage": 54.0,
+      "recentMatches": [
+        {
+          "matchId": 1311,
+          "result": "Loss",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "1:4",
+          "average": "55.9",
+          "eloChange": -4,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1308,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "4:3",
+          "average": "51.93",
+          "eloChange": -2,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1305,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "1:4",
+          "average": "57.08",
+          "eloChange": -2,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1252,
+          "result": "Win",
+          "opponentId": 1474322752432377886,
+          "opponentName": "Sebe K",
+          "score": "4:1",
+          "average": "51.71",
+          "eloChange": 19,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1246,
+          "result": "Loss",
+          "opponentId": 1067374071421095936,
+          "opponentName": "Robinson",
+          "score": "1:4",
+          "average": "46.8",
+          "eloChange": -10,
+          "queue": "DartCounter"
         }
       ]
     },
