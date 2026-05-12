@@ -281,7 +281,7 @@
       "worldWins": 38,
       "worldLosses": 15,
       "monthlyRating": 252,
-      "monthlyRank": 5,
+      "monthlyRank": 6,
       "monthlyWins": 17,
       "monthlyLosses": 7,
       "games": 53,
@@ -1496,12 +1496,80 @@
         }
       ]
     },
+    "1302224986051838068": {
+      "userId": 1302224986051838068,
+      "name": "Bazzi",
+      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
+      "worldRating": 1052,
+      "worldRank": 23,
+      "worldWins": 61,
+      "worldLosses": 32,
+      "monthlyRating": 258,
+      "monthlyRank": 4,
+      "monthlyWins": 21,
+      "monthlyLosses": 13,
+      "games": 93,
+      "winrate": 65.6,
+      "overallAverage": 61.27,
+      "recentMatches": [
+        {
+          "matchId": 1313,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "0:4",
+          "average": "59.52",
+          "eloChange": 4,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1309,
+          "result": "Loss",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "3:4",
+          "average": "64.23",
+          "eloChange": -23,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1302,
+          "result": "Loss",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "4:1",
+          "average": "59.56",
+          "eloChange": -13,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1295,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "4:3",
+          "average": "62.63",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1281,
+          "result": "Loss",
+          "opponentId": 1474322752432377886,
+          "opponentName": "Sebe K",
+          "score": "3:4",
+          "average": "62.19",
+          "eloChange": -25,
+          "queue": "DartCounter"
+        }
+      ]
+    },
     "1133493289006420090": {
       "userId": 1133493289006420090,
       "name": "El-Daddyy",
       "avatar": "https://cdn.discordapp.com/avatars/1133493289006420090/cd29a11134a768d724b8b26d43547675.png?size=1024",
       "worldRating": 1052,
-      "worldRank": 23,
+      "worldRank": 24,
       "worldWins": 5,
       "worldLosses": 2,
       "monthlyRating": 116,
@@ -1569,7 +1637,7 @@
       "name": "Campione",
       "avatar": "https://cdn.discordapp.com/avatars/1418545035577917542/89691eff31c63a0517dae40506c0c603.png?size=1024",
       "worldRating": 1049,
-      "worldRank": 24,
+      "worldRank": 25,
       "worldWins": 16,
       "worldLosses": 12,
       "monthlyRating": 76,
@@ -1629,74 +1697,6 @@
           "average": "55.16",
           "eloChange": 4,
           "queue": "DartCounter"
-        }
-      ]
-    },
-    "1302224986051838068": {
-      "userId": 1302224986051838068,
-      "name": "Bazzi",
-      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1048,
-      "worldRank": 25,
-      "worldWins": 60,
-      "worldLosses": 32,
-      "monthlyRating": 249,
-      "monthlyRank": 6,
-      "monthlyWins": 20,
-      "monthlyLosses": 13,
-      "games": 92,
-      "winrate": 65.2,
-      "overallAverage": 61.29,
-      "recentMatches": [
-        {
-          "matchId": 1309,
-          "result": "Loss",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "3:4",
-          "average": "64.23",
-          "eloChange": -23,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1302,
-          "result": "Loss",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "4:1",
-          "average": "59.56",
-          "eloChange": -13,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1295,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:3",
-          "average": "62.63",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1281,
-          "result": "Loss",
-          "opponentId": 1474322752432377886,
-          "opponentName": "Sebe K",
-          "score": "3:4",
-          "average": "62.19",
-          "eloChange": -25,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1277,
-          "result": "Loss",
-          "opponentId": 1458502282219098457,
-          "opponentName": "Jules H",
-          "score": "4:0",
-          "average": "58.07",
-          "eloChange": -16,
-          "queue": "Scolia"
         }
       ]
     },
@@ -5316,7 +5316,7 @@
       "worldWins": 24,
       "worldLosses": 59,
       "monthlyRating": 254,
-      "monthlyRank": 4,
+      "monthlyRank": 5,
       "monthlyWins": 10,
       "monthlyLosses": 19,
       "games": 83,
@@ -6467,18 +6467,28 @@
       "userId": 1245485490421891165,
       "name": "Andy Bühner",
       "avatar": "https://cdn.discordapp.com/avatars/1245485490421891165/451b17f84483bd4cfc1aaf0f34c58183.png?size=1024",
-      "worldRating": 690,
+      "worldRating": 686,
       "worldRank": 119,
       "worldWins": 11,
-      "worldLosses": 60,
+      "worldLosses": 61,
       "monthlyRating": 64,
       "monthlyRank": 20,
       "monthlyWins": 2,
-      "monthlyLosses": 12,
-      "games": 71,
-      "winrate": 15.5,
-      "overallAverage": 185.11,
+      "monthlyLosses": 13,
+      "games": 72,
+      "winrate": 15.3,
+      "overallAverage": 183.17,
       "recentMatches": [
+        {
+          "matchId": 1313,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "0:4",
+          "average": "45.59",
+          "eloChange": -4,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1306,
           "result": "Loss",
@@ -6517,16 +6527,6 @@
           "score": "4:1",
           "average": "44.86",
           "eloChange": 28,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1146,
-          "result": "Loss",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "2:4",
-          "average": "44.3",
-          "eloChange": -2,
           "queue": "DartCounter"
         }
       ]
