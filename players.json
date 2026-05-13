@@ -1,11 +1,79 @@
 {
   "players": {
+    "707989067777835248": {
+      "userId": 707989067777835248,
+      "name": "Yokkon",
+      "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
+      "worldRating": 1353,
+      "worldRank": 1,
+      "worldWins": 110,
+      "worldLosses": 23,
+      "monthlyRating": 298,
+      "monthlyRank": 2,
+      "monthlyWins": 25,
+      "monthlyLosses": 4,
+      "games": 133,
+      "winrate": 82.7,
+      "overallAverage": 69.12,
+      "recentMatches": [
+        {
+          "matchId": 1350,
+          "result": "Win",
+          "opponentId": 1092072918915219537,
+          "opponentName": "Jannick2412",
+          "score": "2:4",
+          "average": "67.0",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1293,
+          "result": "Loss",
+          "opponentId": 1092072918915219537,
+          "opponentName": "Jannick2412",
+          "score": "4:1",
+          "average": "64.43",
+          "eloChange": -24,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1290,
+          "result": "Win",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "4:1",
+          "average": "68.19",
+          "eloChange": 8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1267,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "4:3",
+          "average": "72.01",
+          "eloChange": -20,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1266,
+          "result": "Win",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "1:4",
+          "average": "64.46",
+          "eloChange": 13,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "1142038943961985105": {
       "userId": 1142038943961985105,
       "name": "Rick Dahlke",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 1347,
-      "worldRank": 1,
+      "worldRank": 2,
       "worldWins": 83,
       "worldLosses": 26,
       "monthlyRating": 306,
@@ -68,74 +136,6 @@
         }
       ]
     },
-    "707989067777835248": {
-      "userId": 707989067777835248,
-      "name": "Yokkon",
-      "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1343,
-      "worldRank": 2,
-      "worldWins": 109,
-      "worldLosses": 23,
-      "monthlyRating": 283,
-      "monthlyRank": 3,
-      "monthlyWins": 24,
-      "monthlyLosses": 4,
-      "games": 132,
-      "winrate": 82.6,
-      "overallAverage": 69.13,
-      "recentMatches": [
-        {
-          "matchId": 1293,
-          "result": "Loss",
-          "opponentId": 1092072918915219537,
-          "opponentName": "Jannick2412",
-          "score": "4:1",
-          "average": "64.43",
-          "eloChange": -24,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1290,
-          "result": "Win",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "4:1",
-          "average": "68.19",
-          "eloChange": 8,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1267,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:3",
-          "average": "72.01",
-          "eloChange": -20,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1266,
-          "result": "Win",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "1:4",
-          "average": "64.46",
-          "eloChange": 13,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1258,
-          "result": "Win",
-          "opponentId": 721521931953635349,
-          "opponentName": "Kasper4E",
-          "score": "1:4",
-          "average": "54.02",
-          "eloChange": 2,
-          "queue": "DartCounter"
-        }
-      ]
-    },
     "1330499669490667653": {
       "userId": 1330499669490667653,
       "name": "Dennis Wehner",
@@ -145,7 +145,7 @@
       "worldWins": 40,
       "worldLosses": 4,
       "monthlyRating": 293,
-      "monthlyRank": 2,
+      "monthlyRank": 3,
       "monthlyWins": 23,
       "monthlyLosses": 1,
       "games": 44,
@@ -276,18 +276,28 @@
       "userId": 1092072918915219537,
       "name": "Jannick2412",
       "avatar": "https://cdn.discordapp.com/avatars/1092072918915219537/a34f97c919ba7630e8ba951a443fb146.png?size=1024",
-      "worldRating": 1215,
+      "worldRating": 1205,
       "worldRank": 5,
       "worldWins": 38,
-      "worldLosses": 15,
+      "worldLosses": 16,
       "monthlyRating": 252,
       "monthlyRank": 6,
       "monthlyWins": 17,
-      "monthlyLosses": 7,
-      "games": 53,
-      "winrate": 71.7,
-      "overallAverage": 64.29,
+      "monthlyLosses": 8,
+      "games": 54,
+      "winrate": 70.4,
+      "overallAverage": 64.41,
       "recentMatches": [
+        {
+          "matchId": 1350,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "2:4",
+          "average": "70.88",
+          "eloChange": -10,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1294,
           "result": "Win",
@@ -326,16 +336,6 @@
           "score": "2:4",
           "average": "65.5",
           "eloChange": -19,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1237,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:3",
-          "average": "63.17",
-          "eloChange": -12,
           "queue": "Scolia"
         }
       ]
