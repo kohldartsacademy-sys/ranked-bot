@@ -1165,7 +1165,7 @@
       "worldWins": 12,
       "worldLosses": 3,
       "monthlyRating": 83,
-      "monthlyRank": 14,
+      "monthlyRank": 15,
       "monthlyWins": 6,
       "monthlyLosses": 2,
       "games": 15,
@@ -1437,7 +1437,7 @@
       "worldWins": 9,
       "worldLosses": 4,
       "monthlyRating": 77,
-      "monthlyRank": 16,
+      "monthlyRank": 17,
       "monthlyWins": 4,
       "monthlyLosses": 2,
       "games": 13,
@@ -1636,18 +1636,28 @@
       "userId": 1418545035577917542,
       "name": "Campione",
       "avatar": "https://cdn.discordapp.com/avatars/1418545035577917542/89691eff31c63a0517dae40506c0c603.png?size=1024",
-      "worldRating": 1049,
+      "worldRating": 1057,
       "worldRank": 25,
-      "worldWins": 16,
+      "worldWins": 17,
       "worldLosses": 12,
-      "monthlyRating": 76,
-      "monthlyRank": 18,
-      "monthlyWins": 5,
+      "monthlyRating": 89,
+      "monthlyRank": 13,
+      "monthlyWins": 6,
       "monthlyLosses": 2,
-      "games": 28,
-      "winrate": 57.1,
-      "overallAverage": 54.41,
+      "games": 29,
+      "winrate": 58.6,
+      "overallAverage": 54.5,
       "recentMatches": [
+        {
+          "matchId": 1345,
+          "result": "Win",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "2:4",
+          "average": "56.92",
+          "eloChange": 8,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1283,
           "result": "Win",
@@ -1686,16 +1696,6 @@
           "score": "2:4",
           "average": "51.45",
           "eloChange": 11,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1209,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "0:4",
-          "average": "55.16",
-          "eloChange": 4,
           "queue": "DartCounter"
         }
       ]
@@ -2451,7 +2451,7 @@
       "worldWins": 14,
       "worldLosses": 14,
       "monthlyRating": 80,
-      "monthlyRank": 15,
+      "monthlyRank": 16,
       "monthlyWins": 5,
       "monthlyLosses": 4,
       "games": 28,
@@ -6055,80 +6055,12 @@
         }
       ]
     },
-    "1458906019118841960": {
-      "userId": 1458906019118841960,
-      "name": "Rene B",
-      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
-      "worldRating": 867,
-      "worldRank": 113,
-      "worldWins": 16,
-      "worldLosses": 47,
-      "monthlyRating": 87,
-      "monthlyRank": 13,
-      "monthlyWins": 4,
-      "monthlyLosses": 12,
-      "games": 63,
-      "winrate": 25.4,
-      "overallAverage": 53.96,
-      "recentMatches": [
-        {
-          "matchId": 1323,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "56.06",
-          "eloChange": -10,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1318,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:2",
-          "average": "49.58",
-          "eloChange": 8,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1311,
-          "result": "Loss",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "1:4",
-          "average": "55.9",
-          "eloChange": -4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1308,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "4:3",
-          "average": "51.93",
-          "eloChange": -2,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1305,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "1:4",
-          "average": "57.08",
-          "eloChange": -2,
-          "queue": "DartCounter"
-        }
-      ]
-    },
     "627469840457662464": {
       "userId": 627469840457662464,
       "name": "Niklas H",
       "avatar": "https://cdn.discordapp.com/embed/avatars/3.png",
       "worldRating": 861,
-      "worldRank": 114,
+      "worldRank": 113,
       "worldWins": 2,
       "worldLosses": 15,
       "monthlyRating": 0,
@@ -6188,6 +6120,74 @@
           "average": "56.48",
           "eloChange": -11,
           "queue": "scolia"
+        }
+      ]
+    },
+    "1458906019118841960": {
+      "userId": 1458906019118841960,
+      "name": "Rene B",
+      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
+      "worldRating": 859,
+      "worldRank": 114,
+      "worldWins": 16,
+      "worldLosses": 48,
+      "monthlyRating": 87,
+      "monthlyRank": 14,
+      "monthlyWins": 4,
+      "monthlyLosses": 13,
+      "games": 64,
+      "winrate": 25.0,
+      "overallAverage": 53.9,
+      "recentMatches": [
+        {
+          "matchId": 1345,
+          "result": "Loss",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "2:4",
+          "average": "49.9",
+          "eloChange": -8,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1323,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "1:4",
+          "average": "56.06",
+          "eloChange": -10,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1318,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:2",
+          "average": "49.58",
+          "eloChange": 8,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1311,
+          "result": "Loss",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "1:4",
+          "average": "55.9",
+          "eloChange": -4,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1308,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "4:3",
+          "average": "51.93",
+          "eloChange": -2,
+          "queue": "DartCounter"
         }
       ]
     },
@@ -6404,7 +6404,7 @@
       "worldWins": 14,
       "worldLosses": 63,
       "monthlyRating": 77,
-      "monthlyRank": 17,
+      "monthlyRank": 18,
       "monthlyWins": 3,
       "monthlyLosses": 15,
       "games": 77,
