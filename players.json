@@ -1826,60 +1826,32 @@
         }
       ]
     },
-    "695585081397346385": {
-      "userId": 695585081397346385,
-      "name": "ChrisF95.",
-      "avatar": "https://cdn.discordapp.com/avatars/695585081397346385/fbfa37ca8a8d9b8b2c62aaa5d0930cc3.png?size=1024",
-      "worldRating": 1036,
-      "worldRank": 28,
-      "worldWins": 2,
-      "worldLosses": 0,
-      "monthlyRating": 0,
-      "monthlyRank": null,
-      "monthlyWins": 0,
-      "monthlyLosses": 0,
-      "games": 2,
-      "winrate": 100.0,
-      "overallAverage": 72.08,
-      "recentMatches": [
-        {
-          "matchId": 163,
-          "result": "Win",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "4:0",
-          "average": "71.57",
-          "eloChange": 15,
-          "queue": "dart"
-        },
-        {
-          "matchId": 142,
-          "result": "Win",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:2",
-          "average": "72.6",
-          "eloChange": 20,
-          "queue": "dart"
-        }
-      ]
-    },
     "1418545035577917542": {
       "userId": 1418545035577917542,
       "name": "Campione",
       "avatar": "https://cdn.discordapp.com/avatars/1418545035577917542/89691eff31c63a0517dae40506c0c603.png?size=1024",
-      "worldRating": 1033,
-      "worldRank": 29,
-      "worldWins": 17,
+      "worldRating": 1042,
+      "worldRank": 28,
+      "worldWins": 18,
       "worldLosses": 13,
-      "monthlyRating": 89,
+      "monthlyRating": 103,
       "monthlyRank": 14,
-      "monthlyWins": 6,
+      "monthlyWins": 7,
       "monthlyLosses": 3,
-      "games": 30,
-      "winrate": 56.7,
-      "overallAverage": 54.58,
+      "games": 31,
+      "winrate": 58.1,
+      "overallAverage": 54.63,
       "recentMatches": [
+        {
+          "matchId": 1349,
+          "result": "Win",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "4:2",
+          "average": "56.28",
+          "eloChange": 9,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1346,
           "result": "Loss",
@@ -1919,16 +1891,44 @@
           "average": "54.14",
           "eloChange": -21,
           "queue": "DartCounter"
+        }
+      ]
+    },
+    "695585081397346385": {
+      "userId": 695585081397346385,
+      "name": "ChrisF95.",
+      "avatar": "https://cdn.discordapp.com/avatars/695585081397346385/fbfa37ca8a8d9b8b2c62aaa5d0930cc3.png?size=1024",
+      "worldRating": 1036,
+      "worldRank": 29,
+      "worldWins": 2,
+      "worldLosses": 0,
+      "monthlyRating": 0,
+      "monthlyRank": null,
+      "monthlyWins": 0,
+      "monthlyLosses": 0,
+      "games": 2,
+      "winrate": 100.0,
+      "overallAverage": 72.08,
+      "recentMatches": [
+        {
+          "matchId": 163,
+          "result": "Win",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "4:0",
+          "average": "71.57",
+          "eloChange": 15,
+          "queue": "dart"
         },
         {
-          "matchId": 1274,
-          "result": "Loss",
-          "opponentId": 1310195023370911807,
-          "opponentName": "Marco Primus",
-          "score": "2:4",
-          "average": "55.55",
-          "eloChange": -15,
-          "queue": "DartCounter"
+          "matchId": 142,
+          "result": "Win",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:2",
+          "average": "72.6",
+          "eloChange": 20,
+          "queue": "dart"
         }
       ]
     },
@@ -5861,80 +5861,12 @@
         }
       ]
     },
-    "1458906019118841960": {
-      "userId": 1458906019118841960,
-      "name": "Rene B",
-      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
-      "worldRating": 883,
-      "worldRank": 110,
-      "worldWins": 17,
-      "worldLosses": 48,
-      "monthlyRating": 116,
-      "monthlyRank": 13,
-      "monthlyWins": 5,
-      "monthlyLosses": 13,
-      "games": 65,
-      "winrate": 26.2,
-      "overallAverage": 53.94,
-      "recentMatches": [
-        {
-          "matchId": 1346,
-          "result": "Win",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "0:4",
-          "average": "56.72",
-          "eloChange": 24,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1345,
-          "result": "Loss",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "2:4",
-          "average": "49.9",
-          "eloChange": -8,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1323,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "56.06",
-          "eloChange": -10,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1318,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:2",
-          "average": "49.58",
-          "eloChange": 8,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1311,
-          "result": "Loss",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "1:4",
-          "average": "55.9",
-          "eloChange": -4,
-          "queue": "DartCounter"
-        }
-      ]
-    },
     "721521931953635349": {
       "userId": 721521931953635349,
       "name": "Kasper4E",
       "avatar": "https://cdn.discordapp.com/avatars/721521931953635349/e5108741eedccb3fa944702a5359412f.png?size=1024",
       "worldRating": 883,
-      "worldRank": 111,
+      "worldRank": 110,
       "worldWins": 4,
       "worldLosses": 18,
       "monthlyRating": 0,
@@ -6002,7 +5934,7 @@
       "name": "nyxc.",
       "avatar": "https://cdn.discordapp.com/avatars/1300479861508280333/29f3781779d87a3cfb72e2400c3dd0c2.png?size=1024",
       "worldRating": 878,
-      "worldRank": 112,
+      "worldRank": 111,
       "worldWins": 2,
       "worldLosses": 23,
       "monthlyRating": 34,
@@ -6062,6 +5994,74 @@
           "average": "51.48",
           "eloChange": -7,
           "queue": "Scolia"
+        }
+      ]
+    },
+    "1458906019118841960": {
+      "userId": 1458906019118841960,
+      "name": "Rene B",
+      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
+      "worldRating": 874,
+      "worldRank": 112,
+      "worldWins": 17,
+      "worldLosses": 49,
+      "monthlyRating": 116,
+      "monthlyRank": 13,
+      "monthlyWins": 5,
+      "monthlyLosses": 14,
+      "games": 66,
+      "winrate": 25.8,
+      "overallAverage": 53.88,
+      "recentMatches": [
+        {
+          "matchId": 1349,
+          "result": "Loss",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "4:2",
+          "average": "49.74",
+          "eloChange": -9,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1346,
+          "result": "Win",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "0:4",
+          "average": "56.72",
+          "eloChange": 24,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1345,
+          "result": "Loss",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "2:4",
+          "average": "49.9",
+          "eloChange": -8,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1323,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "1:4",
+          "average": "56.06",
+          "eloChange": -10,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1318,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:2",
+          "average": "49.58",
+          "eloChange": 8,
+          "queue": "DartCounter"
         }
       ]
     },
