@@ -213,7 +213,7 @@
       "worldWins": 53,
       "worldLosses": 12,
       "monthlyRating": 39,
-      "monthlyRank": 35,
+      "monthlyRank": 36,
       "monthlyWins": 3,
       "monthlyLosses": 3,
       "games": 65,
@@ -1505,7 +1505,7 @@
       "worldWins": 7,
       "worldLosses": 5,
       "monthlyRating": 47,
-      "monthlyRank": 32,
+      "monthlyRank": 33,
       "monthlyWins": 2,
       "monthlyLosses": 1,
       "games": 12,
@@ -1768,12 +1768,70 @@
         }
       ]
     },
+    "643858007741956127": {
+      "userId": 643858007741956127,
+      "name": "LaUeberwerfos",
+      "avatar": "https://cdn.discordapp.com/avatars/643858007741956127/5b9967f5bec9b291d73b36f3fa3d5990.png?size=1024",
+      "worldRating": 1045,
+      "worldRank": 27,
+      "worldWins": 4,
+      "worldLosses": 0,
+      "monthlyRating": 47,
+      "monthlyRank": 32,
+      "monthlyWins": 3,
+      "monthlyLosses": 0,
+      "games": 4,
+      "winrate": 100.0,
+      "overallAverage": 59.98,
+      "recentMatches": [
+        {
+          "matchId": 1338,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "2:4",
+          "average": "59.24",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1337,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "4:3",
+          "average": "65.79",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1167,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "3:4",
+          "average": "56.71",
+          "eloChange": 15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 574,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "4:2",
+          "average": "58.18",
+          "eloChange": 12,
+          "queue": "scolia"
+        }
+      ]
+    },
     "1358893570869821534": {
       "userId": 1358893570869821534,
       "name": "TommyThomson",
       "avatar": "https://cdn.discordapp.com/avatars/1358893570869821534/6106ab6ef269621a7f4a57fdd767d667.png?size=1024",
       "worldRating": 1044,
-      "worldRank": 27,
+      "worldRank": 28,
       "worldWins": 4,
       "worldLosses": 1,
       "monthlyRating": 0,
@@ -1841,7 +1899,7 @@
       "name": "ChrisF95.",
       "avatar": "https://cdn.discordapp.com/avatars/695585081397346385/fbfa37ca8a8d9b8b2c62aaa5d0930cc3.png?size=1024",
       "worldRating": 1036,
-      "worldRank": 28,
+      "worldRank": 29,
       "worldWins": 2,
       "worldLosses": 0,
       "monthlyRating": 0,
@@ -1871,54 +1929,6 @@
           "average": "72.6",
           "eloChange": 20,
           "queue": "dart"
-        }
-      ]
-    },
-    "643858007741956127": {
-      "userId": 643858007741956127,
-      "name": "LaUeberwerfos",
-      "avatar": "https://cdn.discordapp.com/avatars/643858007741956127/5b9967f5bec9b291d73b36f3fa3d5990.png?size=1024",
-      "worldRating": 1035,
-      "worldRank": 29,
-      "worldWins": 3,
-      "worldLosses": 0,
-      "monthlyRating": 32,
-      "monthlyRank": 38,
-      "monthlyWins": 2,
-      "monthlyLosses": 0,
-      "games": 3,
-      "winrate": 100.0,
-      "overallAverage": 60.23,
-      "recentMatches": [
-        {
-          "matchId": 1337,
-          "result": "Win",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "4:3",
-          "average": "65.79",
-          "eloChange": 7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1167,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "3:4",
-          "average": "56.71",
-          "eloChange": 15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 574,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:2",
-          "average": "58.18",
-          "eloChange": 12,
-          "queue": "scolia"
         }
       ]
     },
@@ -3740,7 +3750,7 @@
       "worldWins": 4,
       "worldLosses": 9,
       "monthlyRating": 39,
-      "monthlyRank": 36,
+      "monthlyRank": 37,
       "monthlyWins": 2,
       "monthlyLosses": 1,
       "games": 13,
@@ -4928,7 +4938,7 @@
       "worldWins": 13,
       "worldLosses": 22,
       "monthlyRating": 43,
-      "monthlyRank": 33,
+      "monthlyRank": 34,
       "monthlyWins": 2,
       "monthlyLosses": 2,
       "games": 35,
@@ -5472,7 +5482,7 @@
       "worldWins": 17,
       "worldLosses": 24,
       "monthlyRating": 40,
-      "monthlyRank": 34,
+      "monthlyRank": 35,
       "monthlyWins": 2,
       "monthlyLosses": 11,
       "games": 41,
@@ -5531,80 +5541,12 @@
         }
       ]
     },
-    "530021085522165770": {
-      "userId": 530021085522165770,
-      "name": "Leon Kohl",
-      "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
-      "worldRating": 910,
-      "worldRank": 105,
-      "worldWins": 58,
-      "worldLosses": 56,
-      "monthlyRating": 164,
-      "monthlyRank": 9,
-      "monthlyWins": 8,
-      "monthlyLosses": 17,
-      "games": 114,
-      "winrate": 50.9,
-      "overallAverage": 104.49,
-      "recentMatches": [
-        {
-          "matchId": 1336,
-          "result": "Loss",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "1:4",
-          "average": "44.53",
-          "eloChange": -23,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1324,
-          "result": "Loss",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "2:4",
-          "average": "57.62",
-          "eloChange": -17,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1320,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:3",
-          "average": "56.12",
-          "eloChange": 21,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1315,
-          "result": "Loss",
-          "opponentId": 418513121167147008,
-          "opponentName": "Vincent Schubert",
-          "score": "1:4",
-          "average": "57.14",
-          "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1198,
-          "result": "Loss",
-          "opponentId": 1300479861508280333,
-          "opponentName": "nyxc.",
-          "score": "4:0",
-          "average": "51.55",
-          "eloChange": -15,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "773315089595891732": {
       "userId": 773315089595891732,
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
       "worldRating": 908,
-      "worldRank": 106,
+      "worldRank": 105,
       "worldWins": 35,
       "worldLosses": 47,
       "monthlyRating": 70,
@@ -5672,7 +5614,7 @@
       "name": "𝕾𝖎𝖗𝕯𝖏𝕭𝖆𝖘𝖘/𝕽𝖊𝖓𝖊",
       "avatar": "https://cdn.discordapp.com/avatars/283650357262024704/6f0cdccdef0aca7024386e57fafbd798.png?size=1024",
       "worldRating": 906,
-      "worldRank": 107,
+      "worldRank": 106,
       "worldWins": 0,
       "worldLosses": 9,
       "monthlyRating": 0,
@@ -5740,7 +5682,7 @@
       "name": "Lmk 1170",
       "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
       "worldRating": 905,
-      "worldRank": 108,
+      "worldRank": 107,
       "worldWins": 1,
       "worldLosses": 11,
       "monthlyRating": 26,
@@ -5800,6 +5742,74 @@
           "average": "48.0",
           "eloChange": -13,
           "queue": "scolia"
+        }
+      ]
+    },
+    "530021085522165770": {
+      "userId": 530021085522165770,
+      "name": "Leon Kohl",
+      "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
+      "worldRating": 900,
+      "worldRank": 108,
+      "worldWins": 58,
+      "worldLosses": 57,
+      "monthlyRating": 164,
+      "monthlyRank": 9,
+      "monthlyWins": 8,
+      "monthlyLosses": 18,
+      "games": 115,
+      "winrate": 50.4,
+      "overallAverage": 104.04,
+      "recentMatches": [
+        {
+          "matchId": 1338,
+          "result": "Loss",
+          "opponentId": 643858007741956127,
+          "opponentName": "LaUeberwerfos",
+          "score": "2:4",
+          "average": "53.27",
+          "eloChange": -10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1336,
+          "result": "Loss",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "1:4",
+          "average": "44.53",
+          "eloChange": -23,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1324,
+          "result": "Loss",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "2:4",
+          "average": "57.62",
+          "eloChange": -17,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1320,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:3",
+          "average": "56.12",
+          "eloChange": 21,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1315,
+          "result": "Loss",
+          "opponentId": 418513121167147008,
+          "opponentName": "Vincent Schubert",
+          "score": "1:4",
+          "average": "57.14",
+          "eloChange": -10,
+          "queue": "Scolia"
         }
       ]
     },
@@ -5948,7 +5958,7 @@
       "worldWins": 2,
       "worldLosses": 22,
       "monthlyRating": 34,
-      "monthlyRank": 37,
+      "monthlyRank": 38,
       "monthlyWins": 2,
       "monthlyLosses": 22,
       "games": 24,
