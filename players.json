@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1353,
+      "worldRating": 1356,
       "worldRank": 1,
-      "worldWins": 110,
+      "worldWins": 111,
       "worldLosses": 23,
-      "monthlyRating": 298,
+      "monthlyRating": 306,
       "monthlyRank": 2,
-      "monthlyWins": 25,
+      "monthlyWins": 26,
       "monthlyLosses": 4,
-      "games": 133,
-      "winrate": 82.7,
-      "overallAverage": 69.12,
+      "games": 134,
+      "winrate": 82.8,
+      "overallAverage": 69.07,
       "recentMatches": [
+        {
+          "matchId": 1352,
+          "result": "Win",
+          "opponentId": 512983240148123648,
+          "opponentName": "Manuel G",
+          "score": "3:4",
+          "average": "62.71",
+          "eloChange": 3,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1350,
           "result": "Win",
@@ -54,16 +64,6 @@
           "score": "4:3",
           "average": "72.01",
           "eloChange": -20,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1266,
-          "result": "Win",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "1:4",
-          "average": "64.46",
-          "eloChange": 13,
           "queue": "Scolia"
         }
       ]
@@ -4977,80 +4977,12 @@
         }
       ]
     },
-    "512983240148123648": {
-      "userId": 512983240148123648,
-      "name": "Manuel G",
-      "avatar": "https://cdn.discordapp.com/avatars/512983240148123648/eca6fd016833c09c82344fa554e51ec4.png?size=1024",
-      "worldRating": 937,
-      "worldRank": 97,
-      "worldWins": 3,
-      "worldLosses": 10,
-      "monthlyRating": 19,
-      "monthlyRank": 51,
-      "monthlyWins": 1,
-      "monthlyLosses": 2,
-      "games": 13,
-      "winrate": 23.1,
-      "overallAverage": 484.23,
-      "recentMatches": [
-        {
-          "matchId": 1344,
-          "result": "Win",
-          "opponentId": 1359697518513885234,
-          "opponentName": "Chris",
-          "score": "4:3",
-          "average": "47.08",
-          "eloChange": 14,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1335,
-          "result": "Loss",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "3:4",
-          "average": "45.86",
-          "eloChange": -25,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1065,
-          "result": "Loss",
-          "opponentId": 1092072918915219537,
-          "opponentName": "Jannick2412",
-          "score": "4:2",
-          "average": "53.98",
-          "eloChange": -8,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 961,
-          "result": "Loss",
-          "opponentId": 977270139932258375,
-          "opponentName": "Eddy Money",
-          "score": "4:0",
-          "average": "53.19",
-          "eloChange": -10,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 955,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:3",
-          "average": "57.28",
-          "eloChange": -5,
-          "queue": "scolia"
-        }
-      ]
-    },
     "299164054591635456": {
       "userId": 299164054591635456,
       "name": "Nico Dresler",
       "avatar": "https://cdn.discordapp.com/avatars/299164054591635456/55723527a22d387586bf79435894e098.png?size=1024",
       "worldRating": 934,
-      "worldRank": 98,
+      "worldRank": 97,
       "worldWins": 13,
       "worldLosses": 22,
       "monthlyRating": 43,
@@ -5110,6 +5042,74 @@
           "average": "4723.0",
           "eloChange": -17,
           "queue": "dart"
+        }
+      ]
+    },
+    "512983240148123648": {
+      "userId": 512983240148123648,
+      "name": "Manuel G",
+      "avatar": "https://cdn.discordapp.com/avatars/512983240148123648/eca6fd016833c09c82344fa554e51ec4.png?size=1024",
+      "worldRating": 934,
+      "worldRank": 98,
+      "worldWins": 3,
+      "worldLosses": 11,
+      "monthlyRating": 19,
+      "monthlyRank": 51,
+      "monthlyWins": 1,
+      "monthlyLosses": 3,
+      "games": 14,
+      "winrate": 21.4,
+      "overallAverage": 453.66,
+      "recentMatches": [
+        {
+          "matchId": 1352,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "3:4",
+          "average": "56.32",
+          "eloChange": -3,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1344,
+          "result": "Win",
+          "opponentId": 1359697518513885234,
+          "opponentName": "Chris",
+          "score": "4:3",
+          "average": "47.08",
+          "eloChange": 14,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1335,
+          "result": "Loss",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "3:4",
+          "average": "45.86",
+          "eloChange": -25,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1065,
+          "result": "Loss",
+          "opponentId": 1092072918915219537,
+          "opponentName": "Jannick2412",
+          "score": "4:2",
+          "average": "53.98",
+          "eloChange": -8,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 961,
+          "result": "Loss",
+          "opponentId": 977270139932258375,
+          "opponentName": "Eddy Money",
+          "score": "4:0",
+          "average": "53.19",
+          "eloChange": -10,
+          "queue": "scolia"
         }
       ]
     },
