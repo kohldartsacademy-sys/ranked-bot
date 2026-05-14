@@ -276,18 +276,28 @@
       "userId": 183185835477172226,
       "name": "Stefan Kulik",
       "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
-      "worldRating": 1188,
+      "worldRating": 1191,
       "worldRank": 5,
-      "worldWins": 44,
+      "worldWins": 45,
       "worldLosses": 22,
-      "monthlyRating": 165,
+      "monthlyRating": 173,
       "monthlyRank": 10,
-      "monthlyWins": 11,
+      "monthlyWins": 12,
       "monthlyLosses": 7,
-      "games": 66,
-      "winrate": 66.7,
-      "overallAverage": 59.18,
+      "games": 67,
+      "winrate": 67.2,
+      "overallAverage": 59.17,
       "recentMatches": [
+        {
+          "matchId": 1365,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "1:4",
+          "average": "58.4",
+          "eloChange": 3,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1329,
           "result": "Win",
@@ -327,16 +337,6 @@
           "average": "55.81",
           "eloChange": -8,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 1268,
-          "result": "Win",
-          "opponentId": 721521931953635349,
-          "opponentName": "Kasper4E",
-          "score": "1:4",
-          "average": "53.34",
-          "eloChange": 6,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -6361,18 +6361,28 @@
       "userId": 1359231571487494265,
       "name": "Bernard (Giftzwerg)",
       "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
-      "worldRating": 808,
+      "worldRating": 805,
       "worldRank": 117,
       "worldWins": 10,
-      "worldLosses": 46,
+      "worldLosses": 47,
       "monthlyRating": 31,
       "monthlyRank": 40,
       "monthlyWins": 1,
-      "monthlyLosses": 8,
-      "games": 56,
-      "winrate": 17.9,
-      "overallAverage": 256.13,
+      "monthlyLosses": 9,
+      "games": 57,
+      "winrate": 17.5,
+      "overallAverage": 252.7,
       "recentMatches": [
+        {
+          "matchId": 1365,
+          "result": "Loss",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "1:4",
+          "average": "60.97",
+          "eloChange": -3,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1360,
           "result": "Loss",
@@ -6411,16 +6421,6 @@
           "score": "4:1",
           "average": "45.51",
           "eloChange": -3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1255,
-          "result": "Loss",
-          "opponentId": 977270139932258375,
-          "opponentName": "Eddy Money",
-          "score": "4:2",
-          "average": "60.43",
-          "eloChange": -4,
           "queue": "Scolia"
         }
       ]
