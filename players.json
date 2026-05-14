@@ -1632,12 +1632,80 @@
         }
       ]
     },
+    "1302224986051838068": {
+      "userId": 1302224986051838068,
+      "name": "Bazzi",
+      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
+      "worldRating": 1049,
+      "worldRank": 25,
+      "worldWins": 66,
+      "worldLosses": 35,
+      "monthlyRating": 342,
+      "monthlyRank": 1,
+      "monthlyWins": 26,
+      "monthlyLosses": 16,
+      "games": 101,
+      "winrate": 65.3,
+      "overallAverage": 61.4,
+      "recentMatches": [
+        {
+          "matchId": 1362,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:2",
+          "average": "59.9",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1359,
+          "result": "Win",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "2:4",
+          "average": "60.16",
+          "eloChange": 23,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1357,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "4:2",
+          "average": "66.74",
+          "eloChange": 8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1356,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "4:0",
+          "average": "67.55",
+          "eloChange": 8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1355,
+          "result": "Loss",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "4:3",
+          "average": "65.23",
+          "eloChange": -26,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "1233056433344348211": {
       "userId": 1233056433344348211,
       "name": "Lars Zimmermann",
       "avatar": "https://cdn.discordapp.com/avatars/1233056433344348211/cc2d7caeba4bb7e7f07ba4baa16724d6.png?size=1024",
       "worldRating": 1045,
-      "worldRank": 25,
+      "worldRank": 26,
       "worldWins": 11,
       "worldLosses": 8,
       "monthlyRating": 49,
@@ -1705,7 +1773,7 @@
       "name": "LaUeberwerfos",
       "avatar": "https://cdn.discordapp.com/avatars/643858007741956127/5b9967f5bec9b291d73b36f3fa3d5990.png?size=1024",
       "worldRating": 1045,
-      "worldRank": 26,
+      "worldRank": 27,
       "worldWins": 4,
       "worldLosses": 0,
       "monthlyRating": 47,
@@ -1763,7 +1831,7 @@
       "name": "TommyThomson",
       "avatar": "https://cdn.discordapp.com/avatars/1358893570869821534/6106ab6ef269621a7f4a57fdd767d667.png?size=1024",
       "worldRating": 1044,
-      "worldRank": 27,
+      "worldRank": 28,
       "worldWins": 4,
       "worldLosses": 1,
       "monthlyRating": 0,
@@ -1831,7 +1899,7 @@
       "name": "Campione",
       "avatar": "https://cdn.discordapp.com/avatars/1418545035577917542/89691eff31c63a0517dae40506c0c603.png?size=1024",
       "worldRating": 1042,
-      "worldRank": 28,
+      "worldRank": 29,
       "worldWins": 18,
       "worldLosses": 13,
       "monthlyRating": 103,
@@ -1890,74 +1958,6 @@
           "score": "2:4",
           "average": "54.14",
           "eloChange": -21,
-          "queue": "DartCounter"
-        }
-      ]
-    },
-    "1302224986051838068": {
-      "userId": 1302224986051838068,
-      "name": "Bazzi",
-      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1039,
-      "worldRank": 29,
-      "worldWins": 65,
-      "worldLosses": 35,
-      "monthlyRating": 327,
-      "monthlyRank": 1,
-      "monthlyWins": 25,
-      "monthlyLosses": 16,
-      "games": 100,
-      "winrate": 65.0,
-      "overallAverage": 61.41,
-      "recentMatches": [
-        {
-          "matchId": 1359,
-          "result": "Win",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "2:4",
-          "average": "60.16",
-          "eloChange": 23,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1357,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:2",
-          "average": "66.74",
-          "eloChange": 8,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1356,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:0",
-          "average": "67.55",
-          "eloChange": 8,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1355,
-          "result": "Loss",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:3",
-          "average": "65.23",
-          "eloChange": -26,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1323,
-          "result": "Win",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "1:4",
-          "average": "59.18",
-          "eloChange": 10,
           "queue": "DartCounter"
         }
       ]
@@ -5609,80 +5609,12 @@
         }
       ]
     },
-    "773315089595891732": {
-      "userId": 773315089595891732,
-      "name": "AlkaTraz",
-      "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 908,
-      "worldRank": 106,
-      "worldWins": 35,
-      "worldLosses": 47,
-      "monthlyRating": 70,
-      "monthlyRank": 21,
-      "monthlyWins": 3,
-      "monthlyLosses": 1,
-      "games": 82,
-      "winrate": 42.7,
-      "overallAverage": 50.71,
-      "recentMatches": [
-        {
-          "matchId": 1218,
-          "result": "Win",
-          "opponentId": 272113825854128131,
-          "opponentName": "UnknownNick",
-          "score": "0:4",
-          "average": "51.83",
-          "eloChange": 21,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1208,
-          "result": "Win",
-          "opponentId": 1359697518513885234,
-          "opponentName": "Chris",
-          "score": "2:4",
-          "average": "58.12",
-          "eloChange": 18,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1098,
-          "result": "Loss",
-          "opponentId": 761737659579105301,
-          "opponentName": "RocketDarts",
-          "score": "4:0",
-          "average": "39.98",
-          "eloChange": -17,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1061,
-          "result": "Win",
-          "opponentId": 761737659579105301,
-          "opponentName": "RocketDarts",
-          "score": "4:0",
-          "average": "37.58",
-          "eloChange": 16,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1028,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:3",
-          "average": "62.8",
-          "eloChange": -4,
-          "queue": "scolia"
-        }
-      ]
-    },
     "283650357262024704": {
       "userId": 283650357262024704,
       "name": "𝕾𝖎𝖗𝕯𝖏𝕭𝖆𝖘𝖘/𝕽𝖊𝖓𝖊",
       "avatar": "https://cdn.discordapp.com/avatars/283650357262024704/6f0cdccdef0aca7024386e57fafbd798.png?size=1024",
       "worldRating": 906,
-      "worldRank": 107,
+      "worldRank": 106,
       "worldWins": 0,
       "worldLosses": 9,
       "monthlyRating": 0,
@@ -5750,7 +5682,7 @@
       "name": "Lmk 1170",
       "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
       "worldRating": 905,
-      "worldRank": 108,
+      "worldRank": 107,
       "worldWins": 1,
       "worldLosses": 11,
       "monthlyRating": 26,
@@ -5818,7 +5750,7 @@
       "name": "Leon Kohl",
       "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
       "worldRating": 899,
-      "worldRank": 109,
+      "worldRank": 108,
       "worldWins": 59,
       "worldLosses": 59,
       "monthlyRating": 190,
@@ -5878,6 +5810,74 @@
           "average": "44.53",
           "eloChange": -23,
           "queue": "Scolia"
+        }
+      ]
+    },
+    "773315089595891732": {
+      "userId": 773315089595891732,
+      "name": "AlkaTraz",
+      "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
+      "worldRating": 898,
+      "worldRank": 109,
+      "worldWins": 35,
+      "worldLosses": 48,
+      "monthlyRating": 70,
+      "monthlyRank": 21,
+      "monthlyWins": 3,
+      "monthlyLosses": 2,
+      "games": 83,
+      "winrate": 42.2,
+      "overallAverage": 50.76,
+      "recentMatches": [
+        {
+          "matchId": 1362,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:2",
+          "average": "54.64",
+          "eloChange": -10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1218,
+          "result": "Win",
+          "opponentId": 272113825854128131,
+          "opponentName": "UnknownNick",
+          "score": "0:4",
+          "average": "51.83",
+          "eloChange": 21,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1208,
+          "result": "Win",
+          "opponentId": 1359697518513885234,
+          "opponentName": "Chris",
+          "score": "2:4",
+          "average": "58.12",
+          "eloChange": 18,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1098,
+          "result": "Loss",
+          "opponentId": 761737659579105301,
+          "opponentName": "RocketDarts",
+          "score": "4:0",
+          "average": "39.98",
+          "eloChange": -17,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 1061,
+          "result": "Win",
+          "opponentId": 761737659579105301,
+          "opponentName": "RocketDarts",
+          "score": "4:0",
+          "average": "37.58",
+          "eloChange": 16,
+          "queue": "scolia"
         }
       ]
     },
