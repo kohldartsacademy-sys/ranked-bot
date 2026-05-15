@@ -689,7 +689,7 @@
       "worldWins": 62,
       "worldLosses": 45,
       "monthlyRating": 122,
-      "monthlyRank": 13,
+      "monthlyRank": 14,
       "monthlyWins": 9,
       "monthlyLosses": 2,
       "games": 107,
@@ -5900,7 +5900,7 @@
       "worldWins": 17,
       "worldLosses": 49,
       "monthlyRating": 116,
-      "monthlyRank": 14,
+      "monthlyRank": 15,
       "monthlyWins": 5,
       "monthlyLosses": 14,
       "games": 66,
@@ -6367,90 +6367,32 @@
         }
       ]
     },
-    "1359231571487494265": {
-      "userId": 1359231571487494265,
-      "name": "Bernard (Giftzwerg)",
-      "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
-      "worldRating": 805,
-      "worldRank": 117,
-      "worldWins": 10,
-      "worldLosses": 47,
-      "monthlyRating": 31,
-      "monthlyRank": 42,
-      "monthlyWins": 1,
-      "monthlyLosses": 9,
-      "games": 57,
-      "winrate": 17.5,
-      "overallAverage": 252.7,
-      "recentMatches": [
-        {
-          "matchId": 1365,
-          "result": "Loss",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "1:4",
-          "average": "60.97",
-          "eloChange": -3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1360,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:0",
-          "average": "50.39",
-          "eloChange": -4,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1337,
-          "result": "Loss",
-          "opponentId": 643858007741956127,
-          "opponentName": "LaUeberwerfos",
-          "score": "4:3",
-          "average": "60.24",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1330,
-          "result": "Win",
-          "opponentId": 492994027331780609,
-          "opponentName": "marci0",
-          "score": "4:0",
-          "average": "53.68",
-          "eloChange": 26,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1327,
-          "result": "Loss",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "4:1",
-          "average": "45.51",
-          "eloChange": -3,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "825420293039194123": {
       "userId": 825420293039194123,
       "name": "Möffi",
       "avatar": "https://cdn.discordapp.com/avatars/825420293039194123/d84b958facf424daf8bc8eb98df94cbf.png?size=1024",
-      "worldRating": 795,
-      "worldRank": 118,
-      "worldWins": 15,
+      "worldRating": 811,
+      "worldRank": 117,
+      "worldWins": 16,
       "worldLosses": 65,
-      "monthlyRating": 108,
-      "monthlyRank": 15,
-      "monthlyWins": 4,
+      "monthlyRating": 129,
+      "monthlyRank": 13,
+      "monthlyWins": 5,
       "monthlyLosses": 17,
-      "games": 80,
-      "winrate": 18.8,
-      "overallAverage": 52.11,
+      "games": 81,
+      "winrate": 19.8,
+      "overallAverage": 52.22,
       "recentMatches": [
+        {
+          "matchId": 1379,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "4:3",
+          "average": "61.39",
+          "eloChange": 16,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1357,
           "result": "Loss",
@@ -6490,15 +6432,73 @@
           "average": "42.46",
           "eloChange": 23,
           "queue": "Scolia"
+        }
+      ]
+    },
+    "1359231571487494265": {
+      "userId": 1359231571487494265,
+      "name": "Bernard (Giftzwerg)",
+      "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
+      "worldRating": 789,
+      "worldRank": 118,
+      "worldWins": 10,
+      "worldLosses": 48,
+      "monthlyRating": 31,
+      "monthlyRank": 42,
+      "monthlyWins": 1,
+      "monthlyLosses": 10,
+      "games": 58,
+      "winrate": 17.2,
+      "overallAverage": 249.23,
+      "recentMatches": [
+        {
+          "matchId": 1379,
+          "result": "Loss",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "4:3",
+          "average": "51.5",
+          "eloChange": -16,
+          "queue": "Scolia"
         },
         {
-          "matchId": 1335,
+          "matchId": 1365,
+          "result": "Loss",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "1:4",
+          "average": "60.97",
+          "eloChange": -3,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1360,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:0",
+          "average": "50.39",
+          "eloChange": -4,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1337,
+          "result": "Loss",
+          "opponentId": 643858007741956127,
+          "opponentName": "LaUeberwerfos",
+          "score": "4:3",
+          "average": "60.24",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1330,
           "result": "Win",
-          "opponentId": 512983240148123648,
-          "opponentName": "Manuel G",
-          "score": "3:4",
-          "average": "49.23",
-          "eloChange": 25,
+          "opponentId": 492994027331780609,
+          "opponentName": "marci0",
+          "score": "4:0",
+          "average": "53.68",
+          "eloChange": 26,
           "queue": "Scolia"
         }
       ]
