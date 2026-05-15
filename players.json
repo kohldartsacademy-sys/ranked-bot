@@ -213,7 +213,7 @@
       "worldWins": 53,
       "worldLosses": 12,
       "monthlyRating": 39,
-      "monthlyRank": 36,
+      "monthlyRank": 37,
       "monthlyWins": 3,
       "monthlyLosses": 3,
       "games": 65,
@@ -884,12 +884,80 @@
         }
       ]
     },
+    "1089304921439998003": {
+      "userId": 1089304921439998003,
+      "name": "Brickylayer",
+      "avatar": "https://cdn.discordapp.com/avatars/1089304921439998003/848b2e53a7917bcc6e61a173f2eeb41e.png?size=1024",
+      "worldRating": 1124,
+      "worldRank": 14,
+      "worldWins": 31,
+      "worldLosses": 19,
+      "monthlyRating": 39,
+      "monthlyRank": 36,
+      "monthlyWins": 3,
+      "monthlyLosses": 0,
+      "games": 50,
+      "winrate": 62.0,
+      "overallAverage": 62.34,
+      "recentMatches": [
+        {
+          "matchId": 1375,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "1:4",
+          "average": "68.05",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1113,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "4:2",
+          "average": "62.68",
+          "eloChange": 5,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 1110,
+          "result": "Win",
+          "opponentId": 1024998339189690448,
+          "opponentName": "Niklas Strasser",
+          "score": "4:2",
+          "average": "64.14",
+          "eloChange": 12,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 1044,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:0",
+          "average": "52.67",
+          "eloChange": -8,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 1042,
+          "result": "Win",
+          "opponentId": 977270139932258375,
+          "opponentName": "Eddy Money",
+          "score": "4:0",
+          "average": "66.07",
+          "eloChange": 15,
+          "queue": "scolia"
+        }
+      ]
+    },
     "890838749280346132": {
       "userId": 890838749280346132,
       "name": "Klax",
       "avatar": "https://cdn.discordapp.com/avatars/890838749280346132/9d3b9b6ade8e4f780a30170927aea75f.png?size=1024",
       "worldRating": 1119,
-      "worldRank": 14,
+      "worldRank": 15,
       "worldWins": 12,
       "worldLosses": 5,
       "monthlyRating": 26,
@@ -948,74 +1016,6 @@
           "score": "4:2",
           "average": "80.69",
           "eloChange": 23,
-          "queue": "scolia"
-        }
-      ]
-    },
-    "1089304921439998003": {
-      "userId": 1089304921439998003,
-      "name": "Brickylayer",
-      "avatar": "https://cdn.discordapp.com/avatars/1089304921439998003/848b2e53a7917bcc6e61a173f2eeb41e.png?size=1024",
-      "worldRating": 1117,
-      "worldRank": 15,
-      "worldWins": 30,
-      "worldLosses": 19,
-      "monthlyRating": 27,
-      "monthlyRank": 41,
-      "monthlyWins": 2,
-      "monthlyLosses": 0,
-      "games": 49,
-      "winrate": 61.2,
-      "overallAverage": 62.22,
-      "recentMatches": [
-        {
-          "matchId": 1113,
-          "result": "Win",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "4:2",
-          "average": "62.68",
-          "eloChange": 5,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1110,
-          "result": "Win",
-          "opponentId": 1024998339189690448,
-          "opponentName": "Niklas Strasser",
-          "score": "4:2",
-          "average": "64.14",
-          "eloChange": 12,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1044,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:0",
-          "average": "52.67",
-          "eloChange": -8,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1042,
-          "result": "Win",
-          "opponentId": 977270139932258375,
-          "opponentName": "Eddy Money",
-          "score": "4:0",
-          "average": "66.07",
-          "eloChange": 15,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1039,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "4:2",
-          "average": "64.88",
-          "eloChange": 12,
           "queue": "scolia"
         }
       ]
@@ -2673,7 +2673,7 @@
       "worldWins": 1,
       "worldLosses": 2,
       "monthlyRating": 31,
-      "monthlyRank": 39,
+      "monthlyRank": 40,
       "monthlyWins": 1,
       "monthlyLosses": 2,
       "games": 3,
@@ -3846,7 +3846,7 @@
       "worldWins": 4,
       "worldLosses": 9,
       "monthlyRating": 39,
-      "monthlyRank": 37,
+      "monthlyRank": 38,
       "monthlyWins": 2,
       "monthlyLosses": 1,
       "games": 13,
@@ -5817,18 +5817,28 @@
       "userId": 773315089595891732,
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 893,
+      "worldRating": 886,
       "worldRank": 109,
       "worldWins": 35,
-      "worldLosses": 49,
+      "worldLosses": 50,
       "monthlyRating": 70,
       "monthlyRank": 22,
       "monthlyWins": 3,
-      "monthlyLosses": 3,
-      "games": 84,
-      "winrate": 41.7,
-      "overallAverage": 50.73,
+      "monthlyLosses": 4,
+      "games": 85,
+      "winrate": 41.2,
+      "overallAverage": 50.78,
       "recentMatches": [
+        {
+          "matchId": 1375,
+          "result": "Loss",
+          "opponentId": 1089304921439998003,
+          "opponentName": "Brickylayer",
+          "score": "1:4",
+          "average": "55.09",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1373,
           "result": "Loss",
@@ -5868,16 +5878,6 @@
           "average": "58.12",
           "eloChange": 18,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 1098,
-          "result": "Loss",
-          "opponentId": 761737659579105301,
-          "opponentName": "RocketDarts",
-          "score": "4:0",
-          "average": "39.98",
-          "eloChange": -17,
-          "queue": "scolia"
         }
       ]
     },
@@ -6026,7 +6026,7 @@
       "worldWins": 2,
       "worldLosses": 25,
       "monthlyRating": 34,
-      "monthlyRank": 38,
+      "monthlyRank": 39,
       "monthlyWins": 2,
       "monthlyLosses": 25,
       "games": 27,
@@ -6366,7 +6366,7 @@
       "worldWins": 10,
       "worldLosses": 47,
       "monthlyRating": 31,
-      "monthlyRank": 40,
+      "monthlyRank": 41,
       "monthlyWins": 1,
       "monthlyLosses": 9,
       "games": 57,
