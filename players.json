@@ -77,7 +77,7 @@
       "worldWins": 40,
       "worldLosses": 4,
       "monthlyRating": 293,
-      "monthlyRank": 4,
+      "monthlyRank": 5,
       "monthlyWins": 23,
       "monthlyLosses": 1,
       "games": 44,
@@ -276,18 +276,28 @@
       "userId": 1092072918915219537,
       "name": "Jannick2412",
       "avatar": "https://cdn.discordapp.com/avatars/1092072918915219537/a34f97c919ba7630e8ba951a443fb146.png?size=1024",
-      "worldRating": 1199,
+      "worldRating": 1204,
       "worldRank": 5,
-      "worldWins": 41,
+      "worldWins": 42,
       "worldLosses": 18,
-      "monthlyRating": 290,
-      "monthlyRank": 5,
-      "monthlyWins": 20,
+      "monthlyRating": 300,
+      "monthlyRank": 4,
+      "monthlyWins": 21,
       "monthlyLosses": 10,
-      "games": 59,
-      "winrate": 69.5,
-      "overallAverage": 64.16,
+      "games": 60,
+      "winrate": 70.0,
+      "overallAverage": 64.08,
       "recentMatches": [
+        {
+          "matchId": 1373,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "3:4",
+          "average": "59.48",
+          "eloChange": 5,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1372,
           "result": "Loss",
@@ -326,16 +336,6 @@
           "score": "4:1",
           "average": "59.03",
           "eloChange": 5,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1353,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "0:4",
-          "average": "65.86",
-          "eloChange": -18,
           "queue": "Scolia"
         }
       ]
@@ -5817,18 +5817,28 @@
       "userId": 773315089595891732,
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 898,
+      "worldRating": 893,
       "worldRank": 109,
       "worldWins": 35,
-      "worldLosses": 48,
+      "worldLosses": 49,
       "monthlyRating": 70,
       "monthlyRank": 22,
       "monthlyWins": 3,
-      "monthlyLosses": 2,
-      "games": 83,
-      "winrate": 42.2,
-      "overallAverage": 50.76,
+      "monthlyLosses": 3,
+      "games": 84,
+      "winrate": 41.7,
+      "overallAverage": 50.73,
       "recentMatches": [
+        {
+          "matchId": 1373,
+          "result": "Loss",
+          "opponentId": 1092072918915219537,
+          "opponentName": "Jannick2412",
+          "score": "3:4",
+          "average": "48.53",
+          "eloChange": -5,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1362,
           "result": "Loss",
@@ -5867,16 +5877,6 @@
           "score": "4:0",
           "average": "39.98",
           "eloChange": -17,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1061,
-          "result": "Win",
-          "opponentId": 761737659579105301,
-          "opponentName": "RocketDarts",
-          "score": "4:0",
-          "average": "37.58",
-          "eloChange": 16,
           "queue": "scolia"
         }
       ]
