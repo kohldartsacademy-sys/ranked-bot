@@ -408,80 +408,12 @@
         }
       ]
     },
-    "1309548661117554720": {
-      "userId": 1309548661117554720,
-      "name": "Marco Panzenböck",
-      "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
-      "worldRating": 1167,
-      "worldRank": 7,
-      "worldWins": 69,
-      "worldLosses": 35,
-      "monthlyRating": 187,
-      "monthlyRank": 9,
-      "monthlyWins": 12,
-      "monthlyLosses": 10,
-      "games": 104,
-      "winrate": 66.3,
-      "overallAverage": 64.06,
-      "recentMatches": [
-        {
-          "matchId": 1364,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:1",
-          "average": "60.34",
-          "eloChange": -23,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1363,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:3",
-          "average": "73.88",
-          "eloChange": 10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1361,
-          "result": "Win",
-          "opponentId": 1338229961848389662,
-          "opponentName": "Luca Plocher",
-          "score": "4:1",
-          "average": "62.34",
-          "eloChange": 9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1360,
-          "result": "Win",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "4:0",
-          "average": "69.91",
-          "eloChange": 4,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1359,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "2:4",
-          "average": "57.45",
-          "eloChange": -23,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1007351887114285087": {
       "userId": 1007351887114285087,
       "name": "Rico Seifert",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
       "worldRating": 1163,
-      "worldRank": 8,
+      "worldRank": 7,
       "worldWins": 40,
       "worldLosses": 12,
       "monthlyRating": 149,
@@ -541,6 +473,74 @@
           "average": "63.89",
           "eloChange": -10,
           "queue": "DartCounter"
+        }
+      ]
+    },
+    "1309548661117554720": {
+      "userId": 1309548661117554720,
+      "name": "Marco Panzenböck",
+      "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
+      "worldRating": 1146,
+      "worldRank": 8,
+      "worldWins": 69,
+      "worldLosses": 36,
+      "monthlyRating": 187,
+      "monthlyRank": 9,
+      "monthlyWins": 12,
+      "monthlyLosses": 11,
+      "games": 105,
+      "winrate": 65.7,
+      "overallAverage": 64.05,
+      "recentMatches": [
+        {
+          "matchId": 1366,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "3:4",
+          "average": "62.75",
+          "eloChange": -21,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1364,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:1",
+          "average": "60.34",
+          "eloChange": -23,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1363,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:3",
+          "average": "73.88",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1361,
+          "result": "Win",
+          "opponentId": 1338229961848389662,
+          "opponentName": "Luca Plocher",
+          "score": "4:1",
+          "average": "62.34",
+          "eloChange": 9,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1360,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "4:0",
+          "average": "69.91",
+          "eloChange": 4,
+          "queue": "Scolia"
         }
       ]
     },
@@ -1428,12 +1428,80 @@
         }
       ]
     },
+    "1302224986051838068": {
+      "userId": 1302224986051838068,
+      "name": "Bazzi",
+      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
+      "worldRating": 1083,
+      "worldRank": 22,
+      "worldWins": 68,
+      "worldLosses": 36,
+      "monthlyRating": 396,
+      "monthlyRank": 1,
+      "monthlyWins": 28,
+      "monthlyLosses": 17,
+      "games": 104,
+      "winrate": 65.4,
+      "overallAverage": 61.52,
+      "recentMatches": [
+        {
+          "matchId": 1366,
+          "result": "Win",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "3:4",
+          "average": "63.37",
+          "eloChange": 21,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1364,
+          "result": "Win",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:1",
+          "average": "63.99",
+          "eloChange": 23,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1363,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:3",
+          "average": "69.7",
+          "eloChange": -10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1362,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:2",
+          "average": "59.9",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1359,
+          "result": "Win",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "2:4",
+          "average": "60.16",
+          "eloChange": 23,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "272860472141676546": {
       "userId": 272860472141676546,
       "name": "Tacke",
       "avatar": "https://cdn.discordapp.com/avatars/272860472141676546/3d7d24c4928d38c7a97e292eed2ab3b7.png?size=1024",
       "worldRating": 1076,
-      "worldRank": 22,
+      "worldRank": 23,
       "worldWins": 9,
       "worldLosses": 4,
       "monthlyRating": 77,
@@ -1501,7 +1569,7 @@
       "name": "Richard Boden",
       "avatar": "https://cdn.discordapp.com/avatars/920777207834619915/407a2a20e6716dc1cc1f0f290b436719.png?size=1024",
       "worldRating": 1063,
-      "worldRank": 23,
+      "worldRank": 24,
       "worldWins": 7,
       "worldLosses": 5,
       "monthlyRating": 47,
@@ -1561,74 +1629,6 @@
           "average": "64.25",
           "eloChange": -13,
           "queue": "scolia"
-        }
-      ]
-    },
-    "1302224986051838068": {
-      "userId": 1302224986051838068,
-      "name": "Bazzi",
-      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1062,
-      "worldRank": 24,
-      "worldWins": 67,
-      "worldLosses": 36,
-      "monthlyRating": 370,
-      "monthlyRank": 1,
-      "monthlyWins": 27,
-      "monthlyLosses": 17,
-      "games": 103,
-      "winrate": 65.0,
-      "overallAverage": 61.5,
-      "recentMatches": [
-        {
-          "matchId": 1364,
-          "result": "Win",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:1",
-          "average": "63.99",
-          "eloChange": 23,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1363,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:3",
-          "average": "69.7",
-          "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1362,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:2",
-          "average": "59.9",
-          "eloChange": 10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1359,
-          "result": "Win",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "2:4",
-          "average": "60.16",
-          "eloChange": 23,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1357,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:2",
-          "average": "66.74",
-          "eloChange": 8,
-          "queue": "Scolia"
         }
       ]
     },
