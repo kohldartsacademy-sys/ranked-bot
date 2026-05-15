@@ -276,18 +276,28 @@
       "userId": 1092072918915219537,
       "name": "Jannick2412",
       "avatar": "https://cdn.discordapp.com/avatars/1092072918915219537/a34f97c919ba7630e8ba951a443fb146.png?size=1024",
-      "worldRating": 1196,
+      "worldRating": 1210,
       "worldRank": 5,
-      "worldWins": 40,
+      "worldWins": 41,
       "worldLosses": 17,
-      "monthlyRating": 271,
+      "monthlyRating": 290,
       "monthlyRank": 5,
-      "monthlyWins": 19,
+      "monthlyWins": 20,
       "monthlyLosses": 9,
-      "games": 57,
-      "winrate": 70.2,
-      "overallAverage": 64.22,
+      "games": 58,
+      "winrate": 70.7,
+      "overallAverage": 64.31,
       "recentMatches": [
+        {
+          "matchId": 1370,
+          "result": "Win",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:2",
+          "average": "69.29",
+          "eloChange": 14,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1368,
           "result": "Win",
@@ -326,16 +336,6 @@
           "score": "2:4",
           "average": "70.88",
           "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1294,
-          "result": "Win",
-          "opponentId": 1300479861508280333,
-          "opponentName": "nyxc.",
-          "score": "4:0",
-          "average": "57.81",
-          "eloChange": 4,
           "queue": "Scolia"
         }
       ]
@@ -476,80 +476,12 @@
         }
       ]
     },
-    "1309548661117554720": {
-      "userId": 1309548661117554720,
-      "name": "Marco Panzenböck",
-      "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
-      "worldRating": 1146,
-      "worldRank": 8,
-      "worldWins": 69,
-      "worldLosses": 36,
-      "monthlyRating": 187,
-      "monthlyRank": 9,
-      "monthlyWins": 12,
-      "monthlyLosses": 11,
-      "games": 105,
-      "winrate": 65.7,
-      "overallAverage": 64.05,
-      "recentMatches": [
-        {
-          "matchId": 1366,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "3:4",
-          "average": "62.75",
-          "eloChange": -21,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1364,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:1",
-          "average": "60.34",
-          "eloChange": -23,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1363,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:3",
-          "average": "73.88",
-          "eloChange": 10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1361,
-          "result": "Win",
-          "opponentId": 1338229961848389662,
-          "opponentName": "Luca Plocher",
-          "score": "4:1",
-          "average": "62.34",
-          "eloChange": 9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1360,
-          "result": "Win",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "4:0",
-          "average": "69.91",
-          "eloChange": 4,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1213219884440489984": {
       "userId": 1213219884440489984,
       "name": "van_graadert",
       "avatar": "https://cdn.discordapp.com/avatars/1213219884440489984/a12754d46508103e0b1fe02bc4ed5110.png?size=1024",
       "worldRating": 1145,
-      "worldRank": 9,
+      "worldRank": 8,
       "worldWins": 33,
       "worldLosses": 17,
       "monthlyRating": 12,
@@ -617,7 +549,7 @@
       "name": "Jules H",
       "avatar": "https://cdn.discordapp.com/avatars/1458502282219098457/f7f2e9361e8a54ce6e72580ac7b967af.png?size=1024",
       "worldRating": 1145,
-      "worldRank": 10,
+      "worldRank": 9,
       "worldWins": 26,
       "worldLosses": 14,
       "monthlyRating": 21,
@@ -677,6 +609,74 @@
           "average": "51.83",
           "eloChange": 11,
           "queue": "scolia"
+        }
+      ]
+    },
+    "1309548661117554720": {
+      "userId": 1309548661117554720,
+      "name": "Marco Panzenböck",
+      "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
+      "worldRating": 1132,
+      "worldRank": 10,
+      "worldWins": 69,
+      "worldLosses": 37,
+      "monthlyRating": 187,
+      "monthlyRank": 9,
+      "monthlyWins": 12,
+      "monthlyLosses": 12,
+      "games": 106,
+      "winrate": 65.1,
+      "overallAverage": 64.05,
+      "recentMatches": [
+        {
+          "matchId": 1370,
+          "result": "Loss",
+          "opponentId": 1092072918915219537,
+          "opponentName": "Jannick2412",
+          "score": "4:2",
+          "average": "64.47",
+          "eloChange": -14,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1366,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "3:4",
+          "average": "62.75",
+          "eloChange": -21,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1364,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:1",
+          "average": "60.34",
+          "eloChange": -23,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1363,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:3",
+          "average": "73.88",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1361,
+          "result": "Win",
+          "opponentId": 1338229961848389662,
+          "opponentName": "Luca Plocher",
+          "score": "4:1",
+          "average": "62.34",
+          "eloChange": 9,
+          "queue": "Scolia"
         }
       ]
     },
