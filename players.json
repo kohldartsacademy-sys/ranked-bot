@@ -72,18 +72,28 @@
       "userId": 1142038943961985105,
       "name": "Rick Dahlke",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1350,
+      "worldRating": 1353,
       "worldRank": 2,
-      "worldWins": 86,
+      "worldWins": 87,
       "worldLosses": 27,
-      "monthlyRating": 349,
+      "monthlyRating": 357,
       "monthlyRank": 2,
-      "monthlyWins": 31,
+      "monthlyWins": 32,
       "monthlyLosses": 7,
-      "games": 113,
-      "winrate": 76.1,
-      "overallAverage": 67.51,
+      "games": 114,
+      "winrate": 76.3,
+      "overallAverage": 67.5,
       "recentMatches": [
+        {
+          "matchId": 1377,
+          "result": "Win",
+          "opponentId": 706642260347060262,
+          "opponentName": "domme",
+          "score": "0:4",
+          "average": "66.8",
+          "eloChange": 3,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1376,
           "result": "Win",
@@ -122,16 +132,6 @@
           "score": "3:4",
           "average": "66.77",
           "eloChange": -25,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1348,
-          "result": "Win",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:1",
-          "average": "69.06",
-          "eloChange": 8,
           "queue": "Scolia"
         }
       ]
@@ -4175,70 +4175,12 @@
         }
       ]
     },
-    "706642260347060262": {
-      "userId": 706642260347060262,
-      "name": "domme",
-      "avatar": "https://cdn.discordapp.com/avatars/706642260347060262/e5620016f3a67aa0a8ecba0b68fe4940.png?size=1024",
-      "worldRating": 966,
-      "worldRank": 83,
-      "worldWins": 1,
-      "worldLosses": 3,
-      "monthlyRating": 20,
-      "monthlyRank": 48,
-      "monthlyWins": 1,
-      "monthlyLosses": 3,
-      "games": 4,
-      "winrate": 25.0,
-      "overallAverage": 50.58,
-      "recentMatches": [
-        {
-          "matchId": 1347,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:0",
-          "average": "51.71",
-          "eloChange": -9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1334,
-          "result": "Loss",
-          "opponentId": 1170865043227824178,
-          "opponentName": "Lmk 1170",
-          "score": "4:3",
-          "average": "46.51",
-          "eloChange": -21,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1262,
-          "result": "Win",
-          "opponentId": 1408769906664538122,
-          "opponentName": "TheDarkTrident",
-          "score": "4:2",
-          "average": "50.7",
-          "eloChange": 15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1193,
-          "result": "Loss",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "4:3",
-          "average": "53.41",
-          "eloChange": -19,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "770346293846343690": {
       "userId": 770346293846343690,
       "name": "Kilian G",
       "avatar": "https://cdn.discordapp.com/avatars/770346293846343690/6f103472f3b613f43dd78e56733dd028.png?size=1024",
       "worldRating": 965,
-      "worldRank": 84,
+      "worldRank": 83,
       "worldWins": 0,
       "worldLosses": 2,
       "monthlyRating": 0,
@@ -4276,7 +4218,7 @@
       "name": "Maxi180",
       "avatar": "https://cdn.discordapp.com/avatars/1361248234583883817/5510d49b58267a8f5c67b776e9b35454.png?size=1024",
       "worldRating": 964,
-      "worldRank": 85,
+      "worldRank": 84,
       "worldWins": 2,
       "worldLosses": 4,
       "monthlyRating": 0,
@@ -4336,6 +4278,74 @@
           "average": "47.33",
           "eloChange": 0,
           "queue": "dart"
+        }
+      ]
+    },
+    "706642260347060262": {
+      "userId": 706642260347060262,
+      "name": "domme",
+      "avatar": "https://cdn.discordapp.com/avatars/706642260347060262/e5620016f3a67aa0a8ecba0b68fe4940.png?size=1024",
+      "worldRating": 963,
+      "worldRank": 85,
+      "worldWins": 1,
+      "worldLosses": 4,
+      "monthlyRating": 20,
+      "monthlyRank": 48,
+      "monthlyWins": 1,
+      "monthlyLosses": 4,
+      "games": 5,
+      "winrate": 20.0,
+      "overallAverage": 51.45,
+      "recentMatches": [
+        {
+          "matchId": 1377,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "0:4",
+          "average": "54.93",
+          "eloChange": -3,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1347,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:0",
+          "average": "51.71",
+          "eloChange": -9,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1334,
+          "result": "Loss",
+          "opponentId": 1170865043227824178,
+          "opponentName": "Lmk 1170",
+          "score": "4:3",
+          "average": "46.51",
+          "eloChange": -21,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1262,
+          "result": "Win",
+          "opponentId": 1408769906664538122,
+          "opponentName": "TheDarkTrident",
+          "score": "4:2",
+          "average": "50.7",
+          "eloChange": 15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1193,
+          "result": "Loss",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "4:3",
+          "average": "53.41",
+          "eloChange": -19,
+          "queue": "Scolia"
         }
       ]
     },
