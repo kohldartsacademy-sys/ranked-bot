@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1372,
+      "worldRating": 1380,
       "worldRank": 1,
-      "worldWins": 114,
+      "worldWins": 115,
       "worldLosses": 23,
-      "monthlyRating": 337,
+      "monthlyRating": 350,
       "monthlyRank": 3,
-      "monthlyWins": 29,
+      "monthlyWins": 30,
       "monthlyLosses": 4,
-      "games": 137,
-      "winrate": 83.2,
+      "games": 138,
+      "winrate": 83.3,
       "overallAverage": 69.31,
       "recentMatches": [
+        {
+          "matchId": 1388,
+          "result": "Win",
+          "opponentId": 1092072918915219537,
+          "opponentName": "Jannick2412",
+          "score": "1:4",
+          "average": "69.34",
+          "eloChange": 8,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1387,
           "result": "Win",
@@ -54,16 +64,6 @@
           "score": "3:4",
           "average": "62.71",
           "eloChange": 3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1350,
-          "result": "Win",
-          "opponentId": 1092072918915219537,
-          "opponentName": "Jannick2412",
-          "score": "2:4",
-          "average": "67.0",
-          "eloChange": 10,
           "queue": "Scolia"
         }
       ]
@@ -344,18 +344,28 @@
       "userId": 1092072918915219537,
       "name": "Jannick2412",
       "avatar": "https://cdn.discordapp.com/avatars/1092072918915219537/a34f97c919ba7630e8ba951a443fb146.png?size=1024",
-      "worldRating": 1176,
+      "worldRating": 1168,
       "worldRank": 6,
       "worldWins": 44,
-      "worldLosses": 20,
+      "worldLosses": 21,
       "monthlyRating": 317,
       "monthlyRank": 4,
       "monthlyWins": 23,
-      "monthlyLosses": 12,
-      "games": 64,
-      "winrate": 68.8,
-      "overallAverage": 63.9,
+      "monthlyLosses": 13,
+      "games": 65,
+      "winrate": 67.7,
+      "overallAverage": 63.87,
       "recentMatches": [
+        {
+          "matchId": 1388,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "1:4",
+          "average": "62.09",
+          "eloChange": -8,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1386,
           "result": "Win",
@@ -394,16 +404,6 @@
           "score": "4:0",
           "average": "71.58",
           "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1373,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "3:4",
-          "average": "59.48",
-          "eloChange": 5,
           "queue": "Scolia"
         }
       ]
