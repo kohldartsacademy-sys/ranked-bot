@@ -344,18 +344,28 @@
       "userId": 1092072918915219537,
       "name": "Jannick2412",
       "avatar": "https://cdn.discordapp.com/avatars/1092072918915219537/a34f97c919ba7630e8ba951a443fb146.png?size=1024",
-      "worldRating": 1172,
+      "worldRating": 1176,
       "worldRank": 6,
-      "worldWins": 43,
+      "worldWins": 44,
       "worldLosses": 20,
-      "monthlyRating": 308,
+      "monthlyRating": 317,
       "monthlyRank": 4,
-      "monthlyWins": 22,
+      "monthlyWins": 23,
       "monthlyLosses": 12,
-      "games": 63,
-      "winrate": 68.3,
-      "overallAverage": 64.02,
+      "games": 64,
+      "winrate": 68.8,
+      "overallAverage": 63.9,
       "recentMatches": [
+        {
+          "matchId": 1386,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "4:3",
+          "average": "55.99",
+          "eloChange": 4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1381,
           "result": "Win",
@@ -394,16 +404,6 @@
           "score": "3:4",
           "average": "59.48",
           "eloChange": 5,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1372,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:0",
-          "average": "55.77",
-          "eloChange": -11,
           "queue": "Scolia"
         }
       ]
@@ -6439,18 +6439,28 @@
       "userId": 1359231571487494265,
       "name": "Bernard (Giftzwerg)",
       "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
-      "worldRating": 810,
+      "worldRating": 806,
       "worldRank": 118,
       "worldWins": 11,
-      "worldLosses": 49,
+      "worldLosses": 50,
       "monthlyRating": 60,
       "monthlyRank": 25,
       "monthlyWins": 2,
-      "monthlyLosses": 11,
-      "games": 60,
-      "winrate": 18.3,
-      "overallAverage": 242.84,
+      "monthlyLosses": 12,
+      "games": 61,
+      "winrate": 18.0,
+      "overallAverage": 239.77,
       "recentMatches": [
+        {
+          "matchId": 1386,
+          "result": "Loss",
+          "opponentId": 1092072918915219537,
+          "opponentName": "Jannick2412",
+          "score": "4:3",
+          "average": "55.66",
+          "eloChange": -4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1382,
           "result": "Win",
@@ -6489,16 +6499,6 @@
           "score": "1:4",
           "average": "60.97",
           "eloChange": -3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1360,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:0",
-          "average": "50.39",
-          "eloChange": -4,
           "queue": "Scolia"
         }
       ]
