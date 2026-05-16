@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1356,
+      "worldRating": 1364,
       "worldRank": 1,
-      "worldWins": 111,
+      "worldWins": 112,
       "worldLosses": 23,
-      "monthlyRating": 306,
-      "monthlyRank": 4,
-      "monthlyWins": 26,
+      "monthlyRating": 319,
+      "monthlyRank": 3,
+      "monthlyWins": 27,
       "monthlyLosses": 4,
-      "games": 134,
-      "winrate": 82.8,
-      "overallAverage": 69.07,
+      "games": 135,
+      "winrate": 83.0,
+      "overallAverage": 69.17,
       "recentMatches": [
+        {
+          "matchId": 1384,
+          "result": "Win",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:0",
+          "average": "83.5",
+          "eloChange": 8,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1352,
           "result": "Win",
@@ -54,16 +64,6 @@
           "score": "4:1",
           "average": "68.19",
           "eloChange": 8,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1267,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:3",
-          "average": "72.01",
-          "eloChange": -20,
           "queue": "Scolia"
         }
       ]
@@ -349,7 +349,7 @@
       "worldWins": 43,
       "worldLosses": 20,
       "monthlyRating": 308,
-      "monthlyRank": 3,
+      "monthlyRank": 4,
       "monthlyWins": 22,
       "monthlyLosses": 12,
       "games": 63,
@@ -480,18 +480,28 @@
       "userId": 1309548661117554720,
       "name": "Marco Panzenböck",
       "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
-      "worldRating": 1155,
+      "worldRating": 1147,
       "worldRank": 8,
       "worldWins": 71,
-      "worldLosses": 37,
+      "worldLosses": 38,
       "monthlyRating": 220,
       "monthlyRank": 7,
       "monthlyWins": 14,
-      "monthlyLosses": 12,
-      "games": 108,
-      "winrate": 65.7,
-      "overallAverage": 64.03,
+      "monthlyLosses": 13,
+      "games": 109,
+      "winrate": 65.1,
+      "overallAverage": 64.04,
       "recentMatches": [
+        {
+          "matchId": 1384,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:0",
+          "average": "65.04",
+          "eloChange": -8,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1378,
           "result": "Win",
@@ -530,16 +540,6 @@
           "score": "3:4",
           "average": "62.75",
           "eloChange": -21,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1364,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:1",
-          "average": "60.34",
-          "eloChange": -23,
           "queue": "Scolia"
         }
       ]
