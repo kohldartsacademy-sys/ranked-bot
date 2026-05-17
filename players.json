@@ -72,18 +72,28 @@
       "userId": 1142038943961985105,
       "name": "Rick Dahlke",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1353,
+      "worldRating": 1360,
       "worldRank": 2,
-      "worldWins": 87,
+      "worldWins": 88,
       "worldLosses": 27,
-      "monthlyRating": 357,
+      "monthlyRating": 369,
       "monthlyRank": 2,
-      "monthlyWins": 32,
+      "monthlyWins": 33,
       "monthlyLosses": 7,
-      "games": 114,
-      "winrate": 76.3,
-      "overallAverage": 67.5,
+      "games": 115,
+      "winrate": 76.5,
+      "overallAverage": 67.48,
       "recentMatches": [
+        {
+          "matchId": 1390,
+          "result": "Win",
+          "opponentId": 1089304921439998003,
+          "opponentName": "Brickylayer",
+          "score": "4:3",
+          "average": "64.99",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1377,
           "result": "Win",
@@ -122,16 +132,6 @@
           "score": "4:0",
           "average": "72.43",
           "eloChange": 11,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1351,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "3:4",
-          "average": "66.77",
-          "eloChange": -25,
           "queue": "Scolia"
         }
       ]
@@ -956,18 +956,28 @@
       "userId": 1089304921439998003,
       "name": "Brickylayer",
       "avatar": "https://cdn.discordapp.com/avatars/1089304921439998003/848b2e53a7917bcc6e61a173f2eeb41e.png?size=1024",
-      "worldRating": 1123,
+      "worldRating": 1116,
       "worldRank": 15,
       "worldWins": 32,
-      "worldLosses": 20,
+      "worldLosses": 21,
       "monthlyRating": 50,
       "monthlyRank": 30,
       "monthlyWins": 4,
-      "monthlyLosses": 1,
-      "games": 52,
-      "winrate": 61.5,
+      "monthlyLosses": 2,
+      "games": 53,
+      "winrate": 60.4,
       "overallAverage": 62.36,
       "recentMatches": [
+        {
+          "matchId": 1390,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "4:3",
+          "average": "62.73",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1389,
           "result": "Win",
@@ -1006,16 +1016,6 @@
           "score": "4:2",
           "average": "62.68",
           "eloChange": 5,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1110,
-          "result": "Win",
-          "opponentId": 1024998339189690448,
-          "opponentName": "Niklas Strasser",
-          "score": "4:2",
-          "average": "64.14",
-          "eloChange": 12,
           "queue": "scolia"
         }
       ]
