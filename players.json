@@ -72,18 +72,28 @@
       "userId": 1330499669490667653,
       "name": "Dennis Wehner",
       "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1343,
+      "worldRating": 1346,
       "worldRank": 2,
-      "worldWins": 41,
+      "worldWins": 42,
       "worldLosses": 4,
-      "monthlyRating": 300,
+      "monthlyRating": 308,
       "monthlyRank": 5,
-      "monthlyWins": 24,
+      "monthlyWins": 25,
       "monthlyLosses": 1,
-      "games": 45,
-      "winrate": 91.1,
-      "overallAverage": 68.65,
+      "games": 46,
+      "winrate": 91.3,
+      "overallAverage": 68.82,
       "recentMatches": [
+        {
+          "matchId": 1397,
+          "result": "Win",
+          "opponentId": 777632441359400970,
+          "opponentName": "Schmidti The Bone",
+          "score": "4:0",
+          "average": "76.1",
+          "eloChange": 3,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1394,
           "result": "Win",
@@ -121,16 +131,6 @@
           "opponentName": "Jerome Benzler",
           "score": "2:4",
           "average": "65.54",
-          "eloChange": 4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1310,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "0:4",
-          "average": "69.1",
           "eloChange": 4,
           "queue": "DartCounter"
         }
@@ -5279,80 +5279,12 @@
         }
       ]
     },
-    "777632441359400970": {
-      "userId": 777632441359400970,
-      "name": "Schmidti The Bone",
-      "avatar": "https://cdn.discordapp.com/avatars/777632441359400970/7f17e7acf2cf5d5a0143a7e207f491c7.png?size=1024",
-      "worldRating": 918,
-      "worldRank": 101,
-      "worldWins": 1,
-      "worldLosses": 7,
-      "monthlyRating": 0,
-      "monthlyRank": 61,
-      "monthlyWins": 0,
-      "monthlyLosses": 3,
-      "games": 8,
-      "winrate": 12.5,
-      "overallAverage": 54.87,
-      "recentMatches": [
-        {
-          "matchId": 1395,
-          "result": "Loss",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "3:4",
-          "average": "51.47",
-          "eloChange": -11,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1210,
-          "result": "Loss",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "2:4",
-          "average": "54.54",
-          "eloChange": -11,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1154,
-          "result": "Loss",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "1:4",
-          "average": "50.57",
-          "eloChange": -12,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 800,
-          "result": "Loss",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "4:3",
-          "average": "61.53",
-          "eloChange": -9,
-          "queue": "dart"
-        },
-        {
-          "matchId": 683,
-          "result": "Loss",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "4:2",
-          "average": "57.84",
-          "eloChange": -14,
-          "queue": "dart"
-        }
-      ]
-    },
     "662279330910437392": {
       "userId": 662279330910437392,
       "name": "User 662279330910437392",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 917,
-      "worldRank": 102,
+      "worldRank": 101,
       "worldWins": 2,
       "worldLosses": 9,
       "monthlyRating": 0,
@@ -5420,7 +5352,7 @@
       "name": "Michel Ellrich",
       "avatar": "https://cdn.discordapp.com/embed/avatars/3.png",
       "worldRating": 915,
-      "worldRank": 103,
+      "worldRank": 102,
       "worldWins": 7,
       "worldLosses": 18,
       "monthlyRating": 48,
@@ -5479,6 +5411,74 @@
           "score": "4:0",
           "average": "45.83",
           "eloChange": -7,
+          "queue": "dart"
+        }
+      ]
+    },
+    "777632441359400970": {
+      "userId": 777632441359400970,
+      "name": "Schmidti The Bone",
+      "avatar": "https://cdn.discordapp.com/avatars/777632441359400970/7f17e7acf2cf5d5a0143a7e207f491c7.png?size=1024",
+      "worldRating": 915,
+      "worldRank": 103,
+      "worldWins": 1,
+      "worldLosses": 8,
+      "monthlyRating": 0,
+      "monthlyRank": 59,
+      "monthlyWins": 0,
+      "monthlyLosses": 4,
+      "games": 9,
+      "winrate": 11.1,
+      "overallAverage": 55.93,
+      "recentMatches": [
+        {
+          "matchId": 1397,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "4:0",
+          "average": "64.38",
+          "eloChange": -3,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1395,
+          "result": "Loss",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "3:4",
+          "average": "51.47",
+          "eloChange": -11,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1210,
+          "result": "Loss",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "2:4",
+          "average": "54.54",
+          "eloChange": -11,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1154,
+          "result": "Loss",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "1:4",
+          "average": "50.57",
+          "eloChange": -12,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 800,
+          "result": "Loss",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "4:3",
+          "average": "61.53",
+          "eloChange": -9,
           "queue": "dart"
         }
       ]
@@ -6240,7 +6240,7 @@
       "worldWins": 4,
       "worldLosses": 19,
       "monthlyRating": 0,
-      "monthlyRank": 60,
+      "monthlyRank": 61,
       "monthlyWins": 0,
       "monthlyLosses": 3,
       "games": 23,
@@ -6308,7 +6308,7 @@
       "worldWins": 0,
       "worldLosses": 14,
       "monthlyRating": 0,
-      "monthlyRank": 59,
+      "monthlyRank": 60,
       "monthlyWins": 0,
       "monthlyLosses": 4,
       "games": 14,
