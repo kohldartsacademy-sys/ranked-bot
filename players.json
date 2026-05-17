@@ -72,18 +72,28 @@
       "userId": 1330499669490667653,
       "name": "Dennis Wehner",
       "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1341,
+      "worldRating": 1343,
       "worldRank": 2,
-      "worldWins": 40,
+      "worldWins": 41,
       "worldLosses": 4,
-      "monthlyRating": 293,
+      "monthlyRating": 300,
       "monthlyRank": 5,
-      "monthlyWins": 23,
+      "monthlyWins": 24,
       "monthlyLosses": 1,
-      "games": 44,
-      "winrate": 90.9,
-      "overallAverage": 68.81,
+      "games": 45,
+      "winrate": 91.1,
+      "overallAverage": 68.65,
       "recentMatches": [
+        {
+          "matchId": 1394,
+          "result": "Win",
+          "opponentId": 283650357262024704,
+          "opponentName": "𝕾𝖎𝖗𝕯𝖏𝕭𝖆𝖘𝖘/𝕽𝖊𝖓𝖊",
+          "score": "0:4",
+          "average": "61.98",
+          "eloChange": 2,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1322,
           "result": "Win",
@@ -122,16 +132,6 @@
           "score": "0:4",
           "average": "69.1",
           "eloChange": 4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1308,
-          "result": "Win",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "4:3",
-          "average": "65.41",
-          "eloChange": 2,
           "queue": "DartCounter"
         }
       ]
@@ -5619,80 +5619,12 @@
         }
       ]
     },
-    "283650357262024704": {
-      "userId": 283650357262024704,
-      "name": "𝕾𝖎𝖗𝕯𝖏𝕭𝖆𝖘𝖘/𝕽𝖊𝖓𝖊",
-      "avatar": "https://cdn.discordapp.com/avatars/283650357262024704/6f0cdccdef0aca7024386e57fafbd798.png?size=1024",
-      "worldRating": 906,
-      "worldRank": 106,
-      "worldWins": 0,
-      "worldLosses": 9,
-      "monthlyRating": 0,
-      "monthlyRank": 58,
-      "monthlyWins": 0,
-      "monthlyLosses": 7,
-      "games": 9,
-      "winrate": 0.0,
-      "overallAverage": 47.45,
-      "recentMatches": [
-        {
-          "matchId": 1174,
-          "result": "Loss",
-          "opponentId": 272860472141676546,
-          "opponentName": "Tacke",
-          "score": "0:4",
-          "average": "41.96",
-          "eloChange": -10,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1172,
-          "result": "Loss",
-          "opponentId": 272860472141676546,
-          "opponentName": "Tacke",
-          "score": "1:4",
-          "average": "48.92",
-          "eloChange": -11,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1062,
-          "result": "Loss",
-          "opponentId": 1488997913408438503,
-          "opponentName": "Robert",
-          "score": "4:0",
-          "average": "52.1",
-          "eloChange": -13,
-          "queue": "dart"
-        },
-        {
-          "matchId": 1058,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:2",
-          "average": "55.2",
-          "eloChange": -4,
-          "queue": "dart"
-        },
-        {
-          "matchId": 1056,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:0",
-          "average": "47.56",
-          "eloChange": -4,
-          "queue": "dart"
-        }
-      ]
-    },
     "1170865043227824178": {
       "userId": 1170865043227824178,
       "name": "Lmk 1170",
       "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
       "worldRating": 905,
-      "worldRank": 107,
+      "worldRank": 106,
       "worldWins": 1,
       "worldLosses": 11,
       "monthlyRating": 26,
@@ -5752,6 +5684,74 @@
           "average": "48.0",
           "eloChange": -13,
           "queue": "scolia"
+        }
+      ]
+    },
+    "283650357262024704": {
+      "userId": 283650357262024704,
+      "name": "𝕾𝖎𝖗𝕯𝖏𝕭𝖆𝖘𝖘/𝕽𝖊𝖓𝖊",
+      "avatar": "https://cdn.discordapp.com/avatars/283650357262024704/6f0cdccdef0aca7024386e57fafbd798.png?size=1024",
+      "worldRating": 904,
+      "worldRank": 107,
+      "worldWins": 0,
+      "worldLosses": 10,
+      "monthlyRating": 0,
+      "monthlyRank": 58,
+      "monthlyWins": 0,
+      "monthlyLosses": 8,
+      "games": 10,
+      "winrate": 0.0,
+      "overallAverage": 47.63,
+      "recentMatches": [
+        {
+          "matchId": 1394,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "49.25",
+          "eloChange": -2,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1174,
+          "result": "Loss",
+          "opponentId": 272860472141676546,
+          "opponentName": "Tacke",
+          "score": "0:4",
+          "average": "41.96",
+          "eloChange": -10,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1172,
+          "result": "Loss",
+          "opponentId": 272860472141676546,
+          "opponentName": "Tacke",
+          "score": "1:4",
+          "average": "48.92",
+          "eloChange": -11,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1062,
+          "result": "Loss",
+          "opponentId": 1488997913408438503,
+          "opponentName": "Robert",
+          "score": "4:0",
+          "average": "52.1",
+          "eloChange": -13,
+          "queue": "dart"
+        },
+        {
+          "matchId": 1058,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:2",
+          "average": "55.2",
+          "eloChange": -4,
+          "queue": "dart"
         }
       ]
     },
