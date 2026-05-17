@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1380,
+      "worldRating": 1394,
       "worldRank": 1,
-      "worldWins": 115,
+      "worldWins": 116,
       "worldLosses": 23,
-      "monthlyRating": 350,
+      "monthlyRating": 369,
       "monthlyRank": 3,
-      "monthlyWins": 30,
+      "monthlyWins": 31,
       "monthlyLosses": 4,
-      "games": 138,
-      "winrate": 83.3,
+      "games": 139,
+      "winrate": 83.5,
       "overallAverage": 69.31,
       "recentMatches": [
+        {
+          "matchId": 1393,
+          "result": "Win",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "4:2",
+          "average": "69.28",
+          "eloChange": 14,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1388,
           "result": "Win",
@@ -54,16 +64,6 @@
           "score": "4:0",
           "average": "83.5",
           "eloChange": 8,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1352,
-          "result": "Win",
-          "opponentId": 512983240148123648,
-          "opponentName": "Manuel G",
-          "score": "3:4",
-          "average": "62.71",
-          "eloChange": 3,
           "queue": "Scolia"
         }
       ]
@@ -140,18 +140,28 @@
       "userId": 1142038943961985105,
       "name": "Rick Dahlke",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1335,
+      "worldRating": 1321,
       "worldRank": 3,
       "worldWins": 89,
-      "worldLosses": 28,
+      "worldLosses": 29,
       "monthlyRating": 375,
       "monthlyRank": 2,
       "monthlyWins": 34,
-      "monthlyLosses": 8,
-      "games": 117,
-      "winrate": 76.1,
-      "overallAverage": 67.34,
+      "monthlyLosses": 9,
+      "games": 118,
+      "winrate": 75.4,
+      "overallAverage": 67.36,
       "recentMatches": [
+        {
+          "matchId": 1393,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:2",
+          "average": "69.71",
+          "eloChange": -14,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1392,
           "result": "Loss",
@@ -190,16 +200,6 @@
           "score": "0:4",
           "average": "66.8",
           "eloChange": 3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1376,
-          "result": "Win",
-          "opponentId": 1089304921439998003,
-          "opponentName": "Brickylayer",
-          "score": "4:0",
-          "average": "69.91",
-          "eloChange": 7,
           "queue": "Scolia"
         }
       ]
