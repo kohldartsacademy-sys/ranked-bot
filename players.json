@@ -72,18 +72,28 @@
       "userId": 1330499669490667653,
       "name": "Dennis Wehner",
       "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1348,
+      "worldRating": 1351,
       "worldRank": 2,
-      "worldWins": 43,
+      "worldWins": 44,
       "worldLosses": 4,
-      "monthlyRating": 315,
-      "monthlyRank": 5,
-      "monthlyWins": 26,
+      "monthlyRating": 323,
+      "monthlyRank": 4,
+      "monthlyWins": 27,
       "monthlyLosses": 1,
-      "games": 47,
-      "winrate": 91.5,
-      "overallAverage": 68.65,
+      "games": 48,
+      "winrate": 91.7,
+      "overallAverage": 68.57,
       "recentMatches": [
+        {
+          "matchId": 1404,
+          "result": "Win",
+          "opponentId": 505446955242094596,
+          "opponentName": "Jerome Benzler",
+          "score": "0:4",
+          "average": "64.65",
+          "eloChange": 3,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1399,
           "result": "Win",
@@ -122,16 +132,6 @@
           "score": "1:4",
           "average": "63.41",
           "eloChange": 1,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1319,
-          "result": "Win",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "0:4",
-          "average": "69.91",
-          "eloChange": 10,
           "queue": "DartCounter"
         }
       ]
@@ -417,7 +417,7 @@
       "worldWins": 44,
       "worldLosses": 21,
       "monthlyRating": 317,
-      "monthlyRank": 4,
+      "monthlyRank": 5,
       "monthlyWins": 23,
       "monthlyLosses": 13,
       "games": 65,
@@ -4939,80 +4939,12 @@
         }
       ]
     },
-    "505446955242094596": {
-      "userId": 505446955242094596,
-      "name": "Jerome Benzler",
-      "avatar": "https://cdn.discordapp.com/avatars/505446955242094596/2c72bf5d0877aad24fa4db0ab69878d1.png?size=1024",
-      "worldRating": 936,
-      "worldRank": 96,
-      "worldWins": 9,
-      "worldLosses": 18,
-      "monthlyRating": 72,
-      "monthlyRank": 22,
-      "monthlyWins": 4,
-      "monthlyLosses": 11,
-      "games": 27,
-      "winrate": 33.3,
-      "overallAverage": 55.01,
-      "recentMatches": [
-        {
-          "matchId": 1383,
-          "result": "Loss",
-          "opponentId": 890838749280346132,
-          "opponentName": "Klax",
-          "score": "4:1",
-          "average": "59.22",
-          "eloChange": -9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1382,
-          "result": "Loss",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "2:4",
-          "average": "52.35",
-          "eloChange": -24,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1314,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "2:4",
-          "average": "63.4",
-          "eloChange": -4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1310,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "0:4",
-          "average": "62.55",
-          "eloChange": -4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1306,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "2:4",
-          "average": "55.3",
-          "eloChange": 5,
-          "queue": "DartCounter"
-        }
-      ]
-    },
     "299164054591635456": {
       "userId": 299164054591635456,
       "name": "Nico Dresler",
       "avatar": "https://cdn.discordapp.com/avatars/299164054591635456/55723527a22d387586bf79435894e098.png?size=1024",
       "worldRating": 934,
-      "worldRank": 97,
+      "worldRank": 96,
       "worldWins": 13,
       "worldLosses": 22,
       "monthlyRating": 43,
@@ -5072,6 +5004,74 @@
           "average": "4723.0",
           "eloChange": -17,
           "queue": "dart"
+        }
+      ]
+    },
+    "505446955242094596": {
+      "userId": 505446955242094596,
+      "name": "Jerome Benzler",
+      "avatar": "https://cdn.discordapp.com/avatars/505446955242094596/2c72bf5d0877aad24fa4db0ab69878d1.png?size=1024",
+      "worldRating": 933,
+      "worldRank": 97,
+      "worldWins": 9,
+      "worldLosses": 19,
+      "monthlyRating": 72,
+      "monthlyRank": 22,
+      "monthlyWins": 4,
+      "monthlyLosses": 12,
+      "games": 28,
+      "winrate": 32.1,
+      "overallAverage": 55.1,
+      "recentMatches": [
+        {
+          "matchId": 1404,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "57.42",
+          "eloChange": -3,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1383,
+          "result": "Loss",
+          "opponentId": 890838749280346132,
+          "opponentName": "Klax",
+          "score": "4:1",
+          "average": "59.22",
+          "eloChange": -9,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1382,
+          "result": "Loss",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "2:4",
+          "average": "52.35",
+          "eloChange": -24,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1314,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "2:4",
+          "average": "63.4",
+          "eloChange": -4,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1310,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "62.55",
+          "eloChange": -4,
+          "queue": "DartCounter"
         }
       ]
     },
