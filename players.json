@@ -621,7 +621,7 @@
       "worldWins": 33,
       "worldLosses": 22,
       "monthlyRating": 81,
-      "monthlyRank": 21,
+      "monthlyRank": 22,
       "monthlyWins": 5,
       "monthlyLosses": 3,
       "games": 55,
@@ -1233,7 +1233,7 @@
       "worldWins": 12,
       "worldLosses": 3,
       "monthlyRating": 83,
-      "monthlyRank": 19,
+      "monthlyRank": 20,
       "monthlyWins": 6,
       "monthlyLosses": 2,
       "games": 15,
@@ -1437,7 +1437,7 @@
       "worldWins": 9,
       "worldLosses": 4,
       "monthlyRating": 77,
-      "monthlyRank": 23,
+      "monthlyRank": 24,
       "monthlyWins": 4,
       "monthlyLosses": 2,
       "games": 13,
@@ -2451,7 +2451,7 @@
       "worldWins": 14,
       "worldLosses": 14,
       "monthlyRating": 80,
-      "monthlyRank": 22,
+      "monthlyRank": 23,
       "monthlyWins": 5,
       "monthlyLosses": 4,
       "games": 28,
@@ -5755,90 +5755,32 @@
         }
       ]
     },
-    "530021085522165770": {
-      "userId": 530021085522165770,
-      "name": "Leon Kohl",
-      "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
-      "worldRating": 886,
-      "worldRank": 108,
-      "worldWins": 60,
-      "worldLosses": 61,
-      "monthlyRating": 208,
-      "monthlyRank": 9,
-      "monthlyWins": 10,
-      "monthlyLosses": 22,
-      "games": 121,
-      "winrate": 49.6,
-      "overallAverage": 101.79,
-      "recentMatches": [
-        {
-          "matchId": 1417,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:1",
-          "average": "57.18",
-          "eloChange": 13,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1416,
-          "result": "Loss",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "1:4",
-          "average": "52.08",
-          "eloChange": -20,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1413,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:0",
-          "average": "60.62",
-          "eloChange": -6,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1341,
-          "result": "Loss",
-          "opponentId": 1133493289006420090,
-          "opponentName": "El-Daddyy",
-          "score": "2:4",
-          "average": "61.57",
-          "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1340,
-          "result": "Win",
-          "opponentId": 210441846067953667,
-          "opponentName": "ShockZ | Julian",
-          "score": "2:4",
-          "average": "58.4",
-          "eloChange": 21,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "773315089595891732": {
       "userId": 773315089595891732,
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 880,
-      "worldRank": 109,
-      "worldWins": 35,
+      "worldRating": 896,
+      "worldRank": 108,
+      "worldWins": 36,
       "worldLosses": 51,
-      "monthlyRating": 70,
-      "monthlyRank": 24,
-      "monthlyWins": 3,
+      "monthlyRating": 91,
+      "monthlyRank": 19,
+      "monthlyWins": 4,
       "monthlyLosses": 5,
-      "games": 86,
-      "winrate": 40.7,
+      "games": 87,
+      "winrate": 41.4,
       "overallAverage": 50.8,
       "recentMatches": [
+        {
+          "matchId": 1418,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "4:1",
+          "average": "50.12",
+          "eloChange": 16,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1402,
           "result": "Loss",
@@ -5878,16 +5820,6 @@
           "average": "54.64",
           "eloChange": -10,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 1218,
-          "result": "Win",
-          "opponentId": 272113825854128131,
-          "opponentName": "UnknownNick",
-          "score": "0:4",
-          "average": "51.83",
-          "eloChange": 21,
-          "queue": "Scolia"
         }
       ]
     },
@@ -5896,7 +5828,7 @@
       "name": "RocketDarts",
       "avatar": "https://cdn.discordapp.com/avatars/761737659579105301/f4a94165e17a0f43e60d39a5c94cc191.png?size=1024",
       "worldRating": 872,
-      "worldRank": 110,
+      "worldRank": 109,
       "worldWins": 14,
       "worldLosses": 36,
       "monthlyRating": 22,
@@ -5956,6 +5888,74 @@
           "average": "51.72",
           "eloChange": -12,
           "queue": "scolia"
+        }
+      ]
+    },
+    "530021085522165770": {
+      "userId": 530021085522165770,
+      "name": "Leon Kohl",
+      "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
+      "worldRating": 870,
+      "worldRank": 110,
+      "worldWins": 60,
+      "worldLosses": 62,
+      "monthlyRating": 208,
+      "monthlyRank": 9,
+      "monthlyWins": 10,
+      "monthlyLosses": 23,
+      "games": 122,
+      "winrate": 49.2,
+      "overallAverage": 101.39,
+      "recentMatches": [
+        {
+          "matchId": 1418,
+          "result": "Loss",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:1",
+          "average": "52.67",
+          "eloChange": -16,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1417,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "4:1",
+          "average": "57.18",
+          "eloChange": 13,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1416,
+          "result": "Loss",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "1:4",
+          "average": "52.08",
+          "eloChange": -20,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1413,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:0",
+          "average": "60.62",
+          "eloChange": -6,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1341,
+          "result": "Loss",
+          "opponentId": 1133493289006420090,
+          "opponentName": "El-Daddyy",
+          "score": "2:4",
+          "average": "61.57",
+          "eloChange": -10,
+          "queue": "Scolia"
         }
       ]
     },
@@ -6376,7 +6376,7 @@
       "worldWins": 12,
       "worldLosses": 52,
       "monthlyRating": 82,
-      "monthlyRank": 20,
+      "monthlyRank": 21,
       "monthlyWins": 3,
       "monthlyLosses": 14,
       "games": 64,
