@@ -6313,18 +6313,28 @@
       "userId": 530021085522165770,
       "name": "Leon Kohl",
       "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
-      "worldRating": 834,
+      "worldRating": 849,
       "worldRank": 116,
-      "worldWins": 60,
+      "worldWins": 61,
       "worldLosses": 65,
-      "monthlyRating": 208,
+      "monthlyRating": 228,
       "monthlyRank": 9,
-      "monthlyWins": 10,
+      "monthlyWins": 11,
       "monthlyLosses": 26,
-      "games": 125,
-      "winrate": 48.0,
-      "overallAverage": 100.25,
+      "games": 126,
+      "winrate": 48.4,
+      "overallAverage": 99.86,
       "recentMatches": [
+        {
+          "matchId": 1431,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "1:4",
+          "average": "51.88",
+          "eloChange": 15,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1429,
           "result": "Loss",
@@ -6364,16 +6374,6 @@
           "average": "52.67",
           "eloChange": -16,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 1417,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:1",
-          "average": "57.18",
-          "eloChange": 13,
-          "queue": "Scolia"
         }
       ]
     },
@@ -6381,18 +6381,28 @@
       "userId": 825420293039194123,
       "name": "Möffi",
       "avatar": "https://cdn.discordapp.com/avatars/825420293039194123/d84b958facf424daf8bc8eb98df94cbf.png?size=1024",
-      "worldRating": 818,
+      "worldRating": 803,
       "worldRank": 117,
       "worldWins": 18,
-      "worldLosses": 68,
+      "worldLosses": 69,
       "monthlyRating": 177,
       "monthlyRank": 11,
       "monthlyWins": 7,
-      "monthlyLosses": 20,
-      "games": 86,
-      "winrate": 20.9,
-      "overallAverage": 52.26,
+      "monthlyLosses": 21,
+      "games": 87,
+      "winrate": 20.7,
+      "overallAverage": 52.28,
       "recentMatches": [
+        {
+          "matchId": 1431,
+          "result": "Loss",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "1:4",
+          "average": "54.54",
+          "eloChange": -15,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1429,
           "result": "Win",
@@ -6431,16 +6441,6 @@
           "score": "2:4",
           "average": "46.07",
           "eloChange": -17,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1391,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "0:4",
-          "average": "46.63",
-          "eloChange": -1,
           "queue": "Scolia"
         }
       ]
