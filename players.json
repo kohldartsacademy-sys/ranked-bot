@@ -1024,18 +1024,28 @@
       "userId": 1302224986051838068,
       "name": "Bazzi",
       "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1100,
+      "worldRating": 1107,
       "worldRank": 16,
-      "worldWins": 70,
+      "worldWins": 71,
       "worldLosses": 36,
-      "monthlyRating": 423,
+      "monthlyRating": 435,
       "monthlyRank": 1,
-      "monthlyWins": 30,
+      "monthlyWins": 31,
       "monthlyLosses": 17,
-      "games": 106,
-      "winrate": 66.0,
-      "overallAverage": 61.69,
+      "games": 107,
+      "winrate": 66.4,
+      "overallAverage": 61.71,
       "recentMatches": [
+        {
+          "matchId": 1420,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "0:4",
+          "average": "63.28",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1414,
           "result": "Win",
@@ -1074,16 +1084,6 @@
           "score": "4:1",
           "average": "63.99",
           "eloChange": 23,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1363,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:3",
-          "average": "69.7",
-          "eloChange": -10,
           "queue": "Scolia"
         }
       ]
@@ -5891,80 +5891,12 @@
         }
       ]
     },
-    "530021085522165770": {
-      "userId": 530021085522165770,
-      "name": "Leon Kohl",
-      "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
-      "worldRating": 870,
-      "worldRank": 110,
-      "worldWins": 60,
-      "worldLosses": 62,
-      "monthlyRating": 208,
-      "monthlyRank": 9,
-      "monthlyWins": 10,
-      "monthlyLosses": 23,
-      "games": 122,
-      "winrate": 49.2,
-      "overallAverage": 101.39,
-      "recentMatches": [
-        {
-          "matchId": 1418,
-          "result": "Loss",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:1",
-          "average": "52.67",
-          "eloChange": -16,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1417,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:1",
-          "average": "57.18",
-          "eloChange": 13,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1416,
-          "result": "Loss",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "1:4",
-          "average": "52.08",
-          "eloChange": -20,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1413,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:0",
-          "average": "60.62",
-          "eloChange": -6,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1341,
-          "result": "Loss",
-          "opponentId": 1133493289006420090,
-          "opponentName": "El-Daddyy",
-          "score": "2:4",
-          "average": "61.57",
-          "eloChange": -10,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1458906019118841960": {
       "userId": 1458906019118841960,
       "name": "Rene B",
       "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
       "worldRating": 867,
-      "worldRank": 111,
+      "worldRank": 110,
       "worldWins": 17,
       "worldLosses": 50,
       "monthlyRating": 116,
@@ -6024,6 +5956,74 @@
           "average": "56.06",
           "eloChange": -10,
           "queue": "DartCounter"
+        }
+      ]
+    },
+    "530021085522165770": {
+      "userId": 530021085522165770,
+      "name": "Leon Kohl",
+      "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
+      "worldRating": 863,
+      "worldRank": 111,
+      "worldWins": 60,
+      "worldLosses": 63,
+      "monthlyRating": 208,
+      "monthlyRank": 9,
+      "monthlyWins": 10,
+      "monthlyLosses": 24,
+      "games": 123,
+      "winrate": 48.8,
+      "overallAverage": 101.04,
+      "recentMatches": [
+        {
+          "matchId": 1420,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "0:4",
+          "average": "58.9",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1418,
+          "result": "Loss",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:1",
+          "average": "52.67",
+          "eloChange": -16,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1417,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "4:1",
+          "average": "57.18",
+          "eloChange": 13,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1416,
+          "result": "Loss",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "1:4",
+          "average": "52.08",
+          "eloChange": -20,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1413,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:0",
+          "average": "60.62",
+          "eloChange": -6,
+          "queue": "Scolia"
         }
       ]
     },
