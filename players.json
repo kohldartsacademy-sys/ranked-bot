@@ -72,18 +72,28 @@
       "userId": 1330499669490667653,
       "name": "Dennis Wehner",
       "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1335,
+      "worldRating": 1339,
       "worldRank": 2,
-      "worldWins": 47,
+      "worldWins": 48,
       "worldLosses": 5,
-      "monthlyRating": 351,
+      "monthlyRating": 360,
       "monthlyRank": 5,
-      "monthlyWins": 30,
+      "monthlyWins": 31,
       "monthlyLosses": 2,
-      "games": 52,
-      "winrate": 90.4,
-      "overallAverage": 68.15,
+      "games": 53,
+      "winrate": 90.6,
+      "overallAverage": 68.19,
       "recentMatches": [
+        {
+          "matchId": 1451,
+          "result": "Win",
+          "opponentId": 1364666221114556537,
+          "opponentName": "Michael \"Hähnchen\" Hahn",
+          "score": "4:2",
+          "average": "70.31",
+          "eloChange": 4,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1423,
           "result": "Win",
@@ -121,16 +131,6 @@
           "opponentName": "Jerome Benzler",
           "score": "0:4",
           "average": "63.96",
-          "eloChange": 3,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1404,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "0:4",
-          "average": "64.65",
           "eloChange": 3,
           "queue": "DartCounter"
         }
@@ -2426,80 +2426,12 @@
         }
       ]
     },
-    "1364666221114556537": {
-      "userId": 1364666221114556537,
-      "name": "Michael \"Hähnchen\" Hahn",
-      "avatar": "https://cdn.discordapp.com/avatars/1364666221114556537/e129073baf460e100929b2eadff4163a.png?size=1024",
-      "worldRating": 1017,
-      "worldRank": 38,
-      "worldWins": 11,
-      "worldLosses": 10,
-      "monthlyRating": 104,
-      "monthlyRank": 21,
-      "monthlyWins": 6,
-      "monthlyLosses": 3,
-      "games": 21,
-      "winrate": 52.4,
-      "overallAverage": 50.68,
-      "recentMatches": [
-        {
-          "matchId": 1440,
-          "result": "Win",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "2:4",
-          "average": "52.27",
-          "eloChange": 10,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1438,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "1:4",
-          "average": "56.44",
-          "eloChange": 15,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1331,
-          "result": "Loss",
-          "opponentId": 272860472141676546,
-          "opponentName": "Tacke",
-          "score": "4:3",
-          "average": "47.77",
-          "eloChange": -14,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1326,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:2",
-          "average": "47.24",
-          "eloChange": 4,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1238,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "0:4",
-          "average": "49.12",
-          "eloChange": -6,
-          "queue": "DartCounter"
-        }
-      ]
-    },
     "1331913233518432278": {
       "userId": 1331913233518432278,
       "name": "Beischi",
       "avatar": "https://cdn.discordapp.com/avatars/1331913233518432278/77965c8a7646f401c737889aa55483c1.png?size=1024",
       "worldRating": 1016,
-      "worldRank": 39,
+      "worldRank": 38,
       "worldWins": 4,
       "worldLosses": 3,
       "monthlyRating": 0,
@@ -2567,7 +2499,7 @@
       "name": "MartinoHH",
       "avatar": "https://cdn.discordapp.com/avatars/964021055171727370/ade4ed87441e52bd6a48d265b29a84e6.png?size=1024",
       "worldRating": 1016,
-      "worldRank": 40,
+      "worldRank": 39,
       "worldWins": 1,
       "worldLosses": 0,
       "monthlyRating": 0,
@@ -2595,7 +2527,7 @@
       "name": "User 1320524093094887438",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 1016,
-      "worldRank": 41,
+      "worldRank": 40,
       "worldWins": 1,
       "worldLosses": 0,
       "monthlyRating": 0,
@@ -2623,7 +2555,7 @@
       "name": "Ranked",
       "avatar": "https://cdn.discordapp.com/embed/avatars/1.png",
       "worldRating": 1015,
-      "worldRank": 42,
+      "worldRank": 41,
       "worldWins": 1,
       "worldLosses": 0,
       "monthlyRating": 0,
@@ -2643,6 +2575,74 @@
           "average": "65.5",
           "eloChange": 15,
           "queue": "scolia"
+        }
+      ]
+    },
+    "1364666221114556537": {
+      "userId": 1364666221114556537,
+      "name": "Michael \"Hähnchen\" Hahn",
+      "avatar": "https://cdn.discordapp.com/avatars/1364666221114556537/e129073baf460e100929b2eadff4163a.png?size=1024",
+      "worldRating": 1013,
+      "worldRank": 42,
+      "worldWins": 11,
+      "worldLosses": 11,
+      "monthlyRating": 104,
+      "monthlyRank": 21,
+      "monthlyWins": 6,
+      "monthlyLosses": 4,
+      "games": 22,
+      "winrate": 50.0,
+      "overallAverage": 51.25,
+      "recentMatches": [
+        {
+          "matchId": 1451,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "4:2",
+          "average": "63.2",
+          "eloChange": -4,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1440,
+          "result": "Win",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "2:4",
+          "average": "52.27",
+          "eloChange": 10,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1438,
+          "result": "Win",
+          "opponentId": 505446955242094596,
+          "opponentName": "Jerome Benzler",
+          "score": "1:4",
+          "average": "56.44",
+          "eloChange": 15,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1331,
+          "result": "Loss",
+          "opponentId": 272860472141676546,
+          "opponentName": "Tacke",
+          "score": "4:3",
+          "average": "47.77",
+          "eloChange": -14,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1326,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:2",
+          "average": "47.24",
+          "eloChange": 4,
+          "queue": "DartCounter"
         }
       ]
     },
