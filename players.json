@@ -72,18 +72,28 @@
       "userId": 1330499669490667653,
       "name": "Dennis Wehner",
       "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1341,
+      "worldRating": 1343,
       "worldRank": 2,
-      "worldWins": 49,
+      "worldWins": 50,
       "worldLosses": 5,
-      "monthlyRating": 367,
+      "monthlyRating": 374,
       "monthlyRank": 5,
-      "monthlyWins": 32,
+      "monthlyWins": 33,
       "monthlyLosses": 2,
-      "games": 54,
-      "winrate": 90.7,
-      "overallAverage": 68.2,
+      "games": 55,
+      "winrate": 90.9,
+      "overallAverage": 68.42,
       "recentMatches": [
+        {
+          "matchId": 1454,
+          "result": "Win",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "4:0",
+          "average": "80.16",
+          "eloChange": 2,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1453,
           "result": "Win",
@@ -122,16 +132,6 @@
           "score": "0:4",
           "average": "54.16",
           "eloChange": 3,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1408,
-          "result": "Loss",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "4:3",
-          "average": "66.06",
-          "eloChange": -29,
           "queue": "DartCounter"
         }
       ]
@@ -6337,80 +6337,12 @@
         }
       ]
     },
-    "1458906019118841960": {
-      "userId": 1458906019118841960,
-      "name": "Rene B",
-      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
-      "worldRating": 823,
-      "worldRank": 117,
-      "worldWins": 17,
-      "worldLosses": 54,
-      "monthlyRating": 116,
-      "monthlyRank": 19,
-      "monthlyWins": 5,
-      "monthlyLosses": 19,
-      "games": 71,
-      "winrate": 23.9,
-      "overallAverage": 53.99,
-      "recentMatches": [
-        {
-          "matchId": 1453,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "0:4",
-          "average": "64.61",
-          "eloChange": -2,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1448,
-          "result": "Loss",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:0",
-          "average": "50.21",
-          "eloChange": -23,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1440,
-          "result": "Loss",
-          "opponentId": 1364666221114556537,
-          "opponentName": "Michael \"Hähnchen\" Hahn",
-          "score": "2:4",
-          "average": "52.63",
-          "eloChange": -10,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1437,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:2",
-          "average": "52.79",
-          "eloChange": -9,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1412,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "57.45",
-          "eloChange": -7,
-          "queue": "DartCounter"
-        }
-      ]
-    },
     "1359231571487494265": {
       "userId": 1359231571487494265,
       "name": "Bernard (Giftzwerg)",
       "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
       "worldRating": 822,
-      "worldRank": 118,
+      "worldRank": 117,
       "worldWins": 14,
       "worldLosses": 55,
       "monthlyRating": 134,
@@ -6470,6 +6402,74 @@
           "average": "47.9",
           "eloChange": -12,
           "queue": "Scolia"
+        }
+      ]
+    },
+    "1458906019118841960": {
+      "userId": 1458906019118841960,
+      "name": "Rene B",
+      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
+      "worldRating": 821,
+      "worldRank": 118,
+      "worldWins": 17,
+      "worldLosses": 55,
+      "monthlyRating": 116,
+      "monthlyRank": 19,
+      "monthlyWins": 5,
+      "monthlyLosses": 20,
+      "games": 72,
+      "winrate": 23.6,
+      "overallAverage": 54.24,
+      "recentMatches": [
+        {
+          "matchId": 1454,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "4:0",
+          "average": "71.83",
+          "eloChange": -2,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1453,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "64.61",
+          "eloChange": -2,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1448,
+          "result": "Loss",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:0",
+          "average": "50.21",
+          "eloChange": -23,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1440,
+          "result": "Loss",
+          "opponentId": 1364666221114556537,
+          "opponentName": "Michael \"Hähnchen\" Hahn",
+          "score": "2:4",
+          "average": "52.63",
+          "eloChange": -10,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1437,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:2",
+          "average": "52.79",
+          "eloChange": -9,
+          "queue": "DartCounter"
         }
       ]
     },
