@@ -1097,7 +1097,7 @@
       "worldWins": 12,
       "worldLosses": 3,
       "monthlyRating": 83,
-      "monthlyRank": 22,
+      "monthlyRank": 23,
       "monthlyWins": 6,
       "monthlyLosses": 2,
       "games": 15,
@@ -2299,7 +2299,7 @@
       "worldWins": 15,
       "worldLosses": 14,
       "monthlyRating": 102,
-      "monthlyRank": 20,
+      "monthlyRank": 21,
       "monthlyWins": 6,
       "monthlyLosses": 4,
       "games": 29,
@@ -2435,7 +2435,7 @@
       "worldWins": 11,
       "worldLosses": 10,
       "monthlyRating": 104,
-      "monthlyRank": 19,
+      "monthlyRank": 20,
       "monthlyWins": 6,
       "monthlyLosses": 3,
       "games": 21,
@@ -5865,18 +5865,28 @@
       "userId": 773315089595891732,
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 896,
+      "worldRating": 875,
       "worldRank": 110,
       "worldWins": 37,
-      "worldLosses": 52,
+      "worldLosses": 53,
       "monthlyRating": 108,
       "monthlyRank": 18,
       "monthlyWins": 5,
-      "monthlyLosses": 6,
-      "games": 89,
-      "winrate": 41.6,
-      "overallAverage": 50.89,
+      "monthlyLosses": 7,
+      "games": 90,
+      "winrate": 41.1,
+      "overallAverage": 50.81,
       "recentMatches": [
+        {
+          "matchId": 1443,
+          "result": "Loss",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "1:4",
+          "average": "43.37",
+          "eloChange": -21,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1427,
           "result": "Loss",
@@ -5915,16 +5925,6 @@
           "score": "4:1",
           "average": "52.79",
           "eloChange": -6,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1375,
-          "result": "Loss",
-          "opponentId": 1089304921439998003,
-          "opponentName": "Brickylayer",
-          "score": "1:4",
-          "average": "55.09",
-          "eloChange": -7,
           "queue": "Scolia"
         }
       ]
@@ -6405,12 +6405,80 @@
         }
       ]
     },
+    "1359231571487494265": {
+      "userId": 1359231571487494265,
+      "name": "Bernard (Giftzwerg)",
+      "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
+      "worldRating": 813,
+      "worldRank": 118,
+      "worldWins": 13,
+      "worldLosses": 54,
+      "monthlyRating": 108,
+      "monthlyRank": 19,
+      "monthlyWins": 4,
+      "monthlyLosses": 16,
+      "games": 67,
+      "winrate": 19.4,
+      "overallAverage": 222.81,
+      "recentMatches": [
+        {
+          "matchId": 1443,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "1:4",
+          "average": "49.79",
+          "eloChange": 21,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1425,
+          "result": "Loss",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "4:0",
+          "average": "55.9",
+          "eloChange": -8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1419,
+          "result": "Loss",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "3:4",
+          "average": "47.9",
+          "eloChange": -12,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1415,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "2:4",
+          "average": "45.96",
+          "eloChange": 17,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1409,
+          "result": "Loss",
+          "opponentId": 1418878810006360084,
+          "opponentName": "Timmi1616",
+          "score": "4:2",
+          "average": "45.88",
+          "eloChange": -10,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "825420293039194123": {
       "userId": 825420293039194123,
       "name": "Möffi",
       "avatar": "https://cdn.discordapp.com/avatars/825420293039194123/d84b958facf424daf8bc8eb98df94cbf.png?size=1024",
       "worldRating": 803,
-      "worldRank": 118,
+      "worldRank": 119,
       "worldWins": 18,
       "worldLosses": 69,
       "monthlyRating": 177,
@@ -6469,74 +6537,6 @@
           "score": "2:4",
           "average": "46.07",
           "eloChange": -17,
-          "queue": "Scolia"
-        }
-      ]
-    },
-    "1359231571487494265": {
-      "userId": 1359231571487494265,
-      "name": "Bernard (Giftzwerg)",
-      "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
-      "worldRating": 792,
-      "worldRank": 119,
-      "worldWins": 12,
-      "worldLosses": 54,
-      "monthlyRating": 82,
-      "monthlyRank": 23,
-      "monthlyWins": 3,
-      "monthlyLosses": 16,
-      "games": 66,
-      "winrate": 18.2,
-      "overallAverage": 225.43,
-      "recentMatches": [
-        {
-          "matchId": 1425,
-          "result": "Loss",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "4:0",
-          "average": "55.9",
-          "eloChange": -8,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1419,
-          "result": "Loss",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "3:4",
-          "average": "47.9",
-          "eloChange": -12,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1415,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "2:4",
-          "average": "45.96",
-          "eloChange": 17,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1409,
-          "result": "Loss",
-          "opponentId": 1418878810006360084,
-          "opponentName": "Timmi1616",
-          "score": "4:2",
-          "average": "45.88",
-          "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1387,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:0",
-          "average": "56.91",
-          "eloChange": -1,
           "queue": "Scolia"
         }
       ]
@@ -6618,7 +6618,7 @@
       "worldWins": 12,
       "worldLosses": 65,
       "monthlyRating": 94,
-      "monthlyRank": 21,
+      "monthlyRank": 22,
       "monthlyWins": 3,
       "monthlyLosses": 17,
       "games": 77,
