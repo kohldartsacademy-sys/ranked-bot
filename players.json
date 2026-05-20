@@ -72,18 +72,28 @@
       "userId": 1330499669490667653,
       "name": "Dennis Wehner",
       "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1339,
+      "worldRating": 1341,
       "worldRank": 2,
-      "worldWins": 48,
+      "worldWins": 49,
       "worldLosses": 5,
-      "monthlyRating": 360,
+      "monthlyRating": 367,
       "monthlyRank": 5,
-      "monthlyWins": 31,
+      "monthlyWins": 32,
       "monthlyLosses": 2,
-      "games": 53,
-      "winrate": 90.6,
-      "overallAverage": 68.19,
+      "games": 54,
+      "winrate": 90.7,
+      "overallAverage": 68.2,
       "recentMatches": [
+        {
+          "matchId": 1453,
+          "result": "Win",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "0:4",
+          "average": "69.1",
+          "eloChange": 2,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1451,
           "result": "Win",
@@ -122,16 +132,6 @@
           "score": "4:3",
           "average": "66.06",
           "eloChange": -29,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1406,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "0:4",
-          "average": "63.96",
-          "eloChange": 3,
           "queue": "DartCounter"
         }
       ]
@@ -6341,18 +6341,28 @@
       "userId": 1458906019118841960,
       "name": "Rene B",
       "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
-      "worldRating": 825,
+      "worldRating": 823,
       "worldRank": 117,
       "worldWins": 17,
-      "worldLosses": 53,
+      "worldLosses": 54,
       "monthlyRating": 116,
       "monthlyRank": 19,
       "monthlyWins": 5,
-      "monthlyLosses": 18,
-      "games": 70,
-      "winrate": 24.3,
-      "overallAverage": 53.84,
+      "monthlyLosses": 19,
+      "games": 71,
+      "winrate": 23.9,
+      "overallAverage": 53.99,
       "recentMatches": [
+        {
+          "matchId": 1453,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "64.61",
+          "eloChange": -2,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1448,
           "result": "Loss",
@@ -6391,16 +6401,6 @@
           "score": "1:4",
           "average": "57.45",
           "eloChange": -7,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1349,
-          "result": "Loss",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "4:2",
-          "average": "49.74",
-          "eloChange": -9,
           "queue": "DartCounter"
         }
       ]
