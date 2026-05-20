@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1394,
+      "worldRating": 1396,
       "worldRank": 1,
-      "worldWins": 116,
+      "worldWins": 117,
       "worldLosses": 23,
-      "monthlyRating": 369,
+      "monthlyRating": 376,
       "monthlyRank": 4,
-      "monthlyWins": 31,
+      "monthlyWins": 32,
       "monthlyLosses": 4,
-      "games": 139,
-      "winrate": 83.5,
-      "overallAverage": 69.31,
+      "games": 140,
+      "winrate": 83.6,
+      "overallAverage": 69.26,
       "recentMatches": [
+        {
+          "matchId": 1445,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:1",
+          "average": "62.67",
+          "eloChange": 2,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1393,
           "result": "Win",
@@ -54,16 +64,6 @@
           "score": "4:2",
           "average": "74.37",
           "eloChange": 7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1384,
-          "result": "Win",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:0",
-          "average": "83.5",
-          "eloChange": 8,
           "queue": "Scolia"
         }
       ]
@@ -5865,18 +5865,28 @@
       "userId": 773315089595891732,
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 875,
+      "worldRating": 873,
       "worldRank": 110,
       "worldWins": 37,
-      "worldLosses": 53,
+      "worldLosses": 54,
       "monthlyRating": 108,
       "monthlyRank": 18,
       "monthlyWins": 5,
-      "monthlyLosses": 7,
-      "games": 90,
-      "winrate": 41.1,
-      "overallAverage": 50.81,
+      "monthlyLosses": 8,
+      "games": 91,
+      "winrate": 40.7,
+      "overallAverage": 50.83,
       "recentMatches": [
+        {
+          "matchId": 1445,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:1",
+          "average": "52.34",
+          "eloChange": -2,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1443,
           "result": "Loss",
@@ -5915,16 +5925,6 @@
           "score": "4:1",
           "average": "50.12",
           "eloChange": 16,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1402,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:1",
-          "average": "52.79",
-          "eloChange": -6,
           "queue": "Scolia"
         }
       ]
