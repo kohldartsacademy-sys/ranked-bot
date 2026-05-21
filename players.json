@@ -9,7 +9,7 @@
       "worldWins": 118,
       "worldLosses": 23,
       "monthlyRating": 385,
-      "monthlyRank": 4,
+      "monthlyRank": 5,
       "monthlyWins": 33,
       "monthlyLosses": 4,
       "games": 141,
@@ -72,18 +72,28 @@
       "userId": 1330499669490667653,
       "name": "Dennis Wehner",
       "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1343,
+      "worldRating": 1352,
       "worldRank": 2,
-      "worldWins": 50,
+      "worldWins": 51,
       "worldLosses": 5,
-      "monthlyRating": 374,
-      "monthlyRank": 5,
-      "monthlyWins": 33,
+      "monthlyRating": 388,
+      "monthlyRank": 4,
+      "monthlyWins": 34,
       "monthlyLosses": 2,
-      "games": 55,
-      "winrate": 90.9,
-      "overallAverage": 68.42,
+      "games": 56,
+      "winrate": 91.1,
+      "overallAverage": 68.44,
       "recentMatches": [
+        {
+          "matchId": 1463,
+          "result": "Win",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "0:4",
+          "average": "69.31",
+          "eloChange": 9,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1454,
           "result": "Win",
@@ -122,16 +132,6 @@
           "score": "4:2",
           "average": "68.31",
           "eloChange": 7,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1421,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "0:4",
-          "average": "54.16",
-          "eloChange": 3,
           "queue": "DartCounter"
         }
       ]
@@ -344,18 +344,28 @@
       "userId": 183185835477172226,
       "name": "Stefan Kulik",
       "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
-      "worldRating": 1191,
+      "worldRating": 1182,
       "worldRank": 6,
       "worldWins": 45,
-      "worldLosses": 22,
+      "worldLosses": 23,
       "monthlyRating": 173,
       "monthlyRank": 12,
       "monthlyWins": 12,
-      "monthlyLosses": 7,
-      "games": 67,
-      "winrate": 67.2,
-      "overallAverage": 59.17,
+      "monthlyLosses": 8,
+      "games": 68,
+      "winrate": 66.2,
+      "overallAverage": 59.11,
       "recentMatches": [
+        {
+          "matchId": 1463,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "54.76",
+          "eloChange": -9,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1365,
           "result": "Win",
@@ -394,16 +404,6 @@
           "score": "4:1",
           "average": "64.68",
           "eloChange": 13,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1290,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:1",
-          "average": "55.81",
-          "eloChange": -8,
           "queue": "Scolia"
         }
       ]
