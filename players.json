@@ -276,18 +276,28 @@
       "userId": 1309548661117554720,
       "name": "Marco Panzenböck",
       "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
-      "worldRating": 1201,
+      "worldRating": 1208,
       "worldRank": 5,
-      "worldWins": 80,
+      "worldWins": 81,
       "worldLosses": 40,
-      "monthlyRating": 345,
+      "monthlyRating": 357,
       "monthlyRank": 6,
-      "monthlyWins": 23,
+      "monthlyWins": 24,
       "monthlyLosses": 15,
-      "games": 120,
-      "winrate": 66.7,
-      "overallAverage": 63.93,
+      "games": 121,
+      "winrate": 66.9,
+      "overallAverage": 63.95,
       "recentMatches": [
+        {
+          "matchId": 1461,
+          "result": "Win",
+          "opponentId": 1418878810006360084,
+          "opponentName": "Timmi1616",
+          "score": "2:4",
+          "average": "66.0",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1458,
           "result": "Win",
@@ -326,16 +336,6 @@
           "score": "4:2",
           "average": "58.95",
           "eloChange": -19,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1432,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:2",
-          "average": "59.68",
-          "eloChange": 11,
           "queue": "Scolia"
         }
       ]
@@ -4145,80 +4145,12 @@
         }
       ]
     },
-    "1418878810006360084": {
-      "userId": 1418878810006360084,
-      "name": "Timmi1616",
-      "avatar": "https://cdn.discordapp.com/avatars/1418878810006360084/ece7e3a96a963c45fd82ddbaf0606626.png?size=1024",
-      "worldRating": 972,
-      "worldRank": 83,
-      "worldWins": 3,
-      "worldLosses": 5,
-      "monthlyRating": 30,
-      "monthlyRank": 45,
-      "monthlyWins": 2,
-      "monthlyLosses": 3,
-      "games": 8,
-      "winrate": 37.5,
-      "overallAverage": 56.94,
-      "recentMatches": [
-        {
-          "matchId": 1460,
-          "result": "Win",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "4:1",
-          "average": "46.64",
-          "eloChange": 10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1409,
-          "result": "Win",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "4:2",
-          "average": "54.02",
-          "eloChange": 10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1279,
-          "result": "Loss",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "4:3",
-          "average": "53.15",
-          "eloChange": -20,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1276,
-          "result": "Loss",
-          "opponentId": 1418551508223397889,
-          "opponentName": "Wladimir Bachmann",
-          "score": "1:4",
-          "average": "63.63",
-          "eloChange": -16,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1135,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "1:4",
-          "average": "61.15",
-          "eloChange": -3,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "911368314855514163": {
       "userId": 911368314855514163,
       "name": "Dome0105",
       "avatar": "https://cdn.discordapp.com/avatars/911368314855514163/0b43d87123b9b3860da7ec072f70a510.png?size=1024",
       "worldRating": 968,
-      "worldRank": 84,
+      "worldRank": 83,
       "worldWins": 3,
       "worldLosses": 5,
       "monthlyRating": 0,
@@ -4286,7 +4218,7 @@
       "name": "Sebi180",
       "avatar": "https://cdn.discordapp.com/avatars/700818115226894396/b390fa192bdd5e54656c514b07c15984.png?size=1024",
       "worldRating": 967,
-      "worldRank": 85,
+      "worldRank": 84,
       "worldWins": 6,
       "worldLosses": 9,
       "monthlyRating": 0,
@@ -4346,6 +4278,74 @@
           "average": "47.8",
           "eloChange": 12,
           "queue": "scolia"
+        }
+      ]
+    },
+    "1418878810006360084": {
+      "userId": 1418878810006360084,
+      "name": "Timmi1616",
+      "avatar": "https://cdn.discordapp.com/avatars/1418878810006360084/ece7e3a96a963c45fd82ddbaf0606626.png?size=1024",
+      "worldRating": 965,
+      "worldRank": 85,
+      "worldWins": 3,
+      "worldLosses": 6,
+      "monthlyRating": 30,
+      "monthlyRank": 45,
+      "monthlyWins": 2,
+      "monthlyLosses": 4,
+      "games": 9,
+      "winrate": 33.3,
+      "overallAverage": 56.92,
+      "recentMatches": [
+        {
+          "matchId": 1461,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "2:4",
+          "average": "56.74",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1460,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "4:1",
+          "average": "46.64",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1409,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "4:2",
+          "average": "54.02",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1279,
+          "result": "Loss",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "4:3",
+          "average": "53.15",
+          "eloChange": -20,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1276,
+          "result": "Loss",
+          "opponentId": 1418551508223397889,
+          "opponentName": "Wladimir Bachmann",
+          "score": "1:4",
+          "average": "63.63",
+          "eloChange": -16,
+          "queue": "Scolia"
         }
       ]
     },
