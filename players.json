@@ -72,18 +72,28 @@
       "userId": 1330499669490667653,
       "name": "Dennis Wehner",
       "avatar": "https://cdn.discordapp.com/avatars/1330499669490667653/5213817c37ba8ec2c7b81fe95ec2f0f3.png?size=1024",
-      "worldRating": 1356,
+      "worldRating": 1366,
       "worldRank": 2,
-      "worldWins": 52,
+      "worldWins": 53,
       "worldLosses": 5,
-      "monthlyRating": 397,
-      "monthlyRank": 3,
-      "monthlyWins": 35,
+      "monthlyRating": 412,
+      "monthlyRank": 2,
+      "monthlyWins": 36,
       "monthlyLosses": 2,
-      "games": 57,
-      "winrate": 91.2,
-      "overallAverage": 68.38,
+      "games": 58,
+      "winrate": 91.4,
+      "overallAverage": 68.33,
       "recentMatches": [
+        {
+          "matchId": 1467,
+          "result": "Win",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "1:4",
+          "average": "65.49",
+          "eloChange": 10,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1466,
           "result": "Win",
@@ -122,16 +132,6 @@
           "score": "0:4",
           "average": "69.1",
           "eloChange": 2,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1451,
-          "result": "Win",
-          "opponentId": 1364666221114556537,
-          "opponentName": "Michael \"Hähnchen\" Hahn",
-          "score": "4:2",
-          "average": "70.31",
-          "eloChange": 4,
           "queue": "DartCounter"
         }
       ]
@@ -276,18 +276,28 @@
       "userId": 1309548661117554720,
       "name": "Marco Panzenböck",
       "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
-      "worldRating": 1214,
+      "worldRating": 1204,
       "worldRank": 5,
       "worldWins": 82,
-      "worldLosses": 40,
+      "worldLosses": 41,
       "monthlyRating": 368,
       "monthlyRank": 6,
       "monthlyWins": 25,
-      "monthlyLosses": 15,
-      "games": 122,
-      "winrate": 67.2,
+      "monthlyLosses": 16,
+      "games": 123,
+      "winrate": 66.7,
       "overallAverage": 63.96,
       "recentMatches": [
+        {
+          "matchId": 1467,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "1:4",
+          "average": "64.47",
+          "eloChange": -10,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1464,
           "result": "Win",
@@ -326,16 +336,6 @@
           "score": "1:4",
           "average": "56.25",
           "eloChange": 14,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1456,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:2",
-          "average": "62.48",
-          "eloChange": 3,
           "queue": "Scolia"
         }
       ]
@@ -2635,7 +2635,7 @@
       "worldWins": 28,
       "worldLosses": 43,
       "monthlyRating": 399,
-      "monthlyRank": 2,
+      "monthlyRank": 3,
       "monthlyWins": 17,
       "monthlyLosses": 19,
       "games": 71,
