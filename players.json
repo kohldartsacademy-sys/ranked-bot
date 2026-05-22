@@ -1428,12 +1428,80 @@
         }
       ]
     },
+    "1432632159432216765": {
+      "userId": 1432632159432216765,
+      "name": "RangerN",
+      "avatar": "https://cdn.discordapp.com/avatars/1432632159432216765/3ab7f33335680814ec749eb1411ed8c3.png?size=1024",
+      "worldRating": 1065,
+      "worldRank": 22,
+      "worldWins": 13,
+      "worldLosses": 5,
+      "monthlyRating": 97,
+      "monthlyRank": 23,
+      "monthlyWins": 7,
+      "monthlyLosses": 4,
+      "games": 18,
+      "winrate": 72.2,
+      "overallAverage": 321.21,
+      "recentMatches": [
+        {
+          "matchId": 1472,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "1:4",
+          "average": "56.46",
+          "eloChange": 9,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1471,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "3:4",
+          "average": "58.35",
+          "eloChange": -10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1465,
+          "result": "Loss",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "2:4",
+          "average": "52.44",
+          "eloChange": -22,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1288,
+          "result": "Loss",
+          "opponentId": 1133493289006420090,
+          "opponentName": "El-Daddyy",
+          "score": "2:4",
+          "average": "56.44",
+          "eloChange": -18,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1285,
+          "result": "Win",
+          "opponentId": 1133493289006420090,
+          "opponentName": "El-Daddyy",
+          "score": "4:0",
+          "average": "59.52",
+          "eloChange": 15,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "920777207834619915": {
       "userId": 920777207834619915,
       "name": "Richard Boden",
       "avatar": "https://cdn.discordapp.com/avatars/920777207834619915/407a2a20e6716dc1cc1f0f290b436719.png?size=1024",
       "worldRating": 1063,
-      "worldRank": 22,
+      "worldRank": 23,
       "worldWins": 7,
       "worldLosses": 5,
       "monthlyRating": 47,
@@ -1501,7 +1569,7 @@
       "name": "El-Daddyy",
       "avatar": "https://cdn.discordapp.com/avatars/1133493289006420090/cd29a11134a768d724b8b26d43547675.png?size=1024",
       "worldRating": 1062,
-      "worldRank": 23,
+      "worldRank": 24,
       "worldWins": 6,
       "worldLosses": 2,
       "monthlyRating": 131,
@@ -1561,74 +1629,6 @@
           "average": "57.18",
           "eloChange": -15,
           "queue": "Scolia"
-        }
-      ]
-    },
-    "1432632159432216765": {
-      "userId": 1432632159432216765,
-      "name": "RangerN",
-      "avatar": "https://cdn.discordapp.com/avatars/1432632159432216765/3ab7f33335680814ec749eb1411ed8c3.png?size=1024",
-      "worldRating": 1056,
-      "worldRank": 24,
-      "worldWins": 12,
-      "worldLosses": 5,
-      "monthlyRating": 83,
-      "monthlyRank": 23,
-      "monthlyWins": 6,
-      "monthlyLosses": 4,
-      "games": 17,
-      "winrate": 70.6,
-      "overallAverage": 336.78,
-      "recentMatches": [
-        {
-          "matchId": 1471,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "3:4",
-          "average": "58.35",
-          "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1465,
-          "result": "Loss",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "2:4",
-          "average": "52.44",
-          "eloChange": -22,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1288,
-          "result": "Loss",
-          "opponentId": 1133493289006420090,
-          "opponentName": "El-Daddyy",
-          "score": "2:4",
-          "average": "56.44",
-          "eloChange": -18,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1285,
-          "result": "Win",
-          "opponentId": 1133493289006420090,
-          "opponentName": "El-Daddyy",
-          "score": "4:0",
-          "average": "59.52",
-          "eloChange": 15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1108,
-          "result": "Loss",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "4:2",
-          "average": "51.79",
-          "eloChange": -26,
-          "queue": "scolia"
         }
       ]
     },
@@ -5807,18 +5807,28 @@
       "userId": 530021085522165770,
       "name": "Leon Kohl",
       "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
-      "worldRating": 887,
+      "worldRating": 878,
       "worldRank": 109,
       "worldWins": 64,
-      "worldLosses": 66,
+      "worldLosses": 67,
       "monthlyRating": 302,
       "monthlyRank": 9,
       "monthlyWins": 14,
-      "monthlyLosses": 27,
-      "games": 130,
-      "winrate": 49.2,
-      "overallAverage": 98.43,
+      "monthlyLosses": 28,
+      "games": 131,
+      "winrate": 48.9,
+      "overallAverage": 98.03,
       "recentMatches": [
+        {
+          "matchId": 1472,
+          "result": "Loss",
+          "opponentId": 1432632159432216765,
+          "opponentName": "RangerN",
+          "score": "1:4",
+          "average": "46.75",
+          "eloChange": -9,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1450,
           "result": "Loss",
@@ -5857,16 +5867,6 @@
           "score": "4:0",
           "average": "54.16",
           "eloChange": 25,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1431,
-          "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "1:4",
-          "average": "51.88",
-          "eloChange": 15,
           "queue": "Scolia"
         }
       ]
