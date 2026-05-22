@@ -276,18 +276,28 @@
       "userId": 1309548661117554720,
       "name": "Marco Panzenböck",
       "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
-      "worldRating": 1204,
+      "worldRating": 1214,
       "worldRank": 5,
-      "worldWins": 82,
+      "worldWins": 83,
       "worldLosses": 41,
-      "monthlyRating": 368,
+      "monthlyRating": 383,
       "monthlyRank": 6,
-      "monthlyWins": 25,
+      "monthlyWins": 26,
       "monthlyLosses": 16,
-      "games": 123,
-      "winrate": 66.7,
-      "overallAverage": 63.96,
+      "games": 124,
+      "winrate": 66.9,
+      "overallAverage": 64.0,
       "recentMatches": [
+        {
+          "matchId": 1470,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "2:4",
+          "average": "68.76",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1467,
           "result": "Loss",
@@ -326,16 +336,6 @@
           "score": "0:4",
           "average": "75.15",
           "eloChange": 13,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1457,
-          "result": "Win",
-          "opponentId": 1089304921439998003,
-          "opponentName": "Brickylayer",
-          "score": "1:4",
-          "average": "56.25",
-          "eloChange": 14,
           "queue": "Scolia"
         }
       ]
@@ -1636,18 +1636,28 @@
       "userId": 1302224986051838068,
       "name": "Bazzi",
       "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1058,
+      "worldRating": 1048,
       "worldRank": 25,
       "worldWins": 73,
-      "worldLosses": 40,
+      "worldLosses": 41,
       "monthlyRating": 462,
       "monthlyRank": 1,
       "monthlyWins": 33,
-      "monthlyLosses": 21,
-      "games": 113,
-      "winrate": 64.6,
-      "overallAverage": 61.49,
+      "monthlyLosses": 22,
+      "games": 114,
+      "winrate": 64.0,
+      "overallAverage": 61.43,
       "recentMatches": [
+        {
+          "matchId": 1470,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "2:4",
+          "average": "54.45",
+          "eloChange": -10,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1459,
           "result": "Win",
@@ -1687,16 +1697,6 @@
           "average": "58.31",
           "eloChange": -11,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 1426,
-          "result": "Loss",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "4:3",
-          "average": "58.71",
-          "eloChange": -23,
-          "queue": "DartCounter"
         }
       ]
     },
