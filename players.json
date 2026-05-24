@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1402,
+      "worldRating": 1404,
       "worldRank": 1,
-      "worldWins": 119,
+      "worldWins": 120,
       "worldLosses": 23,
-      "monthlyRating": 392,
+      "monthlyRating": 399,
       "monthlyRank": 5,
-      "monthlyWins": 34,
+      "monthlyWins": 35,
       "monthlyLosses": 4,
-      "games": 142,
-      "winrate": 83.8,
-      "overallAverage": 69.23,
+      "games": 143,
+      "winrate": 83.9,
+      "overallAverage": 69.27,
       "recentMatches": [
+        {
+          "matchId": 1490,
+          "result": "Win",
+          "opponentId": 906968918327967764,
+          "opponentName": "Michel Ellrich",
+          "score": "4:1",
+          "average": "74.32",
+          "eloChange": 2,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1489,
           "result": "Win",
@@ -54,16 +64,6 @@
           "score": "4:2",
           "average": "69.28",
           "eloChange": 14,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1388,
-          "result": "Win",
-          "opponentId": 1092072918915219537,
-          "opponentName": "Jannick2412",
-          "score": "1:4",
-          "average": "69.34",
-          "eloChange": 8,
           "queue": "Scolia"
         }
       ]
@@ -5545,18 +5545,28 @@
       "userId": 906968918327967764,
       "name": "Michel Ellrich",
       "avatar": "https://cdn.discordapp.com/embed/avatars/3.png",
-      "worldRating": 913,
+      "worldRating": 911,
       "worldRank": 105,
       "worldWins": 7,
-      "worldLosses": 19,
+      "worldLosses": 20,
       "monthlyRating": 48,
       "monthlyRank": 37,
       "monthlyWins": 3,
-      "monthlyLosses": 7,
-      "games": 26,
-      "winrate": 26.9,
-      "overallAverage": 849.45,
+      "monthlyLosses": 8,
+      "games": 27,
+      "winrate": 25.9,
+      "overallAverage": 820.21,
       "recentMatches": [
+        {
+          "matchId": 1490,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:1",
+          "average": "60.03",
+          "eloChange": -2,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1489,
           "result": "Loss",
@@ -5595,16 +5605,6 @@
           "score": "0:4",
           "average": "4888.0",
           "eloChange": 8,
-          "queue": "dart"
-        },
-        {
-          "matchId": 1094,
-          "result": "Loss",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "2:4",
-          "average": "53.74",
-          "eloChange": -6,
           "queue": "dart"
         }
       ]
