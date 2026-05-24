@@ -1097,7 +1097,7 @@
       "worldWins": 16,
       "worldLosses": 5,
       "monthlyRating": 134,
-      "monthlyRank": 14,
+      "monthlyRank": 15,
       "monthlyWins": 10,
       "monthlyLosses": 4,
       "games": 21,
@@ -1573,7 +1573,7 @@
       "worldWins": 6,
       "worldLosses": 2,
       "monthlyRating": 131,
-      "monthlyRank": 16,
+      "monthlyRank": 17,
       "monthlyWins": 6,
       "monthlyLosses": 2,
       "games": 8,
@@ -4706,7 +4706,7 @@
       "worldWins": 11,
       "worldLosses": 23,
       "monthlyRating": 134,
-      "monthlyRank": 15,
+      "monthlyRank": 16,
       "monthlyWins": 6,
       "monthlyLosses": 16,
       "games": 34,
@@ -5885,18 +5885,28 @@
       "userId": 773315089595891732,
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 864,
+      "worldRating": 878,
       "worldRank": 110,
-      "worldWins": 38,
+      "worldWins": 39,
       "worldLosses": 57,
-      "monthlyRating": 130,
-      "monthlyRank": 17,
-      "monthlyWins": 6,
+      "monthlyRating": 149,
+      "monthlyRank": 14,
+      "monthlyWins": 7,
       "monthlyLosses": 11,
-      "games": 95,
-      "winrate": 40.0,
-      "overallAverage": 50.83,
+      "games": 96,
+      "winrate": 40.6,
+      "overallAverage": 50.89,
       "recentMatches": [
+        {
+          "matchId": 1485,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "4:2",
+          "average": "56.32",
+          "eloChange": 14,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1483,
           "result": "Loss",
@@ -5935,16 +5945,6 @@
           "score": "3:4",
           "average": "48.55",
           "eloChange": -8,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1445,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:1",
-          "average": "52.34",
-          "eloChange": -2,
           "queue": "Scolia"
         }
       ]
@@ -6357,80 +6357,12 @@
         }
       ]
     },
-    "1359231571487494265": {
-      "userId": 1359231571487494265,
-      "name": "Bernard (Giftzwerg)",
-      "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
-      "worldRating": 825,
-      "worldRank": 117,
-      "worldWins": 15,
-      "worldLosses": 58,
-      "monthlyRating": 163,
-      "monthlyRank": 13,
-      "monthlyWins": 6,
-      "monthlyLosses": 20,
-      "games": 73,
-      "winrate": 20.5,
-      "overallAverage": 208.7,
-      "recentMatches": [
-        {
-          "matchId": 1484,
-          "result": "Loss",
-          "opponentId": 418513121167147008,
-          "opponentName": "Vincent Schubert",
-          "score": "4:1",
-          "average": "54.82",
-          "eloChange": -5,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1475,
-          "result": "Loss",
-          "opponentId": 1432632159432216765,
-          "opponentName": "RangerN",
-          "score": "4:1",
-          "average": "54.6",
-          "eloChange": -6,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1462,
-          "result": "Win",
-          "opponentId": 1338229961848389662,
-          "opponentName": "Luca Plocher",
-          "score": "2:4",
-          "average": "51.43",
-          "eloChange": 24,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1460,
-          "result": "Loss",
-          "opponentId": 1418878810006360084,
-          "opponentName": "Timmi1616",
-          "score": "4:1",
-          "average": "45.08",
-          "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1450,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "0:4",
-          "average": "51.83",
-          "eloChange": 21,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1458906019118841960": {
       "userId": 1458906019118841960,
       "name": "Rene B",
       "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
       "worldRating": 819,
-      "worldRank": 118,
+      "worldRank": 117,
       "worldWins": 17,
       "worldLosses": 57,
       "monthlyRating": 116,
@@ -6490,6 +6422,74 @@
           "average": "50.21",
           "eloChange": -23,
           "queue": "DartCounter"
+        }
+      ]
+    },
+    "1359231571487494265": {
+      "userId": 1359231571487494265,
+      "name": "Bernard (Giftzwerg)",
+      "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
+      "worldRating": 811,
+      "worldRank": 118,
+      "worldWins": 15,
+      "worldLosses": 59,
+      "monthlyRating": 163,
+      "monthlyRank": 13,
+      "monthlyWins": 6,
+      "monthlyLosses": 21,
+      "games": 74,
+      "winrate": 20.3,
+      "overallAverage": 206.65,
+      "recentMatches": [
+        {
+          "matchId": 1485,
+          "result": "Loss",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:2",
+          "average": "57.22",
+          "eloChange": -14,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1484,
+          "result": "Loss",
+          "opponentId": 418513121167147008,
+          "opponentName": "Vincent Schubert",
+          "score": "4:1",
+          "average": "54.82",
+          "eloChange": -5,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1475,
+          "result": "Loss",
+          "opponentId": 1432632159432216765,
+          "opponentName": "RangerN",
+          "score": "4:1",
+          "average": "54.6",
+          "eloChange": -6,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1462,
+          "result": "Win",
+          "opponentId": 1338229961848389662,
+          "opponentName": "Luca Plocher",
+          "score": "2:4",
+          "average": "51.43",
+          "eloChange": 24,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1460,
+          "result": "Loss",
+          "opponentId": 1418878810006360084,
+          "opponentName": "Timmi1616",
+          "score": "4:1",
+          "average": "45.08",
+          "eloChange": -10,
+          "queue": "Scolia"
         }
       ]
     },
