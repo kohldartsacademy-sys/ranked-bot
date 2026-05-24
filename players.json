@@ -276,18 +276,28 @@
       "userId": 1309548661117554720,
       "name": "Marco Panzenböck",
       "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
-      "worldRating": 1231,
+      "worldRating": 1237,
       "worldRank": 5,
-      "worldWins": 85,
+      "worldWins": 86,
       "worldLosses": 41,
-      "monthlyRating": 410,
-      "monthlyRank": 4,
-      "monthlyWins": 28,
+      "monthlyRating": 421,
+      "monthlyRank": 3,
+      "monthlyWins": 29,
       "monthlyLosses": 16,
-      "games": 126,
-      "winrate": 67.5,
+      "games": 127,
+      "winrate": 67.7,
       "overallAverage": 64.03,
       "recentMatches": [
+        {
+          "matchId": 1482,
+          "result": "Win",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "1:4",
+          "average": "63.82",
+          "eloChange": 6,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1480,
           "result": "Win",
@@ -327,16 +337,6 @@
           "average": "64.47",
           "eloChange": -10,
           "queue": "DartCounter"
-        },
-        {
-          "matchId": 1464,
-          "result": "Win",
-          "opponentId": 1418878810006360084,
-          "opponentName": "Timmi1616",
-          "score": "2:4",
-          "average": "64.68",
-          "eloChange": 6,
-          "queue": "Scolia"
         }
       ]
     },
@@ -3151,80 +3151,12 @@
         }
       ]
     },
-    "1327898199058284545": {
-      "userId": 1327898199058284545,
-      "name": "TheShy | Kevin",
-      "avatar": "https://cdn.discordapp.com/avatars/1327898199058284545/84f8183bcac3e3f75e0d1caa5a7f6340.png?size=1024",
-      "worldRating": 990,
-      "worldRank": 60,
-      "worldWins": 29,
-      "worldLosses": 45,
-      "monthlyRating": 415,
-      "monthlyRank": 3,
-      "monthlyWins": 18,
-      "monthlyLosses": 21,
-      "games": 74,
-      "winrate": 39.2,
-      "overallAverage": 56.31,
-      "recentMatches": [
-        {
-          "matchId": 1480,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:1",
-          "average": "62.55",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1479,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:1",
-          "average": "56.95",
-          "eloChange": 11,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1478,
-          "result": "Loss",
-          "opponentId": 1299471744414908459,
-          "opponentName": "Klausel",
-          "score": "3:4",
-          "average": "55.26",
-          "eloChange": -17,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1452,
-          "result": "Loss",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "4:3",
-          "average": "54.36",
-          "eloChange": -20,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1449,
-          "result": "Loss",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "4:3",
-          "average": "56.48",
-          "eloChange": -21,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "706642260347060262": {
       "userId": 706642260347060262,
       "name": "domme",
       "avatar": "https://cdn.discordapp.com/avatars/706642260347060262/e5620016f3a67aa0a8ecba0b68fe4940.png?size=1024",
       "worldRating": 988,
-      "worldRank": 61,
+      "worldRank": 60,
       "worldWins": 2,
       "worldLosses": 4,
       "monthlyRating": 50,
@@ -3292,7 +3224,7 @@
       "name": "Lukas180",
       "avatar": "https://cdn.discordapp.com/avatars/912032996331241472/6c5996770c985bcd6e5b68131ff2ba04.png?size=1024",
       "worldRating": 988,
-      "worldRank": 62,
+      "worldRank": 61,
       "worldWins": 0,
       "worldLosses": 1,
       "monthlyRating": 0,
@@ -3320,7 +3252,7 @@
       "name": "Krennert",
       "avatar": "https://cdn.discordapp.com/avatars/756119769555664908/6ae08ee26b51866415291652fc853e82.png?size=1024",
       "worldRating": 987,
-      "worldRank": 63,
+      "worldRank": 62,
       "worldWins": 1,
       "worldLosses": 3,
       "monthlyRating": 0,
@@ -3378,7 +3310,7 @@
       "name": "Pascal Scherer",
       "avatar": "https://cdn.discordapp.com/avatars/1387676358527811684/4d7d91e0db7c043c3dd25e900a124b2f.png?size=1024",
       "worldRating": 987,
-      "worldRank": 64,
+      "worldRank": 63,
       "worldWins": 1,
       "worldLosses": 2,
       "monthlyRating": 19,
@@ -3426,7 +3358,7 @@
       "name": "sproit",
       "avatar": "https://cdn.discordapp.com/avatars/534811376917413942/225b49aedce431363ea38d9cc6c1c3a3.png?size=1024",
       "worldRating": 986,
-      "worldRank": 65,
+      "worldRank": 64,
       "worldWins": 0,
       "worldLosses": 1,
       "monthlyRating": 0,
@@ -3454,7 +3386,7 @@
       "name": "Fl03hchen",
       "avatar": "https://cdn.discordapp.com/avatars/174223543259758594/8e7e7a494fd4081f14c0efa182a3c5e1.png?size=1024",
       "worldRating": 985,
-      "worldRank": 66,
+      "worldRank": 65,
       "worldWins": 0,
       "worldLosses": 1,
       "monthlyRating": 0,
@@ -3474,6 +3406,74 @@
           "average": "42.1",
           "eloChange": -15,
           "queue": "scolia"
+        }
+      ]
+    },
+    "1327898199058284545": {
+      "userId": 1327898199058284545,
+      "name": "TheShy | Kevin",
+      "avatar": "https://cdn.discordapp.com/avatars/1327898199058284545/84f8183bcac3e3f75e0d1caa5a7f6340.png?size=1024",
+      "worldRating": 984,
+      "worldRank": 66,
+      "worldWins": 29,
+      "worldLosses": 46,
+      "monthlyRating": 415,
+      "monthlyRank": 4,
+      "monthlyWins": 18,
+      "monthlyLosses": 22,
+      "games": 75,
+      "winrate": 38.7,
+      "overallAverage": 56.3,
+      "recentMatches": [
+        {
+          "matchId": 1482,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "1:4",
+          "average": "55.47",
+          "eloChange": -6,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1480,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:1",
+          "average": "62.55",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1479,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:1",
+          "average": "56.95",
+          "eloChange": 11,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1478,
+          "result": "Loss",
+          "opponentId": 1299471744414908459,
+          "opponentName": "Klausel",
+          "score": "3:4",
+          "average": "55.26",
+          "eloChange": -17,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1452,
+          "result": "Loss",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "4:3",
+          "average": "54.36",
+          "eloChange": -20,
+          "queue": "Scolia"
         }
       ]
     },
