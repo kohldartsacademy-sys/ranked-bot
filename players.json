@@ -548,18 +548,28 @@
       "userId": 1089304921439998003,
       "name": "Brickylayer",
       "avatar": "https://cdn.discordapp.com/avatars/1089304921439998003/848b2e53a7917bcc6e61a173f2eeb41e.png?size=1024",
-      "worldRating": 1149,
+      "worldRating": 1156,
       "worldRank": 9,
-      "worldWins": 36,
+      "worldWins": 37,
       "worldLosses": 24,
-      "monthlyRating": 138,
-      "monthlyRank": 16,
-      "monthlyWins": 8,
+      "monthlyRating": 150,
+      "monthlyRank": 15,
+      "monthlyWins": 9,
       "monthlyLosses": 5,
-      "games": 60,
-      "winrate": 60.0,
-      "overallAverage": 62.83,
+      "games": 61,
+      "winrate": 60.7,
+      "overallAverage": 62.82,
       "recentMatches": [
+        {
+          "matchId": 1497,
+          "result": "Win",
+          "opponentId": 1408769906664538122,
+          "opponentName": "TheDarkTrident",
+          "score": "4:2",
+          "average": "62.62",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1496,
           "result": "Win",
@@ -598,16 +608,6 @@
           "score": "0:4",
           "average": "62.62",
           "eloChange": -13,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1457,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "1:4",
-          "average": "59.83",
-          "eloChange": -14,
           "queue": "Scolia"
         }
       ]
@@ -5161,80 +5161,12 @@
         }
       ]
     },
-    "1408769906664538122": {
-      "userId": 1408769906664538122,
-      "name": "TheDarkTrident",
-      "avatar": "https://cdn.discordapp.com/avatars/1408769906664538122/fae529b08ac10816122ef7061a8e067b.png?size=1024",
-      "worldRating": 933,
-      "worldRank": 100,
-      "worldWins": 10,
-      "worldLosses": 18,
-      "monthlyRating": 19,
-      "monthlyRank": 54,
-      "monthlyWins": 1,
-      "monthlyLosses": 3,
-      "games": 28,
-      "winrate": 35.7,
-      "overallAverage": 259.42,
-      "recentMatches": [
-        {
-          "matchId": 1496,
-          "result": "Loss",
-          "opponentId": 1089304921439998003,
-          "opponentName": "Brickylayer",
-          "score": "0:4",
-          "average": "59.21",
-          "eloChange": -8,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1262,
-          "result": "Loss",
-          "opponentId": 706642260347060262,
-          "opponentName": "domme",
-          "score": "4:2",
-          "average": "57.56",
-          "eloChange": -15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1220,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:2",
-          "average": "65.21",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1186,
-          "result": "Win",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "3:4",
-          "average": "60.51",
-          "eloChange": 14,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1020,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:0",
-          "average": "51.11",
-          "eloChange": -4,
-          "queue": "scolia"
-        }
-      ]
-    },
     "1394121383528628366": {
       "userId": 1394121383528628366,
       "name": "Micha24",
       "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
       "worldRating": 932,
-      "worldRank": 101,
+      "worldRank": 100,
       "worldWins": 1,
       "worldLosses": 6,
       "monthlyRating": 0,
@@ -5302,7 +5234,7 @@
       "name": "bergy1211",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
       "worldRating": 929,
-      "worldRank": 102,
+      "worldRank": 101,
       "worldWins": 1,
       "worldLosses": 6,
       "monthlyRating": 0,
@@ -5362,6 +5294,74 @@
           "average": "53.9",
           "eloChange": -15,
           "queue": "scolia"
+        }
+      ]
+    },
+    "1408769906664538122": {
+      "userId": 1408769906664538122,
+      "name": "TheDarkTrident",
+      "avatar": "https://cdn.discordapp.com/avatars/1408769906664538122/fae529b08ac10816122ef7061a8e067b.png?size=1024",
+      "worldRating": 926,
+      "worldRank": 102,
+      "worldWins": 10,
+      "worldLosses": 19,
+      "monthlyRating": 19,
+      "monthlyRank": 54,
+      "monthlyWins": 1,
+      "monthlyLosses": 4,
+      "games": 29,
+      "winrate": 34.5,
+      "overallAverage": 252.68,
+      "recentMatches": [
+        {
+          "matchId": 1497,
+          "result": "Loss",
+          "opponentId": 1089304921439998003,
+          "opponentName": "Brickylayer",
+          "score": "4:2",
+          "average": "63.95",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1496,
+          "result": "Loss",
+          "opponentId": 1089304921439998003,
+          "opponentName": "Brickylayer",
+          "score": "0:4",
+          "average": "59.21",
+          "eloChange": -8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1262,
+          "result": "Loss",
+          "opponentId": 706642260347060262,
+          "opponentName": "domme",
+          "score": "4:2",
+          "average": "57.56",
+          "eloChange": -15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1220,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:2",
+          "average": "65.21",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1186,
+          "result": "Win",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "3:4",
+          "average": "60.51",
+          "eloChange": 14,
+          "queue": "Scolia"
         }
       ]
     },
@@ -6394,7 +6394,7 @@
       "worldWins": 18,
       "worldLosses": 57,
       "monthlyRating": 141,
-      "monthlyRank": 15,
+      "monthlyRank": 16,
       "monthlyWins": 6,
       "monthlyLosses": 22,
       "games": 75,
