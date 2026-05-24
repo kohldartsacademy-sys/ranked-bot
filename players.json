@@ -1758,12 +1758,80 @@
         }
       ]
     },
+    "1302224986051838068": {
+      "userId": 1302224986051838068,
+      "name": "Bazzi",
+      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
+      "worldRating": 1044,
+      "worldRank": 27,
+      "worldWins": 74,
+      "worldLosses": 42,
+      "monthlyRating": 476,
+      "monthlyRank": 1,
+      "monthlyWins": 34,
+      "monthlyLosses": 23,
+      "games": 116,
+      "winrate": 63.8,
+      "overallAverage": 61.43,
+      "recentMatches": [
+        {
+          "matchId": 1487,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:1",
+          "average": "61.01",
+          "eloChange": 9,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1486,
+          "result": "Loss",
+          "opponentId": 418513121167147008,
+          "opponentName": "Vincent Schubert",
+          "score": "1:4",
+          "average": "61.95",
+          "eloChange": -13,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1470,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "2:4",
+          "average": "54.45",
+          "eloChange": -10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1459,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "3:4",
+          "average": "52.2",
+          "eloChange": 8,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1437,
+          "result": "Win",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "4:2",
+          "average": "59.8",
+          "eloChange": 9,
+          "queue": "DartCounter"
+        }
+      ]
+    },
     "1358893570869821534": {
       "userId": 1358893570869821534,
       "name": "TommyThomson",
       "avatar": "https://cdn.discordapp.com/avatars/1358893570869821534/6106ab6ef269621a7f4a57fdd767d667.png?size=1024",
       "worldRating": 1044,
-      "worldRank": 27,
+      "worldRank": 28,
       "worldWins": 4,
       "worldLosses": 1,
       "monthlyRating": 0,
@@ -1831,7 +1899,7 @@
       "name": "User 695585081397346385",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 1036,
-      "worldRank": 28,
+      "worldRank": 29,
       "worldWins": 2,
       "worldLosses": 0,
       "monthlyRating": 0,
@@ -1861,74 +1929,6 @@
           "average": "72.6",
           "eloChange": 20,
           "queue": "dart"
-        }
-      ]
-    },
-    "1302224986051838068": {
-      "userId": 1302224986051838068,
-      "name": "Bazzi",
-      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1035,
-      "worldRank": 29,
-      "worldWins": 73,
-      "worldLosses": 42,
-      "monthlyRating": 462,
-      "monthlyRank": 1,
-      "monthlyWins": 33,
-      "monthlyLosses": 23,
-      "games": 115,
-      "winrate": 63.5,
-      "overallAverage": 61.43,
-      "recentMatches": [
-        {
-          "matchId": 1486,
-          "result": "Loss",
-          "opponentId": 418513121167147008,
-          "opponentName": "Vincent Schubert",
-          "score": "1:4",
-          "average": "61.95",
-          "eloChange": -13,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1470,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "2:4",
-          "average": "54.45",
-          "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1459,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "3:4",
-          "average": "52.2",
-          "eloChange": 8,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1437,
-          "result": "Win",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "4:2",
-          "average": "59.8",
-          "eloChange": 9,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1434,
-          "result": "Loss",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "4:0",
-          "average": "50.75",
-          "eloChange": -25,
-          "queue": "Scolia"
         }
       ]
     },
@@ -5885,18 +5885,28 @@
       "userId": 773315089595891732,
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 878,
+      "worldRating": 869,
       "worldRank": 110,
       "worldWins": 39,
-      "worldLosses": 57,
+      "worldLosses": 58,
       "monthlyRating": 149,
       "monthlyRank": 14,
       "monthlyWins": 7,
-      "monthlyLosses": 11,
-      "games": 96,
-      "winrate": 40.6,
-      "overallAverage": 50.89,
+      "monthlyLosses": 12,
+      "games": 97,
+      "winrate": 40.2,
+      "overallAverage": 50.92,
       "recentMatches": [
+        {
+          "matchId": 1487,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "4:1",
+          "average": "54.0",
+          "eloChange": -9,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1485,
           "result": "Win",
@@ -5935,16 +5945,6 @@
           "score": "4:1",
           "average": "54.67",
           "eloChange": -11,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1459,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "3:4",
-          "average": "48.55",
-          "eloChange": -8,
           "queue": "Scolia"
         }
       ]
