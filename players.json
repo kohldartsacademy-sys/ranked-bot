@@ -349,7 +349,7 @@
       "worldWins": 45,
       "worldLosses": 23,
       "monthlyRating": 173,
-      "monthlyRank": 13,
+      "monthlyRank": 14,
       "monthlyWins": 12,
       "monthlyLosses": 8,
       "games": 68,
@@ -6389,18 +6389,28 @@
       "userId": 1458906019118841960,
       "name": "Rene B",
       "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
-      "worldRating": 822,
+      "worldRating": 833,
       "worldRank": 118,
-      "worldWins": 19,
+      "worldWins": 20,
       "worldLosses": 59,
-      "monthlyRating": 158,
-      "monthlyRank": 15,
-      "monthlyWins": 7,
+      "monthlyRating": 174,
+      "monthlyRank": 13,
+      "monthlyWins": 8,
       "monthlyLosses": 24,
-      "games": 78,
-      "winrate": 24.4,
-      "overallAverage": 53.91,
+      "games": 79,
+      "winrate": 25.3,
+      "overallAverage": 53.85,
       "recentMatches": [
+        {
+          "matchId": 1509,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:3",
+          "average": "49.43",
+          "eloChange": 11,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1508,
           "result": "Win",
@@ -6440,16 +6450,6 @@
           "average": "53.26",
           "eloChange": 20,
           "queue": "DartCounter"
-        },
-        {
-          "matchId": 1469,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "4:2",
-          "average": "55.39",
-          "eloChange": -1,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -6462,7 +6462,7 @@
       "worldWins": 15,
       "worldLosses": 60,
       "monthlyRating": 163,
-      "monthlyRank": 14,
+      "monthlyRank": 15,
       "monthlyWins": 6,
       "monthlyLosses": 22,
       "games": 75,
@@ -6661,18 +6661,28 @@
       "userId": 1245485490421891165,
       "name": "Andy Bühner",
       "avatar": "https://cdn.discordapp.com/avatars/1245485490421891165/451b17f84483bd4cfc1aaf0f34c58183.png?size=1024",
-      "worldRating": 713,
+      "worldRating": 702,
       "worldRank": 122,
       "worldWins": 14,
-      "worldLosses": 69,
+      "worldLosses": 70,
       "monthlyRating": 149,
       "monthlyRank": 17,
       "monthlyWins": 5,
-      "monthlyLosses": 21,
-      "games": 83,
-      "winrate": 16.9,
-      "overallAverage": 165.35,
+      "monthlyLosses": 22,
+      "games": 84,
+      "winrate": 16.7,
+      "overallAverage": 163.94,
       "recentMatches": [
+        {
+          "matchId": 1509,
+          "result": "Loss",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "4:3",
+          "average": "46.63",
+          "eloChange": -11,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1508,
           "result": "Loss",
@@ -6711,16 +6721,6 @@
           "score": "4:0",
           "average": "51.34",
           "eloChange": -8,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1448,
-          "result": "Win",
-          "opponentId": 1458906019118841960,
-          "opponentName": "Rene B",
-          "score": "4:0",
-          "average": "50.52",
-          "eloChange": 23,
           "queue": "DartCounter"
         }
       ]
