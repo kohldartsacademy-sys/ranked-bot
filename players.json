@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1386,
+      "worldRating": 1390,
       "worldRank": 1,
-      "worldWins": 124,
+      "worldWins": 125,
       "worldLosses": 24,
-      "monthlyRating": 428,
+      "monthlyRating": 437,
       "monthlyRank": 2,
-      "monthlyWins": 39,
+      "monthlyWins": 40,
       "monthlyLosses": 5,
-      "games": 148,
-      "winrate": 83.8,
-      "overallAverage": 69.09,
+      "games": 149,
+      "winrate": 83.9,
+      "overallAverage": 69.02,
       "recentMatches": [
+        {
+          "matchId": 1504,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "0:4",
+          "average": "59.52",
+          "eloChange": 4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1503,
           "result": "Win",
@@ -54,16 +64,6 @@
           "score": "1:4",
           "average": "75.06",
           "eloChange": -27,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1493,
-          "result": "Win",
-          "opponentId": 1480581992138543248,
-          "opponentName": "ToxicTom",
-          "score": "4:0",
-          "average": "58.94",
-          "eloChange": 3,
           "queue": "Scolia"
         }
       ]
@@ -1830,18 +1830,28 @@
       "userId": 1302224986051838068,
       "name": "Bazzi",
       "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1042,
+      "worldRating": 1038,
       "worldRank": 28,
       "worldWins": 75,
-      "worldLosses": 44,
+      "worldLosses": 45,
       "monthlyRating": 505,
       "monthlyRank": 1,
       "monthlyWins": 35,
-      "monthlyLosses": 25,
-      "games": 119,
-      "winrate": 63.0,
-      "overallAverage": 61.47,
+      "monthlyLosses": 26,
+      "games": 120,
+      "winrate": 62.5,
+      "overallAverage": 61.45,
       "recentMatches": [
+        {
+          "matchId": 1504,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "0:4",
+          "average": "58.81",
+          "eloChange": -4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1503,
           "result": "Loss",
@@ -1880,16 +1890,6 @@
           "score": "4:1",
           "average": "61.01",
           "eloChange": 9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1486,
-          "result": "Loss",
-          "opponentId": 418513121167147008,
-          "opponentName": "Vincent Schubert",
-          "score": "1:4",
-          "average": "61.95",
-          "eloChange": -13,
           "queue": "Scolia"
         }
       ]
