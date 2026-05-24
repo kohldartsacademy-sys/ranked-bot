@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1382,
+      "worldRating": 1386,
       "worldRank": 1,
-      "worldWins": 123,
+      "worldWins": 124,
       "worldLosses": 24,
-      "monthlyRating": 419,
-      "monthlyRank": 4,
-      "monthlyWins": 38,
+      "monthlyRating": 428,
+      "monthlyRank": 2,
+      "monthlyWins": 39,
       "monthlyLosses": 5,
-      "games": 147,
-      "winrate": 83.7,
+      "games": 148,
+      "winrate": 83.8,
       "overallAverage": 69.09,
       "recentMatches": [
+        {
+          "matchId": 1503,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "0:4",
+          "average": "69.1",
+          "eloChange": 4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1501,
           "result": "Win",
@@ -55,16 +65,6 @@
           "average": "58.94",
           "eloChange": 3,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 1490,
-          "result": "Win",
-          "opponentId": 906968918327967764,
-          "opponentName": "Michel Ellrich",
-          "score": "4:1",
-          "average": "74.32",
-          "eloChange": 2,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -77,7 +77,7 @@
       "worldWins": 55,
       "worldLosses": 5,
       "monthlyRating": 424,
-      "monthlyRank": 2,
+      "monthlyRank": 3,
       "monthlyWins": 38,
       "monthlyLosses": 2,
       "games": 60,
@@ -281,7 +281,7 @@
       "worldWins": 86,
       "worldLosses": 42,
       "monthlyRating": 421,
-      "monthlyRank": 3,
+      "monthlyRank": 4,
       "monthlyWins": 29,
       "monthlyLosses": 17,
       "games": 128,
@@ -1632,80 +1632,12 @@
         }
       ]
     },
-    "1302224986051838068": {
-      "userId": 1302224986051838068,
-      "name": "Bazzi",
-      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1046,
-      "worldRank": 25,
-      "worldWins": 75,
-      "worldLosses": 43,
-      "monthlyRating": 505,
-      "monthlyRank": 1,
-      "monthlyWins": 35,
-      "monthlyLosses": 24,
-      "games": 118,
-      "winrate": 63.6,
-      "overallAverage": 61.47,
-      "recentMatches": [
-        {
-          "matchId": 1500,
-          "result": "Loss",
-          "opponentId": 1408769906664538122,
-          "opponentName": "TheDarkTrident",
-          "score": "4:1",
-          "average": "63.46",
-          "eloChange": -22,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1498,
-          "result": "Win",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:1",
-          "average": "64.7",
-          "eloChange": 24,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1487,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:1",
-          "average": "61.01",
-          "eloChange": 9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1486,
-          "result": "Loss",
-          "opponentId": 418513121167147008,
-          "opponentName": "Vincent Schubert",
-          "score": "1:4",
-          "average": "61.95",
-          "eloChange": -13,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1470,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "2:4",
-          "average": "54.45",
-          "eloChange": -10,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1233056433344348211": {
       "userId": 1233056433344348211,
       "name": "Lars Zimmermann",
       "avatar": "https://cdn.discordapp.com/avatars/1233056433344348211/cc2d7caeba4bb7e7f07ba4baa16724d6.png?size=1024",
       "worldRating": 1045,
-      "worldRank": 26,
+      "worldRank": 25,
       "worldWins": 11,
       "worldLosses": 8,
       "monthlyRating": 49,
@@ -1773,7 +1705,7 @@
       "name": "LaUeberwerfos",
       "avatar": "https://cdn.discordapp.com/avatars/643858007741956127/5b9967f5bec9b291d73b36f3fa3d5990.png?size=1024",
       "worldRating": 1045,
-      "worldRank": 27,
+      "worldRank": 26,
       "worldWins": 4,
       "worldLosses": 0,
       "monthlyRating": 47,
@@ -1831,7 +1763,7 @@
       "name": "TommyThomson",
       "avatar": "https://cdn.discordapp.com/avatars/1358893570869821534/6106ab6ef269621a7f4a57fdd767d667.png?size=1024",
       "worldRating": 1044,
-      "worldRank": 28,
+      "worldRank": 27,
       "worldWins": 4,
       "worldLosses": 1,
       "monthlyRating": 0,
@@ -1891,6 +1823,74 @@
           "average": "57.63",
           "eloChange": 17,
           "queue": "scolia"
+        }
+      ]
+    },
+    "1302224986051838068": {
+      "userId": 1302224986051838068,
+      "name": "Bazzi",
+      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
+      "worldRating": 1042,
+      "worldRank": 28,
+      "worldWins": 75,
+      "worldLosses": 44,
+      "monthlyRating": 505,
+      "monthlyRank": 1,
+      "monthlyWins": 35,
+      "monthlyLosses": 25,
+      "games": 119,
+      "winrate": 63.0,
+      "overallAverage": 61.47,
+      "recentMatches": [
+        {
+          "matchId": 1503,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "0:4",
+          "average": "61.32",
+          "eloChange": -4,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1500,
+          "result": "Loss",
+          "opponentId": 1408769906664538122,
+          "opponentName": "TheDarkTrident",
+          "score": "4:1",
+          "average": "63.46",
+          "eloChange": -22,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1498,
+          "result": "Win",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:1",
+          "average": "64.7",
+          "eloChange": 24,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1487,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:1",
+          "average": "61.01",
+          "eloChange": 9,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1486,
+          "result": "Loss",
+          "opponentId": 418513121167147008,
+          "opponentName": "Vincent Schubert",
+          "score": "1:4",
+          "average": "61.95",
+          "eloChange": -13,
+          "queue": "Scolia"
         }
       ]
     },
