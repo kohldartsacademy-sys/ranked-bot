@@ -213,7 +213,7 @@
       "worldWins": 54,
       "worldLosses": 12,
       "monthlyRating": 58,
-      "monthlyRank": 27,
+      "monthlyRank": 28,
       "monthlyWins": 4,
       "monthlyLosses": 3,
       "games": 66,
@@ -621,7 +621,7 @@
       "worldWins": 19,
       "worldLosses": 10,
       "monthlyRating": 52,
-      "monthlyRank": 31,
+      "monthlyRank": 32,
       "monthlyWins": 3,
       "monthlyLosses": 3,
       "games": 29,
@@ -952,16 +952,84 @@
         }
       ]
     },
+    "418513121167147008": {
+      "userId": 418513121167147008,
+      "name": "Vincent Schubert",
+      "avatar": "https://cdn.discordapp.com/avatars/418513121167147008/bfd5d41524b006489155d5dc5301f2ea.png?size=1024",
+      "worldRating": 1107,
+      "worldRank": 15,
+      "worldWins": 11,
+      "worldLosses": 2,
+      "monthlyRating": 62,
+      "monthlyRank": 27,
+      "monthlyWins": 4,
+      "monthlyLosses": 0,
+      "games": 13,
+      "winrate": 84.6,
+      "overallAverage": 66.66,
+      "recentMatches": [
+        {
+          "matchId": 1483,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:0",
+          "average": "61.35",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1321,
+          "result": "Win",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "2:4",
+          "average": "69.05",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1317,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "2:4",
+          "average": "68.98",
+          "eloChange": 15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1315,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "1:4",
+          "average": "68.21",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 529,
+          "result": "Win",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "4:2",
+          "average": "71.92",
+          "eloChange": 17,
+          "queue": "scolia"
+        }
+      ]
+    },
     "828645958883475459": {
       "userId": 828645958883475459,
       "name": "Justin Oehring",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
       "worldRating": 1105,
-      "worldRank": 15,
+      "worldRank": 16,
       "worldWins": 17,
       "worldLosses": 9,
       "monthlyRating": 56,
-      "monthlyRank": 28,
+      "monthlyRank": 29,
       "monthlyWins": 2,
       "monthlyLosses": 2,
       "games": 26,
@@ -1016,74 +1084,6 @@
           "score": "4:2",
           "average": "67.56",
           "eloChange": 7,
-          "queue": "scolia"
-        }
-      ]
-    },
-    "418513121167147008": {
-      "userId": 418513121167147008,
-      "name": "Vincent Schubert",
-      "avatar": "https://cdn.discordapp.com/avatars/418513121167147008/bfd5d41524b006489155d5dc5301f2ea.png?size=1024",
-      "worldRating": 1100,
-      "worldRank": 16,
-      "worldWins": 10,
-      "worldLosses": 2,
-      "monthlyRating": 50,
-      "monthlyRank": 34,
-      "monthlyWins": 3,
-      "monthlyLosses": 0,
-      "games": 12,
-      "winrate": 83.3,
-      "overallAverage": 67.1,
-      "recentMatches": [
-        {
-          "matchId": 1321,
-          "result": "Win",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "2:4",
-          "average": "69.05",
-          "eloChange": 10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1317,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "2:4",
-          "average": "68.98",
-          "eloChange": 15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1315,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "1:4",
-          "average": "68.21",
-          "eloChange": 10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 529,
-          "result": "Win",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:2",
-          "average": "71.92",
-          "eloChange": 17,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 346,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:0",
-          "average": "59.52",
-          "eloChange": 13,
           "queue": "scolia"
         }
       ]
@@ -1437,7 +1437,7 @@
       "worldWins": 8,
       "worldLosses": 4,
       "monthlyRating": 51,
-      "monthlyRank": 33,
+      "monthlyRank": 34,
       "monthlyWins": 3,
       "monthlyLosses": 2,
       "games": 12,
@@ -2241,7 +2241,7 @@
       "worldWins": 3,
       "worldLosses": 1,
       "monthlyRating": 51,
-      "monthlyRank": 32,
+      "monthlyRank": 33,
       "monthlyWins": 3,
       "monthlyLosses": 1,
       "games": 4,
@@ -2299,7 +2299,7 @@
       "worldWins": 5,
       "worldLosses": 4,
       "monthlyRating": 55,
-      "monthlyRank": 29,
+      "monthlyRank": 30,
       "monthlyWins": 3,
       "monthlyLosses": 2,
       "games": 9,
@@ -5414,7 +5414,7 @@
       "worldWins": 18,
       "worldLosses": 24,
       "monthlyRating": 53,
-      "monthlyRank": 30,
+      "monthlyRank": 31,
       "monthlyWins": 3,
       "monthlyLosses": 11,
       "games": 42,
@@ -5885,18 +5885,28 @@
       "userId": 773315089595891732,
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 871,
+      "worldRating": 864,
       "worldRank": 110,
       "worldWins": 38,
-      "worldLosses": 56,
+      "worldLosses": 57,
       "monthlyRating": 130,
       "monthlyRank": 17,
       "monthlyWins": 6,
-      "monthlyLosses": 10,
-      "games": 94,
-      "winrate": 40.4,
-      "overallAverage": 50.76,
+      "monthlyLosses": 11,
+      "games": 95,
+      "winrate": 40.0,
+      "overallAverage": 50.83,
       "recentMatches": [
+        {
+          "matchId": 1483,
+          "result": "Loss",
+          "opponentId": 418513121167147008,
+          "opponentName": "Vincent Schubert",
+          "score": "4:0",
+          "average": "58.16",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1481,
           "result": "Win",
@@ -5935,16 +5945,6 @@
           "score": "4:1",
           "average": "52.34",
           "eloChange": -2,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1443,
-          "result": "Loss",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "1:4",
-          "average": "43.37",
-          "eloChange": -21,
           "queue": "Scolia"
         }
       ]
