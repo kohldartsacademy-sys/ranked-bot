@@ -884,12 +884,80 @@
         }
       ]
     },
+    "418513121167147008": {
+      "userId": 418513121167147008,
+      "name": "Vincent Schubert",
+      "avatar": "https://cdn.discordapp.com/avatars/418513121167147008/bfd5d41524b006489155d5dc5301f2ea.png?size=1024",
+      "worldRating": 1112,
+      "worldRank": 14,
+      "worldWins": 12,
+      "worldLosses": 2,
+      "monthlyRating": 72,
+      "monthlyRank": 26,
+      "monthlyWins": 5,
+      "monthlyLosses": 0,
+      "games": 14,
+      "winrate": 85.7,
+      "overallAverage": 66.55,
+      "recentMatches": [
+        {
+          "matchId": 1484,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "4:1",
+          "average": "65.09",
+          "eloChange": 5,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1483,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:0",
+          "average": "61.35",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1321,
+          "result": "Win",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "2:4",
+          "average": "69.05",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1317,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "2:4",
+          "average": "68.98",
+          "eloChange": 15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1315,
+          "result": "Win",
+          "opponentId": 530021085522165770,
+          "opponentName": "Leon Kohl",
+          "score": "1:4",
+          "average": "68.21",
+          "eloChange": 10,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "1089304921439998003": {
       "userId": 1089304921439998003,
       "name": "Brickylayer",
       "avatar": "https://cdn.discordapp.com/avatars/1089304921439998003/848b2e53a7917bcc6e61a173f2eeb41e.png?size=1024",
       "worldRating": 1107,
-      "worldRank": 14,
+      "worldRank": 15,
       "worldWins": 33,
       "worldLosses": 24,
       "monthlyRating": 81,
@@ -949,74 +1017,6 @@
           "average": "62.73",
           "eloChange": -7,
           "queue": "Scolia"
-        }
-      ]
-    },
-    "418513121167147008": {
-      "userId": 418513121167147008,
-      "name": "Vincent Schubert",
-      "avatar": "https://cdn.discordapp.com/avatars/418513121167147008/bfd5d41524b006489155d5dc5301f2ea.png?size=1024",
-      "worldRating": 1107,
-      "worldRank": 15,
-      "worldWins": 11,
-      "worldLosses": 2,
-      "monthlyRating": 62,
-      "monthlyRank": 27,
-      "monthlyWins": 4,
-      "monthlyLosses": 0,
-      "games": 13,
-      "winrate": 84.6,
-      "overallAverage": 66.66,
-      "recentMatches": [
-        {
-          "matchId": 1483,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:0",
-          "average": "61.35",
-          "eloChange": 7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1321,
-          "result": "Win",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "2:4",
-          "average": "69.05",
-          "eloChange": 10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1317,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "2:4",
-          "average": "68.98",
-          "eloChange": 15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1315,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "1:4",
-          "average": "68.21",
-          "eloChange": 10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 529,
-          "result": "Win",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "4:2",
-          "average": "71.92",
-          "eloChange": 17,
-          "queue": "scolia"
         }
       ]
     },
@@ -3092,7 +3092,7 @@
       "worldWins": 6,
       "worldLosses": 7,
       "monthlyRating": 67,
-      "monthlyRank": 26,
+      "monthlyRank": 27,
       "monthlyWins": 4,
       "monthlyLosses": 1,
       "games": 13,
@@ -6361,18 +6361,28 @@
       "userId": 1359231571487494265,
       "name": "Bernard (Giftzwerg)",
       "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
-      "worldRating": 830,
+      "worldRating": 825,
       "worldRank": 117,
       "worldWins": 15,
-      "worldLosses": 57,
+      "worldLosses": 58,
       "monthlyRating": 163,
       "monthlyRank": 13,
       "monthlyWins": 6,
-      "monthlyLosses": 19,
-      "games": 72,
-      "winrate": 20.8,
-      "overallAverage": 210.84,
+      "monthlyLosses": 20,
+      "games": 73,
+      "winrate": 20.5,
+      "overallAverage": 208.7,
       "recentMatches": [
+        {
+          "matchId": 1484,
+          "result": "Loss",
+          "opponentId": 418513121167147008,
+          "opponentName": "Vincent Schubert",
+          "score": "4:1",
+          "average": "54.82",
+          "eloChange": -5,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1475,
           "result": "Loss",
@@ -6411,16 +6421,6 @@
           "score": "0:4",
           "average": "51.83",
           "eloChange": 21,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1447,
-          "result": "Loss",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "4:2",
-          "average": "48.87",
-          "eloChange": -12,
           "queue": "Scolia"
         }
       ]
