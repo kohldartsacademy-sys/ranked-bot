@@ -1632,12 +1632,80 @@
         }
       ]
     },
+    "1302224986051838068": {
+      "userId": 1302224986051838068,
+      "name": "Bazzi",
+      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
+      "worldRating": 1045,
+      "worldRank": 25,
+      "worldWins": 76,
+      "worldLosses": 45,
+      "monthlyRating": 517,
+      "monthlyRank": 1,
+      "monthlyWins": 36,
+      "monthlyLosses": 26,
+      "games": 121,
+      "winrate": 62.8,
+      "overallAverage": 61.36,
+      "recentMatches": [
+        {
+          "matchId": 1505,
+          "result": "Win",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "1:4",
+          "average": "50.06",
+          "eloChange": 7,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1504,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "0:4",
+          "average": "58.81",
+          "eloChange": -4,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1503,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "0:4",
+          "average": "61.32",
+          "eloChange": -4,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1500,
+          "result": "Loss",
+          "opponentId": 1408769906664538122,
+          "opponentName": "TheDarkTrident",
+          "score": "4:1",
+          "average": "63.46",
+          "eloChange": -22,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1498,
+          "result": "Win",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:1",
+          "average": "64.7",
+          "eloChange": 24,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "1233056433344348211": {
       "userId": 1233056433344348211,
       "name": "Lars Zimmermann",
       "avatar": "https://cdn.discordapp.com/avatars/1233056433344348211/cc2d7caeba4bb7e7f07ba4baa16724d6.png?size=1024",
       "worldRating": 1045,
-      "worldRank": 25,
+      "worldRank": 26,
       "worldWins": 11,
       "worldLosses": 8,
       "monthlyRating": 49,
@@ -1705,7 +1773,7 @@
       "name": "LaUeberwerfos",
       "avatar": "https://cdn.discordapp.com/avatars/643858007741956127/5b9967f5bec9b291d73b36f3fa3d5990.png?size=1024",
       "worldRating": 1045,
-      "worldRank": 26,
+      "worldRank": 27,
       "worldWins": 4,
       "worldLosses": 0,
       "monthlyRating": 47,
@@ -1763,7 +1831,7 @@
       "name": "TommyThomson",
       "avatar": "https://cdn.discordapp.com/avatars/1358893570869821534/6106ab6ef269621a7f4a57fdd767d667.png?size=1024",
       "worldRating": 1044,
-      "worldRank": 27,
+      "worldRank": 28,
       "worldWins": 4,
       "worldLosses": 1,
       "monthlyRating": 0,
@@ -1823,74 +1891,6 @@
           "average": "57.63",
           "eloChange": 17,
           "queue": "scolia"
-        }
-      ]
-    },
-    "1302224986051838068": {
-      "userId": 1302224986051838068,
-      "name": "Bazzi",
-      "avatar": "https://cdn.discordapp.com/avatars/1302224986051838068/ce649850882b9ce5f5a2d7a833af61b2.png?size=1024",
-      "worldRating": 1038,
-      "worldRank": 28,
-      "worldWins": 75,
-      "worldLosses": 45,
-      "monthlyRating": 505,
-      "monthlyRank": 1,
-      "monthlyWins": 35,
-      "monthlyLosses": 26,
-      "games": 120,
-      "winrate": 62.5,
-      "overallAverage": 61.45,
-      "recentMatches": [
-        {
-          "matchId": 1504,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "0:4",
-          "average": "58.81",
-          "eloChange": -4,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1503,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "0:4",
-          "average": "61.32",
-          "eloChange": -4,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1500,
-          "result": "Loss",
-          "opponentId": 1408769906664538122,
-          "opponentName": "TheDarkTrident",
-          "score": "4:1",
-          "average": "63.46",
-          "eloChange": -22,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1498,
-          "result": "Win",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:1",
-          "average": "64.7",
-          "eloChange": 24,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1487,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:1",
-          "average": "61.01",
-          "eloChange": 9,
-          "queue": "Scolia"
         }
       ]
     },
@@ -6389,18 +6389,28 @@
       "userId": 1458906019118841960,
       "name": "Rene B",
       "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
-      "worldRating": 817,
+      "worldRating": 810,
       "worldRank": 118,
       "worldWins": 18,
-      "worldLosses": 58,
+      "worldLosses": 59,
       "monthlyRating": 141,
       "monthlyRank": 17,
       "monthlyWins": 6,
-      "monthlyLosses": 23,
-      "games": 76,
-      "winrate": 23.7,
-      "overallAverage": 54.2,
+      "monthlyLosses": 24,
+      "games": 77,
+      "winrate": 23.4,
+      "overallAverage": 54.09,
       "recentMatches": [
+        {
+          "matchId": 1505,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "1:4",
+          "average": "45.89",
+          "eloChange": -7,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1502,
           "result": "Loss",
@@ -6439,16 +6449,6 @@
           "score": "0:4",
           "average": "57.63",
           "eloChange": -1,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1454,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "4:0",
-          "average": "71.83",
-          "eloChange": -2,
           "queue": "DartCounter"
         }
       ]
