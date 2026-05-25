@@ -140,18 +140,28 @@
       "userId": 1142038943961985105,
       "name": "Rick Dahlke",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1329,
+      "worldRating": 1331,
       "worldRank": 3,
-      "worldWins": 90,
+      "worldWins": 91,
       "worldLosses": 29,
-      "monthlyRating": 388,
+      "monthlyRating": 395,
       "monthlyRank": 6,
-      "monthlyWins": 35,
+      "monthlyWins": 36,
       "monthlyLosses": 9,
-      "games": 119,
-      "winrate": 75.6,
-      "overallAverage": 67.33,
+      "games": 120,
+      "winrate": 75.8,
+      "overallAverage": 67.3,
       "recentMatches": [
+        {
+          "matchId": 1516,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "2:4",
+          "average": "63.47",
+          "eloChange": 2,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1407,
           "result": "Win",
@@ -190,16 +200,6 @@
           "score": "0:4",
           "average": "49.69",
           "eloChange": 1,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1390,
-          "result": "Win",
-          "opponentId": 1089304921439998003,
-          "opponentName": "Brickylayer",
-          "score": "4:3",
-          "average": "64.99",
-          "eloChange": 7,
           "queue": "Scolia"
         }
       ]
@@ -6457,18 +6457,28 @@
       "userId": 1359231571487494265,
       "name": "Bernard (Giftzwerg)",
       "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
-      "worldRating": 829,
+      "worldRating": 827,
       "worldRank": 119,
       "worldWins": 16,
-      "worldLosses": 60,
+      "worldLosses": 61,
       "monthlyRating": 187,
       "monthlyRank": 10,
       "monthlyWins": 7,
-      "monthlyLosses": 22,
-      "games": 76,
-      "winrate": 21.1,
-      "overallAverage": 202.62,
+      "monthlyLosses": 23,
+      "games": 77,
+      "winrate": 20.8,
+      "overallAverage": 200.69,
       "recentMatches": [
+        {
+          "matchId": 1516,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "2:4",
+          "average": "53.72",
+          "eloChange": -2,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1511,
           "result": "Win",
@@ -6507,16 +6517,6 @@
           "score": "4:1",
           "average": "54.82",
           "eloChange": -5,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1475,
-          "result": "Loss",
-          "opponentId": 1432632159432216765,
-          "opponentName": "RangerN",
-          "score": "4:1",
-          "average": "54.6",
-          "eloChange": -6,
           "queue": "Scolia"
         }
       ]
