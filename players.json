@@ -2482,12 +2482,80 @@
         }
       ]
     },
+    "1327898199058284545": {
+      "userId": 1327898199058284545,
+      "name": "TheShy | Kevin",
+      "avatar": "https://cdn.discordapp.com/avatars/1327898199058284545/84f8183bcac3e3f75e0d1caa5a7f6340.png?size=1024",
+      "worldRating": 1015,
+      "worldRank": 40,
+      "worldWins": 32,
+      "worldLosses": 46,
+      "monthlyRating": 461,
+      "monthlyRank": 2,
+      "monthlyWins": 21,
+      "monthlyLosses": 22,
+      "games": 78,
+      "winrate": 41.0,
+      "overallAverage": 56.29,
+      "recentMatches": [
+        {
+          "matchId": 1513,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "4:0",
+          "average": "51.83",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1512,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:1",
+          "average": "62.85",
+          "eloChange": 10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1510,
+          "result": "Win",
+          "opponentId": 1408769906664538122,
+          "opponentName": "TheDarkTrident",
+          "score": "4:2",
+          "average": "53.59",
+          "eloChange": 14,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1482,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "1:4",
+          "average": "55.47",
+          "eloChange": -6,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1480,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "4:1",
+          "average": "62.55",
+          "eloChange": -7,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "1476579894434595010": {
       "userId": 1476579894434595010,
       "name": "Ranked",
       "avatar": "https://cdn.discordapp.com/embed/avatars/1.png",
       "worldRating": 1015,
-      "worldRank": 40,
+      "worldRank": 41,
       "worldWins": 1,
       "worldLosses": 0,
       "monthlyRating": 0,
@@ -2515,7 +2583,7 @@
       "name": "Michael \"Hähnchen\" Hahn",
       "avatar": "https://cdn.discordapp.com/avatars/1364666221114556537/e129073baf460e100929b2eadff4163a.png?size=1024",
       "worldRating": 1013,
-      "worldRank": 41,
+      "worldRank": 42,
       "worldWins": 11,
       "worldLosses": 11,
       "monthlyRating": 104,
@@ -2575,74 +2643,6 @@
           "average": "47.24",
           "eloChange": 4,
           "queue": "DartCounter"
-        }
-      ]
-    },
-    "1327898199058284545": {
-      "userId": 1327898199058284545,
-      "name": "TheShy | Kevin",
-      "avatar": "https://cdn.discordapp.com/avatars/1327898199058284545/84f8183bcac3e3f75e0d1caa5a7f6340.png?size=1024",
-      "worldRating": 1008,
-      "worldRank": 42,
-      "worldWins": 31,
-      "worldLosses": 46,
-      "monthlyRating": 449,
-      "monthlyRank": 2,
-      "monthlyWins": 20,
-      "monthlyLosses": 22,
-      "games": 77,
-      "winrate": 40.3,
-      "overallAverage": 56.35,
-      "recentMatches": [
-        {
-          "matchId": 1512,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:1",
-          "average": "62.85",
-          "eloChange": 10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1510,
-          "result": "Win",
-          "opponentId": 1408769906664538122,
-          "opponentName": "TheDarkTrident",
-          "score": "4:2",
-          "average": "53.59",
-          "eloChange": 14,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1482,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "1:4",
-          "average": "55.47",
-          "eloChange": -6,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1480,
-          "result": "Loss",
-          "opponentId": 1309548661117554720,
-          "opponentName": "Marco Panzenböck",
-          "score": "4:1",
-          "average": "62.55",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1479,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:1",
-          "average": "56.95",
-          "eloChange": 11,
-          "queue": "Scolia"
         }
       ]
     },
@@ -6525,18 +6525,28 @@
       "userId": 825420293039194123,
       "name": "Möffi",
       "avatar": "https://cdn.discordapp.com/avatars/825420293039194123/d84b958facf424daf8bc8eb98df94cbf.png?size=1024",
-      "worldRating": 793,
+      "worldRating": 786,
       "worldRank": 120,
       "worldWins": 18,
-      "worldLosses": 71,
+      "worldLosses": 72,
       "monthlyRating": 177,
       "monthlyRank": 12,
       "monthlyWins": 7,
-      "monthlyLosses": 23,
-      "games": 89,
-      "winrate": 20.2,
-      "overallAverage": 52.38,
+      "monthlyLosses": 24,
+      "games": 90,
+      "winrate": 20.0,
+      "overallAverage": 52.36,
       "recentMatches": [
+        {
+          "matchId": 1513,
+          "result": "Loss",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "4:0",
+          "average": "50.37",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1476,
           "result": "Loss",
@@ -6575,16 +6585,6 @@
           "score": "4:1",
           "average": "56.06",
           "eloChange": 18,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1417,
-          "result": "Loss",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "4:1",
-          "average": "54.91",
-          "eloChange": -13,
           "queue": "Scolia"
         }
       ]
