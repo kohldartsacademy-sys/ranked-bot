@@ -553,7 +553,7 @@
       "worldWins": 42,
       "worldLosses": 14,
       "monthlyRating": 180,
-      "monthlyRank": 11,
+      "monthlyRank": 12,
       "monthlyWins": 16,
       "monthlyLosses": 6,
       "games": 56,
@@ -6258,7 +6258,7 @@
       "worldWins": 40,
       "worldLosses": 62,
       "monthlyRating": 174,
-      "monthlyRank": 13,
+      "monthlyRank": 14,
       "monthlyWins": 8,
       "monthlyLosses": 16,
       "games": 102,
@@ -6317,12 +6317,80 @@
         }
       ]
     },
+    "1458906019118841960": {
+      "userId": 1458906019118841960,
+      "name": "Rene B",
+      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
+      "worldRating": 843,
+      "worldRank": 117,
+      "worldWins": 21,
+      "worldLosses": 59,
+      "monthlyRating": 189,
+      "monthlyRank": 10,
+      "monthlyWins": 9,
+      "monthlyLosses": 24,
+      "games": 80,
+      "winrate": 26.2,
+      "overallAverage": 53.75,
+      "recentMatches": [
+        {
+          "matchId": 1524,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:2",
+          "average": "45.2",
+          "eloChange": 10,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1509,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:3",
+          "average": "49.43",
+          "eloChange": 11,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1508,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:1",
+          "average": "40.14",
+          "eloChange": 12,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1505,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "1:4",
+          "average": "45.89",
+          "eloChange": -7,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1502,
+          "result": "Loss",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "3:4",
+          "average": "47.3",
+          "eloChange": -22,
+          "queue": "DartCounter"
+        }
+      ]
+    },
     "1326545695506698375": {
       "userId": 1326545695506698375,
       "name": "Mc_Rezzy46",
       "avatar": "https://cdn.discordapp.com/embed/avatars/4.png",
       "worldRating": 843,
-      "worldRank": 117,
+      "worldRank": 118,
       "worldWins": 0,
       "worldLosses": 15,
       "monthlyRating": 0,
@@ -6385,74 +6453,6 @@
         }
       ]
     },
-    "1458906019118841960": {
-      "userId": 1458906019118841960,
-      "name": "Rene B",
-      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
-      "worldRating": 833,
-      "worldRank": 118,
-      "worldWins": 20,
-      "worldLosses": 59,
-      "monthlyRating": 174,
-      "monthlyRank": 14,
-      "monthlyWins": 8,
-      "monthlyLosses": 24,
-      "games": 79,
-      "winrate": 25.3,
-      "overallAverage": 53.85,
-      "recentMatches": [
-        {
-          "matchId": 1509,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:3",
-          "average": "49.43",
-          "eloChange": 11,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1508,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:1",
-          "average": "40.14",
-          "eloChange": 12,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1505,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "45.89",
-          "eloChange": -7,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1502,
-          "result": "Loss",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "3:4",
-          "average": "47.3",
-          "eloChange": -22,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1492,
-          "result": "Win",
-          "opponentId": 906968918327967764,
-          "opponentName": "Michel Ellrich",
-          "score": "4:1",
-          "average": "53.26",
-          "eloChange": 20,
-          "queue": "DartCounter"
-        }
-      ]
-    },
     "1359231571487494265": {
       "userId": 1359231571487494265,
       "name": "Bernard (Giftzwerg)",
@@ -6462,7 +6462,7 @@
       "worldWins": 16,
       "worldLosses": 62,
       "monthlyRating": 187,
-      "monthlyRank": 10,
+      "monthlyRank": 11,
       "monthlyWins": 7,
       "monthlyLosses": 24,
       "games": 78,
@@ -6530,7 +6530,7 @@
       "worldWins": 18,
       "worldLosses": 75,
       "monthlyRating": 177,
-      "monthlyRank": 12,
+      "monthlyRank": 13,
       "monthlyWins": 7,
       "monthlyLosses": 27,
       "games": 93,
@@ -6661,18 +6661,28 @@
       "userId": 1245485490421891165,
       "name": "Andy Bühner",
       "avatar": "https://cdn.discordapp.com/avatars/1245485490421891165/451b17f84483bd4cfc1aaf0f34c58183.png?size=1024",
-      "worldRating": 699,
+      "worldRating": 689,
       "worldRank": 122,
       "worldWins": 14,
-      "worldLosses": 71,
+      "worldLosses": 72,
       "monthlyRating": 149,
       "monthlyRank": 17,
       "monthlyWins": 5,
-      "monthlyLosses": 23,
-      "games": 85,
-      "winrate": 16.5,
-      "overallAverage": 162.55,
+      "monthlyLosses": 24,
+      "games": 86,
+      "winrate": 16.3,
+      "overallAverage": 161.16,
       "recentMatches": [
+        {
+          "matchId": 1524,
+          "result": "Loss",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "4:2",
+          "average": "42.4",
+          "eloChange": -10,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1523,
           "result": "Loss",
@@ -6711,16 +6721,6 @@
           "score": "3:4",
           "average": "46.79",
           "eloChange": 22,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1499,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:0",
-          "average": "47.08",
-          "eloChange": -1,
           "queue": "DartCounter"
         }
       ]
