@@ -476,80 +476,12 @@
         }
       ]
     },
-    "1007351887114285087": {
-      "userId": 1007351887114285087,
-      "name": "Rico Seifert",
-      "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 1170,
-      "worldRank": 8,
-      "worldWins": 42,
-      "worldLosses": 13,
-      "monthlyRating": 180,
-      "monthlyRank": 11,
-      "monthlyWins": 16,
-      "monthlyLosses": 5,
-      "games": 55,
-      "winrate": 76.4,
-      "overallAverage": 60.39,
-      "recentMatches": [
-        {
-          "matchId": 1401,
-          "result": "Loss",
-          "opponentId": 806146120929640498,
-          "opponentName": "Luca Pakendorf",
-          "score": "1:4",
-          "average": "70.11",
-          "eloChange": -14,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1400,
-          "result": "Win",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "2:4",
-          "average": "65.91",
-          "eloChange": 10,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1398,
-          "result": "Win",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "0:4",
-          "average": "67.55",
-          "eloChange": 11,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1333,
-          "result": "Loss",
-          "opponentId": 272860472141676546,
-          "opponentName": "Tacke",
-          "score": "3:4",
-          "average": "60.78",
-          "eloChange": -22,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1332,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:1",
-          "average": "66.84",
-          "eloChange": 2,
-          "queue": "DartCounter"
-        }
-      ]
-    },
     "1089304921439998003": {
       "userId": 1089304921439998003,
       "name": "Brickylayer",
       "avatar": "https://cdn.discordapp.com/avatars/1089304921439998003/848b2e53a7917bcc6e61a173f2eeb41e.png?size=1024",
       "worldRating": 1156,
-      "worldRank": 9,
+      "worldRank": 8,
       "worldWins": 37,
       "worldLosses": 24,
       "monthlyRating": 150,
@@ -609,6 +541,74 @@
           "average": "62.62",
           "eloChange": -13,
           "queue": "Scolia"
+        }
+      ]
+    },
+    "1007351887114285087": {
+      "userId": 1007351887114285087,
+      "name": "Rico Seifert",
+      "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
+      "worldRating": 1150,
+      "worldRank": 9,
+      "worldWins": 42,
+      "worldLosses": 14,
+      "monthlyRating": 180,
+      "monthlyRank": 11,
+      "monthlyWins": 16,
+      "monthlyLosses": 6,
+      "games": 56,
+      "winrate": 75.0,
+      "overallAverage": 60.36,
+      "recentMatches": [
+        {
+          "matchId": 1521,
+          "result": "Loss",
+          "opponentId": 272860472141676546,
+          "opponentName": "Tacke",
+          "score": "4:3",
+          "average": "58.73",
+          "eloChange": -20,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1401,
+          "result": "Loss",
+          "opponentId": 806146120929640498,
+          "opponentName": "Luca Pakendorf",
+          "score": "1:4",
+          "average": "70.11",
+          "eloChange": -14,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1400,
+          "result": "Win",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "2:4",
+          "average": "65.91",
+          "eloChange": 10,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1398,
+          "result": "Win",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "0:4",
+          "average": "67.55",
+          "eloChange": 11,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1333,
+          "result": "Loss",
+          "opponentId": 272860472141676546,
+          "opponentName": "Tacke",
+          "score": "3:4",
+          "average": "60.78",
+          "eloChange": -22,
+          "queue": "DartCounter"
         }
       ]
     },
@@ -893,7 +893,7 @@
       "worldWins": 13,
       "worldLosses": 2,
       "monthlyRating": 90,
-      "monthlyRank": 25,
+      "monthlyRank": 26,
       "monthlyWins": 6,
       "monthlyLosses": 0,
       "games": 15,
@@ -1088,12 +1088,80 @@
         }
       ]
     },
+    "272860472141676546": {
+      "userId": 272860472141676546,
+      "name": "Tacke",
+      "avatar": "https://cdn.discordapp.com/avatars/272860472141676546/3d7d24c4928d38c7a97e292eed2ab3b7.png?size=1024",
+      "worldRating": 1096,
+      "worldRank": 17,
+      "worldWins": 10,
+      "worldLosses": 4,
+      "monthlyRating": 102,
+      "monthlyRank": 25,
+      "monthlyWins": 5,
+      "monthlyLosses": 2,
+      "games": 14,
+      "winrate": 71.4,
+      "overallAverage": 55.3,
+      "recentMatches": [
+        {
+          "matchId": 1521,
+          "result": "Win",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "4:3",
+          "average": "59.61",
+          "eloChange": 20,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1333,
+          "result": "Win",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "3:4",
+          "average": "59.17",
+          "eloChange": 22,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1331,
+          "result": "Win",
+          "opponentId": 1364666221114556537,
+          "opponentName": "Michael \"Hähnchen\" Hahn",
+          "score": "4:3",
+          "average": "51.31",
+          "eloChange": 14,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1289,
+          "result": "Loss",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "0:4",
+          "average": "59.31",
+          "eloChange": -10,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1287,
+          "result": "Loss",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "4:0",
+          "average": "58.54",
+          "eloChange": -11,
+          "queue": "DartCounter"
+        }
+      ]
+    },
     "1432632159432216765": {
       "userId": 1432632159432216765,
       "name": "RangerN",
       "avatar": "https://cdn.discordapp.com/avatars/1432632159432216765/3ab7f33335680814ec749eb1411ed8c3.png?size=1024",
       "worldRating": 1087,
-      "worldRank": 17,
+      "worldRank": 18,
       "worldWins": 16,
       "worldLosses": 5,
       "monthlyRating": 134,
@@ -1161,7 +1229,7 @@
       "name": "van_graadert",
       "avatar": "https://cdn.discordapp.com/avatars/1213219884440489984/a12754d46508103e0b1fe02bc4ed5110.png?size=1024",
       "worldRating": 1086,
-      "worldRank": 18,
+      "worldRank": 19,
       "worldWins": 34,
       "worldLosses": 20,
       "monthlyRating": 23,
@@ -1229,7 +1297,7 @@
       "name": "Moppi",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 1085,
-      "worldRank": 19,
+      "worldRank": 20,
       "worldWins": 21,
       "worldLosses": 11,
       "monthlyRating": 0,
@@ -1297,7 +1365,7 @@
       "name": "Shorbi|Daniel",
       "avatar": "https://cdn.discordapp.com/avatars/134975678327160832/c011c9d84037f9e530f341c0edf69fc7.png?size=1024",
       "worldRating": 1084,
-      "worldRank": 20,
+      "worldRank": 21,
       "worldWins": 10,
       "worldLosses": 4,
       "monthlyRating": 0,
@@ -1357,74 +1425,6 @@
           "average": "45.75",
           "eloChange": -9,
           "queue": "dart"
-        }
-      ]
-    },
-    "272860472141676546": {
-      "userId": 272860472141676546,
-      "name": "Tacke",
-      "avatar": "https://cdn.discordapp.com/avatars/272860472141676546/3d7d24c4928d38c7a97e292eed2ab3b7.png?size=1024",
-      "worldRating": 1076,
-      "worldRank": 21,
-      "worldWins": 9,
-      "worldLosses": 4,
-      "monthlyRating": 77,
-      "monthlyRank": 26,
-      "monthlyWins": 4,
-      "monthlyLosses": 2,
-      "games": 13,
-      "winrate": 69.2,
-      "overallAverage": 54.97,
-      "recentMatches": [
-        {
-          "matchId": 1333,
-          "result": "Win",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "3:4",
-          "average": "59.17",
-          "eloChange": 22,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1331,
-          "result": "Win",
-          "opponentId": 1364666221114556537,
-          "opponentName": "Michael \"Hähnchen\" Hahn",
-          "score": "4:3",
-          "average": "51.31",
-          "eloChange": 14,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1289,
-          "result": "Loss",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "0:4",
-          "average": "59.31",
-          "eloChange": -10,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1287,
-          "result": "Loss",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "4:0",
-          "average": "58.54",
-          "eloChange": -11,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1174,
-          "result": "Win",
-          "opponentId": 283650357262024704,
-          "opponentName": "User 283650357262024704",
-          "score": "0:4",
-          "average": "43.25",
-          "eloChange": 10,
-          "queue": "DartCounter"
         }
       ]
     },
