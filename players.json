@@ -9,7 +9,7 @@
       "worldWins": 125,
       "worldLosses": 24,
       "monthlyRating": 437,
-      "monthlyRank": 3,
+      "monthlyRank": 4,
       "monthlyWins": 40,
       "monthlyLosses": 5,
       "games": 149,
@@ -276,18 +276,28 @@
       "userId": 1309548661117554720,
       "name": "Marco Panzenböck",
       "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
-      "worldRating": 1221,
+      "worldRating": 1223,
       "worldRank": 5,
-      "worldWins": 87,
+      "worldWins": 88,
       "worldLosses": 42,
-      "monthlyRating": 434,
-      "monthlyRank": 4,
-      "monthlyWins": 30,
+      "monthlyRating": 441,
+      "monthlyRank": 3,
+      "monthlyWins": 31,
       "monthlyLosses": 17,
-      "games": 129,
-      "winrate": 67.4,
-      "overallAverage": 63.89,
+      "games": 130,
+      "winrate": 67.7,
+      "overallAverage": 63.83,
       "recentMatches": [
+        {
+          "matchId": 1515,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "1:4",
+          "average": "57.22",
+          "eloChange": 2,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1514,
           "result": "Win",
@@ -326,16 +336,6 @@
           "score": "4:1",
           "average": "67.22",
           "eloChange": 7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1471,
-          "result": "Win",
-          "opponentId": 1432632159432216765,
-          "opponentName": "RangerN",
-          "score": "3:4",
-          "average": "64.99",
-          "eloChange": 10,
           "queue": "Scolia"
         }
       ]
@@ -6525,18 +6525,28 @@
       "userId": 825420293039194123,
       "name": "Möffi",
       "avatar": "https://cdn.discordapp.com/avatars/825420293039194123/d84b958facf424daf8bc8eb98df94cbf.png?size=1024",
-      "worldRating": 786,
+      "worldRating": 784,
       "worldRank": 120,
       "worldWins": 18,
-      "worldLosses": 72,
+      "worldLosses": 73,
       "monthlyRating": 177,
       "monthlyRank": 12,
       "monthlyWins": 7,
-      "monthlyLosses": 24,
-      "games": 90,
-      "winrate": 20.0,
-      "overallAverage": 52.36,
+      "monthlyLosses": 25,
+      "games": 91,
+      "winrate": 19.8,
+      "overallAverage": 52.39,
       "recentMatches": [
+        {
+          "matchId": 1515,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "1:4",
+          "average": "55.16",
+          "eloChange": -2,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1513,
           "result": "Loss",
@@ -6575,16 +6585,6 @@
           "score": "1:4",
           "average": "54.54",
           "eloChange": -15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1429,
-          "result": "Win",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "4:1",
-          "average": "56.06",
-          "eloChange": 18,
           "queue": "Scolia"
         }
       ]
