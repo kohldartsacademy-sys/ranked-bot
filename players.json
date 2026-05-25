@@ -1092,18 +1092,28 @@
       "userId": 272860472141676546,
       "name": "Tacke",
       "avatar": "https://cdn.discordapp.com/avatars/272860472141676546/3d7d24c4928d38c7a97e292eed2ab3b7.png?size=1024",
-      "worldRating": 1096,
+      "worldRating": 1099,
       "worldRank": 17,
-      "worldWins": 10,
+      "worldWins": 11,
       "worldLosses": 4,
-      "monthlyRating": 102,
-      "monthlyRank": 25,
-      "monthlyWins": 5,
+      "monthlyRating": 110,
+      "monthlyRank": 24,
+      "monthlyWins": 6,
       "monthlyLosses": 2,
-      "games": 14,
-      "winrate": 71.4,
-      "overallAverage": 55.3,
+      "games": 15,
+      "winrate": 73.3,
+      "overallAverage": 55.47,
       "recentMatches": [
+        {
+          "matchId": 1523,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "1:4",
+          "average": "57.88",
+          "eloChange": 3,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1521,
           "result": "Win",
@@ -1142,16 +1152,6 @@
           "score": "0:4",
           "average": "59.31",
           "eloChange": -10,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1287,
-          "result": "Loss",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "4:0",
-          "average": "58.54",
-          "eloChange": -11,
           "queue": "DartCounter"
         }
       ]
@@ -2451,7 +2451,7 @@
       "worldWins": 11,
       "worldLosses": 11,
       "monthlyRating": 104,
-      "monthlyRank": 24,
+      "monthlyRank": 25,
       "monthlyWins": 6,
       "monthlyLosses": 4,
       "games": 22,
@@ -6661,18 +6661,28 @@
       "userId": 1245485490421891165,
       "name": "Andy Bühner",
       "avatar": "https://cdn.discordapp.com/avatars/1245485490421891165/451b17f84483bd4cfc1aaf0f34c58183.png?size=1024",
-      "worldRating": 702,
+      "worldRating": 699,
       "worldRank": 122,
       "worldWins": 14,
-      "worldLosses": 70,
+      "worldLosses": 71,
       "monthlyRating": 149,
       "monthlyRank": 17,
       "monthlyWins": 5,
-      "monthlyLosses": 22,
-      "games": 84,
-      "winrate": 16.7,
-      "overallAverage": 163.94,
+      "monthlyLosses": 23,
+      "games": 85,
+      "winrate": 16.5,
+      "overallAverage": 162.55,
       "recentMatches": [
+        {
+          "matchId": 1523,
+          "result": "Loss",
+          "opponentId": 272860472141676546,
+          "opponentName": "Tacke",
+          "score": "1:4",
+          "average": "46.12",
+          "eloChange": -3,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1509,
           "result": "Loss",
@@ -6711,16 +6721,6 @@
           "score": "4:0",
           "average": "47.08",
           "eloChange": -1,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1477,
-          "result": "Loss",
-          "opponentId": 1474322752432377886,
-          "opponentName": "Sebe K",
-          "score": "4:0",
-          "average": "51.34",
-          "eloChange": -8,
           "queue": "DartCounter"
         }
       ]
