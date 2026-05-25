@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1391,
+      "worldRating": 1393,
       "worldRank": 1,
-      "worldWins": 126,
+      "worldWins": 127,
       "worldLosses": 24,
-      "monthlyRating": 443,
+      "monthlyRating": 450,
       "monthlyRank": 3,
-      "monthlyWins": 41,
+      "monthlyWins": 42,
       "monthlyLosses": 5,
-      "games": 150,
-      "winrate": 84.0,
-      "overallAverage": 68.99,
+      "games": 151,
+      "winrate": 84.1,
+      "overallAverage": 68.94,
       "recentMatches": [
+        {
+          "matchId": 1522,
+          "result": "Win",
+          "opponentId": 906968918327967764,
+          "opponentName": "Michel Ellrich",
+          "score": "1:4",
+          "average": "61.66",
+          "eloChange": 2,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1518,
           "result": "Win",
@@ -55,16 +65,6 @@
           "average": "61.35",
           "eloChange": 1,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 1499,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:0",
-          "average": "55.67",
-          "eloChange": 1,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -5573,18 +5573,28 @@
       "userId": 906968918327967764,
       "name": "Michel Ellrich",
       "avatar": "https://cdn.discordapp.com/embed/avatars/3.png",
-      "worldRating": 913,
+      "worldRating": 911,
       "worldRank": 106,
       "worldWins": 8,
-      "worldLosses": 21,
+      "worldLosses": 22,
       "monthlyRating": 75,
       "monthlyRank": 27,
       "monthlyWins": 4,
-      "monthlyLosses": 9,
-      "games": 29,
-      "winrate": 27.6,
-      "overallAverage": 767.01,
+      "monthlyLosses": 10,
+      "games": 30,
+      "winrate": 26.7,
+      "overallAverage": 743.3,
       "recentMatches": [
+        {
+          "matchId": 1522,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "1:4",
+          "average": "55.83",
+          "eloChange": -2,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1520,
           "result": "Win",
@@ -5624,16 +5634,6 @@
           "average": "53.79",
           "eloChange": -2,
           "queue": "DartCounter"
-        },
-        {
-          "matchId": 1100,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:1",
-          "average": "5466.0",
-          "eloChange": 8,
-          "queue": "dart"
         }
       ]
     },
