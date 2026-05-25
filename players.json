@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1390,
+      "worldRating": 1391,
       "worldRank": 1,
-      "worldWins": 125,
+      "worldWins": 126,
       "worldLosses": 24,
-      "monthlyRating": 437,
-      "monthlyRank": 4,
-      "monthlyWins": 40,
+      "monthlyRating": 443,
+      "monthlyRank": 3,
+      "monthlyWins": 41,
       "monthlyLosses": 5,
-      "games": 149,
-      "winrate": 83.9,
-      "overallAverage": 69.02,
+      "games": 150,
+      "winrate": 84.0,
+      "overallAverage": 68.99,
       "recentMatches": [
+        {
+          "matchId": 1518,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "1:4",
+          "average": "64.24",
+          "eloChange": 1,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1504,
           "result": "Win",
@@ -55,16 +65,6 @@
           "average": "55.67",
           "eloChange": 1,
           "queue": "DartCounter"
-        },
-        {
-          "matchId": 1495,
-          "result": "Loss",
-          "opponentId": 1089304921439998003,
-          "opponentName": "Brickylayer",
-          "score": "1:4",
-          "average": "75.06",
-          "eloChange": -27,
-          "queue": "Scolia"
         }
       ]
     },
@@ -281,7 +281,7 @@
       "worldWins": 88,
       "worldLosses": 42,
       "monthlyRating": 441,
-      "monthlyRank": 3,
+      "monthlyRank": 4,
       "monthlyWins": 31,
       "monthlyLosses": 17,
       "games": 130,
@@ -6525,18 +6525,28 @@
       "userId": 825420293039194123,
       "name": "Möffi",
       "avatar": "https://cdn.discordapp.com/avatars/825420293039194123/d84b958facf424daf8bc8eb98df94cbf.png?size=1024",
-      "worldRating": 784,
+      "worldRating": 783,
       "worldRank": 120,
       "worldWins": 18,
-      "worldLosses": 73,
+      "worldLosses": 74,
       "monthlyRating": 177,
       "monthlyRank": 12,
       "monthlyWins": 7,
-      "monthlyLosses": 25,
-      "games": 91,
-      "winrate": 19.8,
-      "overallAverage": 52.39,
+      "monthlyLosses": 26,
+      "games": 92,
+      "winrate": 19.6,
+      "overallAverage": 52.5,
       "recentMatches": [
+        {
+          "matchId": 1518,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "1:4",
+          "average": "62.14",
+          "eloChange": -1,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1515,
           "result": "Loss",
@@ -6575,16 +6585,6 @@
           "score": "4:2",
           "average": "52.21",
           "eloChange": -3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1431,
-          "result": "Loss",
-          "opponentId": 530021085522165770,
-          "opponentName": "Leon Kohl",
-          "score": "1:4",
-          "average": "54.54",
-          "eloChange": -15,
           "queue": "Scolia"
         }
       ]
