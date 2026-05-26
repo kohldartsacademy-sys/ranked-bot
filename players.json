@@ -213,7 +213,7 @@
       "worldWins": 54,
       "worldLosses": 12,
       "monthlyRating": 58,
-      "monthlyRank": 29,
+      "monthlyRank": 30,
       "monthlyWins": 4,
       "monthlyLosses": 3,
       "games": 66,
@@ -1024,18 +1024,28 @@
       "userId": 828645958883475459,
       "name": "Justin Oehring",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 1105,
+      "worldRating": 1111,
       "worldRank": 16,
-      "worldWins": 17,
+      "worldWins": 18,
       "worldLosses": 9,
-      "monthlyRating": 56,
-      "monthlyRank": 30,
-      "monthlyWins": 2,
+      "monthlyRating": 67,
+      "monthlyRank": 29,
+      "monthlyWins": 3,
       "monthlyLosses": 2,
-      "games": 26,
-      "winrate": 65.4,
-      "overallAverage": 65.3,
+      "games": 27,
+      "winrate": 66.7,
+      "overallAverage": 65.17,
       "recentMatches": [
+        {
+          "matchId": 1535,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:3",
+          "average": "61.8",
+          "eloChange": 6,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1439,
           "result": "Loss",
@@ -1075,16 +1085,6 @@
           "average": "68.74",
           "eloChange": 27,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 874,
-          "result": "Win",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "4:2",
-          "average": "67.56",
-          "eloChange": 7,
-          "queue": "scolia"
         }
       ]
     },
@@ -6435,18 +6435,28 @@
       "userId": 773315089595891732,
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 851,
+      "worldRating": 845,
       "worldRank": 120,
       "worldWins": 41,
-      "worldLosses": 65,
+      "worldLosses": 66,
       "monthlyRating": 202,
       "monthlyRank": 11,
       "monthlyWins": 9,
-      "monthlyLosses": 19,
-      "games": 106,
-      "winrate": 38.7,
-      "overallAverage": 51.21,
+      "monthlyLosses": 20,
+      "games": 107,
+      "winrate": 38.3,
+      "overallAverage": 51.27,
       "recentMatches": [
+        {
+          "matchId": 1535,
+          "result": "Loss",
+          "opponentId": 828645958883475459,
+          "opponentName": "Justin Oehring",
+          "score": "4:3",
+          "average": "58.22",
+          "eloChange": -6,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1532,
           "result": "Loss",
@@ -6485,16 +6495,6 @@
           "score": "4:0",
           "average": "55.0",
           "eloChange": -4,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1512,
-          "result": "Loss",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "4:1",
-          "average": "53.33",
-          "eloChange": -10,
           "queue": "Scolia"
         }
       ]
