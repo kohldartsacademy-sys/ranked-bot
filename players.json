@@ -140,23 +140,33 @@
       "userId": 1142038943961985105,
       "name": "Rick Dahlke",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1335,
+      "worldRating": 1337,
       "worldRank": 3,
-      "worldWins": 92,
+      "worldWins": 93,
       "worldLosses": 29,
-      "monthlyRating": 404,
+      "monthlyRating": 411,
       "monthlyRank": 6,
-      "monthlyWins": 37,
+      "monthlyWins": 38,
       "monthlyLosses": 9,
-      "games": 121,
-      "winrate": 76.0,
-      "overallAverage": 67.21,
+      "games": 122,
+      "winrate": 76.2,
+      "overallAverage": 67.17,
       "recentMatches": [
+        {
+          "matchId": 1529,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:1",
+          "average": "61.74",
+          "eloChange": 2,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1528,
           "result": "Win",
           "opponentId": 786133186400092181,
-          "opponentName": "Jonny",
+          "opponentName": "Jonny H.",
           "score": "3:4",
           "average": "57.02",
           "eloChange": 4,
@@ -190,16 +200,6 @@
           "score": "4:2",
           "average": "69.71",
           "eloChange": -14,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1392,
-          "result": "Loss",
-          "opponentId": 1089304921439998003,
-          "opponentName": "Brickylayer",
-          "score": "4:2",
-          "average": "68.9",
-          "eloChange": -26,
           "queue": "Scolia"
         }
       ]
@@ -3209,7 +3209,7 @@
     },
     "786133186400092181": {
       "userId": 786133186400092181,
-      "name": "Jonny",
+      "name": "Jonny H.",
       "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
       "worldRating": 996,
       "worldRank": 62,
@@ -6445,18 +6445,28 @@
       "userId": 773315089595891732,
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 840,
+      "worldRating": 838,
       "worldRank": 120,
       "worldWins": 40,
-      "worldLosses": 63,
+      "worldLosses": 64,
       "monthlyRating": 174,
       "monthlyRank": 15,
       "monthlyWins": 8,
-      "monthlyLosses": 17,
-      "games": 103,
-      "winrate": 38.8,
-      "overallAverage": 51.01,
+      "monthlyLosses": 18,
+      "games": 104,
+      "winrate": 38.5,
+      "overallAverage": 51.07,
       "recentMatches": [
+        {
+          "matchId": 1529,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "4:1",
+          "average": "56.9",
+          "eloChange": -2,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1527,
           "result": "Loss",
@@ -6495,16 +6505,6 @@
           "score": "1:4",
           "average": "47.61",
           "eloChange": -9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1494,
-          "result": "Loss",
-          "opponentId": 1089304921439998003,
-          "opponentName": "Brickylayer",
-          "score": "4:3",
-          "average": "52.9",
-          "eloChange": -7,
           "queue": "Scolia"
         }
       ]
