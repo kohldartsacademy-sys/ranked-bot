@@ -344,18 +344,28 @@
       "userId": 183185835477172226,
       "name": "Stefan Kulik",
       "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
-      "worldRating": 1182,
+      "worldRating": 1186,
       "worldRank": 6,
-      "worldWins": 45,
+      "worldWins": 46,
       "worldLosses": 23,
-      "monthlyRating": 173,
-      "monthlyRank": 15,
-      "monthlyWins": 12,
+      "monthlyRating": 182,
+      "monthlyRank": 12,
+      "monthlyWins": 13,
       "monthlyLosses": 8,
-      "games": 68,
-      "winrate": 66.2,
-      "overallAverage": 59.11,
+      "games": 69,
+      "winrate": 66.7,
+      "overallAverage": 59.23,
       "recentMatches": [
+        {
+          "matchId": 1527,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:0",
+          "average": "67.55",
+          "eloChange": 4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1463,
           "result": "Loss",
@@ -394,16 +404,6 @@
           "score": "4:1",
           "average": "47.53",
           "eloChange": 3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1302,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "4:1",
-          "average": "64.68",
-          "eloChange": 13,
           "queue": "Scolia"
         }
       ]
@@ -757,7 +757,7 @@
       "worldWins": 42,
       "worldLosses": 15,
       "monthlyRating": 180,
-      "monthlyRank": 12,
+      "monthlyRank": 13,
       "monthlyWins": 16,
       "monthlyLosses": 7,
       "games": 57,
@@ -6345,80 +6345,12 @@
         }
       ]
     },
-    "773315089595891732": {
-      "userId": 773315089595891732,
-      "name": "AlkaTraz",
-      "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 844,
-      "worldRank": 118,
-      "worldWins": 40,
-      "worldLosses": 62,
-      "monthlyRating": 174,
-      "monthlyRank": 14,
-      "monthlyWins": 8,
-      "monthlyLosses": 16,
-      "games": 102,
-      "winrate": 39.2,
-      "overallAverage": 50.97,
-      "recentMatches": [
-        {
-          "matchId": 1512,
-          "result": "Loss",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "4:1",
-          "average": "53.33",
-          "eloChange": -10,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1511,
-          "result": "Loss",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "2:4",
-          "average": "52.6",
-          "eloChange": -19,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1507,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "1:4",
-          "average": "47.61",
-          "eloChange": -9,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1494,
-          "result": "Loss",
-          "opponentId": 1089304921439998003,
-          "opponentName": "Brickylayer",
-          "score": "4:3",
-          "average": "52.9",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1488,
-          "result": "Win",
-          "opponentId": 505446955242094596,
-          "opponentName": "Jerome Benzler",
-          "score": "0:4",
-          "average": "53.2",
-          "eloChange": 20,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1326545695506698375": {
       "userId": 1326545695506698375,
       "name": "Mc_Rezzy46",
       "avatar": "https://cdn.discordapp.com/embed/avatars/4.png",
       "worldRating": 843,
-      "worldRank": 119,
+      "worldRank": 118,
       "worldWins": 0,
       "worldLosses": 15,
       "monthlyRating": 0,
@@ -6478,6 +6410,74 @@
           "average": "46.58",
           "eloChange": -8,
           "queue": "scolia"
+        }
+      ]
+    },
+    "773315089595891732": {
+      "userId": 773315089595891732,
+      "name": "AlkaTraz",
+      "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
+      "worldRating": 840,
+      "worldRank": 119,
+      "worldWins": 40,
+      "worldLosses": 63,
+      "monthlyRating": 174,
+      "monthlyRank": 15,
+      "monthlyWins": 8,
+      "monthlyLosses": 17,
+      "games": 103,
+      "winrate": 38.8,
+      "overallAverage": 51.01,
+      "recentMatches": [
+        {
+          "matchId": 1527,
+          "result": "Loss",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "4:0",
+          "average": "55.0",
+          "eloChange": -4,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1512,
+          "result": "Loss",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "4:1",
+          "average": "53.33",
+          "eloChange": -10,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1511,
+          "result": "Loss",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "2:4",
+          "average": "52.6",
+          "eloChange": -19,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1507,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "1:4",
+          "average": "47.61",
+          "eloChange": -9,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1494,
+          "result": "Loss",
+          "opponentId": 1089304921439998003,
+          "opponentName": "Brickylayer",
+          "score": "4:3",
+          "average": "52.9",
+          "eloChange": -7,
+          "queue": "Scolia"
         }
       ]
     },
@@ -6558,7 +6558,7 @@
       "worldWins": 18,
       "worldLosses": 75,
       "monthlyRating": 177,
-      "monthlyRank": 13,
+      "monthlyRank": 14,
       "monthlyWins": 7,
       "monthlyLosses": 27,
       "games": 93,
