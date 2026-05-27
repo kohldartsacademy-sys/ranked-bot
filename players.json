@@ -77,7 +77,7 @@
       "worldWins": 55,
       "worldLosses": 5,
       "monthlyRating": 424,
-      "monthlyRank": 5,
+      "monthlyRank": 6,
       "monthlyWins": 38,
       "monthlyLosses": 2,
       "games": 60,
@@ -140,18 +140,28 @@
       "userId": 1142038943961985105,
       "name": "Rick Dahlke",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1314,
+      "worldRating": 1317,
       "worldRank": 3,
-      "worldWins": 94,
+      "worldWins": 95,
       "worldLosses": 30,
-      "monthlyRating": 421,
-      "monthlyRank": 6,
-      "monthlyWins": 39,
+      "monthlyRating": 429,
+      "monthlyRank": 5,
+      "monthlyWins": 40,
       "monthlyLosses": 10,
-      "games": 124,
-      "winrate": 75.8,
-      "overallAverage": 67.05,
+      "games": 125,
+      "winrate": 76.0,
+      "overallAverage": 67.04,
       "recentMatches": [
+        {
+          "matchId": 1539,
+          "result": "Win",
+          "opponentId": 1170865043227824178,
+          "opponentName": "Lmk 1170",
+          "score": "4:0",
+          "average": "66.07",
+          "eloChange": 3,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1533,
           "result": "Win",
@@ -190,16 +200,6 @@
           "score": "3:4",
           "average": "57.02",
           "eloChange": 4,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1516,
-          "result": "Win",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "2:4",
-          "average": "63.47",
-          "eloChange": 2,
           "queue": "Scolia"
         }
       ]
@@ -5829,80 +5829,12 @@
         }
       ]
     },
-    "1170865043227824178": {
-      "userId": 1170865043227824178,
-      "name": "Lmk 1170",
-      "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
-      "worldRating": 905,
-      "worldRank": 111,
-      "worldWins": 1,
-      "worldLosses": 11,
-      "monthlyRating": 26,
-      "monthlyRank": 50,
-      "monthlyWins": 1,
-      "monthlyLosses": 4,
-      "games": 12,
-      "winrate": 8.3,
-      "overallAverage": 50.37,
-      "recentMatches": [
-        {
-          "matchId": 1334,
-          "result": "Win",
-          "opponentId": 706642260347060262,
-          "opponentName": "domme",
-          "score": "4:3",
-          "average": "44.67",
-          "eloChange": 21,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1297,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "0:4",
-          "average": "48.0",
-          "eloChange": -2,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1126,
-          "result": "Loss",
-          "opponentId": 1468019197656174774,
-          "opponentName": "Christian1980",
-          "score": "4:3",
-          "average": "47.13",
-          "eloChange": -15,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1124,
-          "result": "Loss",
-          "opponentId": 287768867969957889,
-          "opponentName": "Marvin Mollen",
-          "score": "4:0",
-          "average": "43.06",
-          "eloChange": -12,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1089,
-          "result": "Loss",
-          "opponentId": 1024998339189690448,
-          "opponentName": "User 1024998339189690448",
-          "score": "4:0",
-          "average": "48.0",
-          "eloChange": -13,
-          "queue": "scolia"
-        }
-      ]
-    },
     "283650357262024704": {
       "userId": 283650357262024704,
       "name": "User 283650357262024704",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 904,
-      "worldRank": 112,
+      "worldRank": 111,
       "worldWins": 0,
       "worldLosses": 10,
       "monthlyRating": 0,
@@ -5962,6 +5894,74 @@
           "average": "55.2",
           "eloChange": -4,
           "queue": "dart"
+        }
+      ]
+    },
+    "1170865043227824178": {
+      "userId": 1170865043227824178,
+      "name": "Lmk 1170",
+      "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
+      "worldRating": 902,
+      "worldRank": 112,
+      "worldWins": 1,
+      "worldLosses": 12,
+      "monthlyRating": 26,
+      "monthlyRank": 50,
+      "monthlyWins": 1,
+      "monthlyLosses": 5,
+      "games": 13,
+      "winrate": 7.7,
+      "overallAverage": 50.43,
+      "recentMatches": [
+        {
+          "matchId": 1539,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "4:0",
+          "average": "51.16",
+          "eloChange": -3,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1334,
+          "result": "Win",
+          "opponentId": 706642260347060262,
+          "opponentName": "domme",
+          "score": "4:3",
+          "average": "44.67",
+          "eloChange": 21,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1297,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "0:4",
+          "average": "48.0",
+          "eloChange": -2,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1126,
+          "result": "Loss",
+          "opponentId": 1468019197656174774,
+          "opponentName": "Christian1980",
+          "score": "4:3",
+          "average": "47.13",
+          "eloChange": -15,
+          "queue": "scolia"
+        },
+        {
+          "matchId": 1124,
+          "result": "Loss",
+          "opponentId": 287768867969957889,
+          "opponentName": "Marvin Mollen",
+          "score": "4:0",
+          "average": "43.06",
+          "eloChange": -12,
+          "queue": "scolia"
         }
       ]
     },
