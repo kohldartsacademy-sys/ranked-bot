@@ -616,18 +616,28 @@
       "userId": 1007351887114285087,
       "name": "Rico Seifert",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 1137,
+      "worldRating": 1143,
       "worldRank": 10,
-      "worldWins": 43,
+      "worldWins": 44,
       "worldLosses": 15,
-      "monthlyRating": 195,
+      "monthlyRating": 206,
       "monthlyRank": 12,
-      "monthlyWins": 17,
+      "monthlyWins": 18,
       "monthlyLosses": 7,
-      "games": 58,
-      "winrate": 74.1,
+      "games": 59,
+      "winrate": 74.6,
       "overallAverage": 60.2,
       "recentMatches": [
+        {
+          "matchId": 1543,
+          "result": "Win",
+          "opponentId": 1458906019118841960,
+          "opponentName": "Rene B",
+          "score": "3:4",
+          "average": "60.19",
+          "eloChange": 6,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1534,
           "result": "Win",
@@ -666,16 +676,6 @@
           "score": "1:4",
           "average": "70.11",
           "eloChange": -14,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1400,
-          "result": "Win",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "2:4",
-          "average": "65.91",
-          "eloChange": 10,
           "queue": "DartCounter"
         }
       ]
@@ -6101,80 +6101,12 @@
         }
       ]
     },
-    "1458906019118841960": {
-      "userId": 1458906019118841960,
-      "name": "Rene B",
-      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
-      "worldRating": 865,
-      "worldRank": 115,
-      "worldWins": 23,
-      "worldLosses": 60,
-      "monthlyRating": 230,
-      "monthlyRank": 11,
-      "monthlyWins": 11,
-      "monthlyLosses": 25,
-      "games": 83,
-      "winrate": 27.7,
-      "overallAverage": 53.52,
-      "recentMatches": [
-        {
-          "matchId": 1542,
-          "result": "Loss",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "0:4",
-          "average": "49.86",
-          "eloChange": -9,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1536,
-          "result": "Win",
-          "opponentId": 1361654723924721725,
-          "opponentName": "Marco Braesen",
-          "score": "2:4",
-          "average": "45.73",
-          "eloChange": 22,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1525,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:1",
-          "average": "46.72",
-          "eloChange": 9,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1524,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:2",
-          "average": "45.2",
-          "eloChange": 10,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1509,
-          "result": "Win",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:3",
-          "average": "49.43",
-          "eloChange": 11,
-          "queue": "DartCounter"
-        }
-      ]
-    },
     "1300479861508280333": {
       "userId": 1300479861508280333,
       "name": "nyxc.",
       "avatar": "https://cdn.discordapp.com/avatars/1300479861508280333/29f3781779d87a3cfb72e2400c3dd0c2.png?size=1024",
       "worldRating": 863,
-      "worldRank": 116,
+      "worldRank": 115,
       "worldWins": 2,
       "worldLosses": 26,
       "monthlyRating": 34,
@@ -6242,7 +6174,7 @@
       "name": "Niklas H",
       "avatar": "https://cdn.discordapp.com/embed/avatars/3.png",
       "worldRating": 861,
-      "worldRank": 117,
+      "worldRank": 116,
       "worldWins": 2,
       "worldLosses": 15,
       "monthlyRating": 0,
@@ -6302,6 +6234,74 @@
           "average": "56.48",
           "eloChange": -11,
           "queue": "scolia"
+        }
+      ]
+    },
+    "1458906019118841960": {
+      "userId": 1458906019118841960,
+      "name": "Rene B",
+      "avatar": "https://cdn.discordapp.com/avatars/1458906019118841960/c82b3fa769ed6e6ffdea579381ed5f5c.png?size=1024",
+      "worldRating": 859,
+      "worldRank": 117,
+      "worldWins": 23,
+      "worldLosses": 61,
+      "monthlyRating": 230,
+      "monthlyRank": 11,
+      "monthlyWins": 11,
+      "monthlyLosses": 26,
+      "games": 84,
+      "winrate": 27.4,
+      "overallAverage": 53.57,
+      "recentMatches": [
+        {
+          "matchId": 1543,
+          "result": "Loss",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "3:4",
+          "average": "58.28",
+          "eloChange": -6,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1542,
+          "result": "Loss",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "0:4",
+          "average": "49.86",
+          "eloChange": -9,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1536,
+          "result": "Win",
+          "opponentId": 1361654723924721725,
+          "opponentName": "Marco Braesen",
+          "score": "2:4",
+          "average": "45.73",
+          "eloChange": 22,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1525,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:1",
+          "average": "46.72",
+          "eloChange": 9,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1524,
+          "result": "Win",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:2",
+          "average": "45.2",
+          "eloChange": 10,
+          "queue": "DartCounter"
         }
       ]
     },
