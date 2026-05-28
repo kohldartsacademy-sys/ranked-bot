@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1393,
+      "worldRating": 1394,
       "worldRank": 1,
-      "worldWins": 127,
+      "worldWins": 128,
       "worldLosses": 24,
-      "monthlyRating": 450,
+      "monthlyRating": 456,
       "monthlyRank": 3,
-      "monthlyWins": 42,
+      "monthlyWins": 43,
       "monthlyLosses": 5,
-      "games": 151,
-      "winrate": 84.1,
-      "overallAverage": 68.94,
+      "games": 152,
+      "winrate": 84.2,
+      "overallAverage": 68.91,
       "recentMatches": [
+        {
+          "matchId": 1545,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "2:4",
+          "average": "64.42",
+          "eloChange": 1,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1522,
           "result": "Win",
@@ -54,16 +64,6 @@
           "score": "0:4",
           "average": "69.1",
           "eloChange": 4,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1501,
-          "result": "Win",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "4:0",
-          "average": "61.35",
-          "eloChange": 1,
           "queue": "Scolia"
         }
       ]
@@ -6581,18 +6581,28 @@
       "userId": 1359231571487494265,
       "name": "Bernard (Giftzwerg)",
       "avatar": "https://cdn.discordapp.com/avatars/1359231571487494265/e0f12050d77eb8d7779a08d3bcbb0195.png?size=1024",
-      "worldRating": 821,
+      "worldRating": 820,
       "worldRank": 122,
       "worldWins": 16,
-      "worldLosses": 62,
+      "worldLosses": 63,
       "monthlyRating": 187,
       "monthlyRank": 13,
       "monthlyWins": 7,
-      "monthlyLosses": 24,
-      "games": 78,
-      "winrate": 20.5,
-      "overallAverage": 198.79,
+      "monthlyLosses": 25,
+      "games": 79,
+      "winrate": 20.3,
+      "overallAverage": 196.97,
       "recentMatches": [
+        {
+          "matchId": 1545,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "2:4",
+          "average": "55.02",
+          "eloChange": -1,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1517,
           "result": "Loss",
@@ -6631,16 +6641,6 @@
           "score": "4:0",
           "average": "53.91",
           "eloChange": -1,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1485,
-          "result": "Loss",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:2",
-          "average": "57.22",
-          "eloChange": -14,
           "queue": "Scolia"
         }
       ]
