@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1401,
+      "worldRating": 1408,
       "worldRank": 1,
-      "worldWins": 129,
+      "worldWins": 130,
       "worldLosses": 24,
-      "monthlyRating": 468,
+      "monthlyRating": 480,
       "monthlyRank": 3,
-      "monthlyWins": 44,
+      "monthlyWins": 45,
       "monthlyLosses": 5,
-      "games": 153,
-      "winrate": 84.3,
-      "overallAverage": 68.92,
+      "games": 154,
+      "winrate": 84.4,
+      "overallAverage": 68.9,
       "recentMatches": [
+        {
+          "matchId": 1547,
+          "result": "Win",
+          "opponentId": 183185835477172226,
+          "opponentName": "Stefan Kulik",
+          "score": "0:4",
+          "average": "66.07",
+          "eloChange": 7,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1546,
           "result": "Win",
@@ -54,16 +64,6 @@
           "score": "1:4",
           "average": "64.24",
           "eloChange": 1,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1504,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "0:4",
-          "average": "59.52",
-          "eloChange": 4,
           "queue": "Scolia"
         }
       ]
@@ -340,80 +340,12 @@
         }
       ]
     },
-    "183185835477172226": {
-      "userId": 183185835477172226,
-      "name": "Stefan Kulik",
-      "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
-      "worldRating": 1179,
-      "worldRank": 6,
-      "worldWins": 46,
-      "worldLosses": 24,
-      "monthlyRating": 182,
-      "monthlyRank": 14,
-      "monthlyWins": 13,
-      "monthlyLosses": 9,
-      "games": 70,
-      "winrate": 65.7,
-      "overallAverage": 59.22,
-      "recentMatches": [
-        {
-          "matchId": 1546,
-          "result": "Loss",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:1",
-          "average": "58.7",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1527,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:0",
-          "average": "67.55",
-          "eloChange": 4,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1463,
-          "result": "Loss",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "0:4",
-          "average": "54.76",
-          "eloChange": -9,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1365,
-          "result": "Win",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "1:4",
-          "average": "58.4",
-          "eloChange": 3,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1329,
-          "result": "Win",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "1:4",
-          "average": "56.72",
-          "eloChange": 17,
-          "queue": "DartCounter"
-        }
-      ]
-    },
     "1092072918915219537": {
       "userId": 1092072918915219537,
       "name": "Jannick2412",
       "avatar": "https://cdn.discordapp.com/avatars/1092072918915219537/a34f97c919ba7630e8ba951a443fb146.png?size=1024",
       "worldRating": 1175,
-      "worldRank": 7,
+      "worldRank": 6,
       "worldWins": 45,
       "worldLosses": 21,
       "monthlyRating": 329,
@@ -472,6 +404,74 @@
           "score": "1:4",
           "average": "57.36",
           "eloChange": -25,
+          "queue": "Scolia"
+        }
+      ]
+    },
+    "183185835477172226": {
+      "userId": 183185835477172226,
+      "name": "Stefan Kulik",
+      "avatar": "https://cdn.discordapp.com/avatars/183185835477172226/a_a7eb60fc18a3a42d57f399df216629b2.gif?size=1024",
+      "worldRating": 1172,
+      "worldRank": 7,
+      "worldWins": 46,
+      "worldLosses": 25,
+      "monthlyRating": 182,
+      "monthlyRank": 14,
+      "monthlyWins": 13,
+      "monthlyLosses": 10,
+      "games": 71,
+      "winrate": 64.8,
+      "overallAverage": 59.24,
+      "recentMatches": [
+        {
+          "matchId": 1547,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "0:4",
+          "average": "60.48",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1546,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:1",
+          "average": "58.7",
+          "eloChange": -7,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1527,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:0",
+          "average": "67.55",
+          "eloChange": 4,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1463,
+          "result": "Loss",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "0:4",
+          "average": "54.76",
+          "eloChange": -9,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1365,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "1:4",
+          "average": "58.4",
+          "eloChange": 3,
           "queue": "Scolia"
         }
       ]
