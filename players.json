@@ -140,18 +140,28 @@
       "userId": 1142038943961985105,
       "name": "Rick Dahlke",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1317,
+      "worldRating": 1322,
       "worldRank": 3,
-      "worldWins": 95,
+      "worldWins": 96,
       "worldLosses": 30,
-      "monthlyRating": 429,
+      "monthlyRating": 439,
       "monthlyRank": 5,
-      "monthlyWins": 40,
+      "monthlyWins": 41,
       "monthlyLosses": 10,
-      "games": 125,
-      "winrate": 76.0,
-      "overallAverage": 67.04,
+      "games": 126,
+      "winrate": 76.2,
+      "overallAverage": 67.01,
       "recentMatches": [
+        {
+          "matchId": 1554,
+          "result": "Win",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "3:4",
+          "average": "63.37",
+          "eloChange": 5,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1539,
           "result": "Win",
@@ -190,16 +200,6 @@
           "score": "4:1",
           "average": "61.74",
           "eloChange": 2,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1528,
-          "result": "Win",
-          "opponentId": 786133186400092181,
-          "opponentName": "Jonny H.",
-          "score": "3:4",
-          "average": "57.02",
-          "eloChange": 4,
           "queue": "Scolia"
         }
       ]
@@ -1942,22 +1942,70 @@
         }
       ]
     },
+    "695585081397346385": {
+      "userId": 695585081397346385,
+      "name": "User 695585081397346385",
+      "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
+      "worldRating": 1036,
+      "worldRank": 30,
+      "worldWins": 2,
+      "worldLosses": 0,
+      "monthlyRating": 0,
+      "monthlyRank": null,
+      "monthlyWins": 0,
+      "monthlyLosses": 0,
+      "games": 2,
+      "winrate": 100.0,
+      "overallAverage": 72.08,
+      "recentMatches": [
+        {
+          "matchId": 163,
+          "result": "Win",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "4:0",
+          "average": "71.57",
+          "eloChange": 15,
+          "queue": "dart"
+        },
+        {
+          "matchId": 142,
+          "result": "Win",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:2",
+          "average": "72.6",
+          "eloChange": 20,
+          "queue": "dart"
+        }
+      ]
+    },
     "1327898199058284545": {
       "userId": 1327898199058284545,
       "name": "TheShy | Kevin",
       "avatar": "https://cdn.discordapp.com/avatars/1327898199058284545/84f8183bcac3e3f75e0d1caa5a7f6340.png?size=1024",
-      "worldRating": 1037,
-      "worldRank": 30,
+      "worldRating": 1032,
+      "worldRank": 31,
       "worldWins": 34,
-      "worldLosses": 47,
+      "worldLosses": 48,
       "monthlyRating": 501,
       "monthlyRank": 2,
       "monthlyWins": 23,
-      "monthlyLosses": 23,
-      "games": 81,
-      "winrate": 42.0,
-      "overallAverage": 56.48,
+      "monthlyLosses": 24,
+      "games": 82,
+      "winrate": 41.5,
+      "overallAverage": 56.52,
       "recentMatches": [
+        {
+          "matchId": 1554,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "3:4",
+          "average": "59.93",
+          "eloChange": -5,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1538,
           "result": "Win",
@@ -1997,54 +2045,6 @@
           "average": "51.83",
           "eloChange": 7,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 1512,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:1",
-          "average": "62.85",
-          "eloChange": 10,
-          "queue": "Scolia"
-        }
-      ]
-    },
-    "695585081397346385": {
-      "userId": 695585081397346385,
-      "name": "User 695585081397346385",
-      "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1036,
-      "worldRank": 31,
-      "worldWins": 2,
-      "worldLosses": 0,
-      "monthlyRating": 0,
-      "monthlyRank": null,
-      "monthlyWins": 0,
-      "monthlyLosses": 0,
-      "games": 2,
-      "winrate": 100.0,
-      "overallAverage": 72.08,
-      "recentMatches": [
-        {
-          "matchId": 163,
-          "result": "Win",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "4:0",
-          "average": "71.57",
-          "eloChange": 15,
-          "queue": "dart"
-        },
-        {
-          "matchId": 142,
-          "result": "Win",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:2",
-          "average": "72.6",
-          "eloChange": 20,
-          "queue": "dart"
         }
       ]
     },
@@ -3586,7 +3586,7 @@
     "174223543259758594": {
       "userId": 174223543259758594,
       "name": "Fl03hchen",
-      "avatar": "https://cdn.discordapp.com/avatars/174223543259758594/8e7e7a494fd4081f14c0efa182a3c5e1.png?size=1024",
+      "avatar": "https://cdn.discordapp.com/avatars/174223543259758594/6b54ea5ab845cfb942ed0caa6ddb1bc7.png?size=1024",
       "worldRating": 985,
       "worldRank": 69,
       "worldWins": 0,
