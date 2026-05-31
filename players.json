@@ -6023,80 +6023,12 @@
         }
       ]
     },
-    "761737659579105301": {
-      "userId": 761737659579105301,
-      "name": "RocketDarts",
-      "avatar": "https://cdn.discordapp.com/avatars/761737659579105301/f4a94165e17a0f43e60d39a5c94cc191.png?size=1024",
-      "worldRating": 887,
-      "worldRank": 114,
-      "worldWins": 16,
-      "worldLosses": 37,
-      "monthlyRating": 64,
-      "monthlyRank": 32,
-      "monthlyWins": 3,
-      "monthlyLosses": 4,
-      "games": 53,
-      "winrate": 30.2,
-      "overallAverage": 48.89,
-      "recentMatches": [
-        {
-          "matchId": 1544,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:1",
-          "average": "58.26",
-          "eloChange": 15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1541,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:2",
-          "average": "50.58",
-          "eloChange": 17,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1481,
-          "result": "Loss",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "0:4",
-          "average": "37.7",
-          "eloChange": -17,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1098,
-          "result": "Win",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:0",
-          "average": "41.75",
-          "eloChange": 17,
-          "queue": "scolia"
-        },
-        {
-          "matchId": 1061,
-          "result": "Loss",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "4:0",
-          "average": "37.11",
-          "eloChange": -16,
-          "queue": "scolia"
-        }
-      ]
-    },
     "530021085522165770": {
       "userId": 530021085522165770,
       "name": "Leon Kohl",
       "avatar": "https://cdn.discordapp.com/avatars/530021085522165770/c86e1cad1e2569fe81ca2dac62abee9d.png?size=1024",
       "worldRating": 878,
-      "worldRank": 115,
+      "worldRank": 114,
       "worldWins": 64,
       "worldLosses": 67,
       "monthlyRating": 302,
@@ -6156,6 +6088,74 @@
           "average": "54.16",
           "eloChange": 25,
           "queue": "Scolia"
+        }
+      ]
+    },
+    "761737659579105301": {
+      "userId": 761737659579105301,
+      "name": "RocketDarts",
+      "avatar": "https://cdn.discordapp.com/avatars/761737659579105301/f4a94165e17a0f43e60d39a5c94cc191.png?size=1024",
+      "worldRating": 868,
+      "worldRank": 115,
+      "worldWins": 16,
+      "worldLosses": 38,
+      "monthlyRating": 64,
+      "monthlyRank": 32,
+      "monthlyWins": 3,
+      "monthlyLosses": 5,
+      "games": 54,
+      "winrate": 29.6,
+      "overallAverage": 48.78,
+      "recentMatches": [
+        {
+          "matchId": 1562,
+          "result": "Loss",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:2",
+          "average": "42.86",
+          "eloChange": -19,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1544,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:1",
+          "average": "58.26",
+          "eloChange": 15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1541,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:2",
+          "average": "50.58",
+          "eloChange": 17,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1481,
+          "result": "Loss",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "0:4",
+          "average": "37.7",
+          "eloChange": -17,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1098,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:0",
+          "average": "41.75",
+          "eloChange": 17,
+          "queue": "scolia"
         }
       ]
     },
@@ -6499,12 +6499,80 @@
         }
       ]
     },
+    "773315089595891732": {
+      "userId": 773315089595891732,
+      "name": "AlkaTraz",
+      "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
+      "worldRating": 851,
+      "worldRank": 121,
+      "worldWins": 43,
+      "worldLosses": 69,
+      "monthlyRating": 256,
+      "monthlyRank": 10,
+      "monthlyWins": 11,
+      "monthlyLosses": 23,
+      "games": 112,
+      "winrate": 38.4,
+      "overallAverage": 51.24,
+      "recentMatches": [
+        {
+          "matchId": 1562,
+          "result": "Win",
+          "opponentId": 761737659579105301,
+          "opponentName": "RocketDarts",
+          "score": "4:2",
+          "average": "43.49",
+          "eloChange": 19,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1558,
+          "result": "Loss",
+          "opponentId": 828645958883475459,
+          "opponentName": "Justin Oehring",
+          "score": "4:1",
+          "average": "50.79",
+          "eloChange": -6,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1544,
+          "result": "Loss",
+          "opponentId": 761737659579105301,
+          "opponentName": "RocketDarts",
+          "score": "4:1",
+          "average": "48.26",
+          "eloChange": -15,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1541,
+          "result": "Loss",
+          "opponentId": 761737659579105301,
+          "opponentName": "RocketDarts",
+          "score": "4:2",
+          "average": "48.71",
+          "eloChange": -17,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1540,
+          "result": "Win",
+          "opponentId": 1302224986051838068,
+          "opponentName": "Bazzi",
+          "score": "2:4",
+          "average": "61.24",
+          "eloChange": 25,
+          "queue": "Scolia"
+        }
+      ]
+    },
     "1326545695506698375": {
       "userId": 1326545695506698375,
       "name": "Mc_Rezzy46",
       "avatar": "https://cdn.discordapp.com/embed/avatars/4.png",
       "worldRating": 843,
-      "worldRank": 121,
+      "worldRank": 122,
       "worldWins": 0,
       "worldLosses": 15,
       "monthlyRating": 0,
@@ -6564,74 +6632,6 @@
           "average": "46.58",
           "eloChange": -8,
           "queue": "scolia"
-        }
-      ]
-    },
-    "773315089595891732": {
-      "userId": 773315089595891732,
-      "name": "AlkaTraz",
-      "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 832,
-      "worldRank": 122,
-      "worldWins": 42,
-      "worldLosses": 69,
-      "monthlyRating": 232,
-      "monthlyRank": 10,
-      "monthlyWins": 10,
-      "monthlyLosses": 23,
-      "games": 111,
-      "winrate": 37.8,
-      "overallAverage": 51.31,
-      "recentMatches": [
-        {
-          "matchId": 1558,
-          "result": "Loss",
-          "opponentId": 828645958883475459,
-          "opponentName": "Justin Oehring",
-          "score": "4:1",
-          "average": "50.79",
-          "eloChange": -6,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1544,
-          "result": "Loss",
-          "opponentId": 761737659579105301,
-          "opponentName": "RocketDarts",
-          "score": "4:1",
-          "average": "48.26",
-          "eloChange": -15,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1541,
-          "result": "Loss",
-          "opponentId": 761737659579105301,
-          "opponentName": "RocketDarts",
-          "score": "4:2",
-          "average": "48.71",
-          "eloChange": -17,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1540,
-          "result": "Win",
-          "opponentId": 1302224986051838068,
-          "opponentName": "Bazzi",
-          "score": "2:4",
-          "average": "61.24",
-          "eloChange": 25,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1535,
-          "result": "Loss",
-          "opponentId": 828645958883475459,
-          "opponentName": "Justin Oehring",
-          "score": "4:3",
-          "average": "58.22",
-          "eloChange": -6,
-          "queue": "Scolia"
         }
       ]
     },
