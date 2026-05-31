@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1421,
+      "worldRating": 1422,
       "worldRank": 1,
-      "worldWins": 133,
+      "worldWins": 134,
       "worldLosses": 24,
-      "monthlyRating": 508,
+      "monthlyRating": 514,
       "monthlyRank": 3,
-      "monthlyWins": 48,
+      "monthlyWins": 49,
       "monthlyLosses": 5,
-      "games": 157,
-      "winrate": 84.7,
-      "overallAverage": 68.87,
+      "games": 158,
+      "winrate": 84.8,
+      "overallAverage": 68.91,
       "recentMatches": [
+        {
+          "matchId": 1572,
+          "result": "Win",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "4:0",
+          "average": "76.1",
+          "eloChange": 1,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1571,
           "result": "Win",
@@ -53,16 +63,6 @@
           "opponentName": "Stefan Kulik",
           "score": "0:4",
           "average": "66.07",
-          "eloChange": 7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1546,
-          "result": "Win",
-          "opponentId": 183185835477172226,
-          "opponentName": "Stefan Kulik",
-          "score": "4:1",
-          "average": "69.14",
           "eloChange": 7,
           "queue": "Scolia"
         }
@@ -6513,18 +6513,28 @@
       "userId": 773315089595891732,
       "name": "AlkaTraz",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 854,
+      "worldRating": 853,
       "worldRank": 121,
       "worldWins": 44,
-      "worldLosses": 70,
+      "worldLosses": 71,
       "monthlyRating": 279,
       "monthlyRank": 10,
       "monthlyWins": 12,
-      "monthlyLosses": 24,
-      "games": 114,
-      "winrate": 38.6,
-      "overallAverage": 51.19,
+      "monthlyLosses": 25,
+      "games": 115,
+      "winrate": 38.3,
+      "overallAverage": 51.08,
       "recentMatches": [
+        {
+          "matchId": 1572,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:0",
+          "average": "39.44",
+          "eloChange": -1,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1567,
           "result": "Win",
@@ -6563,16 +6573,6 @@
           "score": "4:1",
           "average": "50.79",
           "eloChange": -6,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1544,
-          "result": "Loss",
-          "opponentId": 761737659579105301,
-          "opponentName": "RocketDarts",
-          "score": "4:1",
-          "average": "48.26",
-          "eloChange": -15,
           "queue": "Scolia"
         }
       ]
