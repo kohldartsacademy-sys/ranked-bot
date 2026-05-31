@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1411,
+      "worldRating": 1415,
       "worldRank": 1,
-      "worldWins": 131,
+      "worldWins": 132,
       "worldLosses": 24,
-      "monthlyRating": 488,
+      "monthlyRating": 497,
       "monthlyRank": 3,
-      "monthlyWins": 46,
+      "monthlyWins": 47,
       "monthlyLosses": 5,
-      "games": 155,
-      "winrate": 84.5,
-      "overallAverage": 68.91,
+      "games": 156,
+      "winrate": 84.6,
+      "overallAverage": 68.87,
       "recentMatches": [
+        {
+          "matchId": 1570,
+          "result": "Win",
+          "opponentId": 1213219884440489984,
+          "opponentName": "van_graadert",
+          "score": "4:1",
+          "average": "62.16",
+          "eloChange": 4,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1568,
           "result": "Win",
@@ -55,16 +65,6 @@
           "average": "64.42",
           "eloChange": 1,
           "queue": "Scolia"
-        },
-        {
-          "matchId": 1522,
-          "result": "Win",
-          "opponentId": 906968918327967764,
-          "opponentName": "Michel Ellrich",
-          "score": "1:4",
-          "average": "61.66",
-          "eloChange": 2,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -1292,80 +1292,12 @@
         }
       ]
     },
-    "1213219884440489984": {
-      "userId": 1213219884440489984,
-      "name": "van_graadert",
-      "avatar": "https://cdn.discordapp.com/avatars/1213219884440489984/a12754d46508103e0b1fe02bc4ed5110.png?size=1024",
-      "worldRating": 1086,
-      "worldRank": 20,
-      "worldWins": 34,
-      "worldLosses": 20,
-      "monthlyRating": 23,
-      "monthlyRank": 53,
-      "monthlyWins": 2,
-      "monthlyLosses": 3,
-      "games": 54,
-      "winrate": 63.0,
-      "overallAverage": 63.57,
-      "recentMatches": [
-        {
-          "matchId": 1517,
-          "result": "Win",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "4:2",
-          "average": "53.42",
-          "eloChange": 6,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1442,
-          "result": "Loss",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "1:4",
-          "average": "56.93",
-          "eloChange": -19,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1405,
-          "result": "Loss",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "4:2",
-          "average": "58.03",
-          "eloChange": -22,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1403,
-          "result": "Loss",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "4:3",
-          "average": "57.6",
-          "eloChange": -24,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1271,
-          "result": "Win",
-          "opponentId": 1300479861508280333,
-          "opponentName": "nyxc.",
-          "score": "4:2",
-          "average": "63.82",
-          "eloChange": 7,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "458662173091299360": {
       "userId": 458662173091299360,
       "name": "Moppi",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 1085,
-      "worldRank": 21,
+      "worldRank": 20,
       "worldWins": 21,
       "worldLosses": 11,
       "monthlyRating": 0,
@@ -1425,6 +1357,74 @@
           "average": "61.07",
           "eloChange": -14,
           "queue": "scolia"
+        }
+      ]
+    },
+    "1213219884440489984": {
+      "userId": 1213219884440489984,
+      "name": "van_graadert",
+      "avatar": "https://cdn.discordapp.com/avatars/1213219884440489984/a12754d46508103e0b1fe02bc4ed5110.png?size=1024",
+      "worldRating": 1082,
+      "worldRank": 21,
+      "worldWins": 34,
+      "worldLosses": 21,
+      "monthlyRating": 23,
+      "monthlyRank": 53,
+      "monthlyWins": 2,
+      "monthlyLosses": 4,
+      "games": 55,
+      "winrate": 61.8,
+      "overallAverage": 63.49,
+      "recentMatches": [
+        {
+          "matchId": 1570,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:1",
+          "average": "59.1",
+          "eloChange": -4,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1517,
+          "result": "Win",
+          "opponentId": 1359231571487494265,
+          "opponentName": "Bernard (Giftzwerg)",
+          "score": "4:2",
+          "average": "53.42",
+          "eloChange": 6,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1442,
+          "result": "Loss",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "1:4",
+          "average": "56.93",
+          "eloChange": -19,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1405,
+          "result": "Loss",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "4:2",
+          "average": "58.03",
+          "eloChange": -22,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1403,
+          "result": "Loss",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "4:3",
+          "average": "57.6",
+          "eloChange": -24,
+          "queue": "Scolia"
         }
       ]
     },
