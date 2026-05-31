@@ -1942,60 +1942,32 @@
         }
       ]
     },
-    "695585081397346385": {
-      "userId": 695585081397346385,
-      "name": "User 695585081397346385",
-      "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "worldRating": 1036,
-      "worldRank": 30,
-      "worldWins": 2,
-      "worldLosses": 0,
-      "monthlyRating": 0,
-      "monthlyRank": null,
-      "monthlyWins": 0,
-      "monthlyLosses": 0,
-      "games": 2,
-      "winrate": 100.0,
-      "overallAverage": 72.08,
-      "recentMatches": [
-        {
-          "matchId": 163,
-          "result": "Win",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "4:0",
-          "average": "71.57",
-          "eloChange": 15,
-          "queue": "dart"
-        },
-        {
-          "matchId": 142,
-          "result": "Win",
-          "opponentId": 707989067777835248,
-          "opponentName": "Yokkon",
-          "score": "4:2",
-          "average": "72.6",
-          "eloChange": 20,
-          "queue": "dart"
-        }
-      ]
-    },
     "1327898199058284545": {
       "userId": 1327898199058284545,
       "name": "TheShy | Kevin",
       "avatar": "https://cdn.discordapp.com/avatars/1327898199058284545/84f8183bcac3e3f75e0d1caa5a7f6340.png?size=1024",
-      "worldRating": 1032,
-      "worldRank": 31,
-      "worldWins": 34,
+      "worldRating": 1038,
+      "worldRank": 30,
+      "worldWins": 35,
       "worldLosses": 48,
-      "monthlyRating": 501,
+      "monthlyRating": 512,
       "monthlyRank": 2,
-      "monthlyWins": 23,
+      "monthlyWins": 24,
       "monthlyLosses": 24,
-      "games": 82,
-      "winrate": 41.5,
-      "overallAverage": 56.52,
+      "games": 83,
+      "winrate": 42.2,
+      "overallAverage": 56.44,
       "recentMatches": [
+        {
+          "matchId": 1557,
+          "result": "Win",
+          "opponentId": 825420293039194123,
+          "opponentName": "Möffi",
+          "score": "2:4",
+          "average": "49.73",
+          "eloChange": 6,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1554,
           "result": "Loss",
@@ -2035,16 +2007,44 @@
           "average": "56.38",
           "eloChange": -8,
           "queue": "Scolia"
+        }
+      ]
+    },
+    "695585081397346385": {
+      "userId": 695585081397346385,
+      "name": "User 695585081397346385",
+      "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
+      "worldRating": 1036,
+      "worldRank": 31,
+      "worldWins": 2,
+      "worldLosses": 0,
+      "monthlyRating": 0,
+      "monthlyRank": null,
+      "monthlyWins": 0,
+      "monthlyLosses": 0,
+      "games": 2,
+      "winrate": 100.0,
+      "overallAverage": 72.08,
+      "recentMatches": [
+        {
+          "matchId": 163,
+          "result": "Win",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "4:0",
+          "average": "71.57",
+          "eloChange": 15,
+          "queue": "dart"
         },
         {
-          "matchId": 1513,
+          "matchId": 142,
           "result": "Win",
-          "opponentId": 825420293039194123,
-          "opponentName": "Möffi",
-          "score": "4:0",
-          "average": "51.83",
-          "eloChange": 7,
-          "queue": "Scolia"
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "4:2",
+          "average": "72.6",
+          "eloChange": 20,
+          "queue": "dart"
         }
       ]
     },
@@ -6697,18 +6697,28 @@
       "userId": 825420293039194123,
       "name": "Möffi",
       "avatar": "https://cdn.discordapp.com/avatars/825420293039194123/d84b958facf424daf8bc8eb98df94cbf.png?size=1024",
-      "worldRating": 779,
+      "worldRating": 773,
       "worldRank": 124,
       "worldWins": 18,
-      "worldLosses": 75,
+      "worldLosses": 76,
       "monthlyRating": 177,
       "monthlyRank": 15,
       "monthlyWins": 7,
-      "monthlyLosses": 27,
-      "games": 93,
-      "winrate": 19.4,
-      "overallAverage": 52.55,
+      "monthlyLosses": 28,
+      "games": 94,
+      "winrate": 19.1,
+      "overallAverage": 52.51,
       "recentMatches": [
+        {
+          "matchId": 1557,
+          "result": "Loss",
+          "opponentId": 1327898199058284545,
+          "opponentName": "TheShy | Kevin",
+          "score": "2:4",
+          "average": "49.08",
+          "eloChange": -6,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1519,
           "result": "Loss",
@@ -6746,16 +6756,6 @@
           "opponentName": "TheShy | Kevin",
           "score": "4:0",
           "average": "50.37",
-          "eloChange": -7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1476,
-          "result": "Loss",
-          "opponentId": 492994027331780609,
-          "opponentName": "marci0",
-          "score": "2:4",
-          "average": "61.22",
           "eloChange": -7,
           "queue": "Scolia"
         }
