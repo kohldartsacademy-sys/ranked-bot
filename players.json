@@ -4,18 +4,28 @@
       "userId": 707989067777835248,
       "name": "Yokkon",
       "avatar": "https://cdn.discordapp.com/avatars/707989067777835248/603c30fef55f79195db59caf90c02dde.png?size=1024",
-      "worldRating": 1415,
+      "worldRating": 1421,
       "worldRank": 1,
-      "worldWins": 132,
+      "worldWins": 133,
       "worldLosses": 24,
-      "monthlyRating": 497,
+      "monthlyRating": 508,
       "monthlyRank": 3,
-      "monthlyWins": 47,
+      "monthlyWins": 48,
       "monthlyLosses": 5,
-      "games": 156,
-      "winrate": 84.6,
+      "games": 157,
+      "winrate": 84.7,
       "overallAverage": 68.87,
       "recentMatches": [
+        {
+          "matchId": 1571,
+          "result": "Win",
+          "opponentId": 1007351887114285087,
+          "opponentName": "Rico Seifert",
+          "score": "1:4",
+          "average": "69.26",
+          "eloChange": 6,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1570,
           "result": "Win",
@@ -54,16 +64,6 @@
           "score": "4:1",
           "average": "69.14",
           "eloChange": 7,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1545,
-          "result": "Win",
-          "opponentId": 1359231571487494265,
-          "opponentName": "Bernard (Giftzwerg)",
-          "score": "2:4",
-          "average": "64.42",
-          "eloChange": 1,
           "queue": "Scolia"
         }
       ]
@@ -616,18 +616,28 @@
       "userId": 1007351887114285087,
       "name": "Rico Seifert",
       "avatar": "https://cdn.discordapp.com/embed/avatars/5.png",
-      "worldRating": 1143,
+      "worldRating": 1137,
       "worldRank": 10,
       "worldWins": 44,
-      "worldLosses": 15,
+      "worldLosses": 16,
       "monthlyRating": 206,
       "monthlyRank": 12,
       "monthlyWins": 18,
-      "monthlyLosses": 7,
-      "games": 59,
-      "winrate": 74.6,
-      "overallAverage": 60.2,
+      "monthlyLosses": 8,
+      "games": 60,
+      "winrate": 73.3,
+      "overallAverage": 60.27,
       "recentMatches": [
+        {
+          "matchId": 1571,
+          "result": "Loss",
+          "opponentId": 707989067777835248,
+          "opponentName": "Yokkon",
+          "score": "1:4",
+          "average": "64.43",
+          "eloChange": -6,
+          "queue": "DartCounter"
+        },
         {
           "matchId": 1543,
           "result": "Win",
@@ -666,16 +676,6 @@
           "score": "4:3",
           "average": "58.73",
           "eloChange": -20,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1401,
-          "result": "Loss",
-          "opponentId": 806146120929640498,
-          "opponentName": "Luca Pakendorf",
-          "score": "1:4",
-          "average": "70.11",
-          "eloChange": -14,
           "queue": "DartCounter"
         }
       ]
