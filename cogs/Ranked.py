@@ -1414,13 +1414,16 @@ class ResultModal(discord.ui.Modal):
         guild: discord.Guild,
         entry_message_id: int | None = None,
         submitted_by_id: int | None = None,
+        admin_direct: bool = False,
     ) -> None:
-        super().__init__(title=f"Ergebnis Match #{match.match_id:03d}")
+        title_prefix = "Admin Ergebnis" if admin_direct else "Ergebnis"
+        super().__init__(title=f"{title_prefix} Match #{match.match_id:03d}")
         self.cog = cog
         self.match = match
         self.guild = guild
         self.entry_message_id = entry_message_id
         self.submitted_by_id = submitted_by_id
+        self.admin_direct = admin_direct
 
         player_one = guild.get_member(match.player_ids[0])
         player_two = guild.get_member(match.player_ids[1])
@@ -1540,7 +1543,7 @@ class ResultModal(discord.ui.Modal):
         self.cog.next_result_submission_id += 1
 
         previous_result = self.cog.pending_results.get(self.match.match_id)
-        if previous_result is not None:
+        if previous_result is not None and not self.admin_direct:
             await self.cog.mark_result_submission_obsolete(previous_result)
 
         pending_result = PendingResultState(
@@ -1556,8 +1559,20 @@ class ResultModal(discord.ui.Modal):
             submitted_by=self.submitted_by_id or interaction.user.id,
             thread_id=self.match.thread_id,
             screenshot=screenshot,
-            screenshot_url=screenshot.url,
+            screenshot_url=screenshot.url if screenshot is not None else None,
         )
+
+        if self.admin_direct:
+            await interaction.response.defer(ephemeral=True, thinking=True)
+            await self.cog.publish_confirmed_result(
+                interaction,
+                self.match,
+                pending_result,
+                confirmed_by=interaction.user.id,
+                success_message=f"Admin-Ergebnis für Match #{self.match.match_id:03d} eingetragen und gepostet.",
+            )
+            return
+
         self.cog.pending_results[self.match.match_id] = pending_result
 
         thread = await self.cog.fetch_thread(self.match.thread_id)
@@ -2865,6 +2880,90 @@ class Ranked(commands.Cog):
             result.screenshot_url = message.attachments[0].url
         return message
 
+    async def publish_confirmed_result(
+        self,
+        interaction: discord.Interaction,
+        match: MatchState,
+        result: PendingResultState,
+        *,
+        confirmed_by: int,
+        success_message: str,
+    ) -> None:
+        results_channel = await self.fetch_results_channel()
+        if results_channel is None:
+            await self.send_admin_log(
+                "Ergebnis-Channel fehlt",
+                f"{self.describe_match(match)}\nDer Ergebnis-Channel konnte beim Bestätigen nicht gefunden werden.",
+                colour=discord.Color.red(),
+            )
+            await interaction.followup.send("Der Ergebnis-Channel konnte nicht gefunden werden.", ephemeral=True)
+            return
+
+        if interaction.guild_id is None:
+            await self.send_admin_log(
+                "Guild-ID fehlt",
+                f"{self.describe_match(match)}\nDie Guild-ID konnte beim Ergebnis-Bestätigen nicht aufgelöst werden.",
+                colour=discord.Color.red(),
+            )
+            await interaction.followup.send("Guild-ID konnte nicht aufgelöst werden.", ephemeral=True)
+            return
+
+        persisted, already_published = await persist_ranked_match_result(
+            self.bot,
+            match,
+            result,
+            guild_id=interaction.guild_id,
+            confirmed_by=confirmed_by,
+        )
+        if not persisted:
+            await self.log_result_persist_failed(match, result)
+            await interaction.followup.send(
+                "Das Ergebnis konnte nicht in der Datenbank gespeichert werden. Match bleibt offen.",
+                ephemeral=True,
+            )
+            return
+
+        if already_published:
+            self.remove_pending_result(match.match_id)
+            self.active_matches.pop(match.match_id, None)
+            await self.refresh_panels(refresh_all=True)
+            thread = await self.fetch_thread(match.thread_id)
+            if thread is not None:
+                try:
+                    await thread.delete()
+                except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+                    pass
+            await interaction.followup.send("Dieses Ergebnis wurde bereits verarbeitet. Match wurde geschlossen.", ephemeral=True)
+            return
+
+        try:
+            results_message = await self.send_result_message(results_channel, match, result)
+        except discord.HTTPException:
+            await self.log_result_publish_failed(match, result)
+            await interaction.followup.send(
+                "Das Ergebnis wurde gespeichert, aber nicht in den Ergebnis-Channel gesendet. Bitte erneut bestätigen.",
+                ephemeral=True,
+            )
+            return
+
+        await mark_ranked_match_result_published(self.bot, match.match_id, results_channel.id, results_message.id)
+        await self.log_result_confirmed(match, result, confirmed_by)
+
+        self.remove_pending_result(match.match_id)
+        self.active_matches.pop(match.match_id, None)
+        await self.refresh_panels(refresh_all=True)
+
+        thread = await self.fetch_thread(match.thread_id)
+        if thread is not None:
+            try:
+                await thread.delete()
+            except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+                pass
+
+        await generate_html(self.bot)
+        upload()
+        await interaction.followup.send(success_message, ephemeral=True)
+
     async def post_result_entry_button(self, match: MatchState) -> bool:
         thread = await self.fetch_thread(match.thread_id)
         if thread is None:
@@ -2943,7 +3042,6 @@ class Ranked(commands.Cog):
         *,
         match_id: int | None = None,
         entry_message_id: int | None = None,
-        submitted_by_member: discord.Member | None = None,
     ) -> None:
         if interaction.guild is None or not isinstance(interaction.channel, discord.Thread):
             await interaction.response.send_message(
@@ -2961,25 +3059,11 @@ class Ranked(commands.Cog):
             return
 
         is_admin = interaction_user_is_admin(interaction)
-        submitted_by_id = submitted_by_member.id if submitted_by_member is not None else interaction.user.id
+        submitted_by_id = interaction.user.id
 
         if interaction.user.id not in match.player_ids and not is_admin:
             await interaction.response.send_message(
                 "Nur die beiden Match-Spieler dürfen das Ergebnis eintragen.",
-                ephemeral=True,
-            )
-            return
-
-        if submitted_by_member is not None and not is_admin:
-            await interaction.response.send_message(
-                "Nur Admins duerfen das Ergebnis fuer einen anderen Spieler eintragen.",
-                ephemeral=True,
-            )
-            return
-
-        if submitted_by_id not in match.player_ids:
-            await interaction.response.send_message(
-                "Bitte gib einen der beiden Match-Spieler an, fuer den das Ergebnis eingetragen wird.",
                 ephemeral=True,
             )
             return
@@ -3009,6 +3093,61 @@ class Ranked(commands.Cog):
                 await interaction.followup.send("Das Ergebnisformular konnte nicht geöffnet werden.", ephemeral=True)
             else:
                 await interaction.response.send_message("Das Ergebnisformular konnte nicht geöffnet werden.", ephemeral=True)
+
+    async def open_admin_result_modal(
+        self,
+        interaction: discord.Interaction,
+        *,
+        match_id: int | None = None,
+    ) -> None:
+        if interaction.guild is None:
+            await interaction.response.send_message(
+                "Dieser Befehl funktioniert nur auf einem Server.",
+                ephemeral=True,
+            )
+            return
+
+        if not interaction_user_is_admin(interaction):
+            await interaction.response.send_message(
+                "Nur Admins dürfen diesen Befehl nutzen.",
+                ephemeral=True,
+            )
+            return
+
+        if match_id is not None:
+            match = self.get_active_match_by_id(match_id)
+        elif isinstance(interaction.channel, discord.Thread):
+            match = self.get_active_match_by_thread_id(interaction.channel.id)
+        else:
+            await interaction.response.send_message(
+                "Bitte gib eine Match-ID an oder führe den Command direkt im Match-Thread aus.",
+                ephemeral=True,
+            )
+            return
+
+        if match is None:
+            await interaction.response.send_message(
+                "Es wurde kein aktives Match gefunden.",
+                ephemeral=True,
+            )
+            return
+
+        try:
+            await interaction.response.send_modal(
+                ResultModal(
+                    self,
+                    match,
+                    interaction.guild,
+                    submitted_by_id=interaction.user.id,
+                    admin_direct=True,
+                )
+            )
+        except Exception as exc:
+            print(f"Admin result modal failed: {type(exc).__name__}: {exc}")
+            if interaction.response.is_done():
+                await interaction.followup.send("Das Admin-Ergebnisformular konnte nicht geöffnet werden.", ephemeral=True)
+            else:
+                await interaction.response.send_message("Das Admin-Ergebnisformular konnte nicht geöffnet werden.", ephemeral=True)
 
     # Slash-Commands fuer Admins.
     @app_commands.command(name="queue_panel", description="Sendet das Queue-Panel in den Chat")
@@ -3069,6 +3208,13 @@ class Ranked(commands.Cog):
             return
 
         await self.cancel_match_as_admin(interaction, match)
+
+    @app_commands.command(name="admin_result", description="Trägt ein Match-Ergebnis als Admin direkt ein")
+    @app_commands.describe(match_id="Match-ID, wenn der Command nicht im Match-Thread ausgeführt wird")
+    @app_commands.checks.has_permissions(administrator=True)
+    @app_commands.guild_only()
+    async def admin_result(self, interaction: discord.Interaction, match_id: int | None = None) -> None:
+        await self.open_admin_result_modal(interaction, match_id=match_id)
 
     @app_commands.command(name="world_ranking", description="Zeigt das aktuelle World Ranking")
     @app_commands.checks.has_permissions(administrator=True)
@@ -3171,11 +3317,10 @@ class Ranked(commands.Cog):
         )
 
     # Slash-Commands fuer User.
-    @app_commands.command(name="result", description="Ã–ffnet im Match-Thread das Ergebnisformular")
-    @app_commands.describe(spieler="Nur fuer Admins: Match-Spieler, fuer den das Ergebnis eingetragen wird")
+    @app_commands.command(name="result", description="Öffnet im Match-Thread das Ergebnisformular")
     @app_commands.guild_only()
-    async def result(self, interaction: discord.Interaction, spieler: discord.Member | None = None) -> None:
-        await self.open_result_modal(interaction, submitted_by_member=spieler)
+    async def result(self, interaction: discord.Interaction) -> None:
+        await self.open_result_modal(interaction)
 
     @app_commands.command(name="stats", description="Zeigt die Ranked-Stats eines Spielers")
     @app_commands.describe(player="Der Spieler dessen Statistiken angezeigt werden sollen")
