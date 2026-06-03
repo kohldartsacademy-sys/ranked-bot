@@ -276,18 +276,28 @@
       "userId": 1309548661117554720,
       "name": "Marco Panzenböck",
       "avatar": "https://cdn.discordapp.com/avatars/1309548661117554720/9e3e0c4244517d9cc499a0c1ec69dc8e.png?size=1024",
-      "worldRating": 1242,
+      "worldRating": 1248,
       "worldRank": 5,
-      "worldWins": 91,
+      "worldWins": 92,
       "worldLosses": 42,
-      "monthlyRating": 0,
-      "monthlyRank": null,
-      "monthlyWins": 0,
+      "monthlyRating": 16,
+      "monthlyRank": 2,
+      "monthlyWins": 1,
       "monthlyLosses": 0,
-      "games": 133,
-      "winrate": 68.4,
-      "overallAverage": 63.75,
+      "games": 134,
+      "winrate": 68.7,
+      "overallAverage": 63.81,
       "recentMatches": [
+        {
+          "matchId": 1575,
+          "result": "Win",
+          "opponentId": 786133186400092181,
+          "opponentName": "Jonny H.",
+          "score": "3:4",
+          "average": "71.56",
+          "eloChange": 6,
+          "queue": "Scolia"
+        },
         {
           "matchId": 1561,
           "result": "Win",
@@ -326,16 +336,6 @@
           "score": "1:4",
           "average": "57.22",
           "eloChange": 2,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1514,
-          "result": "Win",
-          "opponentId": 1327898199058284545,
-          "opponentName": "TheShy | Kevin",
-          "score": "4:0",
-          "average": "60.12",
-          "eloChange": 8,
           "queue": "Scolia"
         }
       ]
@@ -3275,70 +3275,12 @@
         }
       ]
     },
-    "786133186400092181": {
-      "userId": 786133186400092181,
-      "name": "Jonny H.",
-      "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
-      "worldRating": 996,
-      "worldRank": 63,
-      "worldWins": 1,
-      "worldLosses": 3,
-      "monthlyRating": 0,
-      "monthlyRank": null,
-      "monthlyWins": 0,
-      "monthlyLosses": 0,
-      "games": 4,
-      "winrate": 25.0,
-      "overallAverage": 61.13,
-      "recentMatches": [
-        {
-          "matchId": 1533,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "3:4",
-          "average": "63.23",
-          "eloChange": -5,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1531,
-          "result": "Win",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "0:4",
-          "average": "60.12",
-          "eloChange": 28,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1530,
-          "result": "Loss",
-          "opponentId": 773315089595891732,
-          "opponentName": "AlkaTraz",
-          "score": "3:4",
-          "average": "60.13",
-          "eloChange": -23,
-          "queue": "Scolia"
-        },
-        {
-          "matchId": 1528,
-          "result": "Loss",
-          "opponentId": 1142038943961985105,
-          "opponentName": "Rick Dahlke",
-          "score": "3:4",
-          "average": "61.06",
-          "eloChange": -4,
-          "queue": "Scolia"
-        }
-      ]
-    },
     "1024998339189690448": {
       "userId": 1024998339189690448,
       "name": "User 1024998339189690448",
       "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
       "worldRating": 991,
-      "worldRank": 64,
+      "worldRank": 63,
       "worldWins": 6,
       "worldLosses": 7,
       "monthlyRating": 0,
@@ -3406,11 +3348,11 @@
       "name": "xZxAxMxMxYx",
       "avatar": "https://cdn.discordapp.com/avatars/1019484326536151040/fbbe57266f076b23303aa32382bcd9cc.png?size=1024",
       "worldRating": 991,
-      "worldRank": 65,
+      "worldRank": 64,
       "worldWins": 0,
       "worldLosses": 1,
       "monthlyRating": 0,
-      "monthlyRank": 2,
+      "monthlyRank": 4,
       "monthlyWins": 0,
       "monthlyLosses": 1,
       "games": 1,
@@ -3425,6 +3367,74 @@
           "score": "2:4",
           "average": "48.8",
           "eloChange": -9,
+          "queue": "Scolia"
+        }
+      ]
+    },
+    "786133186400092181": {
+      "userId": 786133186400092181,
+      "name": "Jonny H.",
+      "avatar": "https://cdn.discordapp.com/embed/avatars/2.png",
+      "worldRating": 990,
+      "worldRank": 65,
+      "worldWins": 1,
+      "worldLosses": 4,
+      "monthlyRating": 0,
+      "monthlyRank": 3,
+      "monthlyWins": 0,
+      "monthlyLosses": 1,
+      "games": 5,
+      "winrate": 20.0,
+      "overallAverage": 62.18,
+      "recentMatches": [
+        {
+          "matchId": 1575,
+          "result": "Loss",
+          "opponentId": 1309548661117554720,
+          "opponentName": "Marco Panzenböck",
+          "score": "3:4",
+          "average": "66.36",
+          "eloChange": -6,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1533,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "3:4",
+          "average": "63.23",
+          "eloChange": -5,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1531,
+          "result": "Win",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "0:4",
+          "average": "60.12",
+          "eloChange": 28,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1530,
+          "result": "Loss",
+          "opponentId": 773315089595891732,
+          "opponentName": "AlkaTraz",
+          "score": "3:4",
+          "average": "60.13",
+          "eloChange": -23,
+          "queue": "Scolia"
+        },
+        {
+          "matchId": 1528,
+          "result": "Loss",
+          "opponentId": 1142038943961985105,
+          "opponentName": "Rick Dahlke",
+          "score": "3:4",
+          "average": "61.06",
+          "eloChange": -4,
           "queue": "Scolia"
         }
       ]
