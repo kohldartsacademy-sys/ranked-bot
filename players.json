@@ -281,7 +281,7 @@
       "worldWins": 92,
       "worldLosses": 42,
       "monthlyRating": 16,
-      "monthlyRank": 5,
+      "monthlyRank": 6,
       "monthlyWins": 1,
       "monthlyLosses": 0,
       "games": 134,
@@ -952,12 +952,80 @@
         }
       ]
     },
+    "1507640392177422406": {
+      "userId": 1507640392177422406,
+      "name": "The Soldier",
+      "avatar": "https://cdn.discordapp.com/embed/avatars/1.png",
+      "worldRating": 1121,
+      "worldRank": 15,
+      "worldWins": 6,
+      "worldLosses": 0,
+      "monthlyRating": 19,
+      "monthlyRank": 5,
+      "monthlyWins": 1,
+      "monthlyLosses": 0,
+      "games": 6,
+      "winrate": 100.0,
+      "overallAverage": 68.74,
+      "recentMatches": [
+        {
+          "matchId": 1581,
+          "result": "Win",
+          "opponentId": 695649624538611884,
+          "opponentName": "Michael Steindl",
+          "score": "1:4",
+          "average": "63.83",
+          "eloChange": 9,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1565,
+          "result": "Win",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "4:1",
+          "average": "81.92",
+          "eloChange": 26,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1564,
+          "result": "Win",
+          "opponentId": 1330499669490667653,
+          "opponentName": "Dennis Wehner",
+          "score": "2:4",
+          "average": "58.86",
+          "eloChange": 27,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1549,
+          "result": "Win",
+          "opponentId": 134975678327160832,
+          "opponentName": "Shorbi|Daniel",
+          "score": "0:4",
+          "average": "64.65",
+          "eloChange": 17,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1548,
+          "result": "Win",
+          "opponentId": 134975678327160832,
+          "opponentName": "Shorbi|Daniel",
+          "score": "0:4",
+          "average": "70.73",
+          "eloChange": 19,
+          "queue": "DartCounter"
+        }
+      ]
+    },
     "1310195023370911807": {
       "userId": 1310195023370911807,
       "name": "Marco Primus",
       "avatar": "https://cdn.discordapp.com/avatars/1310195023370911807/d4b8e7580e3196b41d2101a74b9c5a7c.png?size=1024",
       "worldRating": 1118,
-      "worldRank": 15,
+      "worldRank": 16,
       "worldWins": 11,
       "worldLosses": 3,
       "monthlyRating": 0,
@@ -1017,74 +1085,6 @@
           "average": "73.09",
           "eloChange": 23,
           "queue": "dart"
-        }
-      ]
-    },
-    "1507640392177422406": {
-      "userId": 1507640392177422406,
-      "name": "The Soldier",
-      "avatar": "https://cdn.discordapp.com/embed/avatars/1.png",
-      "worldRating": 1112,
-      "worldRank": 16,
-      "worldWins": 5,
-      "worldLosses": 0,
-      "monthlyRating": 0,
-      "monthlyRank": null,
-      "monthlyWins": 0,
-      "monthlyLosses": 0,
-      "games": 5,
-      "winrate": 100.0,
-      "overallAverage": 69.72,
-      "recentMatches": [
-        {
-          "matchId": 1565,
-          "result": "Win",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "4:1",
-          "average": "81.92",
-          "eloChange": 26,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1564,
-          "result": "Win",
-          "opponentId": 1330499669490667653,
-          "opponentName": "Dennis Wehner",
-          "score": "2:4",
-          "average": "58.86",
-          "eloChange": 27,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1549,
-          "result": "Win",
-          "opponentId": 134975678327160832,
-          "opponentName": "Shorbi|Daniel",
-          "score": "0:4",
-          "average": "64.65",
-          "eloChange": 17,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1548,
-          "result": "Win",
-          "opponentId": 134975678327160832,
-          "opponentName": "Shorbi|Daniel",
-          "score": "0:4",
-          "average": "70.73",
-          "eloChange": 19,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1526,
-          "result": "Win",
-          "opponentId": 1007351887114285087,
-          "opponentName": "Rico Seifert",
-          "score": "0:4",
-          "average": "72.43",
-          "eloChange": 23,
-          "queue": "DartCounter"
         }
       ]
     },
@@ -2299,7 +2299,7 @@
       "worldWins": 37,
       "worldLosses": 53,
       "monthlyRating": 0,
-      "monthlyRank": 6,
+      "monthlyRank": 7,
       "monthlyWins": 0,
       "monthlyLosses": 2,
       "games": 90,
@@ -3352,7 +3352,7 @@
       "worldWins": 0,
       "worldLosses": 1,
       "monthlyRating": 0,
-      "monthlyRank": 8,
+      "monthlyRank": 10,
       "monthlyWins": 0,
       "monthlyLosses": 1,
       "games": 1,
@@ -3380,7 +3380,7 @@
       "worldWins": 1,
       "worldLosses": 4,
       "monthlyRating": 0,
-      "monthlyRank": 7,
+      "monthlyRank": 8,
       "monthlyWins": 0,
       "monthlyLosses": 1,
       "games": 5,
@@ -4801,50 +4801,12 @@
         }
       ]
     },
-    "695649624538611884": {
-      "userId": 695649624538611884,
-      "name": "Michael Steindl",
-      "avatar": "https://cdn.discordapp.com/avatars/695649624538611884/2a6457b45bf899248e0ce222811557f1.png?size=1024",
-      "worldRating": 959,
-      "worldRank": 95,
-      "worldWins": 0,
-      "worldLosses": 2,
-      "monthlyRating": 0,
-      "monthlyRank": null,
-      "monthlyWins": 0,
-      "monthlyLosses": 0,
-      "games": 2,
-      "winrate": 0.0,
-      "overallAverage": 42.73,
-      "recentMatches": [
-        {
-          "matchId": 1207,
-          "result": "Loss",
-          "opponentId": 1418545035577917542,
-          "opponentName": "Campione",
-          "score": "4:1",
-          "average": "43.23",
-          "eloChange": -13,
-          "queue": "DartCounter"
-        },
-        {
-          "matchId": 1204,
-          "result": "Loss",
-          "opponentId": 1245485490421891165,
-          "opponentName": "Andy Bühner",
-          "score": "4:1",
-          "average": "42.23",
-          "eloChange": -28,
-          "queue": "DartCounter"
-        }
-      ]
-    },
     "1330887794515644456": {
       "userId": 1330887794515644456,
       "name": "Josha Kahl",
       "avatar": "https://cdn.discordapp.com/avatars/1330887794515644456/31aba046c44fb7f9a17163d1daad59ab.png?size=1024",
       "worldRating": 957,
-      "worldRank": 96,
+      "worldRank": 95,
       "worldWins": 0,
       "worldLosses": 3,
       "monthlyRating": 0,
@@ -4892,7 +4854,7 @@
       "name": "Passi1704",
       "avatar": "https://cdn.discordapp.com/avatars/1467938366183178457/f7f2e9361e8a54ce6e72580ac7b967af.png?size=1024",
       "worldRating": 955,
-      "worldRank": 97,
+      "worldRank": 96,
       "worldWins": 5,
       "worldLosses": 9,
       "monthlyRating": 0,
@@ -4960,7 +4922,7 @@
       "name": "Auron",
       "avatar": "https://cdn.discordapp.com/avatars/202833515757174784/c53dcf20c32fcc74bc341cfd6f7f87e6.png?size=1024",
       "worldRating": 954,
-      "worldRank": 98,
+      "worldRank": 97,
       "worldWins": 0,
       "worldLosses": 3,
       "monthlyRating": 0,
@@ -5008,7 +4970,7 @@
       "name": "Basti Q",
       "avatar": "https://cdn.discordapp.com/avatars/1128030585701552169/d20f11e1cf94acf9e088276121f8094b.png?size=1024",
       "worldRating": 953,
-      "worldRank": 99,
+      "worldRank": 98,
       "worldWins": 2,
       "worldLosses": 7,
       "monthlyRating": 0,
@@ -5076,7 +5038,7 @@
       "name": "Philipp Höller",
       "avatar": "https://cdn.discordapp.com/embed/avatars/1.png",
       "worldRating": 951,
-      "worldRank": 100,
+      "worldRank": 99,
       "worldWins": 0,
       "worldLosses": 4,
       "monthlyRating": 0,
@@ -5126,6 +5088,54 @@
           "average": "59.29",
           "eloChange": -14,
           "queue": "scolia"
+        }
+      ]
+    },
+    "695649624538611884": {
+      "userId": 695649624538611884,
+      "name": "Michael Steindl",
+      "avatar": "https://cdn.discordapp.com/avatars/695649624538611884/2a6457b45bf899248e0ce222811557f1.png?size=1024",
+      "worldRating": 950,
+      "worldRank": 100,
+      "worldWins": 0,
+      "worldLosses": 3,
+      "monthlyRating": 0,
+      "monthlyRank": 9,
+      "monthlyWins": 0,
+      "monthlyLosses": 1,
+      "games": 3,
+      "winrate": 0.0,
+      "overallAverage": 45.18,
+      "recentMatches": [
+        {
+          "matchId": 1581,
+          "result": "Loss",
+          "opponentId": 1507640392177422406,
+          "opponentName": "The Soldier",
+          "score": "1:4",
+          "average": "50.08",
+          "eloChange": -9,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1207,
+          "result": "Loss",
+          "opponentId": 1418545035577917542,
+          "opponentName": "Campione",
+          "score": "4:1",
+          "average": "43.23",
+          "eloChange": -13,
+          "queue": "DartCounter"
+        },
+        {
+          "matchId": 1204,
+          "result": "Loss",
+          "opponentId": 1245485490421891165,
+          "opponentName": "Andy Bühner",
+          "score": "4:1",
+          "average": "42.23",
+          "eloChange": -28,
+          "queue": "DartCounter"
         }
       ]
     },
@@ -5264,7 +5274,7 @@
       "worldWins": 3,
       "worldLosses": 8,
       "monthlyRating": 0,
-      "monthlyRank": 9,
+      "monthlyRank": 11,
       "monthlyWins": 0,
       "monthlyLosses": 1,
       "games": 11,
